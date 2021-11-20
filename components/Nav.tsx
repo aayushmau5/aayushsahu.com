@@ -14,11 +14,12 @@ export default function Nav() {
 
   return (
     <div className={styles.container}>
-      <div className={styles.mobileNavContainer}>
-        <HamburgerMenuButton onClick={changeMenuOpenState} />
-        {menuOpen ? <HamburgerMenu router={router} /> : null}
-      </div>
-      <div className={styles.LinksContainer}>
+      <MobileMenu menuOpen={menuOpen} onClick={changeMenuOpenState} />
+      <div
+        className={`${styles.LinksContainer} ${
+          menuOpen ? styles.activeLinksContainer : null
+        }`}
+      >
         <NavLinks router={router} />
       </div>
     </div>
@@ -44,20 +45,19 @@ function NavLinks({ router }) {
   );
 }
 
-function HamburgerMenuButton({ onClick }) {
+function MobileMenu({ onClick, menuOpen }) {
   return (
-    <button onClick={onClick} className={styles.hamburgerMenuButton}>
-      <div></div>
-      <div></div>
-      <div></div>
-    </button>
-  );
-}
-
-function HamburgerMenu({ router }) {
-  return (
-    <div className={styles.hamburgerMenu}>
-      <NavLinks router={router} />
+    <div className={styles.mobileNavContainer}>
+      <button
+        onClick={onClick}
+        className={`${styles.hamburgerMenuButton} ${
+          menuOpen ? styles.menuActive : null
+        }`}
+      >
+        <div></div>
+        <div></div>
+        <div></div>
+      </button>
     </div>
   );
 }

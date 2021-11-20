@@ -6,13 +6,21 @@
 }
 
 .LinksContainer {
+  position: fixed;
+  right: 0;
   padding: 2rem;
   display: flex;
   gap: 10px;
   flex-direction: column;
-  background-color: rgba(173, 173, 173, 0.2);
+  background-color: rgb(46, 46, 46);
+  box-shadow: 3px 3px 8px black;
   color: rgb(153, 153, 153);
   border-radius: 10px 0 0 10px;
+  transition: all linear 0.2s;
+}
+
+.activeLinksContainer {
+  transform: translateX(0) !important;
 }
 
 .container a {
@@ -31,14 +39,13 @@
 .mobileNavContainer {
   display: none;
   position: fixed;
-  right: 0;
   top: 1rem;
-  padding-right: 1rem;
+  right: 0;
+  margin-right: 1rem;
 }
 
 .hamburgerMenuButton {
   display: flex;
-  margin-left: auto;
   flex-direction: column;
   gap: 5px;
   width: 20px;
@@ -48,37 +55,33 @@
   cursor: pointer;
 }
 
-.hamburgerMenuButton div:nth-child(2) {
-  width: 15px;
-  margin-left: auto;
+.hamburgerMenuButton div {
+  border: 1px solid white;
+  width: 100%;
   transition: all linear 0.2s;
 }
 
-.hamburgerMenuButton:hover div:nth-child(2),
-.hamburgerMenuButton:active div:nth-child(2),
-.hamburgerMenuButton:focus div:nth-child(2) {
+.hamburgerMenuButton div:nth-child(2) {
+  width: 15px;
+  margin-left: auto;
+}
+
+.hamburgerMenuButton:hover div:nth-child(2) {
   width: 20px;
 }
 
-.hamburgerMenuButton div {
-  border: 1px solid white;
+.hamburgerMenuButton:focus {
+  outline: 1px solid white;
+  outline-offset: 5px;
 }
 
-.hamburgerMenu {
-  margin-top: 1rem;
-  width: 10rem;
-  padding: 2rem;
-  display: flex;
-  gap: 10px;
-  flex-direction: column;
-  background-color: rgb(46, 46, 46);
-  color: rgb(153, 153, 153);
-  border-radius: 10px;
+.menuActive div:nth-child(2) {
+  width: 100%;
 }
 
 @media (max-width: 1000px) {
   .LinksContainer {
-    display: none;
+    transform: translateX(100%);
   }
 
   .mobileNavContainer {
