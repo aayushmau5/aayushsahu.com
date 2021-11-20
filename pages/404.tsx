@@ -10,7 +10,7 @@ export default function FourOhFourPage() {
       <Head>
         <title>Page not found | aayushmau5</title>
       </Head>
-      <h1>Oops, looks like you landed on a wrong page.</h1>
+      <h1>Oops, looks like you have landed on a wrong page.</h1>
       <Link href="/">
         <a>
           <BsArrowLeftShort />

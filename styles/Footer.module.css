@@ -7,27 +7,22 @@
   margin: 0 auto;
 }
 
-.love {
-  color: rgb(255, 113, 113);
-}
-
 .socialsContainer {
   margin-left: auto;
-  display: flex;
-  gap: 10px;
 }
 
 .container svg {
   height: 25px;
   width: 25px;
-}
-
-.container a {
   transition: scale linear 0.1s;
 }
 
-.container a:focus,
-.container a:hover {
+.container a:not(:last-child) {
+  margin-right: 10px;
+}
+
+.container a:focus svg,
+.container a:hover svg {
   scale: 1.2;
   color: white;
 }
@@ -35,5 +30,11 @@
 @media (max-width: 1000px) {
   .container {
     width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .container a {
+    display: block;
   }
 }

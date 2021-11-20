@@ -10,14 +10,13 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <h1> Hello, I&apos;m Aayush 👋 </h1>
+      <h1> Hello 👋 </h1>
 
       <main className={styles.main}>
         <p>
-          Hello, My name is Aayush Kumar Sahu, aka, aayushmau5(pronounced:
-          aayushmouse, aayush-mow-five, aayushmouse-five :P).
+          My name is Aayush Kumar Sahu, aka, aayushmau5(pronounced: aayushmouse,
+          aayush-mow-five, aayushmouse-five :P).
         </p>
-        <p>I love Open-Source.</p>
         <p>
           Currently exploring the web. I like to babble about Open-Source,
           Javascript, Linux, Vim(vscode works as well), compilers, or anything

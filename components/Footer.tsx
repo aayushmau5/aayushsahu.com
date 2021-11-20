@@ -7,10 +7,7 @@ import styles from "../styles/Footer.module.css";
 export default function Footer() {
   return (
     <div className={styles.container}>
-      <p>
-        Made with <span className={styles.love}>:love:</span> by Aayush Kumar
-        Sahu
-      </p>
+      <p>Made with ❤️ by aayushmau5</p>
       <div className={styles.socialsContainer}>
         <a
           href="https://www.github.com/aayushmau5"
