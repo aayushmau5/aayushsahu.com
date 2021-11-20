@@ -2,14 +2,17 @@
   position: absolute;
   top: 5rem;
   right: 0;
+  font-size: 1.2rem;
+}
+
+.LinksContainer {
+  padding: 2rem;
   display: flex;
   gap: 10px;
   flex-direction: column;
-  padding: 2rem;
-  font-size: 1.2rem;
   background-color: rgba(173, 173, 173, 0.2);
-  border-radius: 10px 0 0 10px;
   color: rgb(153, 153, 153);
+  border-radius: 10px 0 0 10px;
 }
 
 .container a {
@@ -23,4 +26,62 @@
 
 .active {
   color: white;
+}
+
+.mobileNavContainer {
+  display: none;
+  position: fixed;
+  right: 0;
+  top: 1rem;
+  padding-right: 1rem;
+}
+
+.hamburgerMenuButton {
+  display: flex;
+  margin-left: auto;
+  flex-direction: column;
+  gap: 5px;
+  width: 20px;
+  border: none;
+  background-color: transparent;
+  padding: 0;
+  cursor: pointer;
+}
+
+.hamburgerMenuButton div:nth-child(2) {
+  width: 15px;
+  margin-left: auto;
+  transition: all linear 0.2s;
+}
+
+.hamburgerMenuButton:hover div:nth-child(2),
+.hamburgerMenuButton:active div:nth-child(2),
+.hamburgerMenuButton:focus div:nth-child(2) {
+  width: 20px;
+}
+
+.hamburgerMenuButton div {
+  border: 1px solid white;
+}
+
+.hamburgerMenu {
+  margin-top: 1rem;
+  width: 10rem;
+  padding: 2rem;
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  background-color: rgb(46, 46, 46);
+  color: rgb(153, 153, 153);
+  border-radius: 10px;
+}
+
+@media (max-width: 1000px) {
+  .LinksContainer {
+    display: none;
+  }
+
+  .mobileNavContainer {
+    display: block;
+  }
 }

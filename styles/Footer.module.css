@@ -31,3 +31,9 @@
   scale: 1.2;
   color: white;
 }
+
+@media (max-width: 1000px) {
+  .container {
+    width: 100%;
+  }
+}
