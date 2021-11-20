@@ -1,0 +1,26 @@
+.container {
+  position: absolute;
+  top: 5rem;
+  right: 0;
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  padding: 2rem;
+  font-size: 1.2rem;
+  background-color: rgba(173, 173, 173, 0.2);
+  border-radius: 10px 0 0 10px;
+  color: rgb(153, 153, 153);
+}
+
+.container a {
+  transition: all linear 0.1s;
+}
+
+.container a:hover,
+.container a:focus {
+  color: white;
+}
+
+.active {
+  color: white;
+}

@@ -23,14 +23,14 @@ export default function Home() {
           Javascript, Linux, Vim(vscode works as well), compilers, or anything
           interesting :P
         </p>
-        <p>
+        <div>
           Feel free to reach out to me @:
           <ul>
             <li>Email: aayushmau5[at]gmail[dot]com</li>
             <li>Twitter: @aayushmau5</li>
             <li>Telegram: @aayushmau5</li>
           </ul>
-        </p>
+        </div>
       </main>
     </div>
   );
