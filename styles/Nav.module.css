@@ -16,7 +16,7 @@
   box-shadow: 3px 3px 8px black;
   color: rgb(153, 153, 153);
   border-radius: 10px 0 0 10px;
-  transition: all linear 0.2s;
+  transition: transform linear 0.2s;
 }
 
 .activeLinksContainer {
@@ -24,12 +24,30 @@
 }
 
 .container a {
-  transition: all linear 0.1s;
+  width: max-content;
+  position: relative;
+  transition: color linear 0.2s;
 }
 
 .container a:hover,
 .container a:focus {
   color: white;
+}
+
+.container a:hover::after,
+.container a:focus::after {
+  width: 100%;
+}
+
+.container a::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  height: 2px;
+  background-color: white;
+  width: 0;
+  transition: all linear 0.2s;
 }
 
 .active {
