@@ -14,7 +14,7 @@
 .container svg {
   height: 25px;
   width: 25px;
-  transition: scale linear 0.1s;
+  transition: transform linear 0.1s;
 }
 
 .container a:not(:last-child) {
@@ -23,7 +23,7 @@
 
 .container a:focus svg,
 .container a:hover svg {
-  scale: 1.2;
+  transform: scale(1.2);
   color: white;
 }
 

@@ -1,3 +1,3 @@
 export default function Projects() {
-  return <div>Work In Progress</div>;
+  return <main>In progress</main>;
 }

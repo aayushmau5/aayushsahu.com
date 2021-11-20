@@ -3,6 +3,7 @@
   top: 5rem;
   right: 0;
   font-size: 1.2rem;
+  z-index: 10;
 }
 
 .LinksContainer {
@@ -36,7 +37,7 @@
 }
 
 .container a:hover::after,
-.container a:focus::after {
+.container a:focus-visible::after {
   width: 100%;
 }
 

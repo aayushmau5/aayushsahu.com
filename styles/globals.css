@@ -18,3 +18,8 @@ a {
 * {
   box-sizing: border-box;
 }
+
+code {
+  font-family: "Fira Code", monospace;
+  background-color: rgba(77, 77, 77, 0.3);
+}

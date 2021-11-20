@@ -1,3 +1,44 @@
 .container {
   font-size: 1.2rem;
 }
+
+.logoContainer {
+  border: 5px solid rgb(34, 34, 34);
+  border-radius: 50%;
+  overflow: hidden;
+  max-width: 300px;
+  max-height: 300px;
+  width: auto;
+  height: auto;
+  margin: 0 auto;
+}
+
+.logoContainer img {
+  transform: scale(1.2);
+}
+
+.highlight {
+  font-weight: bold;
+  background-image: linear-gradient(45deg, #21daa2, #43dce5, #36c3ef, #4a5ae9);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+}
+
+.highlight::selection {
+  background-color: rgba(88, 88, 88, 0.356);
+}
+
+.heading {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 10px;
+}
+
+@media (min-width: 1024px) {
+  .heading {
+    flex-direction: row;
+  }
+}

@@ -1,36 +1,45 @@
 import Head from "next/head";
+import Image from "next/image";
+
+import Logo from "../public/image.png";
 import styles from "../styles/Home.module.css";
 
-export default function Home() {
+export default function Index() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Aayush Kumar Sahu</title>
+        <title>Aayush Kumar Sahu - Developer and Explorer</title>
         <meta name="description" content="Aayush Kumar Sahu aka aayushmau5" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <h1> Hello 👋 </h1>
-
-      <main className={styles.main}>
-        <p>
-          My name is Aayush Kumar Sahu, aka, aayushmau5(pronounced: aayushmouse,
-          aayush-mow-five, aayushmouse-five :P).
-        </p>
-        <p>
-          Currently exploring the web. I like to babble about Open-Source,
-          Javascript, Linux, Vim(vscode works as well), compilers, or anything
-          interesting :P
-        </p>
+      <div className={styles.heading}>
         <div>
-          Feel free to reach out to me at:
-          <ul>
-            <li>Email: aayushmau5[at]gmail[dot]com</li>
-            <li>Twitter: @aayushmau5</li>
-            <li>Telegram: @aayushmau5</li>
-          </ul>
+          <h1> Hello 👋 </h1>
+          <p>
+            My name is{" "}
+            <span className={styles.highlight}>Aayush Kumar Sahu</span>, aka,{" "}
+            <span className={styles.highlight}>aayushmau5</span>(pronounced:
+            aayushmouse).
+          </p>
+          <p>
+            I&apos;m a{" "}
+            <span className={styles.highlight}>fullstack web developer</span>{" "}
+            based in India.
+          </p>
+          <p>
+            Currently exploring the web. I like to babble about{" "}
+            <code>Open-Source</code>, <code>JavaScript/TypeScript</code>,{" "}
+            <code>Linux</code>, <code>Vim</code>(<code>vscode</code> works as
+            well), <code>compilers</code>, or anything interesting :P
+          </p>
         </div>
-      </main>
+        <div className={styles.logoContainer}>
+          <Image src={Logo} alt="logo" className={styles.logo} />
+        </div>
+      </div>
+
+      <main></main>
     </div>
   );
 }

@@ -17,7 +17,7 @@ export default function Nav() {
       <MobileMenu menuOpen={menuOpen} onClick={changeMenuOpenState} />
       <div
         className={`${styles.LinksContainer} ${
-          menuOpen ? styles.activeLinksContainer : null
+          menuOpen ? styles.activeLinksContainer : ""
         }`}
       >
         <NavLinks router={router} />
@@ -31,9 +31,6 @@ function NavLinks({ router }) {
     <>
       <NavLink currentRoute={router.route} route="/">
         Home
-      </NavLink>
-      <NavLink currentRoute={router.route} route="/next">
-        Next
       </NavLink>
       <NavLink currentRoute={router.route} route="/projects">
         Works
@@ -51,7 +48,7 @@ function MobileMenu({ onClick, menuOpen }) {
       <button
         onClick={onClick}
         className={`${styles.hamburgerMenuButton} ${
-          menuOpen ? styles.menuActive : null
+          menuOpen ? styles.menuActive : ""
         }`}
       >
         <div></div>
