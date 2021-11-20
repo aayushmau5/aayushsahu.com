@@ -23,7 +23,7 @@ export default function Home() {
           interesting :P
         </p>
         <div>
-          Feel free to reach out to me @:
+          Feel free to reach out to me at:
           <ul>
             <li>Email: aayushmau5[at]gmail[dot]com</li>
             <li>Twitter: @aayushmau5</li>
