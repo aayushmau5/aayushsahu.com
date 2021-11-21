@@ -50,10 +50,10 @@ export default function Index() {
               Checkout my blogs
             </a>
           </Link>
-          <Link href="/works">
+          <Link href="/work">
             <a>
               <BsArrowRightShort />
-              Checkout my works
+              Checkout my work
             </a>
           </Link>
           <p>And if you liked it:</p>

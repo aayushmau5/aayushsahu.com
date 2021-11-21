@@ -1,17 +1,17 @@
 import Head from "next/head";
 
-import styles from "../styles/Works.module.css";
+import styles from "../styles/Work.module.css";
 import Skills from "../components/Skills";
 import Projects from "../components/Projects";
 
-export default function Works() {
+export default function Work() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Works | Aayush Kumar Sahu</title>
+        <title>Work | Aayush Kumar Sahu</title>
       </Head>
-      <h1>Works</h1>
-      <p>Checkout the works I have done.</p>
+      <h1>Work</h1>
+      <p>Checkout the work I have done.</p>
       <h2>Skills</h2>
       <p>Here&apos;s the list of skills that I have.</p>
       <h4>Frontend</h4>
@@ -25,6 +25,11 @@ export default function Works() {
       <h2>Projects</h2>
       <p>Here&apos;s the list of projects that I have made.</p>
       <Projects />
+      {/* <h2>Open Source contributions</h2>
+      <p>
+        I like to contribute to open source projects a lot. Here are the open
+        source contributions I have made.
+      </p> */}
     </div>
   );
 }
