@@ -9,6 +9,10 @@ export default function Work() {
     <div className={styles.container}>
       <Head>
         <title>Work | Aayush Kumar Sahu</title>
+        <meta
+          name="description"
+          content="Checkout the work done by aayushmau5"
+        />
       </Head>
       <h1>Work</h1>
       <p>Checkout the work I have done.</p>
