@@ -1,6 +1,6 @@
-.container {
-  font-size: 1.2rem;
-}
+/* .container {
+  color: #9fa3ad;
+} */
 
 .logoContainer {
   border: 5px solid rgb(34, 34, 34);
@@ -35,6 +35,47 @@
   display: flex;
   flex-direction: column-reverse;
   gap: 10px;
+}
+
+.nextStepsContainer {
+  margin-top: 20px;
+  padding: 3px;
+  border-radius: 0.75rem;
+  background-image: linear-gradient(45deg, #21daa2, #43dce5, #36c3ef, #4a5ae9);
+}
+
+.nextSteps {
+  background-color: rgb(10, 10, 10);
+  border-radius: 0.75rem;
+  padding: 1rem;
+}
+
+.nextSteps p {
+  margin-top: 0;
+}
+
+.nextSteps a {
+  display: flex;
+  width: max-content;
+  align-items: center;
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.nextSteps a::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  height: 2px;
+  background-color: white;
+  width: 0;
+  transition: width linear 0.2s;
+}
+
+.nextSteps a:hover::after,
+.nextSteps a:focus-visible::after {
+  width: 100%;
 }
 
 @media (min-width: 1024px) {

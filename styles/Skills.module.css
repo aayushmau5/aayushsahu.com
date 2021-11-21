@@ -1,0 +1,29 @@
+.skillBox {
+  text-align: center;
+  padding: 7px;
+  font-size: 0.7rem;
+  line-height: 2rem;
+  width: max-content;
+}
+
+.imageContainer {
+  margin: auto;
+  height: 50px;
+  width: 50px;
+}
+
+.skillsContainer {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+@media (min-width: 1024px) {
+  .skillBox {
+    font-size: 1rem;
+  }
+
+  .imageContainer {
+    height: 90px;
+    width: 90px;
+  }
+}

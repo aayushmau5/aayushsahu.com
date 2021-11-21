@@ -1,5 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
+import Link from "next/link";
+import { BsArrowRightShort } from "react-icons/bs";
 
 import Logo from "../public/image.png";
 import styles from "../styles/Home.module.css";
@@ -28,14 +30,41 @@ export default function Index() {
             based in India.
           </p>
           <p>
-            Currently exploring the web. I like to babble about{" "}
-            <code>Open-Source</code>, <code>JavaScript/TypeScript</code>,{" "}
-            <code>Linux</code>, <code>Vim</code>(<code>vscode</code> works as
-            well), <code>compilers</code>, or anything interesting :P
+            I like to babble about <code>Open-Source</code>,{" "}
+            <code>JavaScript/TypeScript</code>, <code>Linux</code>,{" "}
+            <code>Vim</code>(<code>vscode</code> works as well),{" "}
+            <code>compilers</code>, or anything interesting :P
           </p>
         </div>
         <div className={styles.logoContainer}>
           <Image src={Logo} alt="logo" className={styles.logo} />
+        </div>
+      </div>
+
+      <div className={styles.nextStepsContainer}>
+        <div className={styles.nextSteps}>
+          <p>While you are here, feel free to:</p>
+          <Link href="/blog">
+            <a>
+              <BsArrowRightShort />
+              Checkout my blogs
+            </a>
+          </Link>
+          <Link href="/works">
+            <a>
+              <BsArrowRightShort />
+              Checkout my works
+            </a>
+          </Link>
+          <p>And if you liked it:</p>
+          <a href="mailto:aayushmau5@gmail.com">
+            <BsArrowRightShort />
+            Contact me
+          </a>
+          <a href="#">
+            <BsArrowRightShort />
+            See my resume
+          </a>
         </div>
       </div>
 

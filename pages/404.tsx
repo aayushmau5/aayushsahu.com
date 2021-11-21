@@ -8,7 +8,7 @@ export default function FourOhFourPage() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Page not found | aayushmau5</title>
+        <title>Page not found | Aayush Kumar Sahu</title>
       </Head>
       <h1>Oops, looks like you have landed on a wrong page.</h1>
       <Link href="/">
