@@ -1,0 +1,50 @@
+.blogContainer {
+  display: block;
+  background-color: rgb(10, 10, 10);
+  padding: 0.75rem;
+  border-radius: 0.75rem;
+  margin-bottom: 1rem;
+  word-wrap: break-word;
+  transition: transform linear 0.1s;
+}
+
+.blogContainer:active {
+  transform: scale(0.98);
+}
+
+.blogContainer:focus {
+  outline: 2px solid rgb(236, 236, 236);
+}
+
+.blogContainer h3 {
+  margin: 0;
+}
+
+.additionalInfo {
+  margin: 5px 0;
+  color: gray;
+  font-size: 0.9rem;
+}
+
+.back {
+  display: flex;
+  width: max-content;
+  align-items: center;
+  position: relative;
+}
+
+.back::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  height: 2px;
+  background-color: white;
+  width: 0;
+  transition: width linear 0.2s;
+}
+
+.back:hover::after,
+.back:focus-visible::after {
+  width: 100%;
+}
