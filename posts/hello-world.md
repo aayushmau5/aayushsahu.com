@@ -7,8 +7,6 @@ cover:
   image: "https://images.pexels.com/photos/220201/pexels-photo-220201.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
   alt: "Earth from space"
   caption: "Image taken from pexels.com"
-  relative: false
-  hidden: false
 ---
 
 ```js

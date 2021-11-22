@@ -3,13 +3,12 @@ title: "Making PR to another repository using Github Actions"
 date: 2021-05-21T14:47:08+05:30
 draft: false
 tags: ["github", "actions"]
-showToc: true
 cover:
   image: "/blogImages/gh-action-logo.webp"
   alt: "Github Action Logo"
-  relative: false
-  hidden: false
 ---
+
+### Table of Contents
 
 **This post is not an introduction to Github Actions.**
 

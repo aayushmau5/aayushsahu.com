@@ -5,7 +5,7 @@
 
 .coverImage img {
   width: 100% !important;
-  border-radius: 0.75rem;
+  border-radius: 0.7rem;
 }
 
 .description {
@@ -18,8 +18,40 @@
   font-size: 0.9rem;
 }
 
+.caption {
+  margin: 0;
+  font-size: 0.9rem;
+  color: gray;
+  text-align: center;
+}
+
 .container {
   color: rgba(255, 255, 255, 0.74);
+  word-wrap: break-word;
+}
+
+.container ul:first-of-type a {
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+.container ul:first-of-type a:hover {
+  text-decoration: underline;
+}
+
+.container a[aria-hidden="true"] {
+  text-decoration: none;
+}
+
+.container a[aria-hidden="true"]:hover {
+  text-decoration: underline;
+}
+
+.container span[class="icon icon-link"]::before {
+  content: "#";
+  margin-left: 5px;
+  color: gray;
+  text-decoration: none;
 }
 
 .container h1,
@@ -61,7 +93,6 @@
 }
 
 .container code {
-  font-weight: bold;
   font-size: 0.9rem;
   padding: 2px 5px;
   border-radius: 2px;

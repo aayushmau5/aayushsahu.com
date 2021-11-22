@@ -4,13 +4,12 @@ date: 2021-09-01T19:29:43+05:30
 description: "Final blog for my GSoC journey"
 tags: ["gsoc", "open-source", "asyncapi"]
 draft: false
-showToc: true
 cover:
   image: "/blogImages/gsoc-final/gsoc-postman-asyncapi.jpeg"
   alt: "Poster with GSOC, Postman & AsyncAPI logo"
-  relative: false
-  hidden: false
 ---
+
+# Table of Contents
 
 # Introduction
 

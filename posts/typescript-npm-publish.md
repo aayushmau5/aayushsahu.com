@@ -3,8 +3,9 @@ title: "Publishing JavaScript/TypeScript packages on npm registry"
 date: 2021-07-14T10:58:50+05:30
 draft: false
 tags: ["javascript", "typescript", "npm"]
-showToc: true
 ---
+
+### Table of Contents
 
 ### Introduction
 

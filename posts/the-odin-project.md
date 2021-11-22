@@ -8,8 +8,6 @@ cover:
   image: "https://raw.githubusercontent.com/TheOdinProject/theodinproject/master/app/assets/images/og-logo.png"
   alt: "The Odin Project banner"
   caption: "Image taken from [The Odin Project](https://www.theodinproject.com)"
-  relative: false
-  hidden: false
 ---
 
 I started with Web development in April 2020. As someone who had some really basic knowledge about the web, I searched google, reddit and some other online forums for "how to get started with web development". Most result included paid courses on udemy or coursera.

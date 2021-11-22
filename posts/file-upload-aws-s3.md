@@ -3,8 +3,9 @@ title: "Uploading files to AWS S3 using NodeJS"
 description: "How to upload files to AWS S3 with certain features like limiting file size, streaming files, etc."
 date: 2021-10-03T16:19:39+05:30
 draft: true
-showToc: true
 ---
+
+### Table of Contents
 
 ### Introduction
 

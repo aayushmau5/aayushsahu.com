@@ -4,8 +4,9 @@ date: 2021-07-06T09:35:47+05:30
 draft: false
 description: "Looking into memoization and `useMemo` to improve some performance of our application."
 tags: ["javascript", "react"]
-showToc: true
 ---
+
+### Table of Contents
 
 I have been somewhat familiar with `useMemo` hook in React, but I had no idea what "Memoization" was, and why should we use it.
 

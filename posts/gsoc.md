@@ -5,10 +5,11 @@ draft: false
 tags: ["gsoc", "open-source", "asyncapi"]
 cover:
   image: "/blogImages/sunset.webp"
-  alt: "Image taken from pexels.com"
-  relative: false
-  hidden: false
+  alt: "Sunset"
+  caption: "Image taken from pexels.com"
 ---
+
+### Table of Contents
 
 So, I got selected as a student in Google Summer of Code(GSOC) 🎉 under [AsyncAPI](https://www.asyncapi.com/) organization through [Postman](https://www.postman.com/).
 

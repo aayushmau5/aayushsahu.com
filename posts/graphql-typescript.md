@@ -4,13 +4,12 @@ description: "The type safe of using Apollo GraphQL with Typescript"
 date: 2021-05-03T12:23:26+05:30
 draft: false
 tags: ["apollo", "graphql", "typescript"]
-ShowToc: true
 cover:
   image: "/blogImages/graphql-typescript/ts-gql.png"
   alt: "TS with Apollo"
-  relative: false
-  hidden: false
 ---
+
+### Table of Contents
 
 Using [Apollo GraphQL](https://www.apollographql.com/) with JavaScript has always been pretty straighforward and error prone.
 

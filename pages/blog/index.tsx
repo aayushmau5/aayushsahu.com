@@ -1,6 +1,7 @@
 import { GetStaticProps } from "next";
 import Head from "next/head";
 import Link from "next/link";
+import { useState } from "react";
 
 import SearchBar from "../../components/SearchBar";
 import { getSortedPostsData } from "../../utils/getPosts";
@@ -22,6 +23,12 @@ interface Props {
 }
 
 export default function Blog({ postsData }: Props) {
+  const [searchValue, setSearchValue] = useState<string>("");
+
+  const filteredBlogs = postsData.filter((post) =>
+    post.title.toLowerCase().includes(searchValue.toLowerCase())
+  );
+
   return (
     <div>
       <Head>
@@ -32,9 +39,10 @@ export default function Blog({ postsData }: Props) {
         />
       </Head>
       <h1>Blog</h1>
-      <SearchBar />
-      <h3>Recent blogs</h3>
-      {postsData.map((post) => (
+      <SearchBar value={searchValue} onChange={setSearchValue} />
+      {searchValue === "" ? <h3>Recent blogs</h3> : <h3>Search result</h3>}
+      {filteredBlogs.length === 0 ? <h3>No blogs found</h3> : null}
+      {filteredBlogs.map((post) => (
         <Link key={post.slug} href={`/blog/${post.slug}`}>
           <a className={styles.blogContainer}>
             <h3>{post.title}</h3>

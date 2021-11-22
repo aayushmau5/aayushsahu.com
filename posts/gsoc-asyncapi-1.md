@@ -1,17 +1,16 @@
 ---
 title: "GSoC at AsyncAPI: Part 1"
-date: "2021-06-20T21:13:49+05:30"
+date: 2021-06-20
 draft: false
 description: "My GSoC experience blog"
 tags: ["gsoc", "open-source", "asyncapi"]
-showToc: true
 cover:
   image: "/blogImages/week-1-2/moritz-kindler-JpeNqoeJ-OY-unsplash.jpg"
   alt: "Green leaves"
   caption: "Photo by [Moritz Kindler](https://unsplash.com/@moritz_photography) on [Unsplash](https://unsplash.com/)"
-  relative: false
-  hidden: false
 ---
+
+### Table of Contents
 
 Oh man, it's been quite some time since the last blog. Lots of exciting stuff going on in my life nowadays, and I wanted to share it with you :)
 

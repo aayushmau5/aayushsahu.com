@@ -1,16 +1,15 @@
 ---
 title: "What is the Visitor design pattern and how to implement it in TS?"
 description: "Implementing the Visitor design pattern using TypeScript interfaces and classes"
-date: 2021-09-04T14:08:00+05:30
+date: 2021-09-04
 draft: false
-showToc: true
 tags: ["design-pattern", "typescript"]
 cover:
   image: "/blogImages/visitor/cover.png"
   alt: "Cover Image"
-  relative: false
-  hidden: false
 ---
+
+### Table of Contents
 
 ### Introduction
 
@@ -36,7 +35,7 @@ Lets take a classic example of an Animal class. As someone who has watched count
 
 So, you have an abstract class called `Animal`, which has a bunch of abstract methods like `makeSound`, `eatFood` etc.
 
-```ts
+```ts {2}
 abstract class Animal {
   abstract makeSound(): string;
   abstract eatFood(): string;

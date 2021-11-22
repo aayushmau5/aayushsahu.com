@@ -4,14 +4,13 @@ date: "2021-07-03T21:13:49+05:30"
 draft: false
 description: "My GSoC experience blog"
 tags: ["gsoc", "open-source", "asyncapi"]
-showToc: true
 cover:
   image: "/blogImages/week-3/marek-piwnicki-cpNor3rFdWk-unsplash.jpg"
   alt: "Moon and forest"
   caption: "Photo by [Marek Piwnicki](https://unsplash.com/@marekpiwnicki) on [Unsplash](https://unsplash.com/)"
-  relative: false
-  hidden: false
 ---
+
+### Table of Contents
 
 If you want to read about what happened during Week 1 and 2, there's a post about it [here](https://aayushmau5.github.io/posts/week-1-2-at-asyncapi).
 

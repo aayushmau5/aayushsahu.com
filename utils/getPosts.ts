@@ -6,6 +6,9 @@ import { rehype } from "rehype";
 import rehypePrism from "rehype-prism-plus";
 import readingTime from "reading-time";
 import html from "remark-html";
+import remarkToc from "remark-toc";
+import rehypeSlug from "rehype-slug";
+import rehypeAutolinkHeadings from "rehype-autolink-headings";
 
 const postsDirectory = path.join(process.cwd(), "posts");
 const fileNames = fs.readdirSync(postsDirectory);
@@ -52,12 +55,23 @@ export async function getPostData(slug: string) {
   const matterResult = matter(fileContents);
   matterResult.data.date = new Date(matterResult.data.date).toISOString();
   matterResult.data.readingTime = readingTime(matterResult.content);
+  if (matterResult.data.cover?.caption) {
+    const caption = await remark()
+      .use(html, { sanitize: false })
+      .process(matterResult.data.cover.caption);
+    matterResult.data.cover.caption = caption.toString();
+  }
 
   const processedHTML = await remark()
     .use(html, { sanitize: false })
+    .use(remarkToc, { tight: true })
     .process(matterResult.content);
 
   const processedContent = await rehype()
+    .use(rehypeSlug)
+    .use(rehypeAutolinkHeadings, {
+      behavior: "append",
+    })
     .use(rehypePrism, { showLineNumbers: true })
     .process(processedHTML);
 

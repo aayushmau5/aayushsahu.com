@@ -25,11 +25,18 @@ export default function BlogContainer({ blogData }) {
           {" · "}
           <span>{blogData.readingTime.text}</span>
         </p>
-        {blogData.cover && (
+        {blogData.cover && blogData.cover.image && (
           <div className={styles.coverImage}>
             <img src={blogData.cover.image} alt={blogData.cover.alt} />
           </div>
         )}
+        {blogData.cover && blogData.cover.caption && (
+          <div
+            className={styles.caption}
+            dangerouslySetInnerHTML={{ __html: blogData.cover.caption }}
+          />
+        )}
+        <hr />
         <div dangerouslySetInnerHTML={{ __html: blogData.contentHtml }} />
       </article>
     </div>
