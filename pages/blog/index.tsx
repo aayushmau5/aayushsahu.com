@@ -12,6 +12,9 @@ interface PostData {
   title: string;
   date: string;
   description?: string;
+  readingTime: {
+    text: string;
+  };
 }
 
 interface Props {
@@ -40,7 +43,7 @@ export default function Blog({ postsData }: Props) {
                 <Date dateString={post.date} />
               </span>
               {" · "}
-              <span>14 min</span>
+              <span>{post.readingTime.text}</span>
             </p>
           </a>
         </Link>

@@ -2,6 +2,7 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import { remark } from "remark";
+import readingTime from "reading-time";
 import html from "remark-html";
 import remarkToc from "remark-toc";
 
@@ -15,8 +16,9 @@ export function getSortedPostsData() {
       const fullPath = path.join(postsDirectory, fileName);
       const fileContents = fs.readFileSync(fullPath, "utf-8");
 
-      const { data: frontMatter } = matter(fileContents);
+      const { data: frontMatter, content } = matter(fileContents);
       frontMatter.date = new Date(frontMatter.date).toISOString();
+      frontMatter.readingTime = readingTime(content);
       return {
         slug,
         ...frontMatter,

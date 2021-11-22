@@ -3,8 +3,8 @@ import Link from "next/link";
 import { GetStaticProps, GetStaticPaths } from "next";
 import { BsArrowLeftShort } from "react-icons/bs";
 
-import Date from "../../components/Date";
 import { getAllPostIds, getPostData } from "../../utils/getPosts";
+import BlogContainer from "../../components/BlogContainer";
 
 export default function BlogPost({ blogData }) {
   return (
@@ -18,15 +18,7 @@ export default function BlogPost({ blogData }) {
           Back
         </a>
       </Link>
-      <article>
-        <p>
-          <Date dateString={blogData.date} />
-        </p>
-        <h1>{blogData.title}</h1>
-        <p>by aayushmau5</p>
-        <hr />
-      </article>
-      <div dangerouslySetInnerHTML={{ __html: blogData.contentHtml }} />
+      <BlogContainer blogData={blogData} />
     </>
   );
 }

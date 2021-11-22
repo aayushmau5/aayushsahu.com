@@ -1,0 +1,43 @@
+.title {
+  margin-bottom: 0;
+  color: white;
+}
+
+.description {
+  color: white;
+  margin-bottom: 0;
+}
+
+.otherInfo {
+  color: gray;
+  font-size: 0.9rem;
+}
+
+.container {
+  color: rgba(255, 255, 255, 0.74);
+}
+
+.container h1,
+.container h2,
+.container h3,
+.container h4,
+.container h5,
+.container h6 {
+  color: white;
+}
+
+.container blockquote {
+  margin-left: 0;
+  border-left: 4px solid white;
+  padding: 0.1rem 0 0.1rem 1rem;
+}
+
+.container a {
+  color: white;
+  text-decoration: underline;
+}
+
+.container code {
+  background-color: rgb(10, 10, 10);
+  font-size: 0.9rem;
+}
