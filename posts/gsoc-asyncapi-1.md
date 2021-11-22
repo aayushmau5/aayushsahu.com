@@ -6,7 +6,7 @@ description: "My GSoC experience blog"
 tags: ["gsoc", "open-source", "asyncapi"]
 showToc: true
 cover:
-  image: "/week-1-2/moritz-kindler-JpeNqoeJ-OY-unsplash.jpg"
+  image: "/blogImages/week-1-2/moritz-kindler-JpeNqoeJ-OY-unsplash.jpg"
   alt: "Green leaves"
   caption: "Photo by [Moritz Kindler](https://unsplash.com/@moritz_photography) on [Unsplash](https://unsplash.com/)"
   relative: false
@@ -41,7 +41,7 @@ I made the PR, got some reviews, resolved it, and it got merged. First step take
 This basically meant that we will have a **module** which exports a single function called `parser` having two parameters, and we will pass in the path(local or URL) as those parameters, which our `parser` function will parse. The output by this function will be an object containing the parsed output of both those AsyncAPI documents which we passed through the path.
 
 Here's an illustration of what I said above:
-![parser-module-illustrastion](/week-1-2/parser-module.png#center)
+![parser-module-illustrastion](/blogImages/week-1-2/parser-module.png#center)
 
 #### Going a bit deep
 

@@ -52,7 +52,7 @@ With that out of the way, lets start with looking at the workflow of how everyth
 
 Here's the how the whole workflow will look like.
 
-![Diagram showing the flow of uploading files. Making request from client, through API and into S3, and getting the response back](/file-upload-aws-s3/flow.png#center)
+![Diagram showing the flow of uploading files. Making request from client, through API and into S3, and getting the response back](/blogImages/file-upload-aws-s3/flow.png#center)
 
 There are 3 main components in this flow:
 
@@ -123,7 +123,7 @@ The form data, encoded using `multipart/form-data`, consists of simple key, valu
 
 What Multer does is it processes the given data, and then fills the request object with certain fields like `files` which contains all the files we have send from the client, and `body` which contains all the text key value pairs we have sent from the client.
 
-![Using Multer as middleware](/file-upload-aws-s3/Multer-Middleware.png)
+![Using Multer as middleware](/blogImages/file-upload-aws-s3/Multer-Middleware.png)
 
 Taking the example of our existing controllers, the request object is `req` and we can access the files using `req.files` and access the key, value pairs using `req.body`.
 
@@ -197,13 +197,13 @@ name: "fileuploader"
 files: <Any-file>
 ```
 
-![Postman](/file-upload-aws-s3/postman-post-request-1.png#center)
+![Postman](/blogImages/file-upload-aws-s3/postman-post-request-1.png#center)
 
 Notice how we are passing the file in a `files` key. This is what I meant when using `upload.array("files")`, the `"files"` corresponds to the key in which the file is being sent from.
 
 Now, lets check the logs.
 
-![Log](/file-upload-aws-s3/console-log-response.png#center)
+![Log](/blogImages/file-upload-aws-s3/console-log-response.png#center)
 
 Voila! There is our file. We can see more information about the file such as the original file name, its size, its type, etc.
 
@@ -227,7 +227,7 @@ Before we save files to S3, lets look at some basic S3 concepts first.
 
 The image illustrates the flow of file being saved to S3. From getting the files in our API(using multer), to sending it to S3.
 
-![S3-Flow](/file-upload-aws-s3/S3-Flow.png)
+![S3-Flow](/blogImages/file-upload-aws-s3/S3-Flow.png)
 
 After getting the files in `req.files`, we send the files to S3(which we will see how below :below_emoji:).
 

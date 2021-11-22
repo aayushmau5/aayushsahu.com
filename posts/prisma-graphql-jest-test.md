@@ -6,7 +6,7 @@ ShowToc: true
 description: "Integration or Unit tests in TypeScript and GraphQL using Jest in NodeJS"
 tags: ["graphql", "typescript", "jest", "test"]
 cover:
-  image: "/ts-gql-jest/ts-gql-jest-cover.png"
+  image: "/blogImages/ts-gql-jest/ts-gql-jest-cover.png"
   alt: "TS GraphQL Jest logo"
   relative: false
   hidden: false

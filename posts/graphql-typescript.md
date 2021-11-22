@@ -6,7 +6,7 @@ draft: false
 tags: ["apollo", "graphql", "typescript"]
 ShowToc: true
 cover:
-  image: "/graphql-typescript/ts-gql.png"
+  image: "/blogImages/graphql-typescript/ts-gql.png"
   alt: "TS with Apollo"
   relative: false
   hidden: false
@@ -186,25 +186,25 @@ For the schema path, it is recommended to give a development server url(otherwis
 
 #### Step-1
 
-![first](/graphql-typescript/step-1.png)
+![first](/blogImages/graphql-typescript/step-1.png)
 
 #### Step-2
 
 My `graphql` server is running on `http://localhost:8000/graphql`. Yours might be running on different port or route, use that.
 
-![first](/graphql-typescript/step-2.png)
+![first](/blogImages/graphql-typescript/step-2.png)
 
 #### Step-3
 
-![first](/graphql-typescript/step-3.png)
+![first](/blogImages/graphql-typescript/step-3.png)
 
 #### Step-4
 
-![first](/graphql-typescript/step-4.png)
+![first](/blogImages/graphql-typescript/step-4.png)
 
 #### Step-5
 
-![first](/graphql-typescript/step-5.png)
+![first](/blogImages/graphql-typescript/step-5.png)
 
 Run `npm install` then `npm generate` to generate the schema file(**NOTE:** Your graphql server should be running)
 

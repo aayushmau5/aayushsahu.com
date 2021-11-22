@@ -6,7 +6,7 @@ description: "My GSoC experience blog"
 tags: ["gsoc", "open-source", "asyncapi"]
 showToc: true
 cover:
-  image: "/week-3/marek-piwnicki-cpNor3rFdWk-unsplash.jpg"
+  image: "/blogImages/week-3/marek-piwnicki-cpNor3rFdWk-unsplash.jpg"
   alt: "Moon and forest"
   caption: "Photo by [Marek Piwnicki](https://unsplash.com/@marekpiwnicki) on [Unsplash](https://unsplash.com/)"
   relative: false

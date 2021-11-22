@@ -5,7 +5,7 @@ draft: false
 tags: ["github", "actions"]
 showToc: true
 cover:
-  image: "/gh-action-logo.webp"
+  image: "/blogImages/gh-action-logo.webp"
   alt: "Github Action Logo"
   relative: false
   hidden: false

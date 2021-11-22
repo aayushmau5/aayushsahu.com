@@ -3,6 +3,11 @@
   color: white;
 }
 
+.coverImage img {
+  width: 100% !important;
+  border-radius: 0.75rem;
+}
+
 .description {
   color: white;
   margin-bottom: 0;
@@ -37,7 +42,33 @@
   text-decoration: underline;
 }
 
-.container code {
+.container img {
+  display: block;
+  margin: 1rem auto;
+  width: 100%;
+}
+
+.container pre {
   background-color: rgb(10, 10, 10);
+  padding: 1rem;
+  border-radius: 0.55rem;
+  overflow: auto;
+}
+
+.container pre code {
+  font-weight: normal;
+  background-color: transparent;
+}
+
+.container code {
+  font-weight: bold;
   font-size: 0.9rem;
+  padding: 2px 5px;
+  border-radius: 2px;
+}
+
+@media (min-width: 1024px) {
+  .container img {
+    width: 60%;
+  }
 }

@@ -6,7 +6,7 @@ draft: false
 showToc: true
 tags: ["design-pattern", "typescript"]
 cover:
-  image: "/visitor/cover.png"
+  image: "/blogImages/visitor/cover.png"
   alt: "Cover Image"
   relative: false
   hidden: false
@@ -79,7 +79,7 @@ class Human extends Animal {
 
 At this point, we can visualize our classes in a tabular form, where each row is a different class and every column is a method on that class.
 
-![class table](/visitor/type-method-table.png#center)
+![class table](/blogImages/visitor/type-method-table.png#center)
 
 Now, here's where the problem arises.
 
@@ -370,7 +370,7 @@ export interface Car {
 
 Next up, we implement the `accept` method in all our cars classes.
 
-```ts
+```typescript
 // BMWCar.ts
 export class BMWCar implements Car {
   getPrice() {
@@ -426,7 +426,7 @@ This part is little bit weird. We add the `accept` method which takes a paramete
 
 Now's the time that we combine all these interfaces & classes, and see it in action. Here's the code for it:
 
-```ts
+```typescript {1,3-4}
 // runner.ts
 import { BMWCar } from "./cars/BMWCar";
 import { BugattiCar } from "./cars/BugattiCar";
@@ -480,11 +480,11 @@ The best way to know what's going on here is to visualize it. Here's a little vi
 
 **For calculating the purchase code**
 
-![purchase-cost-visitor](/visitor/purchase-visitor.png#center)
+![purchase-cost-visitor](/blogImages/visitor/purchase-visitor.png#center)
 
 **For calculating the repair cost**
 
-![repair-cost-visitor](/visitor/repair-cost-visitor.png#center)
+![repair-cost-visitor](/blogImages/visitor/repair-cost-visitor.png#center)
 
 We see that we invoke the `accept` method of our car **instance**, passing in the desired visitor we want our car instance to interact with. If we want to know the purchase price, we pass in the `purchaseVisitor` & if we want to know the repair cost, we pass in the `repairCostVisitor`.
 
@@ -508,5 +508,5 @@ Keep _visiting!_(bad pun, sorry not sorry :P)
 
 Some other resources to understand the Visitor pattern:
 
-- https://www.youtube.com/watch?v=TeZqKnC2gvA
-- https://refactoring.guru/design-patterns/visitor
+- [Video](https://www.youtube.com/watch?v=TeZqKnC2gvA)
+- [video](https://refactoring.guru/design-patterns/visitor)

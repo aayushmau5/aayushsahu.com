@@ -4,7 +4,7 @@ import matter from "gray-matter";
 import { remark } from "remark";
 import readingTime from "reading-time";
 import html from "remark-html";
-import remarkToc from "remark-toc";
+import prism from "remark-prism";
 
 const postsDirectory = path.join(process.cwd(), "posts");
 const fileNames = fs.readdirSync(postsDirectory);
@@ -50,13 +50,31 @@ export async function getPostData(slug: string) {
 
   const matterResult = matter(fileContents);
   matterResult.data.date = new Date(matterResult.data.date).toISOString();
+  matterResult.data.readingTime = readingTime(matterResult.content);
 
-  const processedContent = await remark()
-    .use(html)
-    .use(remarkToc)
+  const processedHTML = await remark()
+    .use(prism, {
+      plugins: [
+        "autolinker",
+        "command-line",
+        "data-uri-highlight",
+        "diff-highlight",
+        "inline-color",
+        "keep-markup",
+        "line-numbers",
+        "show-invisibles",
+        "treeview",
+      ],
+    })
+    .use(html, { sanitize: false })
     .process(matterResult.content);
 
-  const contentHtml = processedContent.toString();
+  // const processedContent = await rehype()
+  //   .use(rehypeAutolinkHeadings)
+  //   .use(rehypePrism, { showLineNumbers: true })
+  //   .process(processedHTML);
+
+  const contentHtml = processedHTML.toString();
 
   return {
     slug,
