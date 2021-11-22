@@ -45,23 +45,23 @@ export default function Index() {
         <div className={styles.nextSteps}>
           <p>While you are here, feel free to:</p>
           <Link href="/blog">
-            <a>
+            <a className="styledLink">
               <BsArrowRightShort />
               Checkout my blogs
             </a>
           </Link>
           <Link href="/work">
-            <a>
+            <a className="styledLink">
               <BsArrowRightShort />
               Checkout my work
             </a>
           </Link>
           <p>And if you liked it:</p>
-          <a href="mailto:aayushmau5@gmail.com">
+          <a href="mailto:aayushmau5@gmail.com" className="styledLink">
             <BsArrowRightShort />
             Contact me
           </a>
-          <a href="#">
+          <a href="#" className="styledLink">
             <BsArrowRightShort />
             See my resume
           </a>

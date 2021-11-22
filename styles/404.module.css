@@ -4,26 +4,7 @@
 }
 
 .container a {
-  position: relative;
-  display: flex;
-  align-items: center;
-  width: max-content;
   margin: 0 auto;
-}
-
-.container a::after {
-  content: "";
-  position: absolute;
-  bottom: -4px;
-  left: 0;
-  height: 2px;
-  background-color: white;
-  width: 0;
-  transition: all linear 0.2s;
-}
-
-.container a:hover::after {
-  width: 100%;
 }
 
 .container svg {

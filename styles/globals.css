@@ -24,3 +24,26 @@ code {
   font-family: "Fira Code", monospace;
   background-color: rgba(77, 77, 77, 0.3);
 }
+
+.styledLink {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: max-content;
+}
+
+.styledLink::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  height: 2px;
+  background-color: white;
+  width: 0;
+  transition: width linear 0.2s;
+}
+
+.styledLink:hover::after,
+.styledLink:focus-visible::after {
+  width: 100%;
+}

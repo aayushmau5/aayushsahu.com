@@ -25,26 +25,3 @@
   color: gray;
   font-size: 0.9rem;
 }
-
-.back {
-  display: flex;
-  width: max-content;
-  align-items: center;
-  position: relative;
-}
-
-.back::after {
-  content: "";
-  position: absolute;
-  bottom: -4px;
-  left: 0;
-  height: 2px;
-  background-color: white;
-  width: 0;
-  transition: width linear 0.2s;
-}
-
-.back:hover::after,
-.back:focus-visible::after {
-  width: 100%;
-}

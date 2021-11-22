@@ -24,11 +24,21 @@ export function ProjectBox({
         <div className={styles.projectInfoContainer}>
           <h3>{name}</h3>
           <p>{description}</p>
-          <a href={demoLink} target="_blank" rel="noreferrer">
+          <a
+            href={demoLink}
+            className="styledLink"
+            target="_blank"
+            rel="noreferrer"
+          >
             <BsArrowRightShort />
             Demo Link
           </a>
-          <a href={sourceLink} target="_blank" rel="noreferrer">
+          <a
+            href={sourceLink}
+            className="styledLink"
+            target="_blank"
+            rel="noreferrer"
+          >
             <BsArrowRightShort />
             Source Link
           </a>

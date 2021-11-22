@@ -5,7 +5,6 @@ import { BsArrowLeftShort } from "react-icons/bs";
 
 import Date from "../../components/Date";
 import { getAllPostIds, getPostData } from "../../utils/getPosts";
-import styles from "../../styles/Blog.module.css";
 
 export default function BlogPost({ blogData }) {
   return (
@@ -14,7 +13,7 @@ export default function BlogPost({ blogData }) {
         <title>{blogData.title}</title>
       </Head>
       <Link href="/blog">
-        <a className={styles.back}>
+        <a className="styledLink">
           <BsArrowLeftShort />
           Back
         </a>

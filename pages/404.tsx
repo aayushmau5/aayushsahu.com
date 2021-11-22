@@ -12,7 +12,7 @@ export default function FourOhFourPage() {
       </Head>
       <h1>Oops, looks like you have landed on a wrong page.</h1>
       <Link href="/">
-        <a>
+        <a className="styledLink">
           <BsArrowLeftShort />
           Go back to home
         </a>

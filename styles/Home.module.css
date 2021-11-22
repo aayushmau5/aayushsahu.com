@@ -1,7 +1,3 @@
-/* .container {
-  color: #9fa3ad;
-} */
-
 .logoContainer {
   border: 5px solid rgb(34, 34, 34);
   border-radius: 50%;
@@ -55,27 +51,7 @@
 }
 
 .nextSteps a {
-  display: flex;
-  width: max-content;
-  align-items: center;
-  position: relative;
   margin-bottom: 10px;
-}
-
-.nextSteps a::after {
-  content: "";
-  position: absolute;
-  bottom: -4px;
-  left: 0;
-  height: 2px;
-  background-color: white;
-  width: 0;
-  transition: width linear 0.2s;
-}
-
-.nextSteps a:hover::after,
-.nextSteps a:focus-visible::after {
-  width: 100%;
 }
 
 @media (min-width: 1024px) {
