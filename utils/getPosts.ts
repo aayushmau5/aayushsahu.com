@@ -53,7 +53,7 @@ export async function getPostData(slug: string) {
   matterResult.data.readingTime = readingTime(matterResult.content);
 
   const processedHTML = await remark()
-    .use(prism, {
+    .use(prism as any, {
       plugins: [
         "autolinker",
         "command-line",
