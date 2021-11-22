@@ -2,9 +2,10 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import { remark } from "remark";
+import { rehype } from "rehype";
+import rehypePrism from "rehype-prism-plus";
 import readingTime from "reading-time";
 import html from "remark-html";
-import prism from "remark-prism";
 
 const postsDirectory = path.join(process.cwd(), "posts");
 const fileNames = fs.readdirSync(postsDirectory);
@@ -53,28 +54,14 @@ export async function getPostData(slug: string) {
   matterResult.data.readingTime = readingTime(matterResult.content);
 
   const processedHTML = await remark()
-    .use(prism as any, {
-      plugins: [
-        "autolinker",
-        "command-line",
-        "data-uri-highlight",
-        "diff-highlight",
-        "inline-color",
-        "keep-markup",
-        "line-numbers",
-        "show-invisibles",
-        "treeview",
-      ],
-    })
     .use(html, { sanitize: false })
     .process(matterResult.content);
 
-  // const processedContent = await rehype()
-  //   .use(rehypeAutolinkHeadings)
-  //   .use(rehypePrism, { showLineNumbers: true })
-  //   .process(processedHTML);
+  const processedContent = await rehype()
+    .use(rehypePrism, { showLineNumbers: true })
+    .process(processedHTML);
 
-  const contentHtml = processedHTML.toString();
+  const contentHtml = processedContent.toString();
 
   return {
     slug,

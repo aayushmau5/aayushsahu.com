@@ -168,13 +168,13 @@ Fortunately, there exists a library for this purpose called [**GraphQL Code Gene
 
 #### Installation
 
-```sh
+```bash
 npm install -D @graphql-codegen/cli
 ```
 
 We will use the installation wizard instead of manually setting it up. If you want to see other methods, see the [installtion page](https://www.graphql-code-generator.com/docs/getting-started/installation).
 
-```sh
+```bash
 npx graphql-codegen init
 ```
 
