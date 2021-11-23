@@ -6,6 +6,7 @@ import projman from "../public/projects/projman.png";
 import membersOnly from "../public/projects/membersOnly.png";
 import cv from "../public/projects/cv.png";
 import aayushsahu from "../public/projects/aayushsahu.png";
+import taburei from "../public/projects/taburei.png";
 
 const projects: Project[] = [
   {
@@ -31,6 +32,14 @@ const projects: Project[] = [
     demoLink: "https://sheltered-basin-30302.herokuapp.com",
   },
   {
+    name: "Taburei",
+    description:
+      "A browser extension to manage and store tab clutter and restore them. Fully Open Source, and lots of features.",
+    image: <Image src={taburei} alt="Taburei logo" />,
+    sourceLink: "https://github.com/osdc/TabuRei",
+    demoLink: "https://addons.mozilla.org/en-US/firefox/addon/taburei/",
+  },
+  {
     name: "CV Generator",
     description:
       "A CV generator made using React and Headless Chrome backend in express.",
@@ -50,9 +59,9 @@ const projects: Project[] = [
 export default function Projects() {
   return (
     <div>
-      {projects.map((project) => (
+      {projects.map((project, index) => (
         <ProjectBox
-          key={project.name}
+          key={index}
           name={project.name}
           image={project.image}
           description={project.description}

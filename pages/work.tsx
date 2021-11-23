@@ -27,10 +27,11 @@ export default function Work() {
         <p>Here&apos;s the list of projects that I have made.</p>
         <Projects />
         {/* <h2>Open Source contributions</h2>
-      <p>
-        I like to contribute to open source projects a lot. Here are the open
-        source contributions I have made.
-      </p> */}
+        <p>
+          I like to contribute to open source projects a lot. Here are the open
+          source contributions I have made.
+        </p>
+        <OpenSourceWork /> */}
       </div>
     </>
   );

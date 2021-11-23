@@ -32,7 +32,7 @@ export default function Index() {
               I like to babble about <code>Open-Source</code>,{" "}
               <code>JavaScript/TypeScript</code>, <code>Linux</code>,{" "}
               <code>Vim</code>(<code>vscode</code> works as well),{" "}
-              <code>compilers</code>, or anything interesting :P
+              <code>Compilers</code>, or anything interesting :P
             </p>
           </div>
           <div className={styles.logoContainer}>

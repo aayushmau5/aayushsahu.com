@@ -104,7 +104,7 @@ export const BlogSEO = ({ title, summary, date, slug, image }) => {
         description={summary}
         ogType="article"
         ogImage={featuredImage}
-        twImage={image}
+        twImage={featuredImage}
       />
       <Head>
         {date && (
