@@ -60,7 +60,7 @@ export default function Index() {
               <BsArrowRightShort />
               Contact me
             </a>
-            <a href="#" className="styledLink">
+            <a href="/resume.pdf" className="styledLink">
               <BsArrowRightShort />
               See my resume
             </a>
