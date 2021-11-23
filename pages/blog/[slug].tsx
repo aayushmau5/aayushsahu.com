@@ -1,17 +1,21 @@
-import Head from "next/head";
 import Link from "next/link";
 import { GetStaticProps, GetStaticPaths } from "next";
 import { BsArrowLeftShort } from "react-icons/bs";
 
 import { getAllPostIds, getPostData } from "../../utils/getPosts";
 import BlogContainer from "../../components/BlogContainer";
+import { BlogSEO } from "../../components/SEO";
 
-export default function BlogPost({ blogData }) {
+export default function BlogPost({ blogData, slug }) {
   return (
     <>
-      <Head>
-        <title>{blogData.title}</title>
-      </Head>
+      <BlogSEO
+        title={blogData.title}
+        summary={blogData.description}
+        date={blogData.date}
+        image={blogData.cover?.image}
+        slug={slug}
+      />
       <Link href="/blog">
         <a className="styledLink">
           <BsArrowLeftShort />
@@ -36,6 +40,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   return {
     props: {
       blogData,
+      slug: params.slug,
     },
   };
 };

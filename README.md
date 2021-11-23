@@ -2,4 +2,4 @@
 
 ## TODO
 
-- social image for each page and SEO
+- tags page or tags search + list of tags
