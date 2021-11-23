@@ -31,7 +31,7 @@ export function ProjectBox({
             rel="noreferrer"
           >
             <BsArrowRightShort />
-            Demo Link
+            Demo
           </a>
           <a
             href={sourceLink}
@@ -40,7 +40,7 @@ export function ProjectBox({
             rel="noreferrer"
           >
             <BsArrowRightShort />
-            Source Link
+            Source
           </a>
         </div>
       </div>
