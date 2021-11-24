@@ -12,14 +12,14 @@ const projects: Project[] = [
   {
     name: "Blog Project",
     description: "A multi-user blog website made using React and NodeJS.",
-    image: <Image src={blogs} alt="Blog Project" />,
+    image: <Image src={blogs} placeholder="blur" alt="Blog Project" />,
     sourceLink: "https://github.com/aayushmau5/blog-frontend",
     demoLink: "https://aayushblogs.netlify.app/",
   },
   {
     name: "Projman",
     description: "A CLI project manager made using TypeScript and NodeJS.",
-    image: <Image src={projman} alt="Blog Project" />,
+    image: <Image src={projman} placeholder="blur" alt="Blog Project" />,
     sourceLink: "https://github.com/aayushmau5/projman",
     demoLink: "https://www.npmjs.com/package/projman",
   },
@@ -27,7 +27,7 @@ const projects: Project[] = [
     name: "Members Only",
     description:
       "A private members only board made using EJS, Express & MongoDB.",
-    image: <Image src={membersOnly} alt="Blog Project" />,
+    image: <Image src={membersOnly} placeholder="blur" alt="Blog Project" />,
     sourceLink: "https://github.com/aayushmau5/members-only",
     demoLink: "https://sheltered-basin-30302.herokuapp.com",
   },
@@ -35,7 +35,7 @@ const projects: Project[] = [
     name: "Taburei",
     description:
       "A browser extension to manage and store tab clutter and restore them. Fully Open Source, and lots of features.",
-    image: <Image src={taburei} alt="Taburei logo" />,
+    image: <Image src={taburei} placeholder="blur" alt="Taburei logo" />,
     sourceLink: "https://github.com/osdc/TabuRei",
     demoLink: "https://addons.mozilla.org/en-US/firefox/addon/taburei/",
   },
@@ -43,14 +43,14 @@ const projects: Project[] = [
     name: "CV Generator",
     description:
       "A CV generator made using React and Headless Chrome backend in express.",
-    image: <Image src={cv} alt="Blog Project" />,
+    image: <Image src={cv} placeholder="blur" alt="Blog Project" />,
     sourceLink: "https://github.com/aayushmau5/cv-generator",
     demoLink: "https://aayushmau5.github.io/cv-generator/",
   },
   {
     name: "aayushsahu.com",
     description: "My personal website. Built with NextJS.",
-    image: <Image src={aayushsahu} alt="Blog Project" />,
+    image: <Image src={aayushsahu} placeholder="blur" alt="Blog Project" />,
     sourceLink: "https://www.github.com/aayushmau5/aayushsahu.com",
     demoLink: "https://www.aayushsahu.com",
   },

@@ -36,7 +36,12 @@ export default function Index() {
             </p>
           </div>
           <div className={styles.logoContainer}>
-            <Image src={Logo} alt="logo" className={styles.logo} />
+            <Image
+              src={Logo}
+              placeholder="blur"
+              alt="logo"
+              className={styles.logo}
+            />
           </div>
         </div>
 
