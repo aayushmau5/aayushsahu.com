@@ -8,7 +8,5 @@ Styled using pure CSS 😎
 
 - tags page or tags search + list of tags
 - experience & open source contributions in work section?
-- add dependabot ci
 - refactor types and duplicated stylings
 - page load transition?
-- CNAME in aayushmau5.github.io
