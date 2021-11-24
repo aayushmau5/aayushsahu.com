@@ -49,10 +49,10 @@ export default function Index() {
                 Checkout my blogs
               </a>
             </Link>
-            <Link href="/work">
+            <Link href="/projects">
               <a className="styledLink">
                 <BsArrowRightShort />
-                Checkout my work
+                Checkout my projects
               </a>
             </Link>
             <p>And if you liked it:</p>

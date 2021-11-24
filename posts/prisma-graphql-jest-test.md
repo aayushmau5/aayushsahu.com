@@ -3,7 +3,7 @@ title: "Guide to setting up Jest testing environment in TypeScript & GraphQL Nod
 date: 2021-05-09T10:45:15+05:30
 draft: false
 description: "Integration or Unit tests in TypeScript and GraphQL using Jest in NodeJS"
-tags: ["graphql", "typescript", "jest", "test"]
+tags: ["graphql", "typescript", "jest", "testing"]
 cover:
   image: "/blogImages/ts-gql-jest/ts-gql-jest-cover.png"
   alt: "TS GraphQL Jest logo"

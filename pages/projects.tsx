@@ -1,17 +1,17 @@
-import styles from "../styles/Work.module.css";
+import styles from "../styles/ProjectsPage.module.css";
 import Skills from "../components/Skills";
 import Projects from "../components/Projects";
 import { PageSEO } from "../components/SEO";
 
-export default function Work() {
+export default function ProjectsPage() {
   return (
     <>
       <PageSEO
-        title="Work | Aayush Kumar Sahu"
-        description="Checkout the work done by me"
+        title="Projects | Aayush Kumar Sahu"
+        description="Checkout the projects made by me"
       />
       <div className={styles.container}>
-        <h1>Work</h1>
+        <h1>Projects</h1>
         <p>Checkout the work I have done.</p>
         <h2>Skills</h2>
         <p>Here&apos;s the list of skills that I have.</p>
@@ -23,15 +23,9 @@ export default function Work() {
         <Skills show="tools" />
         <h4>Familiar with</h4>
         <Skills show="others" />
-        <h2>Projects</h2>
+        <h2>All my projects</h2>
         <p>Here&apos;s the list of projects that I have made.</p>
         <Projects />
-        {/* <h2>Open Source contributions</h2>
-        <p>
-          I like to contribute to open source projects a lot. Here are the open
-          source contributions I have made.
-        </p>
-        <OpenSourceWork /> */}
       </div>
     </>
   );

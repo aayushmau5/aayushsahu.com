@@ -39,6 +39,40 @@ export function getSortedPostsData() {
   });
 }
 
+export function getAllTags() {
+  // TODO: need to get the blog data associated with a certain tag
+  const allTags: string[] = [];
+
+  const data = fileNames
+    .map((fileName) => {
+      const fullPath = path.join(postsDirectory, fileName);
+      const fileContents = fs.readFileSync(fullPath, "utf-8");
+
+      const { data: frontMatter } = matter(fileContents);
+      return frontMatter;
+    })
+    .filter((frontMatter) => {
+      return !frontMatter.draft;
+    });
+
+  data.forEach((frontMatter) => {
+    const tags: string | string[] = frontMatter.tags;
+    if (tags) {
+      if (Array.isArray(tags)) {
+        const newTags = tags.filter((tag) => !allTags.includes(tag));
+        allTags.push(...newTags);
+        return allTags;
+      }
+      if (allTags.includes(tags)) {
+        return allTags;
+      }
+      allTags.push(tags);
+    }
+  });
+
+  return allTags;
+}
+
 export function getAllPostIds() {
   const fileNames = fs.readdirSync(postsDirectory);
   return fileNames.map((fileName) => ({
