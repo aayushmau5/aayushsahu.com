@@ -2,9 +2,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { BsArrowRightShort } from "react-icons/bs";
 
-import { PageSEO } from "../components/SEO";
-import Logo from "../public/image.png";
-import styles from "../styles/Home.module.css";
+import { PageSEO } from "@/components/SEO";
+import Logo from "@/public/image.png";
+import styles from "@/styles/Home.module.css";
 
 export default function Index() {
   return (
@@ -71,8 +71,6 @@ export default function Index() {
             </a>
           </div>
         </div>
-
-        <main></main>
       </div>
     </>
   );

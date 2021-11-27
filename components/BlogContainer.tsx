@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import Date from "./Date";
-import styles from "../styles/BlogContainer.module.css";
+import styles from "@/styles/BlogContainer.module.css";
 
 export default function BlogContainer({ blogData }) {
   return (

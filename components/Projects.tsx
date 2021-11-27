@@ -1,12 +1,12 @@
 import Image from "next/image";
 
 import { Project, ProjectBox } from "./ProjectBox";
-import blogs from "../public/projects/blogs.png";
-import projman from "../public/projects/projman.png";
-import membersOnly from "../public/projects/membersOnly.png";
-import cv from "../public/projects/cv.png";
-import aayushsahu from "../public/projects/aayushsahu.png";
-import taburei from "../public/projects/taburei.png";
+import blogs from "@/public/projects/blogs.png";
+import projman from "@/public/projects/projman.png";
+import membersOnly from "@/public/projects/membersOnly.png";
+import cv from "@/public/projects/cv.png";
+import aayushsahu from "@/public/projects/aayushsahu.png";
+import taburei from "@/public/projects/taburei.png";
 
 const projects: Project[] = [
   {

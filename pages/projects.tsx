@@ -1,7 +1,7 @@
-import styles from "../styles/ProjectsPage.module.css";
-import Skills from "../components/Skills";
-import Projects from "../components/Projects";
-import { PageSEO } from "../components/SEO";
+import styles from "@/styles/ProjectsPage.module.css";
+import Skills from "@/components/Skills";
+import Projects from "@/components/Projects";
+import { PageSEO } from "@/components/SEO";
 
 export default function ProjectsPage() {
   return (

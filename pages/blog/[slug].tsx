@@ -2,9 +2,9 @@ import Link from "next/link";
 import { GetStaticProps, GetStaticPaths } from "next";
 import { BsArrowLeftShort } from "react-icons/bs";
 
-import { getAllPostIds, getPostData } from "../../utils/getPosts";
-import BlogContainer from "../../components/BlogContainer";
-import { BlogSEO } from "../../components/SEO";
+import { getAllPostIds, getPostData } from "@/utils/getPosts";
+import BlogContainer from "@/components/BlogContainer";
+import { BlogSEO } from "@/components/SEO";
 
 export default function BlogPost({ blogData, slug }) {
   return (

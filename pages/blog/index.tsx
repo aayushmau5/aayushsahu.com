@@ -2,11 +2,11 @@ import { GetStaticProps } from "next";
 import Link from "next/link";
 import { useState } from "react";
 
-import SearchBar from "../../components/SearchBar";
-import { getSortedPostsData } from "../../utils/getPosts";
-import Date from "../../components/Date";
-import styles from "../../styles/Blog.module.css";
-import { PageSEO } from "../../components/SEO";
+import SearchBar from "@/components/SearchBar";
+import { getSortedPostsData } from "@/utils/getPosts";
+import Date from "@/components/Date";
+import styles from "@/styles/Blog.module.css";
+import { PageSEO } from "@/components/SEO";
 
 interface PostData {
   slug: string;

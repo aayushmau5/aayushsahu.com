@@ -1,5 +1,5 @@
 import SkillBox from "./SkillBox";
-import styles from "../styles/Skills.module.css";
+import styles from "@/styles/Skills.module.css";
 
 interface SkillsList {
   name: string;

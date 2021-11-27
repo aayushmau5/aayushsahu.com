@@ -1,6 +1,6 @@
 import { BsArrowRightShort } from "react-icons/bs";
 
-import styles from "../styles/OpenSource.module.css";
+import styles from "@/styles/OpenSource.module.css";
 
 interface Project {
   name: string;
