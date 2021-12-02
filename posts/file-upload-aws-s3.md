@@ -21,8 +21,6 @@ Other than that, we will go over file streaming, a way to directly streaming the
 
 I'm assuming you know how to setup a server & have basic routes and stuff. This blog will use ExpressJS as the server framework, but feel free to use the framework of your choice.
 
-// dotenv and stuff
-
 ### What are we making?
 
 This blog will cover:
