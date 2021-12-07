@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import styles from "@/styles/Nav.module.css";
 import NavLink from "./NavLink";
@@ -11,6 +11,10 @@ export default function Nav() {
   function changeMenuOpenState() {
     setMenuOpen((prev) => !prev);
   }
+
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [router.route]);
 
   return (
     <div className={styles.container}>
