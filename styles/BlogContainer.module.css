@@ -32,6 +32,17 @@
 .container {
   color: rgba(255, 255, 255, 0.74);
   word-wrap: break-word;
+  animation: load 0.5s;
+}
+
+@keyframes load {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 .container ul:first-of-type a {

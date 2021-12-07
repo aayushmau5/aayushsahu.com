@@ -16,7 +16,10 @@ export default function Index() {
       <div className={styles.container}>
         <div className={styles.heading}>
           <div>
-            <h1> Hello 👋 </h1>
+            <h1>
+              {" "}
+              Hello <span className={styles.waving}>👋 </span>
+            </h1>
             <p>
               My name is{" "}
               <span className={styles.highlight}>Aayush Kumar Sahu</span>, aka,{" "}

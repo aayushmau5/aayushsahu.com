@@ -1,3 +1,22 @@
+.container {
+  animation: load 0.5s;
+}
+
+@keyframes load {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.noOfBlogs {
+  color: rgb(145, 145, 145);
+  margin-top: 0;
+}
+
 .blogContainer {
   display: block;
   background-color: rgb(10, 10, 10);

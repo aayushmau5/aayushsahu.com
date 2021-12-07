@@ -35,8 +35,11 @@ export default function Blog({ postsData }: Props) {
         title="Blog | Aayush Kumar Sahu"
         description="Checkout the blogs written by me"
       />
-      <div>
+      <div className={styles.container}>
         <h1>Blog</h1>
+        <p className={styles.noOfBlogs}>
+          So far, I have written {postsData.length} articles.
+        </p>
         <SearchBar value={searchValue} onChange={setSearchValue} />
         {searchValue === "" ? <h3>Recent blogs</h3> : <h3>Search result</h3>}
         {filteredBlogs.length === 0 ? <h3>No blogs found</h3> : null}
