@@ -1,19 +1,27 @@
 import Link from "next/link";
 import { GetStaticProps, GetStaticPaths } from "next";
 import { BsArrowLeftShort } from "react-icons/bs";
+import { serialize } from "next-mdx-remote/serialize";
+import { MDXRemote } from "next-mdx-remote";
+import rehypePrism from "rehype-prism-plus";
+import remarkToc from "remark-toc";
+import rehypeSlug from "rehype-slug";
+import rehypeAutolinkHeadings from "rehype-autolink-headings";
 
 import { getAllPostIds, getPostData } from "@/utils/getPosts";
 import BlogContainer from "@/components/BlogContainer";
 import { BlogSEO } from "@/components/SEO";
 
-export default function BlogPost({ blogData, slug }) {
+const components = {};
+
+export default function BlogPost({ frontMatter, source, slug }) {
   return (
     <>
       <BlogSEO
-        title={blogData.title}
-        summary={blogData.description}
-        date={blogData.date}
-        image={blogData.cover?.image}
+        title={frontMatter.title}
+        summary={frontMatter.description}
+        date={frontMatter.date}
+        image={frontMatter.cover?.image}
         slug={slug}
       />
       <Link href="/blog">
@@ -22,7 +30,9 @@ export default function BlogPost({ blogData, slug }) {
           Back
         </a>
       </Link>
-      <BlogContainer blogData={blogData} />
+      <BlogContainer frontMatter={frontMatter}>
+        <MDXRemote {...source} components={components} />
+      </BlogContainer>
     </>
   );
 }
@@ -36,11 +46,19 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const blogData = await getPostData(params.slug as string);
-  return {
-    props: {
-      blogData,
-      slug: params.slug,
+  const { content, frontMatter, slug } = await getPostData(
+    params.slug as string
+  );
+  const mdxSource = await serialize(content, {
+    scope: frontMatter,
+    mdxOptions: {
+      rehypePlugins: [
+        [rehypeAutolinkHeadings, { behavior: "append" }],
+        [rehypePrism, { showLineNumbers: true }],
+        rehypeSlug,
+      ],
+      remarkPlugins: [[remarkToc, { tight: true }]],
     },
-  };
+  });
+  return { props: { source: mdxSource, frontMatter, slug } };
 };

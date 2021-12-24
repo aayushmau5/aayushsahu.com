@@ -2,34 +2,34 @@
 import Date from "./Date";
 import styles from "@/styles/BlogContainer.module.css";
 
-export default function BlogContainer({ blogData }) {
+export default function BlogContainer({ children, frontMatter }) {
   return (
     <div className={styles.container}>
       <article>
-        <h2 className={styles.title}>{blogData.title}</h2>
-        <p className={styles.description}>{blogData.description}</p>
+        <h2 className={styles.title}>{frontMatter.title}</h2>
+        <p className={styles.description}>{frontMatter.description}</p>
         <p className={styles.otherInfo}>
           <span>by aayushmau5</span>
           {" · "}
           <span>
-            Published on <Date dateString={blogData.date} />
+            Published on <Date dateString={frontMatter.date} />
           </span>
           {" · "}
-          <span>{blogData.readingTime.text}</span>
+          <span>{frontMatter.readingTime.text}</span>
         </p>
-        {blogData.cover && blogData.cover.image && (
+        {frontMatter.cover && frontMatter.cover.image && (
           <div className={styles.coverImage}>
-            <img src={blogData.cover.image} alt={blogData.cover.alt} />
+            <img src={frontMatter.cover.image} alt={frontMatter.cover.alt} />
           </div>
         )}
-        {blogData.cover && blogData.cover.caption && (
+        {frontMatter.cover && frontMatter.cover.caption && (
           <div
             className={styles.caption}
-            dangerouslySetInnerHTML={{ __html: blogData.cover.caption }}
+            dangerouslySetInnerHTML={{ __html: frontMatter.cover.caption }}
           />
         )}
         <hr className={styles.hr} />
-        <div dangerouslySetInnerHTML={{ __html: blogData.contentHtml }} />
+        {children}
       </article>
     </div>
   );

@@ -2,13 +2,8 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import { remark } from "remark";
-import { rehype } from "rehype";
-import rehypePrism from "rehype-prism-plus";
 import readingTime from "reading-time";
 import html from "remark-html";
-import remarkToc from "remark-toc";
-import rehypeSlug from "rehype-slug";
-import rehypeAutolinkHeadings from "rehype-autolink-headings";
 
 const postsDirectory = path.join(process.cwd(), "posts");
 const fileNames = fs.readdirSync(postsDirectory);
@@ -96,24 +91,9 @@ export async function getPostData(slug: string) {
     matterResult.data.cover.caption = caption.toString();
   }
 
-  const processedHTML = await remark()
-    .use(html, { sanitize: false })
-    .use(remarkToc, { tight: true })
-    .process(matterResult.content);
-
-  const processedContent = await rehype()
-    .use(rehypeSlug)
-    .use(rehypeAutolinkHeadings, {
-      behavior: "append",
-    })
-    .use(rehypePrism, { showLineNumbers: true })
-    .process(processedHTML);
-
-  const contentHtml = processedContent.toString();
-
   return {
     slug,
-    contentHtml,
-    ...matterResult.data,
+    content: matterResult.content,
+    frontMatter: matterResult.data,
   };
 }
