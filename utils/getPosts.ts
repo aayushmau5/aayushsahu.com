@@ -11,7 +11,7 @@ const fileNames = fs.readdirSync(postsDirectory);
 export function getSortedPostsData() {
   const allPostsData: any = fileNames
     .map((fileName) => {
-      const slug = fileName.replace(/\.md$/, "");
+      const slug = fileName.replace(/\.mdx$/, "");
       const fullPath = path.join(postsDirectory, fileName);
       const fileContents = fs.readFileSync(fullPath, "utf-8");
 
@@ -72,13 +72,13 @@ export function getAllPostIds() {
   const fileNames = fs.readdirSync(postsDirectory);
   return fileNames.map((fileName) => ({
     params: {
-      slug: fileName.replace(/\.md$/, ""),
+      slug: fileName.replace(/\.mdx$/, ""),
     },
   }));
 }
 
 export async function getPostData(slug: string) {
-  const fullPath = path.join(postsDirectory, `${slug}.md`);
+  const fullPath = path.join(postsDirectory, `${slug}.mdx`);
   const fileContents = fs.readFileSync(fullPath, "utf-8");
 
   const matterResult = matter(fileContents);
