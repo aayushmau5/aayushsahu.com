@@ -2,7 +2,8 @@
   "name": "aayushsahu.com",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev:old": "next dev",
+    "dev": "next-remote-watch ./posts",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
@@ -28,6 +29,7 @@
     "@types/react": "^17.0.38",
     "eslint": "8.6.0",
     "eslint-config-next": "12.0.7",
+    "next-remote-watch": "^1.0.0",
     "typescript": "^4.5.4"
   }
 }
