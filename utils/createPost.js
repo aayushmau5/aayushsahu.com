@@ -3,7 +3,7 @@ const path = require("path");
 const fs = require("fs");
 
 const fileName = process.argv[2] || "default";
-const filePath = path.resolve(".", "posts", `${fileName}.md`);
+const filePath = path.resolve(".", "posts", `${fileName}.mdx`);
 
 const frontMatter = `---
 title: "${fileName}"

@@ -40,7 +40,6 @@ pre[class*="language-"] {
   padding: 1em;
   margin: 0.5em 0;
   overflow: auto;
-  background: #1e1e1e;
 }
 
 :not(pre) > code[class*="language-"] {
@@ -49,8 +48,8 @@ pre[class*="language-"] {
   color: #db4c69;
   background: #1e1e1e;
 }
-/*********************************************************
-* Tokens
+/*
+ Tokens
 */
 .namespace {
   opacity: 0.7;
@@ -263,8 +262,8 @@ code[class*="language-html"] {
 .language-html .token.punctuation {
   color: #808080;
 }
-/*********************************************************
-* Line highlighting
+/*
+Line highlighting
 */
 pre[class*="language-"] > code[class*="language-"] {
   position: relative;

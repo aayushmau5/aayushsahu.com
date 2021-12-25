@@ -45,23 +45,6 @@
   }
 }
 
-.container ul:first-of-type a {
-  text-decoration: none;
-  font-size: 1rem;
-}
-
-.container ul:first-of-type a:hover {
-  text-decoration: underline;
-}
-
-.container a[aria-hidden="true"] {
-  text-decoration: none;
-}
-
-.container a[aria-hidden="true"]:hover {
-  text-decoration: underline;
-}
-
 .container span[class="icon icon-link"]::before {
   content: "#";
   margin-left: 5px;
@@ -78,33 +61,10 @@
   color: white;
 }
 
-.container blockquote {
-  margin-left: 0;
-  border-left: 4px solid white;
-  padding: 0.1rem 0 0.1rem 1rem;
-}
-
-.container a {
-  color: white;
-  text-decoration: underline;
-}
-
 .container img {
   display: block;
   margin: 1rem auto;
   width: 100%;
-}
-
-.container pre {
-  background-color: rgb(10, 10, 10);
-  padding: 1rem;
-  border-radius: 0.55rem;
-  overflow: auto;
-}
-
-.container pre code {
-  font-weight: normal;
-  background-color: transparent;
 }
 
 .container code {

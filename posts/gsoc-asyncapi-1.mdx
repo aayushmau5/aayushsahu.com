@@ -10,19 +10,17 @@ cover:
   caption: "Photo by [Moritz Kindler](https://unsplash.com/@moritz_photography) on [Unsplash](https://unsplash.com/)"
 ---
 
-### Table of Contents
-
 Oh man, it's been quite some time since the last blog. Lots of exciting stuff going on in my life nowadays, and I wanted to share it with you :)
 
-### Brief Overview of my project
+# Brief Overview of my project
 
 You can get a brief overview of my project from [my previous blog](https://aayushmau5.github.io/posts/gsoc/).
 
-### What's this blog(and following more) is going to be about?
+# What's this blog(and following more) is going to be about?
 
 This blog will document what I did during my GSoC coding period(in this case: week 1 and 2), I will briefly explain the changes I made during this period, what was my experience, what skills I gained, etc. Basically a lot of stuff. So, buckle up!
 
-### Week 1
+# Week 1
 
 During the first week, I was tasked to
 
@@ -42,7 +40,7 @@ This basically meant that we will have a **module** which exports a single funct
 Here's an illustration of what I said above:
 ![parser-module-illustrastion](/blogImages/week-1-2/parser-module.png#center)
 
-#### Going a bit deep
+## Going a bit deep
 
 This section will be about the explanation of code inside the `Parser` module, so If you don't care about that stuff, you can skip this section :)
 
@@ -90,7 +88,7 @@ Here we are checking whether the given path is a URL or not using the `isUrl` fu
 
 I don't want to go into the implementation details of `isUrl` function and `readDocument` functions. You can take a look at those at [this PR](https://github.com/asyncapi/diff/pull/7).
 
-#### Learning experience
+## Learning experience
 
 I learned some new things during this process:
 
@@ -98,7 +96,7 @@ I learned some new things during this process:
 
 - **Unit Testing** — I had some experience with **Integration** testing, but never with Unit testing. So, getting familiar with testing a “unit” of code was pretty cool experience for me.
 
-#### Other stuff
+## Other stuff
 
 Some other stuff that happened during this week were:
 
@@ -107,13 +105,13 @@ Some other stuff that happened during this week were:
 
 That concluded my first week as a GSoC student. Can't wait to see what's to come next :D.
 
-### Week 2
+# Week 2
 
 It's the start of second week. Last week was really fun :D.
 
 This week I was tasked to come up with a diff “standard”.
 
-#### What's the diff standard?
+## What's the diff standard?
 
 The diff standard will be a markdown document file containing a list of decision/rules. These rules will govern what changes to an AsyncAPI document will be considered a “breaking” or “non-breaking” change.
 
@@ -151,7 +149,7 @@ This is what we consider a `"breaking"` change.
 
 The addition of another server called `api/development` will be a non-breaking change because no existing consumer is using that server, so we won't have any point of failure in that case.
 
-#### Learning experience
+## Learning experience
 
 **AsyncAPI specification** — During this time, I had to understand the AsyncAPI spec in order to judge the changes in the properties of the spec. Honestly, I love how straightforward and powerful the spec is. You can just spin up a demo service in seconds.
 
@@ -159,7 +157,7 @@ Many thanks for [Anubhav Vats](https://github.com/onbit-syn) for helping me a lo
 
 You can check out my PR which documents this diff standard [here](https://github.com/asyncapi/diff/pull/9).
 
-#### Other stuff
+## Other stuff
 
 Some other stuff that happened during this week were:
 

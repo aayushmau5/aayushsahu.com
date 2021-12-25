@@ -1,0 +1,20 @@
+.anchor {
+  position: relative;
+  color: rgb(83, 188, 240);
+}
+
+.anchor::after {
+  content: "";
+  position: absolute;
+  bottom: 1px;
+  left: 0;
+  height: 2px;
+  background-color: rgb(83, 188, 240);
+  width: 0;
+  transition: width linear 0.2s;
+}
+
+.anchor:hover::after,
+.anchor:focus-visible::after {
+  width: 100%;
+}

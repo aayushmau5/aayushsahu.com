@@ -9,8 +9,6 @@ cover:
   alt: "Cover Image"
 ---
 
-### Table of Contents
-
 ### Introduction
 
 So, I was reading a chapter from this book called [Crafting Interpreters](https://craftinginterpreters.com/), which had a little section about a design pattern called **The Visitor pattern**. Now, I don't have much experience with design patterns, because I never really dwelled into Object Oriented stuff and most of my code is based on functions(i guess I can call it functional without the whole scary math stuff).
@@ -369,7 +367,7 @@ export interface Car {
 
 Next up, we implement the `accept` method in all our cars classes.
 
-```typescript
+```ts
 // BMWCar.ts
 export class BMWCar implements Car {
   getPrice() {
@@ -425,7 +423,7 @@ This part is little bit weird. We add the `accept` method which takes a paramete
 
 Now's the time that we combine all these interfaces & classes, and see it in action. Here's the code for it:
 
-```typescript {1,3-4}
+```ts
 // runner.ts
 import { BMWCar } from "./cars/BMWCar";
 import { BugattiCar } from "./cars/BugattiCar";
