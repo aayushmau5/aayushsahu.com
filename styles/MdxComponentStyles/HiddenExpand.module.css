@@ -1,5 +1,12 @@
 .details {
   margin-bottom: 1rem;
+  border-radius: 0.55rem;
+  overflow: hidden;
+}
+
+.details:focus-within {
+  outline: 3px solid #22272a;
+  outline-offset: 5px;
 }
 
 .summary {
@@ -10,15 +17,7 @@
   padding: 1rem;
 }
 
-.summary:focus {
-  outline: 3px solid #22272a;
-  outline-offset: 5px;
-}
-
 .children {
-  border: 3px solid #22272a;
-  border-top: none;
+  background-color: #22272a;
   padding: 1rem;
-  /* background-color: #22272a;
-  border-radius: 0 0 0.55rem 0.55rem; */
 }
