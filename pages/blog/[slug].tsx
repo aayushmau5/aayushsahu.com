@@ -18,6 +18,7 @@ import HiddenExpand from "@/components/MDX/HiddenExpand";
 import getToc from "@/utils/getToc";
 import StyledAnchor from "@/components/MDX/StyledAnchor";
 import SomeFancyText from "@/components/MDX/SomeFancyText";
+import SeparatorSvg from "@/components/SeparatorSvg";
 
 const components = {
   pre: ({ className, ...props }) => {
@@ -32,6 +33,7 @@ const components = {
   },
   blockquote: (props) => <Blockquote {...props} />,
   a: (props) => <StyledAnchor {...props} />,
+  hr: (props) => <SeparatorSvg {...props} stroke="#569cd6" />,
   HiddenExpand,
   SomeFancyText,
 };
