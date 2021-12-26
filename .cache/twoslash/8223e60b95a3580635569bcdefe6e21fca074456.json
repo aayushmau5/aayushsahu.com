@@ -1,1 +1,0 @@
-{"code":"const a = 1","extension":"ts","highlights":[],"queries":[],"staticQuickInfos":[{"text":"const a: 1","docs":"","start":6,"length":1,"line":0,"character":6,"targetString":"a"}],"errors":[],"playgroundURL":"https://www.typescriptlang.org/play/#code/MYewdgzgLgBAhjAvDAjEA","tags":[]}
