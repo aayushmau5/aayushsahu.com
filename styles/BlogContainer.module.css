@@ -45,10 +45,18 @@
   }
 }
 
+.container span[class="icon icon-link"] {
+  color: gray;
+}
+
+.container span[class="icon icon-link"]:hover {
+  color: rgb(83, 188, 240);
+}
+
 .container span[class="icon icon-link"]::before {
   content: "#";
   margin-left: 5px;
-  color: gray;
+  color: inherit;
   text-decoration: none;
 }
 
@@ -68,7 +76,7 @@
 }
 
 .container code {
-  font-size: 0.9rem;
+  font-size: 1rem;
   padding: 2px 5px;
   border-radius: 2px;
 }
