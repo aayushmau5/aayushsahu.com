@@ -12,7 +12,7 @@ Styled using pure CSS 😎
 - [ ] Custom MDX components
 - [ ] Back to top button or put back home at bottom
 - [ ] TOC
-- [ ] details selection focus style
+- [x] details selection focus style
 - [ ] Code highlight feature
 - [ ] Next SEO
-- [ ] Anchor target "\_blank" but only for links and not headings.
+- [x] Anchor target "\_blank" but only for links and not headings.

@@ -6,3 +6,7 @@
 .anchor:hover {
   text-decoration: underline;
 }
+
+.anchor:focus {
+  text-decoration: underline;
+}

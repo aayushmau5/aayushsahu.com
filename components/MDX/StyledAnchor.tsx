@@ -1,5 +1,16 @@
 import styles from "@/styles/MdxComponentStyles/StyledAnchor.module.css";
 
 export default function StyledAnchor(props) {
-  return <a {...props} className={styles.anchor} />;
+  if (props.href.startsWith("#")) {
+    return <a {...props} className={styles.anchor} />;
+  }
+
+  return (
+    <a
+      {...props}
+      className={styles.anchor}
+      target="_blank"
+      rel="noreferrer noopener"
+    />
+  );
 }
