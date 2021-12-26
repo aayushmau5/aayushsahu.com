@@ -25,10 +25,6 @@
   text-align: center;
 }
 
-.hr {
-  border: 1px solid rgb(54, 54, 54);
-}
-
 .container {
   color: rgba(255, 255, 255, 0.74);
   word-wrap: break-word;

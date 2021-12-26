@@ -1,7 +1,7 @@
 .details {
   margin-bottom: 1rem;
   border-radius: 0.55rem;
-  overflow: hidden;
+  background-color: #22272a;
 }
 
 .details:focus-within {
@@ -13,11 +13,9 @@
   color: white;
   font-size: 1.1rem;
   cursor: pointer;
-  background-color: #22272a;
   padding: 1rem;
 }
 
 .children {
-  background-color: #22272a;
   padding: 1rem;
 }

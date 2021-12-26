@@ -1,36 +1,49 @@
 /* eslint-disable @next/next/no-img-element */
 import Date from "./Date";
 import styles from "@/styles/BlogContainer.module.css";
+import ToC from "./ToC";
+import SeparatorSvg from "./SeparatorSvg";
 
-export default function BlogContainer({ children, frontMatter }) {
+export default function BlogContainer({
+  children,
+  frontMatter,
+  tableOfContents,
+}) {
   return (
     <div className={styles.container}>
-      <article>
-        <h2 className={styles.title}>{frontMatter.title}</h2>
-        <p className={styles.description}>{frontMatter.description}</p>
-        <p className={styles.otherInfo}>
-          <span>by aayushmau5</span>
-          {" · "}
-          <span>
-            Published on <Date dateString={frontMatter.date} />
-          </span>
-          {" · "}
-          <span>{frontMatter.readingTime.text}</span>
-        </p>
-        {frontMatter.cover && frontMatter.cover.image && (
-          <div className={styles.coverImage}>
-            <img src={frontMatter.cover.image} alt={frontMatter.cover.alt} />
-          </div>
-        )}
-        {frontMatter.cover && frontMatter.cover.caption && (
-          <div
-            className={styles.caption}
-            dangerouslySetInnerHTML={{ __html: frontMatter.cover.caption }}
-          />
-        )}
-        <hr className={styles.hr} />
-        {children}
-      </article>
+      <ShowFrontMatter frontMatter={frontMatter} />
+      <SeparatorSvg stroke="gray" />
+      <ToC elements={tableOfContents} />
+      <article>{children}</article>
+    </div>
+  );
+}
+
+function ShowFrontMatter({ frontMatter }) {
+  return (
+    <div>
+      <h2 className={styles.title}>{frontMatter.title}</h2>
+      <p className={styles.description}>{frontMatter.description}</p>
+      <p className={styles.otherInfo}>
+        <span>by aayushmau5</span>
+        {" · "}
+        <span>
+          Published on <Date dateString={frontMatter.date} />
+        </span>
+        {" · "}
+        <span>{frontMatter.readingTime.text}</span>
+      </p>
+      {frontMatter.cover && frontMatter.cover.image && (
+        <div className={styles.coverImage}>
+          <img src={frontMatter.cover.image} alt={frontMatter.cover.alt} />
+        </div>
+      )}
+      {frontMatter.cover && frontMatter.cover.caption && (
+        <div
+          className={styles.caption}
+          dangerouslySetInnerHTML={{ __html: frontMatter.cover.caption }}
+        />
+      )}
     </div>
   );
 }
