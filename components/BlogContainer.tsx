@@ -13,10 +13,23 @@ export default function BlogContainer({
     <div className={styles.container}>
       <ShowFrontMatter frontMatter={frontMatter} />
       <SeparatorSvg stroke="gray" />
-      <ToC elements={tableOfContents} />
+      <ShowToc frontMatter={frontMatter} tableOfContents={tableOfContents} />
       <article>{children}</article>
     </div>
   );
+}
+
+function ShowToc({ frontMatter, tableOfContents }) {
+  if (tableOfContents?.length === 0) return null;
+  if (typeof frontMatter.showToc === "undefined") {
+    return <ToC elements={tableOfContents} />;
+  } else {
+    if (frontMatter.showToc) {
+      return <ToC elements={tableOfContents} />;
+    } else {
+      return null;
+    }
+  }
 }
 
 function ShowFrontMatter({ frontMatter }) {

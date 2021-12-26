@@ -1,0 +1,26 @@
+.details {
+  background-color: #0a0a0a;
+  border-radius: 0.55rem;
+  padding-bottom: 0.04rem;
+}
+
+.summary {
+  padding: 1rem 0.7rem;
+  border-radius: 0.55rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+}
+
+.list {
+  margin-top: 0;
+}
+
+.link {
+  color: gray;
+}
+
+.link:hover {
+  color: white;
+}

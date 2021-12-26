@@ -15,6 +15,7 @@ cover:
 	alt: ""
 	caption: ""
 draft: true
+showToc: true
 ---`;
 
 function createPost(path, frontMatter) {

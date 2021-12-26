@@ -9,7 +9,6 @@ Styled using pure CSS 😎
 - [ ] RSS output
 - [ ] Dynamic imports and small bundle size
 - [ ] Back to top button or put back home at bottom
-- [ ] Table of contents(desktop and mobile)
 - [ ] Code highlight lines feature
 - [ ] SEO(look into `next-seo`)
 - [ ] Playground? or Codesandbox?
