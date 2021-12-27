@@ -13,7 +13,5 @@ Styled using pure CSS 😎
 - [ ] SEO(look into `next-seo`)
 - [ ] Playground? or Codesandbox?
 - [ ] Make things configurable
-- [ ] Copy button in code blocks
-- [ ] Style the front-matter in blogs
 - [ ] tags
 - [ ] Homepage ideas from https://raptis.wtf/

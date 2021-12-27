@@ -38,8 +38,6 @@ function ShowFrontMatter({ frontMatter }) {
       <h2 className={styles.title}>{frontMatter.title}</h2>
       <p className={styles.description}>{frontMatter.description}</p>
       <p className={styles.otherInfo}>
-        <span>by aayushmau5</span>
-        {" · "}
         <span>
           Published on <Date dateString={frontMatter.date} />
         </span>

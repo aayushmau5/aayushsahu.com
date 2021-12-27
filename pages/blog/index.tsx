@@ -46,21 +46,19 @@ export default function Blog({ postsData }: Props) {
         <SearchBar value={searchValue} onChange={setSearchValue} />
         {searchValue === "" ? <h3>Recent blogs</h3> : <h3>Search result</h3>}
         {filteredBlogs.length === 0 ? <h3>No blogs found</h3> : null}
-        <div className={styles.wrapper}>
-          <div className={styles.blogsContainer}>
-            {filteredBlogs.map((post) => (
-              <Link key={post.slug} href={`/blog/${post.slug}`}>
-                <a className={styles.blogContainer}>
-                  <p className={styles.date}>
-                    <Date dateString={post.date} />
-                  </p>
-                  <h3>{post.title}</h3>
-                  <p className={styles.readingTime}>{post.readingTime.text}</p>
-                  <p className={styles.additionalInfo}></p>
-                </a>
-              </Link>
-            ))}
-          </div>
+        <div className={styles.blogsContainer}>
+          {filteredBlogs.map((post) => (
+            <Link key={post.slug} href={`/blog/${post.slug}`}>
+              <a className={styles.blogContainer}>
+                <p className={styles.date}>
+                  <Date dateString={post.date} />
+                </p>
+                <h3>{post.title}</h3>
+                <p className={styles.readingTime}>{post.readingTime.text}</p>
+                <p className={styles.additionalInfo}></p>
+              </a>
+            </Link>
+          ))}
         </div>
       </div>
     </>

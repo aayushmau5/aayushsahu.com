@@ -17,10 +17,6 @@
   margin-top: 0;
 }
 
-.wrapper {
-  /* display: flex; */
-}
-
 .blogsContainer {
   display: flex;
   flex-flow: row wrap;
