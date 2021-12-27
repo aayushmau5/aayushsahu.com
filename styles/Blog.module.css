@@ -17,14 +17,28 @@
   margin-top: 0;
 }
 
+.wrapper {
+  /* display: flex; */
+}
+
+.blogsContainer {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: flex-start;
+  justify-content: center;
+}
+
 .blogContainer {
-  display: block;
-  background-color: rgb(10, 10, 10);
-  padding: 0.75rem;
+  display: inline-block;
+  padding: 1rem;
   border-radius: 0.75rem;
-  margin-bottom: 1rem;
   word-wrap: break-word;
   transition: transform linear 0.1s;
+  width: 50%;
+}
+
+.blogContainer:hover {
+  background-color: #191919;
 }
 
 .blogContainer:active {
@@ -39,8 +53,22 @@
   margin: 0;
 }
 
-.additionalInfo {
-  margin: 5px 0;
+.date {
+  font-size: 0.9rem;
+}
+
+.readingTime {
   color: gray;
   font-size: 0.9rem;
+  font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .blogsContainer {
+    flex-direction: column;
+  }
+
+  .blogContainer {
+    width: 100%;
+  }
 }

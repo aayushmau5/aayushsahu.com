@@ -38,25 +38,30 @@ export default function Blog({ postsData }: Props) {
       <div className={styles.container}>
         <h1>Blog</h1>
         <p className={styles.noOfBlogs}>
+          I write about cool technology, or something I have learned recently.
+        </p>
+        <p className={styles.noOfBlogs}>
           So far, I have written {postsData.length} articles.
         </p>
         <SearchBar value={searchValue} onChange={setSearchValue} />
         {searchValue === "" ? <h3>Recent blogs</h3> : <h3>Search result</h3>}
         {filteredBlogs.length === 0 ? <h3>No blogs found</h3> : null}
-        {filteredBlogs.map((post) => (
-          <Link key={post.slug} href={`/blog/${post.slug}`}>
-            <a className={styles.blogContainer}>
-              <h3>{post.title}</h3>
-              <p className={styles.additionalInfo}>
-                <span>
-                  <Date dateString={post.date} />
-                </span>
-                {" · "}
-                <span>{post.readingTime.text}</span>
-              </p>
-            </a>
-          </Link>
-        ))}
+        <div className={styles.wrapper}>
+          <div className={styles.blogsContainer}>
+            {filteredBlogs.map((post) => (
+              <Link key={post.slug} href={`/blog/${post.slug}`}>
+                <a className={styles.blogContainer}>
+                  <p className={styles.date}>
+                    <Date dateString={post.date} />
+                  </p>
+                  <h3>{post.title}</h3>
+                  <p className={styles.readingTime}>{post.readingTime.text}</p>
+                  <p className={styles.additionalInfo}></p>
+                </a>
+              </Link>
+            ))}
+          </div>
+        </div>
       </div>
     </>
   );

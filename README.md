@@ -15,3 +15,5 @@ Styled using pure CSS 😎
 - [ ] Make things configurable
 - [ ] Copy button in code blocks
 - [ ] Style the front-matter in blogs
+- [ ] tags
+- [ ] Homepage ideas from https://raptis.wtf/
