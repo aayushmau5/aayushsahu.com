@@ -12,7 +12,7 @@ export default function BlogContainer({
   return (
     <div className={styles.container}>
       <ShowFrontMatter frontMatter={frontMatter} />
-      <SeparatorSvg stroke="gray" />
+      <SeparatorSvg stroke="gray" header />
       <ShowToc frontMatter={frontMatter} tableOfContents={tableOfContents} />
       <article>{children}</article>
     </div>

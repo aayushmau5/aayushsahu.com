@@ -1,148 +1,19 @@
-export default function SeparatorSvg({ stroke }) {
+import styles from "@/styles/SvgAnimate.module.css";
+
+export default function SeparatorSvg({ stroke, header = false }) {
   return (
-    <div
-      style={{
-        margin: "1rem 0",
-        textAlign: "center",
-      }}
-    >
-      <svg width="282" height="12" viewBox="0 0 482 38" fill="none">
-        <line x1="4" y1="35" x2="28" y2="3" stroke={stroke} strokeWidth="10" />
-        <line x1="54" y1="35" x2="78" y2="3" stroke={stroke} strokeWidth="10" />
-        <line
-          x1="104"
-          y1="35"
-          x2="128"
-          y2="3"
+    <div className={styles.container}>
+      <svg
+        className={`${header ? styles.svg : ""}`}
+        width="282"
+        height="12"
+        viewBox="0 0 476 30"
+        fill="none"
+      >
+        <path
+          d="M4 27L17.8 8.6C20.1196 5.50721 24.5072 4.8804 27.6 7.2L48.4 22.8C51.4928 25.1196 55.8804 24.4928 58.2 21.4L67.8 8.6C70.1196 5.50721 74.5072 4.8804 77.6 7.2L98.4 22.8C101.493 25.1196 105.88 24.4928 108.2 21.4L117.8 8.6C120.12 5.50721 124.507 4.8804 127.6 7.2L148.4 22.8C151.493 25.1196 155.88 24.4928 158.2 21.4L167.8 8.6C170.12 5.50721 174.507 4.8804 177.6 7.2L198.4 22.8C201.493 25.1196 205.88 24.4928 208.2 21.4L217.8 8.6C220.12 5.50721 224.507 4.8804 227.6 7.2L248.4 22.8C251.493 25.1196 255.88 24.4928 258.2 21.4L267.8 8.6C270.12 5.50721 274.507 4.8804 277.6 7.2L298.4 22.8C301.493 25.1196 305.88 24.4928 308.2 21.4L317.8 8.6C320.12 5.50721 324.507 4.8804 327.6 7.2L348.4 22.8C351.493 25.1196 355.88 24.4928 358.2 21.4L367.8 8.6C370.12 5.50721 374.507 4.8804 377.6 7.2L398.4 22.8C401.493 25.1196 405.88 24.4928 408.2 21.4L417.8 8.6C420.12 5.50721 424.507 4.8804 427.6 7.2L448.4 22.8C451.493 25.1196 455.88 24.4928 458.2 21.4L472 3"
           stroke={stroke}
-          strokeWidth="10"
-        />
-        <line
-          x1="154"
-          y1="35"
-          x2="178"
-          y2="3"
-          stroke={stroke}
-          strokeWidth="10"
-        />
-        <line
-          x1="204"
-          y1="35"
-          x2="228"
-          y2="3"
-          stroke={stroke}
-          strokeWidth="10"
-        />
-        <line
-          x1="254"
-          y1="35"
-          x2="278"
-          y2="3"
-          stroke={stroke}
-          strokeWidth="10"
-        />
-        <line
-          x1="304"
-          y1="35"
-          x2="328"
-          y2="3"
-          stroke={stroke}
-          strokeWidth="10"
-        />
-        <line
-          x1="354"
-          y1="35"
-          x2="378"
-          y2="3"
-          stroke={stroke}
-          strokeWidth="10"
-        />
-        <line
-          x1="404"
-          y1="35"
-          x2="428"
-          y2="3"
-          stroke={stroke}
-          strokeWidth="10"
-        />
-        <line
-          x1="454"
-          y1="35"
-          x2="478"
-          y2="3"
-          stroke={stroke}
-          strokeWidth="10"
-        />
-        <line
-          x1="61"
-          y1="34"
-          x2="21"
-          y2="4.00006"
-          stroke={stroke}
-          strokeWidth="10"
-        />
-        <line
-          x1="111"
-          y1="34"
-          x2="71"
-          y2="4.00006"
-          stroke={stroke}
-          strokeWidth="10"
-        />
-        <line
-          x1="161"
-          y1="34"
-          x2="121"
-          y2="4.00006"
-          stroke={stroke}
-          strokeWidth="10"
-        />
-        <line
-          x1="211"
-          y1="34"
-          x2="171"
-          y2="4.00006"
-          stroke={stroke}
-          strokeWidth="10"
-        />
-        <line
-          x1="261"
-          y1="34"
-          x2="221"
-          y2="4.00006"
-          stroke={stroke}
-          strokeWidth="10"
-        />
-        <line
-          x1="311"
-          y1="34"
-          x2="271"
-          y2="4.00006"
-          stroke={stroke}
-          strokeWidth="10"
-        />
-        <line
-          x1="361"
-          y1="34"
-          x2="321"
-          y2="4.00006"
-          stroke={stroke}
-          strokeWidth="10"
-        />
-        <line
-          x1="411"
-          y1="34"
-          x2="371"
-          y2="4.00006"
-          stroke={stroke}
-          strokeWidth="10"
-        />
-        <line
-          x1="461"
-          y1="34"
-          x2="421"
-          y2="4.00006"
-          stroke={stroke}
+          strokeLinejoin="round"
           strokeWidth="10"
         />
       </svg>
