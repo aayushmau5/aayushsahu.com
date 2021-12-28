@@ -10,16 +10,16 @@ import { remarkMdxCodeMeta } from "remark-mdx-code-meta";
 import remarkGfm from "remark-gfm";
 
 import { getAllPostIds, getPostData } from "@/utils/getPosts";
-import BlogContainer from "@/components/BlogContainer";
+import BlogContainer from "@/components/React/Blog/BlogContainer";
 import { BlogSEO } from "@/components/SEO";
 import Pre from "@/components/MDX/Pre";
 import Blockquote from "@/components/MDX/Blockquote";
 import HiddenExpand from "@/components/MDX/HiddenExpand";
-import getToc from "@/utils/getToc";
 import StyledAnchor from "@/components/MDX/StyledAnchor";
 import SomeFancyText from "@/components/MDX/SomeFancyText";
-import SeparatorSvg from "@/components/SeparatorSvg";
-import NextPrevArticles from "@/components/NextPrevArticles";
+import SeparatorSvg from "@/components/React/SeparatorSvg";
+import NextPrevArticles from "@/components/React/Blog/NextPrevArticles";
+import getToc from "@/utils/getToc";
 
 const components = {
   pre: ({ className, ...props }) => {

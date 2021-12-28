@@ -1,8 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
-import Date from "./Date";
-import styles from "@/styles/BlogContainer.module.css";
-import ToC from "./ToC";
-import SeparatorSvg from "./SeparatorSvg";
+import Date from "../../../Date";
+import styles from "./style.module.css";
+import ToC from "../ToC";
+import SeparatorSvg from "../../SeparatorSvg";
 
 export default function BlogContainer({
   children,

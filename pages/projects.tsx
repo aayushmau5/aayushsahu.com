@@ -1,7 +1,8 @@
-import styles from "@/styles/ProjectsPage.module.css";
-import Skills from "@/components/Skills";
-import Projects from "@/components/Projects";
+import Skills from "@/components/React/Project/Skills";
+import Projects from "@/components/React/Project/Projects";
 import { PageSEO } from "@/components/SEO";
+
+import styles from "@/styles/ProjectsPage.module.css";
 
 export default function ProjectsPage() {
   return (

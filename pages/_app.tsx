@@ -1,4 +1,5 @@
-import Layout from "@/components/Layout";
+import Layout from "@/components/React/Layout";
+
 import "@/styles/globals.css";
 import "@/styles/highlight.css";
 

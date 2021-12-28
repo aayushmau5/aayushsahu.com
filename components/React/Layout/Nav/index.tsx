@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
-import styles from "@/styles/Nav.module.css";
+import styles from "./style.module.css";
 import NavLink from "./NavLink";
 
 export default function Nav() {

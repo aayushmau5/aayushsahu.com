@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
 
-import SeparatorSvg from "./SeparatorSvg";
-import styles from "@/styles/NextPrevArticle.module.css";
+import SeparatorSvg from "../../SeparatorSvg";
+import styles from "./style.module.css";
 
 export default function NextPrevArticles({ recommendedPostList }) {
   return (

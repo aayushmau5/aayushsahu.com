@@ -1,4 +1,4 @@
-import styles from "@/styles/ToC.module.css";
+import styles from "./style.module.css";
 
 interface Element {
   content: string;

@@ -1,4 +1,4 @@
-import styles from "@/styles/MdxComponentStyles/HiddenExpand.module.css";
+import styles from "./style.module.css";
 
 export default function HiddenExpand({ summary, children }) {
   return (

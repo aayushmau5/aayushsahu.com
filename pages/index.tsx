@@ -3,11 +3,13 @@ import Link from "next/link";
 import { BsArrowRightShort } from "react-icons/bs";
 
 import { PageSEO } from "@/components/SEO";
-import Logo from "@/public/image.png";
-import styles from "@/styles/Home.module.css";
-import { sortedPostData } from "@/utils/getPosts";
 import Date from "@/components/Date";
+
+import Logo from "@/public/image.png";
+import { sortedPostData } from "@/utils/getPosts";
+
 import blogStyles from "@/styles/Blog.module.css";
+import styles from "@/styles/Home.module.css";
 
 export default function Index({ firstPost, secondPost }) {
   return (

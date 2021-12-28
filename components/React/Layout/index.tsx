@@ -1,4 +1,4 @@
-import styles from "@/styles/Layout.module.css";
+import styles from "./style.module.css";
 import Footer from "./Footer";
 import Nav from "./Nav";
 

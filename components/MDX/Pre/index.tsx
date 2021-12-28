@@ -1,4 +1,4 @@
-import styles from "@/styles/MdxComponentStyles/CodeBlock.module.css";
+import styles from "./style.module.css";
 
 export default function Pre({ languageType = "", ...props }) {
   return (

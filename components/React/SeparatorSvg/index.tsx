@@ -1,4 +1,4 @@
-import styles from "@/styles/SvgAnimate.module.css";
+import styles from "./style.module.css";
 
 export default function SeparatorSvg({ stroke, header = false }) {
   return (

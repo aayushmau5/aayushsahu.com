@@ -1,4 +1,4 @@
-import styles from "@/styles/MdxComponentStyles/StyledAnchor.module.css";
+import styles from "./style.module.css";
 
 export default function StyledAnchor(props) {
   if (props.href.startsWith("#")) {
