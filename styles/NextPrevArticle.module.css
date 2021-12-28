@@ -1,0 +1,51 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-direction: column;
+  margin-top: 1.7rem;
+}
+
+.other {
+  text-align: center;
+  color: gray;
+}
+
+.links {
+  padding: 1rem;
+  border-radius: 0.55rem;
+  word-break: break-word;
+}
+
+.info {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  color: gray;
+  gap: 5px;
+  font-size: 0.9rem;
+  margin-bottom: 5px;
+}
+
+.nextPlacement {
+  width: 100%;
+  margin-left: auto;
+}
+
+.nextArticle {
+  justify-content: flex-end;
+}
+
+.links:hover {
+  background-color: #191919;
+}
+
+@media (min-width: 1024px) {
+  .container {
+    flex-direction: row;
+  }
+
+  .links {
+    width: 50%;
+  }
+}

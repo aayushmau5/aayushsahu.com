@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useState } from "react";
 
 import SearchBar from "@/components/SearchBar";
-import { getSortedPostsData } from "@/utils/getPosts";
+import { sortedPostData } from "@/utils/getPosts";
 import Date from "@/components/Date";
 import styles from "@/styles/Blog.module.css";
 import { PageSEO } from "@/components/SEO";
@@ -66,7 +66,7 @@ export default function Blog({ postsData }: Props) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const postsData = getSortedPostsData();
+  const postsData = sortedPostData;
 
   return {
     props: {

@@ -2,15 +2,30 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import { remark } from "remark";
-import readingTime from "reading-time";
+import readingTime, { ReadTimeResults } from "reading-time";
 import html from "remark-html";
 
 const postsDirectory = path.join(process.cwd(), "posts");
 const fileNames = fs.readdirSync(postsDirectory);
+export let sortedPostData = getSortedPostsData();
+let recommendedPostList = generateNextPrevArticlesList(sortedPostData);
 
-export function getSortedPostsData() {
+interface FrontMatter {
+  title: string;
+  readingTime: ReadTimeResults;
+  date: string;
+  draft: boolean;
+}
+
+interface Slug {
+  slug: string;
+}
+
+type PostData = Slug & { [key: string]: any };
+
+function getSortedPostsData() {
   const allPostsData: any = fileNames
-    .map((fileName) => {
+    .map((fileName): PostData => {
       const slug = fileName.replace(/\.mdx$/, "");
       const fullPath = path.join(postsDirectory, fileName);
       const fileContents = fs.readFileSync(fullPath, "utf-8");
@@ -23,15 +38,17 @@ export function getSortedPostsData() {
         ...frontMatter,
       };
     })
-    .filter((val: any) => !val.draft);
+    .filter((val) => !val.draft);
 
-  return allPostsData.sort((a, b) => {
+  const sortedPosts = allPostsData.sort((a, b) => {
     if (a.date < b.date) {
       return 1;
     } else {
       return -1;
     }
   });
+
+  return sortedPosts;
 }
 
 export function getAllTags() {
@@ -95,5 +112,26 @@ export async function getPostData(slug: string) {
     slug,
     content: matterResult.content,
     frontMatter: matterResult.data,
+    recommendedPostList: recommendedPostList[slug] || {},
   };
+}
+
+function generateNextPrevArticlesList(sortedPosts: any[]) {
+  const sortedPostList = {};
+  sortedPosts.forEach((post, index) => {
+    sortedPostList[post.slug] = {};
+    if (sortedPosts[index - 1]) {
+      sortedPostList[post.slug].next = {
+        title: sortedPosts[index - 1].title,
+        slug: sortedPosts[index - 1].slug,
+      };
+    }
+    if (sortedPosts[index + 1]) {
+      sortedPostList[post.slug].prev = {
+        title: sortedPosts[index + 1].title,
+        slug: sortedPosts[index + 1].slug,
+      };
+    }
+  });
+  return sortedPostList;
 }

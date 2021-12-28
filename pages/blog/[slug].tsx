@@ -19,6 +19,7 @@ import getToc from "@/utils/getToc";
 import StyledAnchor from "@/components/MDX/StyledAnchor";
 import SomeFancyText from "@/components/MDX/SomeFancyText";
 import SeparatorSvg from "@/components/SeparatorSvg";
+import NextPrevArticles from "@/components/NextPrevArticles";
 
 const components = {
   pre: ({ className, ...props }) => {
@@ -43,6 +44,7 @@ export default function BlogPost({
   source,
   slug,
   tableOfContents,
+  recommendedPostList,
 }) {
   return (
     <>
@@ -65,6 +67,7 @@ export default function BlogPost({
       >
         <MDXRemote {...source} components={components} />
       </BlogContainer>
+      <NextPrevArticles recommendedPostList={recommendedPostList} />
     </>
   );
 }
@@ -78,7 +81,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const { content, frontMatter, slug } = await getPostData(
+  const { content, frontMatter, slug, recommendedPostList } = await getPostData(
     params.slug as string
   );
 
@@ -96,5 +99,13 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
   const tableOfContents = getToc(content);
 
-  return { props: { source: mdxSource, frontMatter, slug, tableOfContents } };
+  return {
+    props: {
+      source: mdxSource,
+      frontMatter,
+      slug,
+      tableOfContents,
+      recommendedPostList,
+    },
+  };
 };
