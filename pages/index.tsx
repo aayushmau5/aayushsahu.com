@@ -5,8 +5,11 @@ import { BsArrowRightShort } from "react-icons/bs";
 import { PageSEO } from "@/components/SEO";
 import Logo from "@/public/image.png";
 import styles from "@/styles/Home.module.css";
+import { sortedPostData } from "@/utils/getPosts";
+import Date from "@/components/Date";
+import blogStyles from "@/styles/Blog.module.css";
 
-export default function Index() {
+export default function Index({ firstPost, secondPost }) {
   return (
     <>
       <PageSEO
@@ -48,6 +51,36 @@ export default function Index() {
           </div>
         </div>
 
+        <div>
+          <h3>Recent articles</h3>
+          <div className={blogStyles.blogsContainer}>
+            <Link key={firstPost.slug} href={`/blog/${firstPost.slug}`}>
+              <a className={blogStyles.blogContainer}>
+                <p className={blogStyles.date}>
+                  <Date dateString={firstPost.date} />
+                </p>
+                <h3>{firstPost.title}</h3>
+                <p className={blogStyles.readingTime}>
+                  {firstPost.readingTime.text}
+                </p>
+                <p className={blogStyles.additionalInfo}></p>
+              </a>
+            </Link>
+            <Link key={secondPost.slug} href={`/blog/${secondPost.slug}`}>
+              <a className={blogStyles.blogContainer}>
+                <p className={blogStyles.date}>
+                  <Date dateString={secondPost.date} />
+                </p>
+                <h3>{secondPost.title}</h3>
+                <p className={blogStyles.readingTime}>
+                  {secondPost.readingTime.text}
+                </p>
+                <p className={blogStyles.additionalInfo}></p>
+              </a>
+            </Link>
+          </div>
+        </div>
+
         <div className={styles.nextStepsContainer}>
           <div className={styles.nextSteps}>
             <p>While you are here, feel free to:</p>
@@ -78,3 +111,17 @@ export default function Index() {
     </>
   );
 }
+
+export const getStaticProps = async () => {
+  const postsData = sortedPostData;
+
+  const firstPost = postsData[0];
+  const secondPost = postsData[1];
+
+  return {
+    props: {
+      firstPost,
+      secondPost,
+    },
+  };
+};
