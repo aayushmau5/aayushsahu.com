@@ -1,13 +1,13 @@
 ---
-title: "markdown-next-mdx"
-description: ""
+title: "Using MDX with NextJS"
+description: "How to use MDX with NextJS?"
 date: 2021-12-18T07:27:46.681Z
 tags: []
 cover:
 	image: "/blogImages/"
 	alt: ""
 	caption: ""
-draft: true 
+draft: true
 ---
 
 MDX: Markdown with component
@@ -20,6 +20,14 @@ Need integrations for framework, bundlers, etc.
 
 Everything you ever need? https://mdxjs.com/docs/getting-started/
 
+## Goal
+
+My goal was to
+
+- Get MDX working
+- Add plugins, syntax highlight, etc.
+- Add interactive components like codesandbox, etc.
+
 ## Integrating MDX into your project
 
 Using MDX with your bundler and JSX runtime.
@@ -29,7 +37,6 @@ MDX does compile JSX to javascript for us.
 
 `@mdx-js/*` packages. All of them as ESM only, so only `import` statements.
 
-
 ## Quick start
 
 ### Bundler
@@ -38,7 +45,8 @@ MDX is a language that's compiled to JS. MDX also compiles regular markdown to J
 
 But we need to use an integration for our bundler(if we have one).
 
-Ex. 
+Ex.
+
 - For **esbuild**, use `@mdx-js/esbuild` integration
 - For **Rollup**, use `@mdx-js/rollup` integration
 - For **webpack**, use `@mdx-js/loader` integration(CRA, NextJS, Vue CLI)
@@ -46,6 +54,7 @@ Ex.
 Though now that NextJS uses `swc`, need to check how to integrate it with SWC.
 
 We can also use MDX if we are not using a bundler:
+
 - If we want to import MDX files in NodeJS, use `@mdx-js/node-loader`
 - Otherwise, install and use the core compiler `@mdx-js/mdx` to manually compiler MDX files.
 
@@ -73,8 +82,481 @@ Next supports webpack loaders by overwriting the webpack config in `next.config.
 
 Install and configure the webpack loader `@mdx-js/loader`. There is no need to configure your JSX runtime as React is already set up.
 
-
 With the new NextJS SWC compiler, it should work out of the box.
 https://github.com/vercel/next.js/issues/30436
 
+It seems that it works OOTB with the new compiler
 
+I just added these lines in `next.config.js` file:
+
+```js
+module.exports = {
+  pageExtensions: ["md", "mdx", "tsx", "ts", "jsx", "js"],
+  webpack(config, options) {
+    config.module.rules.push({
+      test: /\.mdx?$/,
+      use: [
+        options.defaultLoaders.babel,
+        {
+          loader: "@mdx-js/loader",
+        },
+      ],
+    });
+
+    return config;
+  },
+};
+```
+
+and made a `something.mdx` file in `/pages` and damn, it hot refreshes.
+
+Pretty neat stuff.
+
+But some YT videos use `mdx-enhanced` or `next-mdx` ??
+Need to check and see the differences.
+`next-mdx-remote`, `mdx-bundler`
+
+- https://dev.to/tylerlwsmith/quick-comparison-of-mdx-integration-strategies-with-next-js-1kcm
+- https://www.joshwcomeau.com/blog/how-i-built-my-blog/ (Seriously, read this blog)
+
+So it turns out they are used for the same thing but with different features.
+
+- https://dev.to/tylerlwsmith/quick-comparison-of-mdx-integration-strategies-with-next-js-1kcm
+  This article covers it well.
+
+`MDXProvider` from `@mdx-js/react` for ig provide more control over how the markdown is rendered.
+
+```jsx
+import React from "react";
+import { MDXProvider } from "@mdx-js/react";
+import Content from "../demo/hello.md";
+
+export default function Page() {
+  return (
+    <MDXProvider components={components}>
+      <Content />
+    </MDXProvider>
+  );
+}
+
+const components = {
+  h1: ({ children }) => (
+    <h1 style={{ border: "12px solid red" }}>{children}</h1>
+  ),
+};
+```
+
+The compiled output is just an array of objects with some "special" properties that we can work on and make some powerful stuff.
+https://www.youtube.com/watch?v=xEu3t-KJVVg
+
+MDX is really really cool. https://egghead.io/lessons/egghead-mdx-v2-syntax
+
+## Choosing the right package or loader for using MDX with NextJS
+
+- `@next/mdx`
+- `next-mdx-enhanced`
+- `next-mdx-remote`
+- `mdx-bundler`
+
+[This article](https://dev.to/tylerlwsmith/quick-comparison-of-mdx-integration-strategies-with-next-js-1kcm) goes over the comparison.
+
+There's no "the best" solution out there. Just use the one you feel like going with, and if you face any problems during the way, try to fix or switch.
+
+I'm using `@next-mdx`. But I'll explore `mdx-bundler` in the future.
+
+```js
+// next.config.js
+const withMDX = require("@next/mdx")();
+module.exports = withMDX();
+
+// or
+
+const withMDX = require("@next/mdx")({
+  extension: /\.(md|mdx)$/,
+});
+
+module.exports = withMDX({
+  pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
+});
+```
+
+Now what?
+
+Things I first need to do:
+
+Since all my markdown files are in `/posts`, I need to import them and make them use a slug.
+But do we really want that?
+
+`getStaticProps` only fetches at build time. So, no HMR i guess.
+
+The official MDX docs: https://mdxjs.com/docs/
+
+Installing `@mdx-js/react` to get more control?
+
+Now what to do?
+
+I have moved all my posts files into `/blog/posts/`, but how to get the SEO benefits and stuff?
+
+See nextjs.org/docs/advanced-features/using-mdx
+
+## Tried adding remark/rehype plugins in nextmdx but they fail because they are ESM only, and I'm just require-ing them inside next.config.js file.
+
+Don't know where to go from here?
+
+```js
+const rehypeSlug = require("rehype-slug");
+const remarkToc = require("remark-toc");
+const headingId = require("remark-heading-id");
+
+const withMDX = require("@next/mdx")({
+  extension: /\.(md|mdx)$/,
+  options: {
+    remarkPlugins: [remarkToc, headingId],
+    rehypePlugins: [rehypeSlug],
+  },
+});
+
+module.exports = withMDX({
+  pageExtensions: ["md", "tsx"],
+});
+```
+
+^^ will fail.
+
+Now i'm trying mdx-bundler.
+Though it says it is best suited for runtime bundling, I want to bundle it during build time. The readme says it can be used as a build time bundler also. lets see how.
+
+Now trying Next-mdx-remote
+
+`next-mdx-remote` was the first that worked for me. and I couldn't be happier.
+https://github.com/vercel/next.js/tree/canary/examples/with-mdx-remote
+
+Though I'm not quite sure how to pass options to remark plugins.
+
+Looking at importing components, I'm concerned about bundling.
+
+We are importing all the components during build time, and that might increase the bundlie size.
+
+Though we can use dynamic import, but we don't want to fetch everything until it is used. (Does this problem only persist in next-mdx-remote or is it true for every mdx file.)
+
+Looking at network tabs, it seems the content are being loaded dynamically **on demand**.
+
+Future: First of all, look at compilation and bundling.
+
+Importing a single component in multiple project duplicates the data?
+
+---
+
+Reading about `next-mdx-remote`, it turns out that all the components are bundled during build time and It is available to every MDX file.
+Though one can use dynamic importing and some clever hack to dynamically import heavy components.
+See more at: https://github.com/hasicorp/next-mdx-enhanced/issues/103
+
+But what about next-mdx? Does it import components per md file(which is what I want ideally) or it imports everything?
+
+Another thing I want is the ability to see realtime changes(HMR) in md files instead of refreshing the page again and again.
+Though for this, I think I have to move all my md files inside the `pages/` directory.
+
+Nice codeblocks: https://ped.ro/blog/code-blocks-but-better
+
+---
+
+So I found a way to use rehype plugins inside `next.config.js`,
+just rename the file to `next.config.mjs` to use ESM modules instead of CJS ones.
+
+and then
+
+```js
+import rehypeSlug from "rehype-slug";
+import remarkToc from "remark-toc";
+import NextMdx from "@next/mdx";
+
+const withMDX = NextMdx({
+  extension: /\.(md|mdx)$/,
+  options: {
+    remarkPlugins: [remarkToc],
+    rehypePlugins: [rehypeSlug],
+  },
+});
+
+export default withMDX({
+  pageExtensions: ["md", "tsx"],
+});
+```
+
+That's all. It's working now. Oops, not working.
+
+But the internet said to upgrade nextjs, which I have the latest version of. So, It looks like my journey with Next/MDX is over :(
+
+---
+
+One thing I wanted to know about Next/MDX was whether the components we imported in our MDX pages only increased bundle size of that component itself or did it increased the bundle size overall?
+
+Well I checked, and it turns out the components only increase the bundle size of MDX page itself, and not overall page.
+
+But now I need to see how to use this in childrens.
+
+```
+---
+title: "Streams and Buffers in Nodejs"
+date: 2021-12-25T21:33:41+05:30
+draft: false
+---
+
+import Test from "components/Test.tsx";
+
+<h1>Hello world</h1>
+
+export default (props) => {
+  console.log(props);
+  return <div style={{ border: "2px solid red" }}>{props.children}</div>;
+};
+```
+
+---
+
+```
+import Test from "components/Test.tsx";
+
+## Hello, world
+
+- first
+- second
+
+<Test message="LOL" />
+
+export const name = "your name";
+
+export default (props) => {
+  console.log(props);
+  return (
+    <div style={{ border: "2px solid red" }}>
+      <p style={{ border: "2px solid green" }}>{props.name}</p>
+      {props.children}
+    </div>
+  );
+};
+```
+
+^^ This works flawlessly.
+
+---
+
+## NextMDX vs next-mdx-remote in terms of bundle size
+
+Both do the same thing.
+
+Another question: What does `getStaticProps` do in NextJS in terms of bundle size?
+
+Use this to get realtime HMR thing: https://github.com/hashicorp/next-remote-watch
+
+https://github.com/nicolastoulemont/blog
+
+After much thought, I went with `next-mdx-remote`.
+Mainly because it did not needed to interfere with next configs.
+
+My only concern now is that the bundle size and loading all the data in slug.
+
+---
+
+All steps to using Next MDX Remote:
+
+Install the package
+
+```
+npm i next-mdx-remote
+```
+
+Inside your [slug]
+
+```tsx
+import Link from "next/link";
+import { GetStaticProps, GetStaticPaths } from "next";
+import { BsArrowLeftShort } from "react-icons/bs";
+import { serialize } from "next-mdx-remote/serialize";
+import { MDXRemote } from "next-mdx-remote";
+import rehypePrism from "rehype-prism-plus";
+import remarkToc from "remark-toc";
+import rehypeSlug from "rehype-slug";
+import rehypeAutolinkHeadings from "rehype-autolink-headings";
+import dynamic from "next/dynamic";
+
+import { getAllPostIds, getPostData } from "@/utils/getPosts";
+import BlogContainer from "@/components/BlogContainer";
+import { BlogSEO } from "@/components/SEO";
+import { useRouter } from "next/router";
+
+// const Test = dynamic(() => import("MdxComponents/Test"));
+import Test from "MdxComponents/Test";
+const DirectoryStructure = dynamic(
+  () => import("MdxComponents/DirectoryStructure")
+);
+
+function BackToHomePage() {
+  const router = useRouter();
+  return <button onClick={() => router.push("/")}>Back to home page</button>;
+}
+
+const components = {
+  Test,
+  DirectoryStructure,
+  BackToHomePage,
+};
+
+export default function BlogPost({ source, frontmatter, slug }) {
+  return (
+    <>
+      <BlogSEO
+        title={frontmatter.title}
+        summary={frontmatter.description}
+        date={frontmatter.date}
+        image={frontmatter.cover?.image}
+        slug={slug}
+      />
+      <Link href="/blog">
+        <a className="styledLink">
+          <BsArrowLeftShort />
+          Back
+        </a>
+      </Link>
+      <BlogContainer frontmatter={frontmatter}>
+        <MDXRemote {...source} components={components} />
+      </BlogContainer>
+    </>
+  );
+}
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const paths = getAllPostIds();
+  return {
+    paths,
+    fallback: false,
+  };
+};
+
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const { content, frontmatter, slug } = await getPostData(
+    params.slug as string
+  );
+  const mdxSource = await serialize(content, {
+    scope: frontmatter,
+    mdxOptions: {
+      rehypePlugins: [
+        [rehypeAutolinkHeadings, { behavior: "append" }],
+        [rehypePrism, { showLineNumbers: true }],
+        rehypeSlug,
+      ],
+      remarkPlugins: [[remarkToc, { tight: true }]],
+    },
+  });
+  return { props: { source: mdxSource, frontmatter, slug } };
+};
+```
+
+Inside `getPostData.ts`
+
+```ts
+import fs from "fs";
+import path from "path";
+import matter from "gray-matter";
+import { remark } from "remark";
+import readingTime from "reading-time";
+import html from "remark-html";
+
+const postsDirectory = path.join(process.cwd(), "posts");
+const fileNames = fs.readdirSync(postsDirectory);
+
+export function getSortedPostsData() {
+  const allPostsData: any = fileNames
+    .map((fileName) => {
+      const slug = fileName.replace(/\.md$/, "");
+      const fullPath = path.join(postsDirectory, fileName);
+      const fileContents = fs.readFileSync(fullPath, "utf-8");
+
+      const { data: frontMatter, content } = matter(fileContents);
+      frontMatter.date = new Date(frontMatter.date).toISOString();
+      frontMatter.readingTime = readingTime(content);
+      return {
+        slug,
+        ...frontMatter,
+      };
+    })
+    .filter((val: any) => !val.draft);
+
+  return allPostsData.sort((a, b) => {
+    if (a.date < b.date) {
+      return 1;
+    } else {
+      return -1;
+    }
+  });
+}
+
+export function getAllTags() {
+  // TODO: need to get the blog data associated with a certain tag
+  const allTags: string[] = [];
+
+  const data = fileNames
+    .map((fileName) => {
+      const fullPath = path.join(postsDirectory, fileName);
+      const fileContents = fs.readFileSync(fullPath, "utf-8");
+
+      const { data: frontMatter } = matter(fileContents);
+      return frontMatter;
+    })
+    .filter((frontMatter) => {
+      return !frontMatter.draft;
+    });
+
+  data.forEach((frontMatter) => {
+    const tags: string | string[] = frontMatter.tags;
+    if (tags) {
+      if (Array.isArray(tags)) {
+        const newTags = tags.filter((tag) => !allTags.includes(tag));
+        allTags.push(...newTags);
+        return allTags;
+      }
+      if (allTags.includes(tags)) {
+        return allTags;
+      }
+      allTags.push(tags);
+    }
+  });
+
+  return allTags;
+}
+
+export function getAllPostIds() {
+  const fileNames = fs.readdirSync(postsDirectory);
+  return fileNames.map((fileName) => ({
+    params: {
+      slug: fileName.replace(/\.md$/, ""),
+    },
+  }));
+}
+
+export async function getPostData(slug: string) {
+  const fullPath = path.join(postsDirectory, `${slug}.md`);
+  const fileContents = fs.readFileSync(fullPath, "utf-8");
+
+  const matterResult = matter(fileContents);
+  matterResult.data.date = new Date(matterResult.data.date).toISOString();
+  matterResult.data.readingTime = readingTime(matterResult.content);
+  if (matterResult.data.cover?.caption) {
+    const caption = await remark()
+      .use(html, { sanitize: false })
+      .process(matterResult.data.cover.caption);
+    matterResult.data.cover.caption = caption.toString();
+  }
+
+  return {
+    slug,
+    content: matterResult.content,
+    frontmatter: matterResult.data,
+  };
+}
+```
+
+For some other concerns, I will see them next.
+
+https://nextjs.org/docs/advanced-features/preview-mode
+Preview mode doesn't work due to 2kb limit and much more work to setup.

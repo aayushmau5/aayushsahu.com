@@ -19,7 +19,7 @@ import StyledAnchor from "@/components/MDX/StyledAnchor";
 import SomeFancyText from "@/components/MDX/SomeFancyText";
 import SeparatorSvg from "@/components/React/SeparatorSvg";
 import NextPrevArticles from "@/components/React/Blog/NextPrevArticles";
-import getToc from "@/utils/getToc";
+import { generateToC, transformToC } from "@/utils/generateToC";
 
 const components = {
   pre: ({ className, ...props }) => {
@@ -97,7 +97,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     },
   });
 
-  const tableOfContents = getToc(content);
+  const tableOfContents = transformToC(generateToC(content));
 
   return {
     props: {
