@@ -22,7 +22,7 @@
   margin-top: 0;
 }
 
-.link:hover {
+.list li a:hover {
   color: white;
   text-decoration: underline;
 }

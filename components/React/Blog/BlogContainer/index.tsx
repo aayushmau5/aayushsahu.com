@@ -13,22 +13,20 @@ export default function BlogContainer({
     <div className={styles.container}>
       <ShowFrontMatter frontMatter={frontMatter} />
       <SeparatorSvg stroke="gray" header />
-      <ShowToc frontMatter={frontMatter} tableOfContents={tableOfContents} />
+      <ShowToc tableOfContents={tableOfContents} />
       <article>{children}</article>
     </div>
   );
 }
 
-function ShowToc({ frontMatter, tableOfContents }) {
-  if (tableOfContents?.length === 0) return null;
-  if (typeof frontMatter.showToc === "undefined") {
+function ShowToc({ tableOfContents }: { tableOfContents: string }) {
+  // tableOfContents might be null
+  if (tableOfContents !== null) {
+    if (tableOfContents.length === 0) return null;
     return <ToC toc={tableOfContents} />;
   } else {
-    if (frontMatter.showToc) {
-      return <ToC toc={tableOfContents} />;
-    } else {
-      return null;
-    }
+    tableOfContents;
+    return null;
   }
 }
 

@@ -97,7 +97,15 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     },
   });
 
-  const tableOfContents = await generateToC(content);
+  let tableOfContents: string = null;
+
+  if (typeof frontMatter.showToc === "undefined") {
+    tableOfContents = await generateToC(content);
+  } else {
+    if (frontMatter.showToc) {
+      tableOfContents = await generateToC(content);
+    }
+  }
 
   return {
     props: {

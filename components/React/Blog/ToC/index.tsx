@@ -8,7 +8,7 @@ export default function TableOfContents({ toc }: Props) {
   return (
     <details className={styles.details}>
       <summary className={styles.summary}>Table of Contents</summary>
-      <div dangerouslySetInnerHTML={{ __html: toc }} />
+      <div className={styles.list} dangerouslySetInnerHTML={{ __html: toc }} />
     </details>
   );
 }
