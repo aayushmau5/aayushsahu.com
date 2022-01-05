@@ -22,10 +22,10 @@ export default function BlogContainer({
 function ShowToc({ frontMatter, tableOfContents }) {
   if (tableOfContents?.length === 0) return null;
   if (typeof frontMatter.showToc === "undefined") {
-    return <ToC elements={tableOfContents} />;
+    return <ToC toc={tableOfContents} />;
   } else {
     if (frontMatter.showToc) {
-      return <ToC elements={tableOfContents} />;
+      return <ToC toc={tableOfContents} />;
     } else {
       return null;
     }

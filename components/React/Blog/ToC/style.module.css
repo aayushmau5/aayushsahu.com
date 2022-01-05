@@ -1,7 +1,12 @@
 .details {
-  background-color: #0a0a0a;
+  background-color: #22272a;
   border-radius: 0.55rem;
   padding-bottom: 0.04rem;
+}
+
+.details:focus-within {
+  outline: 3px solid #22272a;
+  outline-offset: 5px;
 }
 
 .summary {
@@ -17,10 +22,7 @@
   margin-top: 0;
 }
 
-.link {
-  color: gray;
-}
-
 .link:hover {
   color: white;
+  text-decoration: underline;
 }
