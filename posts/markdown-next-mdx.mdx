@@ -2,7 +2,7 @@
 title: "Using MDX with NextJS"
 description: "How to use MDX with NextJS?"
 date: 2021-12-18T07:27:46.681Z
-tags: []
+tags: ["mdx", "nextjs", "markdown"]
 cover:
 	image: "/blogImages/"
 	alt: ""
@@ -10,17 +10,20 @@ cover:
 draft: true
 ---
 
-MDX: Markdown with component
-// Short intro for MDX
+# Introduction
+
+**MDX** is a markdown extension that brings in support for JS components(typically react components, but not only limited to react) inside markdown.
+
+This blog post shows what I did to use MDX with NextJS, some roadblocks I ran into, & my learnings. Let's get started!
+
+To know more about MDX, checkout the official docs [here](https://mdxjs.com/docs/getting-started/).
+
+# Goal
 
 Need integrations for framework, bundlers, etc.
 
 - Using existing components in your MDX
 - Importing other MDX files as components(pretty interesting, perhaps I can have frontmatter in another MDX file)
-
-Everything you ever need? https://mdxjs.com/docs/getting-started/
-
-## Goal
 
 My goal was to
 
@@ -199,7 +202,7 @@ I have moved all my posts files into `/blog/posts/`, but how to get the SEO bene
 
 See nextjs.org/docs/advanced-features/using-mdx
 
-## Tried adding remark/rehype plugins in nextmdx but they fail because they are ESM only, and I'm just require-ing them inside next.config.js file.
+> Tried adding remark/rehype plugins in nextmdx but they fail because they are ESM only, and I'm just require-ing them inside next.config.js file.
 
 Don't know where to go from here?
 

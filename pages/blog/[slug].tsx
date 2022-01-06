@@ -6,7 +6,6 @@ import { MDXRemote } from "next-mdx-remote";
 import rehypePrism from "rehype-prism-plus";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
-import { remarkMdxCodeMeta } from "remark-mdx-code-meta";
 import remarkGfm from "remark-gfm";
 
 import { getAllPostIds, getPostData } from "@/utils/getPosts";
@@ -93,7 +92,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         rehypeSlug,
         [rehypeAutolinkHeadings, { behavior: "append" }],
       ],
-      remarkPlugins: [remarkMdxCodeMeta, remarkGfm],
+      remarkPlugins: [remarkGfm],
     },
   });
 

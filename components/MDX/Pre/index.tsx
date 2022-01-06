@@ -10,7 +10,10 @@ export default function Pre({ languageType = "", ...props }) {
       {languageType ? (
         <div className={styles.languageTypeContainer}>{languageType}</div>
       ) : null}
-      <pre {...props} className={`${props.className} ${styles.pre}`} />
+      <pre
+        {...props}
+        className={`${props.className ? props.className : ""} ${styles.pre}`}
+      />
     </div>
   );
 }

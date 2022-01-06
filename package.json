@@ -24,8 +24,7 @@
     "rehype-slug": "^5.0.1",
     "remark": "^14.0.2",
     "remark-gfm": "^3.0.1",
-    "remark-html": "^15.0.1",
-    "remark-mdx-code-meta": "^1.0.0"
+    "remark-html": "^15.0.1"
   },
   "devDependencies": {
     "@types/react": "^17.0.38",

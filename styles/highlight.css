@@ -279,7 +279,7 @@ pre {
   overflow-x: auto;
 }
 
-/**
+/*
  * Inspired by gatsby remark prism - https://www.gatsbyjs.com/plugins/gatsby-remark-prismjs/
  * 1. Make the element just wide enough to fit its content.
  * 2. Always fill the visible space in .code-highlight.
