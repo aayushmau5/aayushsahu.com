@@ -10,13 +10,6 @@ const fileNames = fs.readdirSync(postsDirectory);
 export let sortedPostData = getSortedPostsData();
 let recommendedPostList = generateNextPrevArticlesList(sortedPostData);
 
-interface FrontMatter {
-  title: string;
-  readingTime: ReadTimeResults;
-  date: string;
-  draft: boolean;
-}
-
 interface Slug {
   slug: string;
 }

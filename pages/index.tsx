@@ -10,8 +10,9 @@ import { sortedPostData } from "@/utils/getPosts";
 
 import blogStyles from "@/styles/Blog.module.css";
 import styles from "@/styles/Home.module.css";
+import getResumeLink from "@/utils/getResumeLink";
 
-export default function Index({ firstPost, secondPost }) {
+export default function Index({ firstPost, secondPost, resumeFileNameLink }) {
   return (
     <>
       <PageSEO
@@ -103,7 +104,12 @@ export default function Index({ firstPost, secondPost }) {
               <BsArrowRightShort />
               Contact me
             </a>
-            <a href="/resume.pdf" target="_blank" className="styledLink">
+            <a
+              href={`/resume/${resumeFileNameLink}`}
+              target="_blank"
+              rel="noreferrer"
+              className="styledLink"
+            >
               <BsArrowRightShort />
               See my resume
             </a>
@@ -116,14 +122,16 @@ export default function Index({ firstPost, secondPost }) {
 
 export const getStaticProps = async () => {
   const postsData = sortedPostData;
-
   const firstPost = postsData[0];
   const secondPost = postsData[1];
+
+  const resumeFileNameLink = getResumeLink();
 
   return {
     props: {
       firstPost,
       secondPost,
+      resumeFileNameLink,
     },
   };
 };
