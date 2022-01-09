@@ -1,0 +1,166 @@
+---
+title: "GSoC at AsyncAPI: Part 1"
+date: 2021-06-20
+draft: false
+description: "My GSoC experience blog"
+tags: ["gsoc", "open-source", "asyncapi"]
+cover:
+  image: "/blogImages/week-1-2/moritz-kindler-JpeNqoeJ-OY-unsplash.jpg"
+  alt: "Green leaves"
+  caption: "Photo by [Moritz Kindler](https://unsplash.com/@moritz_photography) on [Unsplash](https://unsplash.com/)"
+---
+
+Oh man, it's been quite some time since the last blog. Lots of exciting stuff going on in my life nowadays, and I wanted to share it with you :)
+
+# Brief Overview of my project
+
+You can get a brief overview of my project from [my previous blog](https://aayushmau5.github.io/posts/gsoc/).
+
+# What's this blog(and following more) is going to be about?
+
+This blog will document what I did during my GSoC coding period(in this case: week 1 and 2), I will briefly explain the changes I made during this period, what was my experience, what skills I gained, etc. Basically a lot of stuff. So, buckle up!
+
+# Week 1
+
+During the first week, I was tasked to
+
+- Initialize the `diff` [repository](https://github.com/asyncapi/diff).
+- Include the [AsyncAPI parser](https://github.com/asyncapi/parser-js) to parse the input AsyncAPI Document.
+
+Since, the whole project will be written in TypeScript, I had to set up all the essential TS stuff, like importing the `@types/node` package and the TS compiler as well as configuring the `tsconfig.json` file. Added `eslint` and the rules, for linting. For testing, we are gonna use `jest`(+`ts-jest`).
+
+All in all, it was pretty straightforward to set up the project. No specific code written at this point.
+
+I made the PR, got some reviews, resolved it, and it got merged. First step taken 💪.
+
+**Now, it was time to implement the functionality of parsing the AsyncAPI document(using AsyncAPI parser).**
+
+This basically meant that we will have a **module** which exports a single function called `parser` having two parameters, and we will pass in the path(local or URL) as those parameters, which our `parser` function will parse. The output by this function will be an object containing the parsed output of both those AsyncAPI documents which we passed through the path.
+
+Here's an illustration of what I said above:
+![parser-module-illustrastion](/blogImages/week-1-2/parser-module.png#center)
+
+## Going a bit deep
+
+This section will be about the explanation of code inside the `Parser` module, so If you don't care about that stuff, you can skip this section :)
+
+**The approach:**
+
+Here's what my approach looked like when tackling this problem:
+
+- Get the two path parameters.
+- Check whether the passed parameter is a local path or a URL.
+- In case of a local path, resolve the path, then read the contents of the file from that path.
+- In case of a URL, check whether the passed URL is valid or not. If not valid, throw an error. If valid, pass the URL to `parseFromUrl` function exported by `@asyncapi/parser` package.
+- For local path, after the content of file has been read, pass that data to `parse` function present in `@asyncapi/parser`.
+- Put the parsed document returned from the parser into an object and return that object.
+
+Here's what our main function looks like:
+
+```ts
+export interface ParsedOutput {
+  firstDocument: AsyncAPIDocument;
+  secondDocument: AsyncAPIDocument;
+}
+
+export async function parser(
+  firstPath: string,
+  secondPath: string
+): Promise<ParsedOutput> {
+  const firstDocument = await parseDocument(firstPath),
+    secondDocument = await parseDocument(secondPath);
+  return { firstDocument, secondDocument };
+}
+```
+
+`parseDocument`'s job is to take the path, and return the parsed AsyncAPI data from that path. Here's how it looks like:
+
+```ts
+async function parseDocument(path: string) {
+  if (isUrl(path)) {
+    return parseFromUrl(path);
+  }
+  return parse(await readDocument(path));
+}
+```
+
+Here we are checking whether the given path is a URL or not using the `isUrl` function. If true, we will parse from URL, otherwise we will read the file and parse it.
+
+I don't want to go into the implementation details of `isUrl` function and `readDocument` functions. You can take a look at those at [this PR](https://github.com/asyncapi/diff/pull/7).
+
+## Learning experience
+
+I learned some new things during this process:
+
+- **JSDoc** — The way we use JSDoc for documenting our project, I always thought that this feature is implemented with a certain package, but I was really surprised to know that this feature is built-in into editors. JSDoc is one of the best ways to document your code, so I will definitely use it in my other projects :D.
+
+- **Unit Testing** — I had some experience with **Integration** testing, but never with Unit testing. So, getting familiar with testing a “unit” of code was pretty cool experience for me.
+
+## Other stuff
+
+Some other stuff that happened during this week were:
+
+- My mentor([Vinit Shahdeo](https://github.com/vinitshahdeo)) introduced me to [Anubhav Vats](https://github.com/onbit-syn) who has been tremendously helpful. You can say he is my 2nd mentor as well :)
+- I have been working on [this issue](https://github.com/asyncapi/website/issues/86) which is planned for the `2.1.0` release of AsyncAPI spec. I picked up this issue because I wanted to get comfortable with GitHub Actions. I had some experience with GH Action, but I was still not that comfortable with them.
+
+That concluded my first week as a GSoC student. Can't wait to see what's to come next :D.
+
+# Week 2
+
+It's the start of second week. Last week was really fun :D.
+
+This week I was tasked to come up with a diff “standard”.
+
+## What's the diff standard?
+
+The diff standard will be a markdown document file containing a list of decision/rules. These rules will govern what changes to an AsyncAPI document will be considered a “breaking” or “non-breaking” change.
+
+**What do I mean by “breaking”/”non-breaking” changes?**
+
+Since my project is about generating the diff between two versions of AsyncAPI documents, we should have a common understanding that changing the value of a property in the second version of the document may cause an existing service to break(or stop functioning) which used to depend on the first version of the document.
+
+For example, here's the first version of an AsyncAPI document
+
+```yml
+servers:
+  production:
+    # some data
+```
+
+and here's what the changes have been made (the second version of the document)
+
+```yml
+servers:
+  api/development:
+    # some data
+  api/production:
+    # some data
+```
+
+**We are making the rules based on the Point of View of a Consumer(client/server).** So a change that may not affect the consumer will be considered a non-breaking change.
+
+Suppose, a consumer has been using a service which was based on the first version, so it can connect to `production` server and do the work.
+
+Now, after making changes to the document, the service is again built-up again.
+
+But this time, the consumer will fail to work, because it used to connect to the `production` server(which has been renamed to `api/production`).
+
+This is what we consider a `"breaking"` change.
+
+The addition of another server called `api/development` will be a non-breaking change because no existing consumer is using that server, so we won't have any point of failure in that case.
+
+## Learning experience
+
+**AsyncAPI specification** — During this time, I had to understand the AsyncAPI spec in order to judge the changes in the properties of the spec. Honestly, I love how straightforward and powerful the spec is. You can just spin up a demo service in seconds.
+
+Many thanks for [Anubhav Vats](https://github.com/onbit-syn) for helping me a lot during this process. His insights were really great on how can we judge the changes, how to think about the change, and much more.
+
+You can check out my PR which documents this diff standard [here](https://github.com/asyncapi/diff/pull/9).
+
+## Other stuff
+
+Some other stuff that happened during this week were:
+
+- Work still going on [this issue](https://github.com/asyncapi/website/issues/86) which is planned for the `2.1.0` release of AsyncAPI spec. I made the GitHub action file, now working on the website side, where we have to display the new spec file.
+
+And, that concludes my second week as a GSoC student. Let's see what's to come next :)

@@ -1,8 +1,9 @@
 import Link from "next/link";
 import { BsArrowLeftShort } from "react-icons/bs";
 
-import styles from "@/styles/404.module.css";
 import { PageSEO } from "@/components/SEO";
+
+import styles from "@/styles/404.module.css";
 
 export default function FourOhFourPage() {
   return (

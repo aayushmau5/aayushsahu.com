@@ -12,6 +12,12 @@
   }
 }
 
+.container code {
+  font-size: 0.9rem;
+  padding: 2px 5px;
+  border-radius: 2px;
+}
+
 .logoContainer {
   border: 5px solid rgb(34, 34, 34);
   border-radius: 50%;

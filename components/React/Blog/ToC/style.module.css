@@ -1,0 +1,28 @@
+.details {
+  background-color: #22272a;
+  border-radius: 0.55rem;
+  padding-bottom: 0.04rem;
+}
+
+.details:focus-within {
+  outline: 3px solid #22272a;
+  outline-offset: 5px;
+}
+
+.summary {
+  padding: 1rem 0.7rem;
+  border-radius: 0.55rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+}
+
+.list {
+  margin-top: 0;
+}
+
+.list li a:hover {
+  color: white;
+  text-decoration: underline;
+}

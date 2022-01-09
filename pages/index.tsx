@@ -3,10 +3,16 @@ import Link from "next/link";
 import { BsArrowRightShort } from "react-icons/bs";
 
 import { PageSEO } from "@/components/SEO";
-import Logo from "@/public/image.png";
-import styles from "@/styles/Home.module.css";
+import Date from "@/components/Date";
 
-export default function Index() {
+import Logo from "@/public/image.png";
+import { sortedPostData } from "@/utils/getPosts";
+
+import blogStyles from "@/styles/Blog.module.css";
+import styles from "@/styles/Home.module.css";
+import getResumeLink from "@/utils/getResumeLink";
+
+export default function Index({ firstPost, secondPost, resumeFileNameLink }) {
   return (
     <>
       <PageSEO
@@ -48,6 +54,36 @@ export default function Index() {
           </div>
         </div>
 
+        <div>
+          <h3>Recent articles</h3>
+          <div className={blogStyles.blogsContainer}>
+            <Link key={firstPost.slug} href={`/blog/${firstPost.slug}`}>
+              <a className={blogStyles.blogContainer}>
+                <p className={blogStyles.date}>
+                  <Date dateString={firstPost.date} />
+                </p>
+                <h3>{firstPost.title}</h3>
+                <p className={blogStyles.readingTime}>
+                  {firstPost.readingTime.text}
+                </p>
+                <p className={blogStyles.additionalInfo}></p>
+              </a>
+            </Link>
+            <Link key={secondPost.slug} href={`/blog/${secondPost.slug}`}>
+              <a className={blogStyles.blogContainer}>
+                <p className={blogStyles.date}>
+                  <Date dateString={secondPost.date} />
+                </p>
+                <h3>{secondPost.title}</h3>
+                <p className={blogStyles.readingTime}>
+                  {secondPost.readingTime.text}
+                </p>
+                <p className={blogStyles.additionalInfo}></p>
+              </a>
+            </Link>
+          </div>
+        </div>
+
         <div className={styles.nextStepsContainer}>
           <div className={styles.nextSteps}>
             <p>While you are here, feel free to:</p>
@@ -68,7 +104,12 @@ export default function Index() {
               <BsArrowRightShort />
               Contact me
             </a>
-            <a href="/resume.pdf" target="_blank" className="styledLink">
+            <a
+              href={`/resume/${resumeFileNameLink}`}
+              target="_blank"
+              rel="noreferrer"
+              className="styledLink"
+            >
               <BsArrowRightShort />
               See my resume
             </a>
@@ -78,3 +119,19 @@ export default function Index() {
     </>
   );
 }
+
+export const getStaticProps = async () => {
+  const postsData = sortedPostData;
+  const firstPost = postsData[0];
+  const secondPost = postsData[1];
+
+  const resumeFileNameLink = getResumeLink();
+
+  return {
+    props: {
+      firstPost,
+      secondPost,
+      resumeFileNameLink,
+    },
+  };
+};

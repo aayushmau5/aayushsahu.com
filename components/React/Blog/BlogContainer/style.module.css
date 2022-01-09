@@ -1,0 +1,85 @@
+.title {
+  margin-bottom: 0;
+  font-size: 1.8rem;
+  color: white;
+}
+
+.coverImage img {
+  width: 100% !important;
+  border-radius: 0.7rem;
+}
+
+.description {
+  color: white;
+  margin-bottom: 0;
+}
+
+.otherInfo {
+  color: gray;
+  font-size: 0.9rem;
+}
+
+.caption {
+  margin: 0;
+  font-size: 0.9rem;
+  color: gray;
+  text-align: center;
+}
+
+.container {
+  color: rgba(255, 255, 255, 0.74);
+  word-wrap: break-word;
+  animation: load 0.5s;
+}
+
+@keyframes load {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.container span[class="icon icon-link"] {
+  color: gray;
+}
+
+.container span[class="icon icon-link"]:hover {
+  color: rgb(83, 188, 240);
+}
+
+.container span[class="icon icon-link"]::before {
+  content: "#";
+  margin-left: 5px;
+  color: inherit;
+  text-decoration: none;
+}
+
+.container h1,
+.container h2,
+.container h3,
+.container h4,
+.container h5,
+.container h6 {
+  color: white;
+}
+
+.container img {
+  display: block;
+  margin: 1rem auto;
+  width: 100%;
+}
+
+.container code {
+  font-size: 0.9rem;
+  padding: 2px 5px;
+  border-radius: 2px;
+}
+
+@media (min-width: 1024px) {
+  .container img {
+    width: 60%;
+  }
+}

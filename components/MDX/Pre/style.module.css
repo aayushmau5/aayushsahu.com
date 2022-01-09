@@ -1,0 +1,48 @@
+.container {
+  position: relative;
+  margin-left: -32px;
+  margin-right: -32px;
+}
+
+.marginTop48 {
+  margin-top: 48px;
+}
+
+.languageTypeContainer {
+  margin: 0;
+  position: absolute;
+  right: 20px;
+  top: 0;
+  transform: translateY(-100%);
+  padding: 2px 10px;
+  border-radius: 5px 5px 0 0;
+  font-weight: bold;
+  background-color: #0a0a0a;
+}
+
+.pre {
+  background-color: rgb(10, 10, 10);
+  padding: 1rem;
+}
+
+.pre code {
+  padding: 0 1rem;
+  font-weight: normal;
+  background-color: transparent;
+}
+
+@media (min-width: 1024px) {
+  .container {
+    margin-left: 0;
+    margin-right: 0;
+    padding: 0;
+  }
+
+  .pre {
+    border-radius: 0.55rem;
+  }
+
+  .pre code {
+    padding: 0;
+  }
+}

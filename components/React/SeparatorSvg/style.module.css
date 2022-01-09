@@ -1,0 +1,16 @@
+.container {
+  margin: 1rem 0;
+  text-align: center;
+}
+
+.svg path {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: animate 2s linear forwards;
+}
+
+@keyframes animate {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
