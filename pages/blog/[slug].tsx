@@ -15,7 +15,6 @@ import Pre from "@/components/MDX/Pre";
 import Blockquote from "@/components/MDX/Blockquote";
 import HiddenExpand from "@/components/MDX/HiddenExpand";
 import StyledAnchor from "@/components/MDX/StyledAnchor";
-import SomeFancyText from "@/components/MDX/SomeFancyText";
 import SeparatorSvg from "@/components/React/SeparatorSvg";
 import NextPrevArticles from "@/components/React/Blog/NextPrevArticles";
 import { generateToC } from "@/utils/generateToC";
@@ -35,7 +34,6 @@ const components = {
   a: (props) => <StyledAnchor {...props} />,
   hr: (props) => <SeparatorSvg {...props} stroke="#569cd6" />,
   HiddenExpand,
-  SomeFancyText,
 };
 
 export default function BlogPost({
