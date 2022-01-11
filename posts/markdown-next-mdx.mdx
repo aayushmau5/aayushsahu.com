@@ -20,66 +20,42 @@ To know more about MDX, checkout the official docs [here](https://mdxjs.com/docs
 
 # Goal
 
-Need integrations for framework, bundlers, etc.
+With MDX, we can:
 
-- Using existing components in your MDX
-- Importing other MDX files as components(pretty interesting, perhaps I can have frontmatter in another MDX file)
+- use existing react components in our MDX
+- import other MDX files as components, though I wasn't able to implement this with the approach I took
 
-My goal was to
+But my main goal was to:
 
 - Get MDX working
-- Add plugins, syntax highlight, etc.
-- Add interactive components like codesandbox, etc.
+- Integrate remark/rehype plugins for syntax highlighting, headings, etc.
+- Using custom react components inside my blogs
 
-## Integrating MDX into your project
+# Installing MDX
 
-Using MDX with your bundler and JSX runtime.
+To use MDX, you need to use the MDX compiler which compiles MDX documents to JavaScript.
 
-JSX runtime like React, preact, vue, etc.
-MDX does compile JSX to javascript for us.
+> MDX is a language that's compiled to JS. MDX also compiles regular markdown to JS.
 
-`@mdx-js/*` packages. All of them as ESM only, so only `import` statements.
-
-## Quick start
-
-### Bundler
-
-MDX is a language that's compiled to JS. MDX also compiles regular markdown to JS.
-
-But we need to use an integration for our bundler(if we have one).
+If you are using a bundler, you need to integrate MDX in your bundler.
 
 Ex.
-
 - For **esbuild**, use `@mdx-js/esbuild` integration
 - For **Rollup**, use `@mdx-js/rollup` integration
 - For **webpack**, use `@mdx-js/loader` integration(CRA, NextJS, Vue CLI)
 
-Though now that NextJS uses `swc`, need to check how to integrate it with SWC.
+You can also use MDX if you are not using a bundler:
 
-We can also use MDX if we are not using a bundler:
+- If you want to import MDX files in NodeJS, use `@mdx-js/node-loader`
+- Otherwise, install and use the core compiler `@mdx-js/mdx` to manually compile MDX files.
 
-- If we want to import MDX files in NodeJS, use `@mdx-js/node-loader`
-- Otherwise, install and use the core compiler `@mdx-js/mdx` to manually compiler MDX files.
+For more detailed info, checkout the [official docs](https://mdxjs.com/docs/getting-started/).
 
-There are dedicated pages for using MDX with popular tools like CRA, esbuild, Next etc.
+Now that you have integration setup with your bundler, its time to setup the JSX runtime.
 
-We need to look into the NextJS one.
+If you are using React, you don't need to do anything. Perhaps install `@mdx-js/react` for some configurations.
 
-### JSX
-
-Now that we have integration setup with our bundler, its time to setup the JSX runtime.
-
-If we are using React, we don't need to do anything. Perhaps install `@mdx-js/react` to configure some stuff(not sure what stuff though, need to look).
-
-### Editor
-
-VSCode extension to support MDX: `silvenon/vscode-mdx` or `xyc/vscode-mdx-preview`
-
-### Types or usage with TS
-
-Need to install `@types/mdx`
-
-## Using with NextJS
+# Using with NextJS
 
 Next supports webpack loaders by overwriting the webpack config in `next.config.js`
 

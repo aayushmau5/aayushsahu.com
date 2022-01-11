@@ -49,7 +49,6 @@ export default function BlogPost({
         title={frontMatter.title}
         summary={frontMatter.description}
         date={frontMatter.date}
-        image={frontMatter.cover?.image}
         slug={slug}
       />
       <Link href="/blog">
