@@ -1,4 +1,10 @@
-import { FaDev, FaGithub, FaLinkedinIn, FaTwitter } from "react-icons/fa";
+import {
+  FaDev,
+  FaGithub,
+  FaLinkedinIn,
+  FaTwitter,
+  FaRss,
+} from "react-icons/fa";
 
 import styles from "./style.module.css";
 
@@ -30,6 +36,9 @@ export default function Footer() {
         </a>
         <a href="https://dev.to/aayushmau5" target="_blank" rel="noreferrer">
           <FaDev />
+        </a>
+        <a href="/rss.xml" target="_blank" rel="noreferrer">
+          <FaRss />
         </a>
       </div>
     </div>
