@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
 
 import SeparatorSvg from "../../SeparatorSvg";
@@ -23,21 +22,22 @@ export default function NextPrevArticles({ recommendedPostList }) {
 
 function ShowArticle({ article, prev = false }) {
   return (
-    <Link href={`/blog/${article.slug}`}>
-      <a className={`${styles.links} ${!prev ? styles.nextPlacement : ""}`}>
-        <p className={`${styles.info} ${!prev ? styles.nextArticle : ""}`}>
-          {prev ? (
-            <>
-              <FiArrowLeft /> Previous article
-            </>
-          ) : (
-            <>
-              Next article <FiArrowRight />
-            </>
-          )}
-        </p>
-        {article.title}
-      </a>
-    </Link>
+    <a
+      href={`/blog/${article.slug}`}
+      className={`${styles.links} ${!prev ? styles.nextPlacement : ""}`}
+    >
+      <p className={`${styles.info} ${!prev ? styles.nextArticle : ""}`}>
+        {prev ? (
+          <>
+            <FiArrowLeft /> Previous article
+          </>
+        ) : (
+          <>
+            Next article <FiArrowRight />
+          </>
+        )}
+      </p>
+      {article.title}
+    </a>
   );
 }

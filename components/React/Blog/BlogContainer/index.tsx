@@ -1,8 +1,12 @@
+import dynamic from "next/dynamic";
+
 /* eslint-disable @next/next/no-img-element */
 import Date from "../../../Date";
 import styles from "./style.module.css";
 import ToC from "../ToC";
 import SeparatorSvg from "../../SeparatorSvg";
+
+const GiscusComments = dynamic(() => import("../GiscusComments"));
 
 export default function BlogContainer({
   children,
@@ -15,6 +19,7 @@ export default function BlogContainer({
       <SeparatorSvg stroke="gray" header />
       <ShowToc tableOfContents={tableOfContents} />
       <article>{children}</article>
+      <GiscusComments />
     </div>
   );
 }
