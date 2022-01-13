@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+    <channel>
+        <title>Aayush Kumar Sahu - Developer and Explorer</title>
+        <link>https://aayushsahu.com</link>
+        <description>aayushmau5' personal website</description>
+        <lastBuildDate>Thu, 13 Jan 2022 08:58:24 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>https://github.com/jpmonette/feed</generator>
+        <language>en</language>
+        <image>
+            <title>Aayush Kumar Sahu - Developer and Explorer</title>
+            <url>https://aayushsahu.com/socialBanner.png</url>
+            <link>https://aayushsahu.com</link>
+        </image>
+        <copyright>CC 2022, Aayush Kumar Sahu</copyright>
+        <category>Programming</category>
+        <item>
+            <title><![CDATA[NextJS Code Splitting & Dynamic Imports]]></title>
+            <link>https://aayushsahu.com/blog/nextjs-dynamic-import</link>
+            <guid>https://aayushsahu.com/blog/nextjs-dynamic-import</guid>
+            <pubDate>Thu, 02 Dec 2021 16:18:15 GMT</pubDate>
+            <description><![CDATA[Quickly looking at dynamic imports using NextJS]]></description>
+        </item>
+        <item>
+            <title><![CDATA[What is the Visitor design pattern and how to implement it in TS?]]></title>
+            <link>https://aayushsahu.com/blog/visitor-pattern</link>
+            <guid>https://aayushsahu.com/blog/visitor-pattern</guid>
+            <pubDate>Sat, 04 Sep 2021 00:00:00 GMT</pubDate>
+            <description><![CDATA[Implementing the Visitor design pattern using TypeScript interfaces and classes]]></description>
+        </item>
+        <item>
+            <title><![CDATA[GSoC at Postman and AsyncAPI]]></title>
+            <link>https://aayushsahu.com/blog/gsoc-at-postman-and-asyncapi</link>
+            <guid>https://aayushsahu.com/blog/gsoc-at-postman-and-asyncapi</guid>
+            <pubDate>Wed, 01 Sep 2021 13:59:43 GMT</pubDate>
+            <description><![CDATA[Final blog for my GSoC journey]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Publishing JavaScript/TypeScript packages on npm registry]]></title>
+            <link>https://aayushsahu.com/blog/typescript-npm-publish</link>
+            <guid>https://aayushsahu.com/blog/typescript-npm-publish</guid>
+            <pubDate>Wed, 14 Jul 2021 05:28:50 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Deep dive into Memoization + React's useMemo hook]]></title>
+            <link>https://aayushsahu.com/blog/memoization-use-memo</link>
+            <guid>https://aayushsahu.com/blog/memoization-use-memo</guid>
+            <pubDate>Tue, 06 Jul 2021 04:05:47 GMT</pubDate>
+            <description><![CDATA[Looking into memoization and `useMemo` to improve some performance of our application.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[GSoC at AsyncAPI: Part 2]]></title>
+            <link>https://aayushsahu.com/blog/gsoc-asyncapi-2</link>
+            <guid>https://aayushsahu.com/blog/gsoc-asyncapi-2</guid>
+            <pubDate>Sat, 03 Jul 2021 15:43:49 GMT</pubDate>
+            <description><![CDATA[My GSoC experience blog]]></description>
+        </item>
+        <item>
+            <title><![CDATA[GSoC at AsyncAPI: Part 1]]></title>
+            <link>https://aayushsahu.com/blog/gsoc-asyncapi-1</link>
+            <guid>https://aayushsahu.com/blog/gsoc-asyncapi-1</guid>
+            <pubDate>Sun, 20 Jun 2021 00:00:00 GMT</pubDate>
+            <description><![CDATA[My GSoC experience blog]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Getting selected in GSoC]]></title>
+            <link>https://aayushsahu.com/blog/gsoc</link>
+            <guid>https://aayushsahu.com/blog/gsoc</guid>
+            <pubDate>Thu, 03 Jun 2021 14:29:26 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Making PR to another repository using Github Actions]]></title>
+            <link>https://aayushsahu.com/blog/gh-action-pr</link>
+            <guid>https://aayushsahu.com/blog/gh-action-pr</guid>
+            <pubDate>Fri, 21 May 2021 09:17:08 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Guide to setting up Jest testing environment in TypeScript & GraphQL NodeJS Server]]></title>
+            <link>https://aayushsahu.com/blog/prisma-graphql-jest-test</link>
+            <guid>https://aayushsahu.com/blog/prisma-graphql-jest-test</guid>
+            <pubDate>Sun, 09 May 2021 05:15:15 GMT</pubDate>
+            <description><![CDATA[Integration or Unit tests in TypeScript and GraphQL using Jest in NodeJS]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Guide to setting up Types for Apollo GraphQL with Typescript in the Backend]]></title>
+            <link>https://aayushsahu.com/blog/graphql-typescript</link>
+            <guid>https://aayushsahu.com/blog/graphql-typescript</guid>
+            <pubDate>Mon, 03 May 2021 06:53:26 GMT</pubDate>
+            <description><![CDATA[The type safe of using Apollo GraphQL with Typescript]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Why The Odin Project is the best place to start learning web development]]></title>
+            <link>https://aayushsahu.com/blog/the-odin-project</link>
+            <guid>https://aayushsahu.com/blog/the-odin-project</guid>
+            <pubDate>Thu, 29 Apr 2021 08:00:32 GMT</pubDate>
+            <description><![CDATA[Alternatively: My experience through web development with The Odin Project]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Hello, World!]]></title>
+            <link>https://aayushsahu.com/blog/hello-world</link>
+            <guid>https://aayushsahu.com/blog/hello-world</guid>
+            <pubDate>Tue, 27 Apr 2021 10:35:23 GMT</pubDate>
+            <description><![CDATA[The beginning of something new and exciting]]></description>
+        </item>
+    </channel>
+</rss>

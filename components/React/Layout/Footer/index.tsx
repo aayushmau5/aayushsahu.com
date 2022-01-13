@@ -6,35 +6,24 @@ import {
   FaRss,
 } from "react-icons/fa";
 
+import config from "config.json";
 import styles from "./style.module.css";
 
 export default function Footer() {
   return (
     <div className={styles.container}>
-      <p style={{ fontSize: "1rem" }}>Made with ❤️ by aayushmau5</p>
+      <p style={{ fontSize: "1rem" }}>Made with ❤️ by {config.username}</p>
       <div className={styles.socialsContainer}>
-        <a
-          href="https://www.github.com/aayushmau5"
-          target="_blank"
-          rel="noreferrer"
-        >
+        <a href={config.user.githubLink} target="_blank" rel="noreferrer">
           <FaGithub />
         </a>
-        <a
-          href="https://in.linkedin.com/in/aayushmau5"
-          target="_blank"
-          rel="noreferrer"
-        >
+        <a href={config.user.linkedinLink} target="_blank" rel="noreferrer">
           <FaLinkedinIn />
         </a>
-        <a
-          href="https://twitter.com/aayushmau5"
-          target="_blank"
-          rel="noreferrer"
-        >
+        <a href={config.user.twitterLink} target="_blank" rel="noreferrer">
           <FaTwitter />
         </a>
-        <a href="https://dev.to/aayushmau5" target="_blank" rel="noreferrer">
+        <a href={config.user.devToLink} target="_blank" rel="noreferrer">
           <FaDev />
         </a>
         <a href="/rss.xml" target="_blank" rel="noreferrer">

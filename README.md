@@ -22,5 +22,4 @@ Feature requests are welcome :)
 - [ ] Move to `next-seo`(https://github.com/garmeeh/next-seo#readme)
 - [ ] Code highlight lines feature (https://github.com/timlrx/rehype-prism-plus/issues/20)
 - [ ] Back to top + comment button (should be beside the blog in large screens, but on bottom in mobile)
-- [ ] tags
-- [ ] configurations as a JSON file(in templates)
+- [ ] Blog tags
