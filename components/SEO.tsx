@@ -1,12 +1,14 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
 
+import config from "config.json";
+
 const siteMetadata = {
-  title: "Aayush Kumar Sahu - Developer and Explorer",
-  siteUrl: "https://aayushsahu.com",
-  twitter: "https://twitter.com/aayushmau5",
-  socialImage: "/socialBanner.png",
-  author: "aayushmau5",
+  title: config.title,
+  siteUrl: config.siteUrl,
+  twitter: config.user.twitterLink,
+  socialImage: config.socialImage,
+  author: config.username,
 };
 
 const CommonSEO = ({ title, description, ogType, ogImage, twImage }) => {
