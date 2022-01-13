@@ -5,7 +5,7 @@ import config from "config.json";
 export default function GiscusComments() {
   return (
     <Giscus
-      repo={`${config.username}/${config.repoUrl}`}
+      repo={`${config.username}/${config.repoName}`}
       repoId={config.giscus.repoId}
       category={config.giscus.category}
       categoryId={config.giscus.categoryId}

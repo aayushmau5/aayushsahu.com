@@ -11,6 +11,7 @@ import { sortedPostData } from "@/utils/getPosts";
 import blogStyles from "@/styles/Blog.module.css";
 import styles from "@/styles/Home.module.css";
 import getResumeLink from "@/utils/getResumeLink";
+import { createRSSFile } from "@/utils/generateRSSFeed";
 
 export default function Index({ firstPost, secondPost, resumeFileNameLink }) {
   return (
@@ -126,6 +127,7 @@ export const getStaticProps = async () => {
   const secondPost = postsData[1];
 
   const resumeFileNameLink = getResumeLink();
+  createRSSFile();
 
   return {
     props: {
