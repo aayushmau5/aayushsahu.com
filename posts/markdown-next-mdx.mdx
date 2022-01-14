@@ -57,6 +57,17 @@ If you are using React, you don't need to do anything. Perhaps install `@mdx-js/
 
 # Using with NextJS
 
+So, there are multiple options in order to use MDX with NextJS.
+
+- `@next/mdx`
+- `next-mdx-enhanced`
+- `next-mdx-remote`
+- `mdx-bundler`
+
+[This article](https://dev.to/tylerlwsmith/quick-comparison-of-mdx-integration-strategies-with-next-js-1kcm) goes over the comparison.
+
+There's no "the best" solution out there. Just use the one you feel like going with, and if you face any problems during the way, try to fix or switch.
+
 Next supports webpack loaders by overwriting the webpack config in `next.config.js`
 
 Install and configure the webpack loader `@mdx-js/loader`. There is no need to configure your JSX runtime as React is already set up.
@@ -131,15 +142,6 @@ https://www.youtube.com/watch?v=xEu3t-KJVVg
 MDX is really really cool. https://egghead.io/lessons/egghead-mdx-v2-syntax
 
 ## Choosing the right package or loader for using MDX with NextJS
-
-- `@next/mdx`
-- `next-mdx-enhanced`
-- `next-mdx-remote`
-- `mdx-bundler`
-
-[This article](https://dev.to/tylerlwsmith/quick-comparison-of-mdx-integration-strategies-with-next-js-1kcm) goes over the comparison.
-
-There's no "the best" solution out there. Just use the one you feel like going with, and if you face any problems during the way, try to fix or switch.
 
 I'm using `@next-mdx`. But I'll explore `mdx-bundler` in the future.
 

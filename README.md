@@ -32,13 +32,11 @@ Feature requests are welcome :)
 ## Running Locally
 
 - Fork/Clone this repo
-- `npm install`
-- `npm run dev`
+- Install dependencies `npm install`
+- Run locally in development mode `npm run dev`
 
 ## To-do
 
-- [ ] CSS variables cleanup
 - [ ] Move to `next-seo`(https://github.com/garmeeh/next-seo#readme)
 - [ ] Code highlight lines feature (https://github.com/timlrx/rehype-prism-plus/issues/20)
-- [ ] Back to top + comment button (should be beside the blog in large screens, but on bottom in mobile)
 - [ ] Blog tags
