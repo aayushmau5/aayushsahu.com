@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import { GetStaticProps } from "next";
 import Link from "next/link";
 import { useState } from "react";
@@ -5,10 +6,11 @@ import { useState } from "react";
 import SearchBar from "@/components/React/Blog/SearchBar";
 import Date from "@/components/Date";
 import { PageSEO } from "@/components/SEO";
-
-import { sortedPostData } from "@/utils/getPosts";
+import { getAllTags, sortedPostData } from "@/utils/getPosts";
 
 import styles from "@/styles/Blog.module.css";
+import Tag from "@/components/React/Blog/TagsContainer/Tag";
+import TagsContainer from "@/components/React/Blog/TagsContainer";
 
 interface PostData {
   slug: string;
@@ -18,17 +20,31 @@ interface PostData {
   readingTime: {
     text: string;
   };
+  tags: string[];
 }
 
 interface Props {
   postsData: PostData[];
+  tags: string[];
 }
 
-export default function Blog({ postsData }: Props) {
+export default function Blog({ postsData, tags }: Props) {
   const [searchValue, setSearchValue] = useState<string>("");
+  const [selectedTag, setSelectedTag] = useState<string>("");
 
-  const filteredBlogs = postsData.filter((post) =>
-    post.title.toLowerCase().includes(searchValue.toLowerCase())
+  const filteredBlogs = useMemo(
+    () =>
+      postsData
+        .filter((post) => {
+          return post.title.toLowerCase().includes(searchValue.toLowerCase());
+        })
+        .filter((post) => {
+          if (selectedTag) {
+            return post.tags?.includes(selectedTag.toLowerCase());
+          }
+          return post;
+        }),
+    [postsData, selectedTag, searchValue]
   );
 
   return (
@@ -46,6 +62,21 @@ export default function Blog({ postsData }: Props) {
           So far, I have written {postsData.length} articles.
         </p>
         <SearchBar value={searchValue} onChange={setSearchValue} />
+        <TagsContainer>
+          <Tag
+            isSelected={selectedTag === ""}
+            value={"All"}
+            onClick={() => setSelectedTag("")}
+          />
+          {tags.map((tag, index) => (
+            <Tag
+              isSelected={selectedTag === tag}
+              key={index}
+              value={tag}
+              onClick={(tag: string) => setSelectedTag(tag)}
+            />
+          ))}
+        </TagsContainer>
         {searchValue === "" ? <h3>Recent blogs</h3> : <h3>Search result</h3>}
         {filteredBlogs.length === 0 ? <h3>No blogs found</h3> : null}
         <div className={styles.blogsContainer}>
@@ -69,10 +100,12 @@ export default function Blog({ postsData }: Props) {
 
 export const getStaticProps: GetStaticProps = async () => {
   const postsData = sortedPostData;
+  const tags = getAllTags();
 
   return {
     props: {
       postsData,
+      tags,
     },
   };
 };

@@ -5,6 +5,8 @@ import Date from "../../../Date";
 import styles from "./style.module.css";
 import ToC from "../ToC";
 import SeparatorSvg from "../../SeparatorSvg";
+import Tag from "../TagsContainer/Tag";
+import TagsContainer from "../TagsContainer";
 
 const GiscusComments = dynamic(() => import("../GiscusComments"));
 
@@ -47,6 +49,13 @@ function ShowFrontMatter({ frontMatter }) {
         {" · "}
         <span>{frontMatter.readingTime.text}</span>
       </p>
+      {frontMatter.tags ? (
+        <TagsContainer>
+          {frontMatter.tags.map((tag: string) => (
+            <Tag key={tag} value={tag} />
+          ))}
+        </TagsContainer>
+      ) : null}
       {frontMatter.cover && frontMatter.cover.image && (
         <div className={styles.coverImage}>
           <img src={frontMatter.cover.image} alt={frontMatter.cover.alt} />

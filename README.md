@@ -12,6 +12,7 @@ My portfolio website powered by:
 
 - Dynamic OpenGraph image generation for blogs using Cloudinary
 - Commenting system powered by [Giscus](https://giscus.app/)
+- Search blogs by tags
 
 Hosted on **Vercel** 💪
 
@@ -39,4 +40,3 @@ Feature requests are welcome :)
 
 - [ ] Move to `next-seo`(https://github.com/garmeeh/next-seo#readme)
 - [ ] Code highlight lines feature (https://github.com/timlrx/rehype-prism-plus/issues/20)
-- [ ] Blog tags

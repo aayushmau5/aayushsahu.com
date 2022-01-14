@@ -1,0 +1,18 @@
+.container {
+  background-color: #191919;
+  font-size: 12px;
+  cursor: pointer;
+  border-radius: 0.25rem;
+  padding: 0.3rem;
+  font-weight: 600;
+  color: #eee;
+}
+
+.container:hover {
+  filter: brightness(85%);
+}
+
+.selected {
+  color: #191919;
+  background-color: #eee;
+}
