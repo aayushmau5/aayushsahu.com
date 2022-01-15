@@ -7,8 +7,7 @@ import ToC from "../ToC";
 import SeparatorSvg from "../../SeparatorSvg";
 import Tag from "../TagsContainer/Tag";
 import TagsContainer from "../TagsContainer";
-
-const GiscusComments = dynamic(() => import("../GiscusComments"));
+import GiscusComments from "../GiscusComments";
 
 export default function BlogContainer({
   children,
