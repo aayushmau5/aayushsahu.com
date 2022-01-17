@@ -10,10 +10,9 @@ import { sortedPostData } from "@/utils/getPosts";
 
 import blogStyles from "@/styles/Blog.module.css";
 import styles from "@/styles/Home.module.css";
-import getResumeLink from "@/utils/getResumeLink";
 import { createRSSFile } from "@/utils/generateRSSFeed";
 
-export default function Index({ firstPost, secondPost, resumeFileNameLink }) {
+export default function Index({ firstPost, secondPost }) {
   return (
     <>
       <PageSEO
@@ -105,15 +104,12 @@ export default function Index({ firstPost, secondPost, resumeFileNameLink }) {
               <BsArrowRightShort />
               Contact me
             </a>
-            <a
-              href={`/resume/${resumeFileNameLink}`}
-              target="_blank"
-              rel="noreferrer"
-              className="styledLink"
-            >
-              <BsArrowRightShort />
-              See my resume
-            </a>
+            <Link href="/resume">
+              <a target="_blank" rel="noreferrer" className="styledLink">
+                <BsArrowRightShort />
+                See my resume
+              </a>
+            </Link>
           </div>
         </div>
       </div>
@@ -126,14 +122,12 @@ export const getStaticProps = async () => {
   const firstPost = postsData[0];
   const secondPost = postsData[1];
 
-  const resumeFileNameLink = getResumeLink();
   createRSSFile();
 
   return {
     props: {
       firstPost,
       secondPost,
-      resumeFileNameLink,
     },
   };
 };
