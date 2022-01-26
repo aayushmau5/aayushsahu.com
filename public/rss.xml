@@ -4,7 +4,7 @@
         <title>Aayush Kumar Sahu - Developer and Explorer</title>
         <link>https://aayushsahu.com</link>
         <description>aayushmau5' personal website</description>
-        <lastBuildDate>Mon, 17 Jan 2022 19:09:15 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 26 Jan 2022 14:43:46 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
@@ -15,6 +15,13 @@
         </image>
         <copyright>CC 2022, Aayush Kumar Sahu</copyright>
         <category>Programming</category>
+        <item>
+            <title><![CDATA[Using MDX with NextJS]]></title>
+            <link>https://aayushsahu.com/blog/markdown-next-mdx</link>
+            <guid>https://aayushsahu.com/blog/markdown-next-mdx</guid>
+            <pubDate>Thu, 20 Jan 2022 07:27:46 GMT</pubDate>
+            <description><![CDATA[How to use MDX with NextJS?]]></description>
+        </item>
         <item>
             <title><![CDATA[NextJS Code Splitting & Dynamic Imports]]></title>
             <link>https://aayushsahu.com/blog/nextjs-dynamic-import</link>
