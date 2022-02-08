@@ -153,6 +153,10 @@ We will create some utility functions that will:
 - get all the post id.
 - get post contents corresponding to their `slug`.
 
+For this, we will read all the mdx files from `posts/` directory, parse their frontmatter using the [gray-matter library](https://www.npmjs.com/package/gray-matter).
+
+Here's the code:
+
 ```js
 // utils/getPostData.js
 import fs from "fs";
@@ -164,20 +168,19 @@ const fileNames = fs.readdirSync(postsDirectory); // all the mdx files inside th
 
 // sorted post data
 export function getSortedPostsData() {
-  const allPostsData = fileNames
-    .map((fileName) => {
-      const slug = fileName.replace(/\.mdx$/, ""); // remove the .mdx extension from file names
+  const allPostsData = fileNames.map((fileName) => {
+    const slug = fileName.replace(/\.mdx$/, ""); // remove the .mdx extension from file names
 
-      const fullPath = path.join(postsDirectory, fileName);
-      const fileContents = fs.readFileSync(fullPath, "utf-8"); // read the file contents
+    const fullPath = path.join(postsDirectory, fileName);
+    const fileContents = fs.readFileSync(fullPath, "utf-8"); // read the file contents
 
-      const { data: frontMatter } = matter(fileContents); // get the frontmatter
+    const { data: frontMatter } = matter(fileContents); // get the frontmatter
 
-      return {
-        slug,
-        ...frontMatter,
-      };
-    });
+    return {
+      slug,
+      ...frontMatter,
+    };
+  });
 
   // sort the posts
   return allPostsData.sort((a, b) => {
@@ -214,58 +217,176 @@ export async function getPostData(slug) {
 }
 ```
 
+After this, first we will index all the blogs inside `/blogs` route. For this, put the following code in `pages/blog/index.js` file.
+
 ```jsx
-// /pages/blog/[slug].js
-import { GetStaticProps, GetStaticPaths } from "next";
+// /pages/blog/index.js
+import { getSortedPostsData } from "utils/getPostData";
 
-import { serialize } from "next-mdx-remote/serialize";
-import { MDXRemote } from "next-mdx-remote";
-
-import rehypePrism from "rehype-prism-plus";
-import remarkToc from "remark-toc";
-import rehypeSlug from "rehype-slug";
-import rehypeAutolinkHeadings from "rehype-autolink-headings";
-
-import { getAllPostIds, getPostData } from "@/utils/getPosts";
-import BlogContainer from "@/components/BlogContainer";
-
-const components = {};
-
-export default function BlogPost({ source, frontmatter, slug }) {
+export default function Blogs({ posts }) {
+  // maps through the blog posts
   return (
-    <>
-      <BlogContainer frontmatter={frontmatter}>
-        <MDXRemote {...source} components={components} />
-      </BlogContainer>
-    </>
+    <div>
+      {posts.map((post, index) => (
+        <Link key={index} href={`/blog/${post.slug}`}>
+          <a>{post.title}</a>
+        </Link>
+      ))}
+    </div>
   );
 }
 
-export const getStaticPaths: GetStaticPaths = async () => {
-  const paths = getAllPostIds();
+export const getStaticProps = () => {
+  const posts = getSortedPostsData(); // get all the sorted posts data
+
+  return {
+    props: {
+      // pass it to the component through props
+      posts,
+    },
+  };
+};
+```
+
+That's it. We are using the `getSortedPostsData` utility function to get all the sorted posts, and then rendering it on the page.
+
+One cool thing about this is, we are statically generating the data using `getStaticProps`, meaning all the data will be generated at built time, and you will have a static website. More info about `getStaticProps` [here](https://nextjs.org/docs/basic-features/data-fetching/get-static-props).
+
+Now that we have an index page, users can click on any of the link, and they will be directed to `/blog/<blog-slug>` route, which will be handled by our `/pages/blog/[slug].js` code.
+
+Here's the code for that:
+
+```jsx
+// /pages/blog/[slug].js
+import { serialize } from "next-mdx-remote/serialize";
+import { MDXRemote } from "next-mdx-remote";
+
+import { getAllPostIds, getPostData } from "utils/getPosts";
+
+export default function BlogPost({ source }) {
+  // render the MDX blog
+  return (
+    <div>
+      <MDXRemote {...source} />
+    </div>
+  );
+}
+
+export const getStaticPaths = async () => {
+  const paths = getAllPostIds(); // all the posts slug
   return {
     paths,
     fallback: false,
   };
 };
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const { content, frontmatter, slug } = await getPostData(
-    params.slug as string
+export const getStaticProps = async ({ params }) => {
+  const { content } = await getPostData(params.slug); // the post data in string
+  const mdxSource = await serialize(content); // parse the MDX string
+  return { props: { source: mdxSource } };
+};
+```
+
+Let's start with [`getStaticPaths`](https://nextjs.org/docs/basic-features/data-fetching/get-static-paths) first. Using `getStaticPaths` we define a list of paths that we want to be statically generated. Thus, we are passing all the blog slugs so that our blogs can be statically generated.
+
+Now, onto `getStaticProps`, the blog we want to access will be passed to the `slug` property in `params` object. Using that slug, we get the post data using `getPostData` function. This post data is just our MDX blog in a string format.
+
+We then pass the MDX string to `serialize` function which we are importing from `next-mdx-remote/serialize`. This function parses and compiles the provided MDX string and, returns a result which can be passed into a component to be rendered. The compiled MDX is then passed to our `BlogPost` component through the `props`(The return value from `getStaticProps` is passed to the rendering component).
+
+Inside our `BlogPost` component, we are using the `MDXRemote` component imported from `next-mdx-remote` whose job is to render the compiled source that we are getting from the props.
+
+That's it. Start the nextjs dev server, and go to `/blog`, we will see the list of blogs. And on going to certain blog, we will see the rendered MDX blog.
+
+## Using remark/rehype plugins
+
+Now that we have setup MDX, it's time to use Remark/Rehype pulgins. These plugins can be used to provide syntax highlighting, have autolinks in headings, generate table of contents, etc.
+
+We will use `rehype-prism-plus` to provide syntax highlighting, and `remark-toc` to generate Table of Contents.
+
+```
+npm i rehype-prism-plus remark-toc
+```
+
+Since remark/rehype plugins only support ESM modules, we can use it inside our `/pages/blog/[slug].js` file.
+
+Here's the code:
+
+```jsx
+// /pages/blog/[slug].js
+import { serialize } from "next-mdx-remote/serialize";
+import { MDXRemote } from "next-mdx-remote";
+
+import rehypePrism from "rehype-prism-plus";
+import remarkToc from "remark-toc";
+
+import { getAllPostIds, getPostData } from "utils/getPosts";
+
+export default function BlogPost({ source }) {
+  // render the MDX blog
+  return (
+    <div>
+      <MDXRemote {...source} />
+    </div>
   );
+}
+
+export const getStaticPaths = async () => {
+  const paths = getAllPostIds(); // all the posts slug
+  return {
+    paths,
+    fallback: false,
+  };
+};
+
+export const getStaticProps = async ({ params }) => {
+  const { content } = await getPostData(params.slug); // the post data in string
   const mdxSource = await serialize(content, {
-    scope: frontmatter,
     mdxOptions: {
       rehypePlugins: [
-        [rehypeAutolinkHeadings, { behavior: "append" }],
-        [rehypePrism, { showLineNumbers: true }],
-        rehypeSlug,
+        // passing rehype plugins(in an array)
+        [rehypePrism, { showLineNumbers: true }], // to pass options to plugins, put the plugin in an array, and 2nd element should be the options
       ],
-      remarkPlugins: [[remarkToc, { tight: true }]],
+      remarkPlugins: [remarkToc], // passing remark plugins
     },
-  });
-  return { props: { source: mdxSource, frontmatter, slug } };
+  }); // parse the MDX string, now with pulgins
+  return { props: { source: mdxSource } };
 };
+```
+
+Everything remains the same except the part where we are parsing and compiling the MDX string. The `serialize` function takes a second parameter, which is a config object. In this config object, we are providing `mdxOptions` which is another object in which we pass remark and rehype plugins separately.
+
+One thing to know that is these plugins are used during the compilation of our MDX blog. That's why they are passed as options to the `serialize` function.
+
+And with that, we should have our plugin working.
+
+## Using custom react components
+
+One of MDX's prominent feature is to use React components inside your blogs, and It would be a shame if we didn't this feature. So, let's use some React components inside our blogs.
+
+Here's an example blog using a component that will take a heading prop, and a children to show the contents inside it.
+
+Take a look at the MDX syntax
+
+```md
+---
+title: "Using MDX with NextJS"
+description: "How to use MDX with NextJS?"
+---
+
+<ShowContentInside title="">
+
+</ShowContentInside>
+```
+
+```jsx
+function ShowContentInside({ title, children }) {
+  return (
+    <div>
+      <h1>{title}</h1>
+      <div>{children}</div>
+    </div>
+  );
+}
 ```
 
 ## Concerns
