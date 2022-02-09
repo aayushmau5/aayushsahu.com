@@ -11,9 +11,9 @@ description: ""
 date: ${new Date().toISOString()}
 tags: []
 cover:
-	image: "/blogImages/"
-	alt: ""
-	caption: ""
+  image: "/blogImages/"
+  alt: ""
+  caption: ""
 draft: true
 showToc: true
 ---`;

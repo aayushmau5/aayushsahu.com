@@ -1,13 +1,12 @@
 ---
 title: "Using MDX with NextJS"
-description: "How to use MDX with NextJS?"
-date: 2022-01-20T07:27:46.681Z
+description: "Using Next-MDX-Remote with NextJS to write MDX blogs"
+date: 2022-02-10T07:27:46.681Z
 tags: ["mdx", "nextjs", "markdown"]
 cover:
-	image: "/blogImages/"
-	alt: ""
-	caption: ""
-draft: true
+  image: "/blogImages/markdown-next-mdx/cover.png"
+  alt: "Cover image consisting of NextJS and MDX logo"
+draft: false
 ---
 
 # Introduction
@@ -361,11 +360,23 @@ And with that, we should have our plugin working.
 
 ## Using custom react components
 
-One of MDX's prominent feature is to use React components inside your blogs, and It would be a shame if we didn't this feature. So, let's use some React components inside our blogs.
+One of MDX's prominent feature is to use React components inside your blogs, and It would be a shame if we didn't this feature. So, let's use a React component inside our blog(for the sake of the length of _this_ blog, the component will be a simple one).
 
-Here's an example blog using a component that will take a heading prop, and a children to show the contents inside it.
+```jsx
+// utils/ShowContentInside.js
+export default function ShowContentInside({ heading, children }) {
+  return (
+    <div>
+      <h1>{heading}</h1>
+      <div>{children}</div>
+    </div>
+  );
+}
+```
 
-Take a look at the MDX syntax
+This component takes a `heading` prop, and a children to show the contents inside it.
+
+Here's an example blog using the component(Make sure to look at [MDX syntax](https://mdxjs.com/docs/using-mdx/) to see how to use components inside MDX).
 
 ```md
 ---
@@ -373,35 +384,88 @@ title: "Using MDX with NextJS"
 description: "How to use MDX with NextJS?"
 ---
 
-<ShowContentInside title="">
+Hello, world!
+
+<ShowContentInside heading="this is a heading">
+
+Show the contents inside it.
+
+A valid markdown.
+
+- This
+- works
 
 </ShowContentInside>
 ```
 
-```jsx
-function ShowContentInside({ title, children }) {
+This however won't work. How would our MDX document know where to get the `ShowContentInside` component?
+
+For this, we need to pass our MDX renderer the `ShowContentInside` component(this behavior may differ in other MDX libraries in that you could import component inside your MDX document itself, but `next-mdx-remote` doesn't work like this).
+
+```js
+// /pages/blog/[slug].js
+
+// ...omitted
+
+import ShowContentInside from "utils/ShowContentInside";
+
+const component = {
+  // react components to be passed to MDX renderer
+  ShowContentInside,
+};
+
+export default function BlogPost({ source }) {
+  // render the MDX blog(now with react components)
   return (
     <div>
-      <h1>{title}</h1>
-      <div>{children}</div>
+      <MDXRemote {...source} components={components} />
     </div>
   );
 }
+
+// ...omitted
 ```
+
+First we import our component, and then pass it to `MDXRemote` renderer component through `components` prop as an object. Now, during the rendering of our MDX blog, these components will be used.
+
+With that, we have seen:
+
+- how to use MDX using `next-mdx-remote`
+- how to use remark/rehype plugins with MDX
+- how to use react components with MDX
+
+Aaand we are done! 🥳
+
+We have now a working blog page using MDX. However, I did have some concerns after using `next-mdx-remote`. Change are you might have the same concerns. Check them out below.
 
 ## Concerns
 
-- Bundle size & the solution with dynamic importing way
-  Reading about `next-mdx-remote`, it turns out that all the components are bundled during build time and It is available to every MDX file.
-  Though one can use dynamic importing and some clever hack to dynamically import heavy components.
-  See more at: https://github.com/hasicorp/next-mdx-enhanced/issues/103
-- HMR
-  Use this to get realtime HMR thing: https://github.com/hashicorp/next-remote-watch
-  https://nextjs.org/docs/advanced-features/preview-mode
-  Preview mode doesn't work due to 2kb limit and much more work to setup.
-- Per page bundle size
+### Bundle size
 
-# `mdx-bundler`
+When reading up about `next-mdx-remote`, I got to know that all the components are bundled during build time and it is available to every MDX file. Meaning even if some of your blog won't be using a certain component, it will still be available to them. Thus, users have to download those unused components as well.
 
-🤔
-I never looked into `mdx-bundler` but it seemed to have all the goodies to use MDX. And it is framework agnostic, so you can use it with anything else.
+We can overcomes this issue by using dynamic importing. I found [this thread](https://github.com/hashicorp/next-mdx-enhanced/issues/103) which goes over this.
+
+For me, I didn't find any drastic increase in bundle size, so I just did nothing 🤷.
+
+### Auto refresh
+
+One thing I missed while using `next-mdx-remote` is Hot Module Reload(HMR) which basically auto-refreshes your website whenever you make changes to files(in development mode).
+
+However, I did find [`next-remote-watch`](https://github.com/hashicorp/next-remote-watch) which wasn't really equivalent to HMR, but it gets the job done. I just had to pass the directory(in this case my `posts/` directory) which I wanted it to watch.
+
+I did check [preview mode](https://nextjs.org/docs/advanced-features/preview-mode), which didn't work because it had a 2kb limit, and required more involved work to setup.
+
+# A word about `mdx-bundler`
+
+I have seen some people recommend `mdx-bundler`. It seemed to have all the goodies to use MDX. And it is framework agnostic, so you can use it with anything else.
+
+But right now, `next-mdx-remote` does the job for me, so I haven't dwelled much into `mdx-bundler`. But if anything comes up, I would love to give it a try.
+
+# Resources
+
+Some resources to check out:
+
+- ["Easily create a blog with Next.js, MDX, SSG and Syntax Highlighting" by Leigh Halliday](https://youtu.be/J_0SBJMxmcw), a YT video that sets up MDX using `next-mdx-remote`.
+- [The official MDX docs](https://mdxjs.com/docs/)
+- My website(the one you are reading this blog in) uses `next-mdx-remote`, and the source code is Open-Source. Check out the code [here](https://github.com/aayushmau5/aayushsahu.com).
