@@ -20,6 +20,7 @@
 
 .list {
   margin-top: 0;
+  line-height: 1.8rem;
 }
 
 .list li a:hover {

@@ -2,6 +2,7 @@
   margin-bottom: 0;
   font-size: 1.8rem;
   color: white;
+  line-height: 2rem;
 }
 
 .coverImage img {
@@ -73,13 +74,18 @@
 }
 
 .container code {
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   padding: 2px 5px;
   border-radius: 2px;
+  line-height: 1.53rem;
 }
 
 @media (min-width: 1024px) {
   .container img {
     width: 60%;
+  }
+
+  .container code {
+    font-size: 0.9rem;
   }
 }

@@ -6,29 +6,29 @@ tags: ["mdx", "nextjs", "markdown"]
 cover:
   image: "/blogImages/markdown-next-mdx/cover.png"
   alt: "Cover image consisting of NextJS and MDX logo"
-draft: false
+draft: true
 ---
 
 # Introduction
 
 **MDX** is a markdown extension that brings in support for JS components(typically react components, but not only limited to) inside markdown.
 
-Here's what I did to use MDX with NextJS.
-
 To know more about MDX, checkout the official MDX docs [here](https://mdxjs.com/docs/getting-started/).
+
+Here's what I did inorder to use MDX with NextJS.
 
 # Goal
 
 My main goal was to:
 
-- Get MDX working
+- Get MDX working.
 - Integrate remark/rehype plugins for syntax highlighting, heading links, generating slugs, etc.
-- Using custom react components inside my blogs
-- Since all my posts are in a `posts/` directory, I want this directory to be the source(I don't like mixing up JS and MDX files).
+- Using custom react components inside my blogs.
+- Sourcing contents from different directory. All my blogs are in a `posts/` directory, so I want this directory to be the source.
 
 # Using MDX with NextJS
 
-The idea of using MDX in my blogs came from [this article](https://www.joshwcomeau.com/blog/how-i-built-my-blog/) by [Josh W Comeau](https://www.joshwcomeau.com/) (🙏 thanks, Josh).
+The idea of using MDX in my blogs came from [this article](https://www.joshwcomeau.com/blog/how-i-built-my-blog/) by [Josh W Comeau](https://www.joshwcomeau.com/). I wanted more control over how certain elements of my blogs will be show, as well as using custom react components inside my blogs.
 
 As it turns out, there are multiple libraries that allows us to use MDX with NextJS. Some of them are(based on popularity/usage):
 
@@ -37,21 +37,19 @@ As it turns out, there are multiple libraries that allows us to use MDX with Nex
 - `next-mdx-enhanced` (**deprecated**, maintainers now recommend `next-mdx-remote`)
 - `next-mdx-remote`
 
-I was pretty confused as to which library should I use. [This article](https://dev.to/tylerlwsmith/quick-comparison-of-mdx-integration-strategies-with-next-js-1kcm) compares these libraries pretty well.
+[This article](https://dev.to/tylerlwsmith/quick-comparison-of-mdx-integration-strategies-with-next-js-1kcm) compares these libraries pretty well.
 
-> There's no "the best" solution out there. Just use the one you feel like going with, and if you face any problems in the way, try to fix it or switch to other solution.
+I was pretty confused as to which library should I go with. After having some problems with `@next/mdx`, I went ahead with `next-mdx-remote`, which turned out to be a pretty good choice.
 
-With some struggles, I chose `next-mdx-remote`.
+<HiddenExpand summary="The problems I faced with @next/mdx">
 
-<HiddenExpand summary="My struggle with @next/mdx">
-
-At first, I was not sure which library to go with. So, I started with `@next/mdx`, but things kinda started going wrong. See how 👇
+At first, I was not sure which library to go with. So, I started with `@next/mdx`, but some things went wrong 👇
 
 **Trying `@next/mdx`**
 
-I basically followed [this guide](https://nextjs.org/docs/advanced-features/using-mdx) to setup MDX. In order to use MDX with NextJS, we have to modify the NextJS config file `next.config.js`.
+I followed [this official guide](https://nextjs.org/docs/advanced-features/using-mdx) to setup MDX. In order to use MDX with NextJS, I have to modify the NextJS config file `next.config.js`.
 
-Install the `@next/mdx` library using
+First, install the library
 
 ```
 npm i @next/mdx
@@ -75,13 +73,13 @@ module.exports = withMDX({
 });
 ```
 
-After making the changes, I went ahead and made a `.mdx` file inside the `/pages` directory. And it worked!
+After making these changes, I went ahead and made a `.mdx` file inside the `/pages` directory. And it worked!
 
 **The problem**
 
-I use `remark` plugins in order to have syntax highlighting, heading links, generating slugs, etc. And these remark plugins are ESM only(i.e. they use `import` instead of `require`), and I couldn't use `import` statements inside `next.config.js`.
+As I said in one of my goals, I use `remark`/`rehype` plugins in order to have syntax highlighting, heading links, generating slugs, etc. And these remark plugins are ESM only(i.e. they use `import` instead of `require`), and I couldn't use `import` statements inside `next.config.js`.
 
-I did manage to workaround this problem by having `"type": "module"` in `package.json` and rename `next.config.js` to `next.config.mjs`.
+However, I did manage to workaround this problem by having `"type": "module"` in `package.json` and rename `next.config.js` to `next.config.mjs`.
 
 Now my `next.config.mjs` looks like this:
 
@@ -99,11 +97,11 @@ const withMDX = NextMdx({
 });
 
 export default withMDX({
-  pageExtensions: ["md", "tsx"],
+  pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
 });
 ```
 
-This didn't help because I started getting webpack warnings with remark plugins, and some plugins refused to work, and the internet didn't help 😞
+Though this didn't help because I started getting webpack warnings with these plugins, and some plugins refused to work. The internet didn't help 😞
 
 ![Remark plugin error](/blogImages/markdown-next-mdx/webpack-error.png)
 
@@ -113,9 +111,11 @@ And with that, my journey with `@next/mdx` ended.
 
 # Using `next-mdx-remote`
 
-I looked at [this example](https://github.com/vercel/next.js/tree/canary/examples/with-mdx-remote) to get a general idea of using `next-mdx-remote`. I recommend you check out that example as well.
+Let's get started with integrating `next-mdx-remote`.
 
 ## Directory Structure
+
+Here's how my directories look like:
 
 ```
 posts/
@@ -130,11 +130,9 @@ utils/
 └── getPostData.js
 ```
 
-Like I said, the `posts/` directory contains all my `mdx` blogs, and `utils/getPostData.js` contains some utility functions. We will see what those utility functions are, later.
+As I said earlier, the `posts/` directory contains all my `mdx` blogs, and `utils/getPostData.js` contains some utility functions. We will see what those utility functions are, later.
 
-As we already know, `pages/blog/index.js` points to `/blog` route & `pages/blog/[slug].js` is a dynamic route which will point to anything that comes after `/blog`, for example, `/blog/something`.
-
-The point being, `/blog` route will have the index of all blogs, and the dynamic route will point to a specific blog(identified by the `slug`) which is a MDX blog.
+`pages/blog/index.js` points to `/blog` route & `pages/blog/[slug].js` is a dynamic route which will point to anything that comes after `/blog`, for example, `/blog/something`. This is how NextJS routing works. The point being, `/blog` route will have the index of all blogs, and the dynamic route will point to a specific blog(identified by the `slug`) which will be the MDX blog.
 
 ## Steps
 
@@ -144,15 +142,15 @@ Install the following packages
 npm i next-mdx-remote gray-matter
 ```
 
-One thing to note about `next-mdx-remote` is that it doesn't care about where your data comes from, all it needs is that you provide the data. Like I said earlier, all my MDX blogs are inside a `posts/` directory, so we need to perform some kind of operation in order to provide `next-mdx-remote` my MDX blogs from `posts/` directory.
+One thing to note about `next-mdx-remote` is that it doesn't care about where your data comes from, all it needs is that you provide the data. Like I said earlier, all my MDX blogs are inside a `posts/` directory, so I need to perform some kind of operation in order to provide `next-mdx-remote` my MDX blogs data from `posts/` directory.
 
 We will create some utility functions that will:
 
 - get all the **sorted** posts data(like the contents, and frontmatter). This will be used in `/blog` route to index all the blogs.
-- get all the post id.
+- get all the post id(aka `slug`).
 - get post contents corresponding to their `slug`.
 
-For this, we will read all the mdx files from `posts/` directory, parse their frontmatter using the [gray-matter library](https://www.npmjs.com/package/gray-matter).
+We will read all the mdx files from `posts/` directory, and parse their frontmatter using the [gray-matter library](https://www.npmjs.com/package/gray-matter).
 
 Here's the code:
 
@@ -216,7 +214,7 @@ export async function getPostData(slug) {
 }
 ```
 
-After this, first we will index all the blogs inside `/blogs` route. For this, put the following code in `pages/blog/index.js` file.
+After this, first we will index all the blogs inside `/blogs` route. Put the following code in `pages/blog/index.js` file.
 
 ```jsx
 // /pages/blog/index.js
@@ -462,10 +460,13 @@ I have seen some people recommend `mdx-bundler`. It seemed to have all the goodi
 
 But right now, `next-mdx-remote` does the job for me, so I haven't dwelled much into `mdx-bundler`. But if anything comes up, I would love to give it a try.
 
+> There's no "the best" solution out there. Just use the one you feel like going with, and if you face any problems in the way, try to fix it or switch to other solution.
+
 # Resources
 
 Some resources to check out:
 
 - ["Easily create a blog with Next.js, MDX, SSG and Syntax Highlighting" by Leigh Halliday](https://youtu.be/J_0SBJMxmcw), a YT video that sets up MDX using `next-mdx-remote`.
 - [The official MDX docs](https://mdxjs.com/docs/)
+- [`next-mdx-remote` example with NextJS](https://github.com/vercel/next.js/tree/canary/examples/with-mdx-remote)
 - My website(the one you are reading this blog in) uses `next-mdx-remote`, and the source code is Open-Source. Check out the code [here](https://github.com/aayushmau5/aayushsahu.com).
