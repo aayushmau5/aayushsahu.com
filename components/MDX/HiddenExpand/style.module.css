@@ -1,12 +1,12 @@
 .details {
   margin-bottom: 1rem;
   border-radius: 0.55rem;
-  background-color: #22272a;
+  background-color: #2e2e2e63;
   overflow: hidden;
 }
 
 .details:focus-within {
-  outline: 3px solid #22272a;
+  outline: 3px solid #2e2e2e63;
   outline-offset: 5px;
 }
 
