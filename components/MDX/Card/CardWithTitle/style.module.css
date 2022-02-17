@@ -1,0 +1,17 @@
+.card {
+  border: 1px solid #252932;
+  border-radius: 0.55rem;
+  margin-bottom: 1.1rem;
+  background-color: #131417;
+}
+
+.title {
+  border-bottom: 2px solid #252932;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+}
+
+.container {
+  padding: 0 1rem 0.5rem 1rem;
+}

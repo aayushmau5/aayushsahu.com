@@ -18,6 +18,8 @@ import StyledAnchor from "@/components/MDX/StyledAnchor";
 import CustomOl from "@/components/MDX/Lists/ol";
 import CustomUl from "@/components/MDX/Lists/ul";
 import Callout from "@/components/MDX/Callout";
+import BasicCard from "@/components/MDX/Card/BasicCard";
+import CardWithTitle from "@/components/MDX/Card/CardWithTitle";
 import SeparatorSvg from "@/components/React/SeparatorSvg";
 import NextPrevArticles from "@/components/React/Blog/NextPrevArticles";
 import { generateToC } from "@/utils/generateToC";
@@ -40,6 +42,8 @@ const components = {
   ul: (props) => <CustomUl {...props} />,
   HiddenExpand,
   Callout,
+  BasicCard,
+  CardWithTitle,
 };
 
 export default function BlogPost({
