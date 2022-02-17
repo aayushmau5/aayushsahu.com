@@ -17,6 +17,7 @@ import HiddenExpand from "@/components/MDX/HiddenExpand";
 import StyledAnchor from "@/components/MDX/StyledAnchor";
 import CustomOl from "@/components/MDX/Lists/ol";
 import CustomUl from "@/components/MDX/Lists/ul";
+import Callout from "@/components/MDX/Callout";
 import SeparatorSvg from "@/components/React/SeparatorSvg";
 import NextPrevArticles from "@/components/React/Blog/NextPrevArticles";
 import { generateToC } from "@/utils/generateToC";
@@ -38,6 +39,7 @@ const components = {
   ol: (props) => <CustomOl {...props} />,
   ul: (props) => <CustomUl {...props} />,
   HiddenExpand,
+  Callout,
 };
 
 export default function BlogPost({

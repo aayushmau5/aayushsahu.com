@@ -1,0 +1,30 @@
+.aside {
+  position: relative;
+  padding: 1rem;
+  background-color: var(--background-color);
+  border-radius: 0.55rem;
+  margin-bottom: 1.8rem;
+}
+
+.info {
+  --background-color: #1d2433;
+  --icon-background-color: #5686f5;
+}
+
+.danger {
+  --background-color: #391c21;
+  --icon-background-color: #fa4e4e;
+}
+
+.icon {
+  font-size: 1.4rem;
+  position: absolute;
+  display: flex;
+  right: -18px;
+  top: -24px;
+  border-radius: 50%;
+  background-color: var(--icon-background-color);
+  color: black;
+  padding: 8px;
+  border: 8px solid #101114;
+}
