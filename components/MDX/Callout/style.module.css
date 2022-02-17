@@ -7,12 +7,12 @@
 }
 
 .info {
-  --background-color: #1d2433;
-  --icon-background-color: #5686f5;
+  --background-color: #1d3329;
+  --icon-background-color: #56f58b;
 }
 
 .danger {
-  --background-color: #391c21;
+  --background-color: #472027;
   --icon-background-color: #fa4e4e;
 }
 
