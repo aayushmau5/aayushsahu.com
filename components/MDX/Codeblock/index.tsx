@@ -52,12 +52,12 @@ function FileIcon({ type }: { type: string }) {
   }
 }
 
-function highlightedLines(highlightInput: string | undefined) {
-  return highlightInput?.split(",") || [];
-}
+// function highlightedLines(highlightInput: string | undefined) {
+//   return highlightInput?.split(",") || [];
+// }
 
-function getHighlightCSS(lines: string[]) {
-  return lines
-    .map((line) => `.code [line=${line}] {background-color: white;}`)
-    .join(" ");
-}
+// function getHighlightCSS(lines: string[]) {
+//   return lines
+//     .map((line) => `.code [line=${line}] {background-color: white;}`)
+//     .join(" ");
+// }

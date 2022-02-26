@@ -35,10 +35,6 @@
   background-color: transparent;
 }
 
-.code [line="1"] {
-  background-color: #0c2a39;
-}
-
 .buttons {
   display: inline-block;
   height: 100%;
