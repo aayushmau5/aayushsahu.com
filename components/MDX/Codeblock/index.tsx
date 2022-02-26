@@ -1,7 +1,7 @@
 import { svgIcons } from "./icons";
 import styles from "./style.module.css";
 
-export default function CodeBlock({ filename, highlight, ...props }) {
+export default function CodeBlock({ filename, ...props }) {
   return (
     <div className={styles.container}>
       {filename ? (
@@ -51,13 +51,3 @@ function FileIcon({ type }: { type: string }) {
       return svgIcons.regular;
   }
 }
-
-// function highlightedLines(highlightInput: string | undefined) {
-//   return highlightInput?.split(",") || [];
-// }
-
-// function getHighlightCSS(lines: string[]) {
-//   return lines
-//     .map((line) => `.code [line=${line}] {background-color: white;}`)
-//     .join(" ");
-// }
