@@ -4,21 +4,5 @@
 
 .pre {
   background-color: #2e2e2e;
-}
-
-@media (min-width: 1024px) {
-  .pre {
-    border-radius: 0.55rem;
-  }
-}
-
-@media (max-width: 750px) {
-  .container {
-    width: 100vw;
-    position: relative;
-    left: 50%;
-    right: 50%;
-    margin-left: -50vw;
-    margin-right: -50vw;
-  }
+  border-radius: 0.55rem;
 }
