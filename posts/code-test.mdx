@@ -1,0 +1,38 @@
+---
+title: "Codeblock tests"
+description: "Testing new codeblock component"
+date: 2022-02-25T15:15:17.936Z
+tags: []
+cover:
+  image: "/blogImages/"
+  alt: ""
+  caption: ""
+draft: false
+showToc: false
+---
+
+# Hello, world
+
+```ts filename=wrong-catch.ts highlight=1,2,3
+useQuery(["todos"], () =>
+  axios
+    .get("/todos")
+    .them((response) => response.data)
+    .catch((error) => {
+      // returns a resolved Promise
+      console.log(error);
+    })
+);
+```
+
+```css filename=something.css
+body {
+  color: white;
+}
+```
+
+```html filename=something-else.html
+<h1>Hello world</h1>
+```
+
+`does this code block run`
