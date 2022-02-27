@@ -20,26 +20,25 @@ import CustomUl from "@/components/MDX/Lists/ul";
 import Callout from "@/components/MDX/Callout";
 import BasicCard from "@/components/MDX/Card/BasicCard";
 import CardWithTitle from "@/components/MDX/Card/CardWithTitle";
+import CodeBlock from "@/components/MDX/Codeblock";
 import SeparatorSvg from "@/components/React/SeparatorSvg";
 import NextPrevArticles from "@/components/React/Blog/NextPrevArticles";
 import { generateToC } from "@/utils/generateToC";
 
 const components = {
-  pre: ({ className, ...props }) => {
-    const match = /language-(\w+)/.exec(className || "");
-    if (match !== null) {
-      const languageType = match[1].toUpperCase();
-      return (
-        <Pre languageType={languageType} className={className} {...props} />
-      );
-    }
-    return <Pre className={className} {...props} />;
-  },
+  pre: (props) => <Pre {...props} />,
   blockquote: (props) => <Blockquote {...props} />,
   a: (props) => <StyledAnchor {...props} />,
   hr: (props) => <SeparatorSvg {...props} stroke="#569cd6" />,
   ol: (props) => <CustomOl {...props} />,
   ul: (props) => <CustomUl {...props} />,
+  code: (props) => (
+    <CodeBlock
+      filename={props.filename}
+      highlight={props.highlight}
+      {...props}
+    />
+  ),
   HiddenExpand,
   Callout,
   BasicCard,
@@ -97,7 +96,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       rehypePlugins: [
         [rehypePrism, { showLineNumbers: true }],
         rehypeSlug,
-        [rehypeAutolinkHeadings, { behavior: "append" }],
+        [rehypeAutolinkHeadings, { behavior: "prepend" }],
       ],
       remarkPlugins: [remarkGfm],
     },

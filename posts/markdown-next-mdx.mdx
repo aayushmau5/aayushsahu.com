@@ -57,8 +57,7 @@ npm i @next/mdx
 
 Then modify `next.config.js` as below.
 
-```js
-// next.config.js
+```js filename=next.config.js
 const withMDX = require("@next/mdx")();
 module.exports = withMDX();
 
@@ -154,8 +153,7 @@ We will read all the mdx files from `posts/` directory, and parse their frontmat
 
 Here's the code:
 
-```js
-// utils/getPostData.js
+```js filename=utils/getPostData.js
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
@@ -216,8 +214,7 @@ export async function getPostData(slug) {
 
 After this, first we will index all the blogs inside `/blogs` route. Put the following code in `pages/blog/index.js` file.
 
-```jsx
-// /pages/blog/index.js
+```jsx filename=/pages/blog/index.js
 import { getSortedPostsData } from "utils/getPostData";
 
 export default function Blogs({ posts }) {
@@ -253,8 +250,7 @@ Now that we have an index page, users can click on any of the link, and they wil
 
 Here's the code for that:
 
-```jsx
-// /pages/blog/[slug].js
+```jsx filename=/pages/blog/[slug].js
 import { serialize } from "next-mdx-remote/serialize";
 import { MDXRemote } from "next-mdx-remote";
 
@@ -308,8 +304,7 @@ Since remark/rehype plugins only support ESM, we can use it inside our `/pages/b
 
 Here's the code:
 
-```jsx
-// /pages/blog/[slug].js
+```jsx filename=/pages/blog/[slug].js
 import { serialize } from "next-mdx-remote/serialize";
 import { MDXRemote } from "next-mdx-remote";
 
@@ -358,8 +353,7 @@ And with that, we should have our plugin working.
 
 One of MDX's prominent feature is it allows us to use React components inside our blogs, and it would be a shame if we didn't use this feature. So, let's use a React component inside our blog(for the sake of the length of _this_ blog, the component will be a simple one). Here it is:
 
-```jsx
-// utils/ShowContentInside.js
+```jsx filename=utils/ShowContentInside.js
 export default function ShowContentInside({ heading, children }) {
   return (
     <div>
@@ -398,9 +392,7 @@ This however won't work. How would our MDX document know where to get the `ShowC
 
 For this, we need to pass our MDX renderer the `ShowContentInside` component(this behavior may differ in other MDX libraries in that you could import components inside your MDX document itself, but `next-mdx-remote` doesn't work like this).
 
-```js
-// /pages/blog/[slug].js
-
+```js filename=/pages/blog/[slug].js
 // ...omitted
 
 import ShowContentInside from "utils/ShowContentInside";

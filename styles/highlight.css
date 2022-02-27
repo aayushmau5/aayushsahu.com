@@ -37,9 +37,7 @@ code[class*="language-"] *::selection {
 }
 
 pre[class*="language-"] {
-  padding: 1em;
   margin: 0.5em 0;
-  overflow: auto;
 }
 
 :not(pre) > code[class*="language-"] {
@@ -293,8 +291,6 @@ pre {
   display: block;
   padding-left: 16px;
   padding-right: 16px;
-  margin-left: -16px;
-  margin-right: -16px;
   border-left-width: 4px;
   border-left-color: rgba(31, 41, 55, 0); /* Set code block color */
 }

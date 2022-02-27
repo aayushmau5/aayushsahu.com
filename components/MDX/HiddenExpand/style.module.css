@@ -2,7 +2,6 @@
   margin-bottom: 1rem;
   border-radius: 0.55rem;
   background-color: #2e2e2e63;
-  overflow: hidden;
 }
 
 .details:focus-within {
