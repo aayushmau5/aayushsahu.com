@@ -1,6 +1,5 @@
 html {
   scroll-behavior: smooth;
-  font-size: 1.1rem;
 }
 
 body {
@@ -11,7 +10,7 @@ body {
     sans-serif;
   background-color: #101114;
   color: white;
-  font-size: 1rem;
+  font-size: 1.15rem;
   line-height: 1.5;
   overflow-x: hidden;
 }
@@ -51,10 +50,4 @@ code {
 .styledLink:hover::after,
 .styledLink:focus-visible::after {
   width: 100%;
-}
-
-@media (min-width: 1024px) {
-  body {
-    font-size: 1.1rem;
-  }
 }

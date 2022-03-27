@@ -3,7 +3,6 @@
   align-items: center;
   color: gray;
   padding: 1rem;
-  width: 60%;
   margin: 0 auto;
 }
 
@@ -27,9 +26,9 @@
   color: white;
 }
 
-@media (max-width: 1000px) {
+@media (min-width: 1024px) {
   .container {
-    width: 100%;
+    width: 55%;
   }
 }
 

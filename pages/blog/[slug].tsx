@@ -60,12 +60,6 @@ export default function BlogPost({
         date={frontMatter.date}
         slug={slug}
       />
-      <Link href="/blog">
-        <a className="styledLink">
-          <BsArrowLeftShort />
-          Back
-        </a>
-      </Link>
       <BlogContainer
         frontMatter={frontMatter}
         tableOfContents={tableOfContents}
