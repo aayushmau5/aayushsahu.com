@@ -123,6 +123,14 @@
   margin-bottom: 10px;
 }
 
+.link {
+  color: #53bcf0;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
 @media (min-width: 1024px) {
   .heading {
     flex-direction: row;

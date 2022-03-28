@@ -31,9 +31,3 @@
     width: 55%;
   }
 }
-
-@media (max-width: 480px) {
-  .container a {
-    display: block;
-  }
-}

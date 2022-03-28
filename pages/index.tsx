@@ -28,7 +28,7 @@ export default function Index({ firstPost, secondPost }) {
               My name is{" "}
               <span className={styles.highlight}>Aayush Kumar Sahu</span>, aka{" "}
               <span className={styles.highlight}>aayushmau5</span>(pronounced:
-              aayushmouse). I&apos;m a fullstack web developer based in India. I
+              aayushmouse). I&apos;m a fullstack web developer from India. I
               love to talk about{" "}
               <span className={styles.highlight}>Open-Source</span>,{" "}
               <span className={styles.highlight}>JavaScript/TypeScript</span>,{" "}
@@ -84,6 +84,12 @@ export default function Index({ firstPost, secondPost }) {
               <a className="styledLink">
                 <BsArrowRightShort />
                 Checkout my projects
+              </a>
+            </Link>
+            <Link href="/about">
+              <a className="styledLink">
+                <BsArrowRightShort />
+                Know more about me
               </a>
             </Link>
             <p>And if you liked it:</p>
