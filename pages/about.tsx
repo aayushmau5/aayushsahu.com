@@ -28,21 +28,27 @@ export default function Index() {
           <span className={styles.highlight}>fullstack web developer</span>, and
           an <span className={styles.highlight}>Open-Source enthusiast</span>.
           My interest includes exploring various technologies such as
-          Docker(DevOps), Low-level programming, Compilers, etc. Currently, I'm
-          an undergrad student studying at JIIT, Noida.
+          Docker(DevOps), Low-level programming, Compilers, etc. Currently,
+          I&apos;m an undergrad student studying at JIIT, Noida.
         </p>
         <p>
-          I did Google Summer of Code(GSoC) 2021 at Postman, and I'm currently a
-          maintainer at{" "}
+          I did Google Summer of Code(GSoC) 2021 at Postman, and I&apos;m
+          currently a maintainer at{" "}
           <a
             className={styles.link}
             href="https://www.asyncapi.com/"
             target="_blank"
+            rel="noreferrer"
           >
             AsyncAPI
           </a>{" "}
           where I maintain the{" "}
-          <a href="" target="_blank" className={styles.link}>
+          <a
+            href="https://github.com/asyncapi/diff"
+            target="_blank"
+            rel="noreferrer"
+            className={styles.link}
+          >
             diff library
           </a>
           . Reach out to me through the given social links 👇
