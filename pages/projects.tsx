@@ -9,7 +9,7 @@ export default function ProjectsPage() {
     <>
       <PageSEO
         title="Projects | Aayush Kumar Sahu"
-        description="Checkout the projects made by me"
+        description="Checkout the projects made by me."
       />
       <div className={styles.container}>
         <h1>Projects</h1>

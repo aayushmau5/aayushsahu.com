@@ -1,11 +1,9 @@
-import Image from "next/image";
 import Link from "next/link";
 import { BsArrowRightShort } from "react-icons/bs";
 
 import { PageSEO } from "@/components/SEO";
 import Date from "@/components/Date";
 
-import Logo from "@/public/image.png";
 import { sortedPostData } from "@/utils/getPosts";
 
 import blogStyles from "@/styles/Blog.module.css";
@@ -22,40 +20,29 @@ export default function Index({ firstPost, secondPost }) {
       <div className={styles.container}>
         <div className={styles.heading}>
           <div>
-            <h1>
+            <h2>
               {" "}
-              Hello <span className={styles.waving}>👋 </span>
-            </h1>
+              Hi there <span className={styles.waving}>👋 </span>
+            </h2>
             <p>
               My name is{" "}
-              <span className={styles.highlight}>Aayush Kumar Sahu</span>, aka,{" "}
+              <span className={styles.highlight}>Aayush Kumar Sahu</span>, aka{" "}
               <span className={styles.highlight}>aayushmau5</span>(pronounced:
-              aayushmouse).
+              aayushmouse). I&apos;m a fullstack web developer from India. I
+              love to talk about{" "}
+              <span className={styles.highlight}>Open-Source</span>,{" "}
+              <span className={styles.highlight}>JavaScript/TypeScript</span>,{" "}
+              <span className={styles.highlight}>Linux</span>,{" "}
+              <span className={styles.highlight}>Vim/VSCode</span>,{" "}
+              <span className={styles.highlight}>Compilers</span>,{" "}
+              <span className={styles.highlight}>Docker</span>, or anything
+              interesting :P
             </p>
-            <p>
-              I&apos;m a{" "}
-              <span className={styles.highlight}>fullstack web developer</span>{" "}
-              based in India.
-            </p>
-            <p>
-              I like to babble about <code>Open-Source</code>,{" "}
-              <code>JavaScript/TypeScript</code>, <code>Linux</code>,{" "}
-              <code>Vim</code>(<code>vscode</code> works as well),{" "}
-              <code>Compilers</code>, or anything interesting :P
-            </p>
-          </div>
-          <div className={styles.logoContainer}>
-            <Image
-              src={Logo}
-              placeholder="blur"
-              alt="logo"
-              className={styles.logo}
-            />
           </div>
         </div>
 
         <div>
-          <h3>Recent articles</h3>
+          <h3>Recent articles ✍🏻</h3>
           <div className={blogStyles.blogsContainer}>
             <Link key={firstPost.slug} href={`/blog/${firstPost.slug}`}>
               <a className={blogStyles.blogContainer}>
@@ -99,10 +86,16 @@ export default function Index({ firstPost, secondPost }) {
                 Checkout my projects
               </a>
             </Link>
+            <Link href="/about">
+              <a className="styledLink">
+                <BsArrowRightShort />
+                Know more about me
+              </a>
+            </Link>
             <p>And if you liked it:</p>
             <a href="mailto:aayushmau5@gmail.com" className="styledLink">
               <BsArrowRightShort />
-              Contact me
+              Contact me(e-mail)
             </a>
             <Link href="/resume">
               <a target="_blank" rel="noreferrer" className="styledLink">

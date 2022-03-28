@@ -51,7 +51,7 @@ export default function Blog({ postsData, tags }: Props) {
     <>
       <PageSEO
         title="Blog | Aayush Kumar Sahu"
-        description="Checkout the blogs written by me"
+        description="Checkout my blogs."
       />
       <div className={styles.container}>
         <h1>Blog</h1>
