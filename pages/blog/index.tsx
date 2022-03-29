@@ -56,7 +56,8 @@ export default function Blog({ postsData, tags }: Props) {
       <div className={styles.container}>
         <h1>Blog</h1>
         <p className={styles.noOfBlogs}>
-          I write about cool technology, or something I have learned recently.
+          I write about something cool I have learned recently, or some cool
+          technologies.
         </p>
         <p className={styles.noOfBlogs}>
           So far, I have written {postsData.length} articles.

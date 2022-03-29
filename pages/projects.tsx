@@ -13,9 +13,13 @@ export default function ProjectsPage() {
       />
       <div className={styles.container}>
         <h1>Projects</h1>
-        <p>Checkout the work I have done.</p>
+        <p className={styles.paragraph}>Checkout the work I have done 🙂</p>
+        <Projects />
         <h2>Skills</h2>
-        <p>Here&apos;s the list of skills that I have.</p>
+        <p className={styles.paragraph}>
+          These are the skills/technologies I feel comfortable with. Though I
+          keep experimenting with new/exciting technologies.
+        </p>
         <h4>Frontend</h4>
         <Skills show="frontend" />
         <h4>Backend</h4>
@@ -24,9 +28,6 @@ export default function ProjectsPage() {
         <Skills show="tools" />
         <h4>Familiar with</h4>
         <Skills show="others" />
-        <h2>All my projects</h2>
-        <p>Here&apos;s the list of projects that I have made.</p>
-        <Projects />
       </div>
     </>
   );
