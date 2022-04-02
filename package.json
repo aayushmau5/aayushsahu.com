@@ -30,7 +30,7 @@
   },
   "devDependencies": {
     "@types/node": "^17.0.23",
-    "@types/react": "^17.0.39",
+    "@types/react": "^17.0.43",
     "eslint": "8.12.0",
     "eslint-config-next": "12.1.0",
     "next-remote-watch": "^1.0.0",
