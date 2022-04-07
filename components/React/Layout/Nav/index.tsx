@@ -30,6 +30,9 @@ function NavLinks({ router }) {
       <NavLink currentRoute={router.route} route="/about">
         About
       </NavLink>
+      <NavLink currentRoute={router.route} route="/life">
+        Life
+      </NavLink>
     </>
   );
 }
