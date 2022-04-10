@@ -5,6 +5,7 @@ import { PageSEO } from "@/components/SEO";
 import Logo from "@/public/image.png";
 
 import styles from "@/styles/Home.module.css";
+import Timeline from "@/components/React/Timeline";
 
 export default function Index() {
   return (
@@ -52,6 +53,9 @@ export default function Index() {
             diff library
           </a>
           . Reach out to me through the given social links 👇
+          <h3>Career</h3>
+          <p>Bird&apos;s-eye view of my career path.</p>
+          <Timeline />
         </p>
       </div>
     </>
