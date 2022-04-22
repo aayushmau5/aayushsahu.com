@@ -35,8 +35,3 @@ Feature requests are welcome :)
 - Fork/Clone this repo
 - Install dependencies `npm install`
 - Run locally in development mode `npm run dev`
-
-## To-do
-
-- [ ] Move to `next-seo`(https://github.com/garmeeh/next-seo#readme)
-- [ ] Code highlight lines feature (https://github.com/timlrx/rehype-prism-plus/issues/20)
