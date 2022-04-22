@@ -53,8 +53,8 @@ export default function Index() {
             diff library
           </a>
           . Reach out to me through the given social links 👇
-          <h3>Career</h3>
-          <p>Bird&apos;s-eye view of my career path.</p>
+          <h3>Timeline</h3>
+          <p>Some highlights of my life.</p>
           <Timeline />
         </p>
       </div>

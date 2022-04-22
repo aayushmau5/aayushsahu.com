@@ -6,19 +6,19 @@ export default function Timeline() {
       <Step time={"April 2022"} title={"Full-Stack intern at Beatoven.ai"} />
       <Divider />
       <Step
-        time={"2021"}
+        time={"November 2021"}
         title={"Gave talk at AsyncAPI conf"}
         description={"About my GSoC project: AsyncAPI diff"}
       />
       <Divider />
       <Step
-        time={"2021"}
+        time={"June - December 2021"}
         title={"Software intern at Basic roots consulting"}
         description={"Worked with AWS and NodeJS"}
       />
       <Divider />
       <Step
-        time={"2021"}
+        time={"June - August 2021"}
         title={"Did GSoC at Postman"}
         description={
           "Started contributing to AsyncAPI org, and did GSoC there. I worked on the AsyncAPI diff library"
@@ -26,7 +26,7 @@ export default function Timeline() {
       />
       <Divider />
       <Step
-        time={"2020"}
+        time={"August 2020"}
         title={"Started contributing to Open-Source ❤️"}
         description={
           "Loved the concept of open-source and started contributing to various projects"
@@ -42,7 +42,7 @@ export default function Timeline() {
       />
       <Divider />
       <Step
-        time={"2019"}
+        time={"August 2019"}
         title={"Got into college"}
         description={"At JIIT, Noida"}
       />
