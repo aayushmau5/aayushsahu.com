@@ -31,6 +31,19 @@
   color: white;
 }
 
+.kbar {
+  margin-left: auto;
+}
+
+.kbarClick {
+  cursor: pointer;
+  border: 1px solid #fff;
+  background-color: #1d1e23;
+  color: #fff;
+  padding: 5px;
+  border-radius: 5px;
+}
+
 @media (min-width: 1024px) {
   .container {
     width: 55%;
