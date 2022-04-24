@@ -33,6 +33,7 @@
 
 .kbar {
   margin-left: auto;
+  display: none;
 }
 
 .kbarClick {
@@ -42,6 +43,18 @@
   color: #fff;
   padding: 5px;
   border-radius: 5px;
+  font-size: 0.8rem;
+}
+
+.commandIcon {
+  margin-left: auto;
+  color: white;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
 }
 
 @media (min-width: 1024px) {
@@ -51,6 +64,16 @@
 
   .LinksContainer {
     border-radius: 0 0 10px 10px;
+  }
+}
+
+@media (min-width: 500px) {
+  .kbar {
+    display: inline;
+  }
+
+  .commandIcon {
+    display: none;
   }
 }
 

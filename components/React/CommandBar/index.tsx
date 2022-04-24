@@ -145,8 +145,7 @@ function RenderResults() {
           <div
             className={styles.results}
             style={{
-              background: active ? "#fff" : "#101114",
-              color: active ? "#000" : "#fff",
+              background: active ? "#191a1c" : "#101114",
             }}
           >
             <div className={styles.items}>

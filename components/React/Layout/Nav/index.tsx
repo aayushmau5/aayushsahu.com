@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
 import { useKBar } from "kbar";
+import { BiCommand } from "react-icons/bi";
 
 import styles from "./style.module.css";
 import NavLink from "./NavLink";
@@ -18,6 +19,9 @@ export default function Nav() {
             Ctrl/CMD + K
           </button>
         </span>
+        <button onClick={query.toggle} className={styles.commandIcon}>
+          <BiCommand />
+        </button>
       </div>
     </div>
   );
