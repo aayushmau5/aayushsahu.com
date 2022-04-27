@@ -12,7 +12,8 @@ My portfolio website powered by:
 
 - Dynamic OpenGraph image generation for blogs using Cloudinary
 - Commenting system powered by [Giscus](https://giscus.app/)
-- Search blogs by tags
+- Blogs
+- Command bar powered by [Kbar](https://kbar.vercel.app/)
 
 Hosted on **Vercel** 💪
 
