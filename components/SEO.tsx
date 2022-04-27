@@ -17,7 +17,6 @@ const CommonSEO = ({ title, description, ogType, ogImage, twImage }) => {
   return (
     <Head>
       <title>{title}</title>
-      <meta name="robots" content="follow, index" />
       <meta name="description" content={description} />
       <meta
         property="og:url"
