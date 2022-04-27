@@ -19,7 +19,11 @@ export default function Nav() {
             Ctrl/CMD + K
           </button>
         </span>
-        <button onClick={query.toggle} className={styles.commandIcon}>
+        <button
+          onClick={query.toggle}
+          className={styles.commandIcon}
+          aria-label="Command Bar"
+        >
           <BiCommand />
         </button>
       </div>
