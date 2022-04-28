@@ -3,6 +3,7 @@ import Image from "next/image";
 import { PageSEO } from "@/components/SEO";
 
 import Logo from "@/public/image.png";
+import ProfileImage from "@/public/profile.jpg";
 
 import styles from "@/styles/Home.module.css";
 import Timeline from "@/components/React/Timeline";
@@ -18,9 +19,9 @@ export default function Index() {
         <h1>About</h1>
         <div className={styles.logoContainer}>
           <Image
-            src={Logo}
+            src={ProfileImage}
             placeholder="blur"
-            alt="logo"
+            alt="My profile image"
             className={styles.logo}
           />
         </div>
