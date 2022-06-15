@@ -4,7 +4,7 @@
         <title>Aayush Kumar Sahu - Developer and Explorer</title>
         <link>https://aayushsahu.com</link>
         <description>aayushmau5' personal website</description>
-        <lastBuildDate>Sat, 21 May 2022 04:33:33 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 29 May 2022 06:10:07 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
@@ -15,6 +15,13 @@
         </image>
         <copyright>CC 2022, Aayush Kumar Sahu</copyright>
         <category>Programming</category>
+        <item>
+            <title><![CDATA[Using Subscription with Stripe for Flask Backend and NextJS]]></title>
+            <link>https://aayushsahu.com/blog/stripe-flask-nextjs-subscription</link>
+            <guid>https://aayushsahu.com/blog/stripe-flask-nextjs-subscription</guid>
+            <pubDate>Thu, 12 May 2022 11:25:19 GMT</pubDate>
+            <description><![CDATA[Mainly getting started with stripe, how to use it in real world]]></description>
+        </item>
         <item>
             <title><![CDATA[My custom MDX components]]></title>
             <link>https://aayushsahu.com/blog/my-custom-mdx-components</link>
