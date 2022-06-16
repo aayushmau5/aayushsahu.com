@@ -4,7 +4,7 @@
         <title>Aayush Kumar Sahu - Developer and Explorer</title>
         <link>https://aayushsahu.com</link>
         <description>aayushmau5' personal website</description>
-        <lastBuildDate>Sun, 29 May 2022 06:10:07 GMT</lastBuildDate>
+        <lastBuildDate>Thu, 16 Jun 2022 20:01:22 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
@@ -16,11 +16,11 @@
         <copyright>CC 2022, Aayush Kumar Sahu</copyright>
         <category>Programming</category>
         <item>
-            <title><![CDATA[Using Subscription with Stripe for Flask Backend and NextJS]]></title>
-            <link>https://aayushsahu.com/blog/stripe-flask-nextjs-subscription</link>
-            <guid>https://aayushsahu.com/blog/stripe-flask-nextjs-subscription</guid>
-            <pubDate>Thu, 12 May 2022 11:25:19 GMT</pubDate>
-            <description><![CDATA[Mainly getting started with stripe, how to use it in real world]]></description>
+            <title><![CDATA[Conditionally going back to previous URL in NextJS]]></title>
+            <link>https://aayushsahu.com/blog/conditional-back-nextjs</link>
+            <guid>https://aayushsahu.com/blog/conditional-back-nextjs</guid>
+            <pubDate>Thu, 16 Jun 2022 18:40:24 GMT</pubDate>
+            <description><![CDATA[Checkout how can we modify going back in history behavior with NextJS]]></description>
         </item>
         <item>
             <title><![CDATA[My custom MDX components]]></title>

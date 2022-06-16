@@ -1,0 +1,78 @@
+---
+title: "Conditionally going back to previous URL in NextJS"
+description: "Checkout how can we modify going back in history behavior with NextJS"
+date: 2022-06-16T18:40:24.441Z
+tags: ["nextjs"]
+draft: false
+showToc: false
+---
+
+Suppose you have a page that only has a button "Go to settings". Now, the settings page has a "Go back" button, which goes back to the previous URL(duh!).
+
+Now, you have got a "loop", where on clicking the "Go back" button, it sends you to the previous page which only has a "Go to settings" button. Then, going back to the settings page, having "Go back" button. Round and round we go!
+
+You have to manually modify the URL in-order to go to some other URL.
+
+But with NextJS, you can conditionally change where the back button leads to. Let's take a look!
+
+# Current code
+
+The code for settings page lives in `pages/settings.js` file. Here's how your current code might look like. We are using NextJS' router for routing purpose.
+
+```jsx filename=settings.js
+import { useRouter } from "next/router";
+
+export default function SettingsPage() {
+  const router = useRouter();
+
+  return (
+    <div>
+      <button onClick={() => router.back()}>Go back</button>
+      Some other stuff
+    </div>
+  );
+}
+```
+
+# Fix
+
+Suppose the previous page, which only has a "Go back to settings" has the URL `/something`. When you go to settings page from this page, you can use NextJS' `getServerSideProps` `context` data to get the previous url from which the current page came to be.
+
+Precisely, `context.req.headers.referer` contains this data. For example, going from `/something` to `/settings` page, will give you the full URL of `/something` page inside `getServerSideProps`.
+
+Thus, we pass the `context.req.headers.referer` value to our page component through `props`. If you are not sure how can we pass this props, checkout the docs for `getServerSideProps` [here](https://nextjs.org/docs/basic-features/data-fetching/get-server-side-props).
+
+Now, we just have to get the previous URL inside our page component, and conditionally change where the `router` function will take us.
+
+```jsx filename=settings.js
+import { useRouter } from "next/router";
+
+export async function getServerSideProps(context) {
+  const previousUrl = context.req.headers.referer;
+  return {
+    props: { previousUrl },
+  };
+}
+
+export default function SettingsPage(props) {
+  const router = useRouter();
+
+  // Check if previous URL is /something. If it is, send user to home page, otherwise go back as normal
+  function goToPreviousPage() {
+    if (props.previousUrl.includes("/something")) {
+      router.push("/");
+    } else {
+      router.back();
+    }
+  }
+
+  return (
+    <div>
+      <button onClick={goToPreviousPage}>Go back</button>
+      Some other stuff
+    </div>
+  );
+}
+```
+
+That's it!
