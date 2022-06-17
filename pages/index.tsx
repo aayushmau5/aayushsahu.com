@@ -92,11 +92,6 @@ export default function Index({ firstPost, secondPost }) {
                 Know more about me
               </a>
             </Link>
-            <p>And if you liked them:</p>
-            <a href="mailto:aayushmau5@gmail.com" className="styledLink">
-              <BsArrowRightShort />
-              Contact me(e-mail)
-            </a>
             <Link href="/resume">
               <a target="_blank" rel="noreferrer" className="styledLink">
                 <BsArrowRightShort />
