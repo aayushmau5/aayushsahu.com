@@ -1,6 +1,4 @@
-import Link from "next/link";
 import { GetStaticProps, GetStaticPaths } from "next";
-import { BsArrowLeftShort } from "react-icons/bs";
 import { serialize } from "next-mdx-remote/serialize";
 import { MDXRemote } from "next-mdx-remote";
 import rehypePrism from "rehype-prism-plus";
