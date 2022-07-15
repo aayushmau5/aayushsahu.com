@@ -1,10 +1,9 @@
 import { GetStaticProps, GetStaticPaths } from "next";
 import { MDXRemote } from "next-mdx-remote";
 
-import { getAllPostIds, getPostData } from "@/utils/getPosts";
-import { generateMdx, getToC } from "@/utils/mdxUtilities";
-import BlogContainer from "@/components/React/Blog/BlogContainer";
-import { BlogSEO } from "@/components/SEO";
+import { getAllFilesId, getFileData } from "@/utils/getStuffs";
+import { generateMdx } from "@/utils/mdxUtilities";
+import { PageSEO } from "@/components/SEO";
 import Pre from "@/components/MDX/Pre";
 import Blockquote from "@/components/MDX/Blockquote";
 import HiddenExpand from "@/components/MDX/HiddenExpand";
@@ -16,7 +15,7 @@ import BasicCard from "@/components/MDX/Card/BasicCard";
 import CardWithTitle from "@/components/MDX/Card/CardWithTitle";
 import CodeBlock from "@/components/MDX/Codeblock";
 import SeparatorSvg from "@/components/React/SeparatorSvg";
-import NextPrevArticles from "@/components/React/Blog/NextPrevArticles";
+import StuffContainer from "@/components/React/Stuff/Container";
 
 const components = {
   pre: (props) => <Pre {...props} />,
@@ -38,34 +37,22 @@ const components = {
   CardWithTitle,
 };
 
-export default function BlogPost({
-  frontMatter,
-  source,
-  slug,
-  tableOfContents,
-  recommendedPostList,
-}) {
+export default function Stuff({ frontMatter, source }) {
   return (
     <>
-      <BlogSEO
+      <PageSEO
         title={frontMatter.title}
-        summary={frontMatter.description}
-        date={frontMatter.date}
-        slug={slug}
+        description={frontMatter.description}
       />
-      <BlogContainer
-        frontMatter={frontMatter}
-        tableOfContents={tableOfContents}
-      >
+      <StuffContainer frontMatter={frontMatter}>
         <MDXRemote {...source} components={components} />
-      </BlogContainer>
-      <NextPrevArticles recommendedPostList={recommendedPostList} />
+      </StuffContainer>
     </>
   );
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const paths = getAllPostIds();
+  const paths = getAllFilesId();
   return {
     paths,
     fallback: false,
@@ -73,17 +60,12 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const { content, frontMatter, slug, recommendedPostList } = await getPostData(
-    params.slug as string
-  );
+  const { content, frontMatter } = await getFileData(params.slug as string);
 
   return {
     props: {
       source: await generateMdx(frontMatter, content),
       frontMatter,
-      slug,
-      tableOfContents: await getToC(frontMatter, content),
-      recommendedPostList,
     },
   };
 };

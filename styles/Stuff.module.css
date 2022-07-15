@@ -1,0 +1,50 @@
+.container {
+  animation: load 0.5s;
+}
+
+@keyframes load {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.paragraph {
+  color: #919191;
+  margin-top: 0;
+}
+
+.description {
+  color: #919191;
+  margin-top: 10px;
+  margin-bottom: 0;
+}
+
+.stuffContainer {
+  display: block;
+  padding: 1rem;
+  border: 1px solid rgb(34, 34, 34);
+  border-radius: 0.75rem;
+  word-wrap: break-word;
+  transition: transform linear 0.1s;
+  margin-bottom: 1rem;
+}
+
+.stuffContainer:hover {
+  background-color: #191919;
+}
+
+.stuffContainer:active {
+  transform: scale(0.98);
+}
+
+.stuffContainer:focus {
+  outline: 2px solid rgb(236, 236, 236);
+}
+
+.stuffContainer h3 {
+  margin: 0;
+}

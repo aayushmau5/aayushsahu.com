@@ -2,7 +2,7 @@ import toc from "markdown-toc";
 import html from "remark-html";
 import { remark } from "remark";
 
-export function generateToC(markdownContent: string) {
+export default function generateToC(markdownContent: string) {
   const tableOfContents = toc(markdownContent);
   return parseToCToHtml(tableOfContents.content);
 }
