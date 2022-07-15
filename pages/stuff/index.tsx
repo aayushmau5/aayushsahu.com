@@ -2,14 +2,14 @@ import { GetStaticProps } from "next";
 import Link from "next/link";
 
 import { PageSEO } from "@/components/SEO";
-import { sortedPostData } from "@/utils/getPosts";
+import { stuffList } from "@/utils/getStuffs";
 
-import styles from "@/styles/Blog.module.css";
+import styles from "@/styles/Stuff.module.css";
 
 interface StuffData {
   slug: string;
   title: string;
-  description?: string;
+  description: string;
 }
 
 interface Props {
@@ -25,18 +25,16 @@ export default function StuffIndex({ stuffList }: Props) {
       />
       <div className={styles.container}>
         <h1>Stuff</h1>
-        <p className={styles.noOfBlogs}>
-          Code snippets and random thoughts. This page is basically github gist
-          for me ;)
+        <p className={styles.paragraph}>
+          Code snippets and random thoughts. This page is basically a big github
+          gist from me ;)
         </p>
-        <div className={styles.blogsContainer}>
+        <div className={styles.allStuff}>
           {stuffList.map((stuff) => (
             <Link key={stuff.slug} href={`/stuff/${stuff.slug}`}>
-              <a className={styles.blogContainer}>
+              <a className={styles.stuffContainer}>
                 <h3>{stuff.title}</h3>
-                {stuff.description ? (
-                  <p className={styles.additionalInfo}>{stuff.description}</p>
-                ) : null}
+                <p className={styles.description}>{stuff.description}</p>
               </a>
             </Link>
           ))}
@@ -47,8 +45,6 @@ export default function StuffIndex({ stuffList }: Props) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const stuffList = sortedPostData;
-
   return {
     props: {
       stuffList,

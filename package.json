@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "dev:old": "next dev",
-    "dev": "next-remote-watch ./posts",
+    "dev": "next-remote-watch ./**/*.mdx",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",

@@ -1,12 +1,8 @@
 import { GetStaticProps, GetStaticPaths } from "next";
-import { serialize } from "next-mdx-remote/serialize";
 import { MDXRemote } from "next-mdx-remote";
-import rehypePrism from "rehype-prism-plus";
-import rehypeSlug from "rehype-slug";
-import rehypeAutolinkHeadings from "rehype-autolink-headings";
-import remarkGfm from "remark-gfm";
 
 import { getAllPostIds, getPostData } from "@/utils/getPosts";
+import { generateMdx, getToC } from "@/utils/mdxUtilities";
 import BlogContainer from "@/components/React/Blog/BlogContainer";
 import { BlogSEO } from "@/components/SEO";
 import Pre from "@/components/MDX/Pre";
@@ -21,7 +17,6 @@ import CardWithTitle from "@/components/MDX/Card/CardWithTitle";
 import CodeBlock from "@/components/MDX/Codeblock";
 import SeparatorSvg from "@/components/React/SeparatorSvg";
 import NextPrevArticles from "@/components/React/Blog/NextPrevArticles";
-import { generateToC } from "@/utils/generateToC";
 
 const components = {
   pre: (props) => <Pre {...props} />,
@@ -82,34 +77,12 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     params.slug as string
   );
 
-  const mdxSource = await serialize(content, {
-    scope: frontMatter,
-    mdxOptions: {
-      rehypePlugins: [
-        [rehypePrism, { showLineNumbers: true }],
-        rehypeSlug,
-        [rehypeAutolinkHeadings, { behavior: "prepend" }],
-      ],
-      remarkPlugins: [remarkGfm],
-    },
-  });
-
-  let tableOfContents: string = null;
-
-  if (typeof frontMatter.showToc === "undefined") {
-    tableOfContents = await generateToC(content);
-  } else {
-    if (frontMatter.showToc) {
-      tableOfContents = await generateToC(content);
-    }
-  }
-
   return {
     props: {
-      source: mdxSource,
+      source: await generateMdx(frontMatter, content),
       frontMatter,
       slug,
-      tableOfContents,
+      tableOfContents: await getToC(frontMatter, content),
       recommendedPostList,
     },
   };

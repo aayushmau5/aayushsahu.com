@@ -1,0 +1,28 @@
+---
+title: "Listing S3 objects with Elixir"
+description: "Using ExAWS library & Elixir to interact with S3"
+draft: false
+---
+
+Using [ExAWS](https://github.com/ex-aws/ex_aws) library to interact with AWS S3. The setup steps is given in the library's documentation.
+
+It returns a map with all the objects listed. Used [Jason](https://github.com/michalmuskala/jason) to convert the returned map to JSON data. You can also loop through the contents using `Enum.map`.
+
+```elixir
+defmodule ElixirS3 do
+  def list_objects() do
+    {:ok, data} = ExAws.S3.list_objects("links-data") |> ExAws.request()
+
+    jsonData =
+      data.body.contents
+      |> Enum.map(fn x -> %{key: x.key} end) # Just getting the `key` from objects
+      |> Jason.encode!()
+
+    File.write!("./data.json", jsonData)
+  end
+end
+
+ElixirS3.list_objects()
+```
+
+There's also [aws-elixir](https://github.com/aws-beam/aws-elixir) library to work with AWS.

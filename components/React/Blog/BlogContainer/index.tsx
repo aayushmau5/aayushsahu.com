@@ -1,5 +1,3 @@
-import dynamic from "next/dynamic";
-
 /* eslint-disable @next/next/no-img-element */
 import Date from "../../../Date";
 import styles from "./style.module.css";
