@@ -109,8 +109,8 @@ export default function Index() {
         <h4>Keyboard</h4>
         <p className={styles.smallParagraph}>
           This is my current keyboard. Keychron K2-V2, with red switches. I love
-          it! I have been eyeing NuPhy Air 65 as well, but they don&asop;t
-          current ship in India :(
+          it! I have been eyeing NuPhy Air 60/75 as well, but they don&apos;t
+          currently ship in India :(
         </p>
         <Image
           src={Keyboard}
