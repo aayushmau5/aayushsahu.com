@@ -1,0 +1,26 @@
+---
+title: "Mongosh docker"
+description: "Using docker exec to run commands on a mongodb container"
+draft: false
+---
+
+## Connect
+
+```bash
+docker exec -it <container_name> mongosh -u <user_name> -p <password>
+```
+
+With `-u` an `-p` options being optional(obv).
+
+## Commands
+
+```
+show databases
+
+use <database_name>
+
+db.<collection_name>.find() # get all data in the collection
+db.<collection_name>.insertOne({ ... }) # insert data in the collection
+
+exit
+```

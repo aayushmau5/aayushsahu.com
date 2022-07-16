@@ -19,7 +19,7 @@ import {
   AiOutlineLinkedin,
 } from "react-icons/ai";
 import { BsPen } from "react-icons/bs";
-import { RiOpenSourceLine } from "react-icons/ri";
+import { RiOpenSourceLine, RiFileList2Line } from "react-icons/ri";
 import { SiAboutdotme } from "react-icons/si";
 
 import styles from "./style.module.css";
@@ -51,6 +51,14 @@ export default function CommandBar(props) {
       perform: () => router.push("/blog"),
       icon: <BsPen />,
       keywords: "go-blog",
+      section: "Go To",
+    },
+    {
+      id: "random",
+      name: "Random",
+      perform: () => router.push("/random"),
+      icon: <RiFileList2Line />,
+      keywords: "go-random",
       section: "Go To",
     },
     {
