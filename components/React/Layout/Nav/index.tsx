@@ -43,8 +43,8 @@ function NavLinks({ router }) {
       <NavLink currentRoute={router.route} route="/blog">
         Blog
       </NavLink>
-      <NavLink currentRoute={router.route} route="/stuff">
-        Stuff
+      <NavLink currentRoute={router.route} route="/random">
+        Random
       </NavLink>
       <NavLink currentRoute={router.route} route="/about">
         About

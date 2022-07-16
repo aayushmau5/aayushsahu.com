@@ -19,6 +19,12 @@ export default function Index({ firstPost, secondPost }) {
       />
       <div className={styles.container}>
         <div className={styles.heading}>
+          <div className={styles.circleContainer}>
+            <div className={styles.circle} style={{ background: "#21daa2" }} />
+            <div className={styles.circle} style={{ background: "#43dce5" }} />
+            <div className={styles.circle} style={{ background: "#36c3ef" }} />
+            <div className={styles.circle} style={{ background: "#4a5ae9" }} />
+          </div>
           <div>
             <h2>
               {" "}
@@ -32,6 +38,7 @@ export default function Index({ firstPost, secondPost }) {
               love to talk about{" "}
               <span className={styles.highlight}>Open-Source</span>,{" "}
               <span className={styles.highlight}>JavaScript/TypeScript</span>,{" "}
+              <span className={styles.highlight}>Elixir</span>,{" "}
               <span className={styles.highlight}>Linux</span>,{" "}
               <span className={styles.highlight}>Vim/VSCode</span>,{" "}
               <span className={styles.highlight}>Compilers</span>,{" "}
@@ -84,6 +91,12 @@ export default function Index({ firstPost, secondPost }) {
               <a className="styledLink">
                 <BsArrowRightShort />
                 Checkout my projects
+              </a>
+            </Link>
+            <Link href="/random">
+              <a className="styledLink">
+                <BsArrowRightShort />
+                Checkout some random stuff
               </a>
             </Link>
             <Link href="/about">

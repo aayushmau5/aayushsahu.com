@@ -29,6 +29,14 @@
   margin: 0 auto;
 }
 
+.imageDescription {
+  margin: 0;
+  margin-top: 5px;
+  text-align: center;
+  font-size: 1rem;
+  color: #919191;
+}
+
 .logoContainer img {
   transform: scale(1.2);
 }
@@ -62,9 +70,20 @@
 }
 
 .heading {
+  margin-top: 32px;
+}
+
+.circleContainer {
   display: flex;
-  flex-direction: column-reverse;
-  gap: 10px;
+  gap: 1rem;
+}
+
+.circle {
+  border-radius: 50%;
+  height: 30px;
+  min-height: 30px;
+  min-width: 30px;
+  width: 30px;
 }
 
 .waving {
@@ -129,6 +148,16 @@
 
 .link:hover {
   text-decoration: underline;
+}
+
+.ul li::marker {
+  color: rgb(86, 134, 245);
+}
+
+.smallParagraph {
+  font-size: 1rem;
+  color: #919191;
+  margin-bottom: 10px;
 }
 
 @media (min-width: 1024px) {

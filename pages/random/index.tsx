@@ -6,32 +6,32 @@ import { stuffList } from "@/utils/getStuffs";
 
 import styles from "@/styles/Stuff.module.css";
 
-interface StuffData {
+interface RandomData {
   slug: string;
   title: string;
   description: string;
 }
 
 interface Props {
-  stuffList: StuffData[];
+  stuffList: RandomData[];
 }
 
 export default function StuffIndex({ stuffList }: Props) {
   return (
     <>
       <PageSEO
-        title="Stuff | Aayush Kumar Sahu"
+        title="Random | Aayush Kumar Sahu"
         description="Code snippets and random thoughts"
       />
       <div className={styles.container}>
-        <h1>Stuff</h1>
+        <h1>Random stuff</h1>
         <p className={styles.paragraph}>
           Code snippets and random thoughts. This page is basically a big github
           gist from me ;)
         </p>
         <div className={styles.allStuff}>
           {stuffList.map((stuff) => (
-            <Link key={stuff.slug} href={`/stuff/${stuff.slug}`}>
+            <Link key={stuff.slug} href={`/random/${stuff.slug}`}>
               <a className={styles.stuffContainer}>
                 <h3>{stuff.title}</h3>
                 <p className={styles.description}>{stuff.description}</p>
