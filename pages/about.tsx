@@ -63,8 +63,8 @@ export default function Index() {
         </p>
         <p>
           This site has no creepy ads, no paywalls, and <em>no analytics</em>. I
-          like write blogs to share with other folks, and hopefully connect with
-          a few people.
+          like to write blogs to share with other people, and hopefully connect with
+          them.
         </p>
         <h3>What am I doing these days</h3>
         <ul className={styles.ul}>
