@@ -63,8 +63,8 @@ export default function Index() {
         </p>
         <p>
           This site has no creepy ads, no paywalls, and <em>no analytics</em>. I
-          like to write blogs to share with other people, and hopefully connect with
-          them.
+          like to write blogs to share with other people, and hopefully connect
+          with them.
         </p>
         <h3>What am I doing these days</h3>
         <ul className={styles.ul}>
@@ -119,6 +119,37 @@ export default function Index() {
           className={styles.logo}
         />
         <p className={styles.smallParagraph}>Look at this big boi!</p>
+        <h4>Speaking</h4>
+        <p className={styles.smallParagraph}>
+          I spoke at{" "}
+          <a
+            className={styles.link}
+            href="https://www.asyncapi.com/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            AsyncAPI
+          </a>{" "}
+          conference 2021 about my Google Summer of Code project{" "}
+          <a
+            className={styles.link}
+            href="https://github.com/asyncapi/diff/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            AsyncAPI diff
+          </a>
+          . Checkout the talk{" "}
+          <a
+            className={styles.link}
+            href="https://youtu.be/yILtksZriqA"
+            target="_blank"
+            rel="noreferrer"
+          >
+            here
+          </a>
+          .
+        </p>
         <h4>Tools</h4>
         <p className={styles.smallParagraph}>
           I use VSCode, with vim extension as my IDE. Kitty as my terminal. I
