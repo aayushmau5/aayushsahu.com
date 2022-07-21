@@ -11,7 +11,7 @@
     "newStuffPost": "node utils/createStuffPost.js"
   },
   "dependencies": {
-    "@giscus/react": "^1.1.2",
+    "@giscus/react": "^2.0.6",
     "date-fns": "^2.28.0",
     "feed": "^4.2.2",
     "gray-matter": "^4.0.3",
