@@ -30,6 +30,7 @@ Feature requests are welcome :)
 - `public/*` - Public data, contains images used in blogs, resume, & projects
 - `utils/*` - Common utilities used in blogs like table of contents, blog posts, etc.
 - `posts/*` - All the blog posts written in MDX
+- `stuff/*` - Posts that belongs to `/random` page
 
 ## Running Locally
 
