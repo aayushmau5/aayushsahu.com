@@ -164,6 +164,22 @@ export default function Index() {
           </a>{" "}
           by Anthony Fu. I use Notion as my primary note taking/todo list app.
         </p>
+        <h4>What's in the name?</h4>
+        <p className={styles.smallParagraph}>
+          As you might already know, I go by aayushmau5 on the internet. This
+          name is inspired by{" "}
+          <a
+            href="https://deadmau5.com/"
+            className={styles.link}
+            target="_blank"
+            rel="noreferrer"
+          >
+            deadmau5
+          </a>
+          , an electronic music producer(I hope he doesn't sue me for this XD).
+          I love his music. This guy introduced me to real electronic music.
+          Filled with melody, and emotion. Been a fan since 2016.
+        </p>
         <h3>Timeline</h3>
         <p>Some highlights of my life.</p>
         <Timeline />

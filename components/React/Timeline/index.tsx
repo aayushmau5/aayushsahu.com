@@ -3,6 +3,14 @@ import styles from "./style.module.css";
 export default function Timeline() {
   return (
     <div className={styles.container}>
+      <Step
+        time={"June 2022"}
+        title={"Started exploring elixir"}
+        description={
+          "One of the best decisions I have ever made. I just looooove elixir, and its ecosystem. It felt like home for some reason, and kinda revived my love for programming."
+        }
+      />
+      <Divider />
       <Step time={"April 2022"} title={"Full-Stack intern at Beatoven.ai"} />
       <Divider />
       <Step
