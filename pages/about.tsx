@@ -2,7 +2,7 @@ import Image from "next/image";
 
 import { PageSEO } from "@/components/SEO";
 
-import ProfileImage from "@/public/profile.jpg";
+import ProfileImage from "@/public/aayush.jpg";
 import Desktop from "@/public/desktop.png";
 import Keyboard from "@/public/keyboard.png";
 
@@ -26,9 +26,7 @@ export default function Index() {
             className={styles.logo}
           />
         </div>
-        <p className={styles.imageDescription}>
-          The only decent picture I have of me.
-        </p>
+        <p className={styles.imageDescription}>Hello there :)</p>
         <p>
           Hey! I&apos;m a{" "}
           <span className={styles.highlight}>fullstack web developer</span>, and

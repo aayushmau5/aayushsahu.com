@@ -20,7 +20,6 @@
 
 .logoContainer {
   border: 5px solid rgb(34, 34, 34);
-  border-radius: 50%;
   overflow: hidden;
   max-width: 300px;
   max-height: 300px;
@@ -35,10 +34,6 @@
   text-align: center;
   font-size: 1rem;
   color: #919191;
-}
-
-.logoContainer img {
-  transform: scale(1.2);
 }
 
 .highlight {

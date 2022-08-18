@@ -11,7 +11,11 @@ export default function Timeline() {
         }
       />
       <Divider />
-      <Step time={"April 2022"} title={"Full-Stack intern at Beatoven.ai"} />
+      <Step
+        time={"April 2022"}
+        title={"Full-Stack intern at Beatoven.ai"}
+        description={"Really love working here!"}
+      />
       <Divider />
       <Step
         time={"November 2021"}
@@ -61,7 +65,7 @@ export default function Timeline() {
         description={"Though I didn't get selected lol"}
       />
       <Divider />
-      <Step time={2017} title={"Graduated school"} />
+      <Step time={2017} title={"Graduated school"} description={"Fun days!"} />
       <Divider />
       <Step time={2000} title={"Born"} description={"lol"} />
     </div>
