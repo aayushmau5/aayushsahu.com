@@ -1,0 +1,27 @@
+---
+title: "Setting response header for JSON responses in Flask"
+description: "In a flask API"
+draft: false
+---
+
+Working with flask, I had to add custom headers when we send a response to the client. I used Flask's `make_response` function to create a `Response` object explicitly(otherwise `Response` object is created automatically by flask).
+
+I used `jsonify` to convert python's dictionary to JSON data.
+
+First argument to `make_response` will be the JSON data, and second will be the HTTP response code.
+
+I added headers by modifying the `headers` data of the response object, but I think you can also add headers directly in `make_response` call.
+
+Here's the code:
+
+```python
+from flask import make_response, jsonify
+
+# ..... other stuff
+
+@app.route('/')
+def home_route():
+	response = make_response(jsonify({'hello': 'world'}), 200)
+	response.headers['Access-Control-Allow-Origin'] = '*' # <- adding header
+	return response
+```
