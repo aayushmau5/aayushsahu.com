@@ -1,0 +1,470 @@
+---
+title: "My VSCode setting"
+description: ""
+date: 2022-07-29T16:48:27.393Z
+tags: ["vscode", "vim"]
+draft: true
+showToc: true
+---
+
+# Introduction
+
+Hi! In this blog post I will go through my VSCode setting. Why you may ask? Looking through all the posts about vscode configs on the internet, I havne't seen much that go through setting up custom vim keybindgs, having custom fonts based on file type, etc. My aim is to provide you with some "rare" configs which you might not be familiar with.
+
+Sounds good? Let's get started!
+
+<BasicCard>
+  For the impatient, here's the{" "}
+  <a
+    target="_blank"
+    rel="noreferrer"
+    href="https://github.com/aayushmau5/dotfiles/tree/master/vscode"
+  >
+    link
+  </a>{" "}
+  to the config file that I use.
+</BasicCard>
+
+# What will we talk about
+
+We will see
+
+- visual customization(themes, fonts, etc.)
+- specific file related configs
+- integrated terminal customization
+
+Feel free to skip to the desired part using the Table of Contents on top.
+
+# Visual styling
+
+Let's first talk about theming. I think its the most popular topic of all, since all the tech blogs, or videos I see on the internet is filled with comments like "what's that theme?".
+
+Here's how my vscode looks like(as of July 2022):
+
+![My VsCode Setup](/blogImages/vscode.png)
+(sorry if this looks too small on larger screen. you can get the full image using right click(or hold) -> "Open Image in new tab")
+
+Alright! Let's see, the theme is [Vitesse Dark theme](https://github.com/antfu/vscode-theme-vitesse). I use [JuliaMono](https://juliamono.netlify.app/) as my editor font, and my terminal font is [Fira Code Nerd Font](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/FiraCode). For Icons, I use [File Icons](https://marketplace.visualstudio.com/items?itemName=file-icons.file-icons)(you can change your file icons using command palette(`Ctrl-p`), and search for "File Icon theme"). For Product icon(the icons that you see on the right most sidebar), I use [Carbon Product Icons](https://marketplace.visualstudio.com/items?itemName=antfu.icons-carbon)(you can change this using command palette(`Ctrl-p`), and searching for "Product Icon theme").
+
+Along with this, I have made some additional configurations.
+
+<BasicCard>
+  Instead of showing all the configs at once, I'll show them in chuncks.
+</BasicCard>
+
+## Font configurations
+
+```json
+{
+  "editor.fontLigatures": true,
+  "editor.fontFamily": "'JuliaMono'",
+  "editor.fontWeight": "400",
+  "editor.letterSpacing": 0.1,
+  "editor.lineHeight": 25,
+  "terminal.integrated.fontSize": 15,
+  "terminal.integrated.fontWeightBold": "500",
+  "terminal.integrated.fontFamily": "'FuraCode Nerd Font'"
+}
+```
+
+All the editor related settings have `editor` prefix. To get all the lists of configurations you can make, just enter `editor.` and VSCode will give you all the hints ;)
+
+Most of the stuff is pretty straightforward. You can change the font weight, spacing between letters, line height, etc.
+
+To edit terminal configurations, you can use `terminal` prefix. Here, I changed my integrated terminal's font, it's weight and size. That's it for font configurations, lets move on to configuring some colors.
+
+## Color configurations
+
+```json
+{
+  "editor.rulers": [
+    {
+      "column": 80,
+      "color": "#4f545a40"
+    }
+  ],
+  "workbench.colorCustomizations": {
+    "[Default Dark+]": {
+      "statusBar.background": "#1b1b1b",
+      "activityBar.background": "#1b1b1b",
+      "sideBar.background": "#1b1b1b",
+      "editor.background": "#1b1b1b"
+    }
+  },
+  "editor.tokenColorCustomizations": {
+    "textMateRules": [
+      {
+        "scope": ["comment"],
+        "settings": {
+          "fontStyle": "italic"
+        }
+      }
+    ]
+  }
+}
+```
+
+Let's start with `editor.rulers`, with this you can put a vertical line in your editor. I have set it to 80 columns. I don't strictly abide by those 80 column width, but it helps as a visual inidication whether I should break-up the lines or not.
+
+With `workbench.colorCustomizations`, you can customize existing themes. Say if you like your existing theme but wanna make slight modifications to it, you can do it this way. Just provide the name of the theme you want to config(vscode provides hint for this as well), and make the changes you want.
+
+With `editor.tokenColorCustomizations`, you can customize what each token looks like. Here I'm configuring that all comments have `italic` style applied to them.
+
+<Callout type="info">
+
+Token refers to ...
+
+</Callout>
+
+## Workbench changes
+
+```json
+{
+  "workbench.statusBar.visible": false,
+  "window.zoomLevel": -0.2,
+  "workbench.activityBar.visible": false,
+  "workbench.sideBar.location": "right",
+  "workbench.tree.indent": 20,
+  "editor.accessibilitySupport": "off",
+  "editor.find.addExtraSpaceOnTop": false,
+  "editor.glyphMargin": true,
+  "editor.smoothScrolling": true,
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.cursorBlinking": "smooth",
+  "editor.suggest.preview": true,
+  "editor.bracketPairColorization.enabled": true,
+  "editor.minimap.enabled": false,
+  // "editor.cursorSmoothCaretAnimation": true,
+  "editor.tabSize": 2,
+  "editor.cursorStyle": "line",
+  "editor.cursorWidth": 1,
+  "editor.cursorSurroundingLines": 8,
+  "editor.insertSpaces": false,
+  // "editor.lineNumbers": "relative",
+  "editor.wordSeparators": "/\\()\"':,.;<>~!@#$%^&*|+=[]{}`?-_",
+  "files.trimTrailingWhitespace": true,
+  "breadcrumbs.enabled": false
+}
+```
+
+? What does workbench refer to?
+
+## Other `editor` changes
+
+```json
+{
+  "editor.accessibilitySupport": "off",
+  "editor.find.addExtraSpaceOnTop": false,
+  "editor.glyphMargin": true,
+  "editor.smoothScrolling": true,
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.cursorBlinking": "smooth",
+  "editor.suggest.preview": true,
+  "editor.bracketPairColorization.enabled": true,
+  "editor.minimap.enabled": false,
+  // "editor.cursorSmoothCaretAnimation": true,
+  "editor.tabSize": 2,
+  "editor.cursorStyle": "line",
+  "editor.cursorWidth": 1,
+  "editor.cursorSurroundingLines": 8,
+  "editor.insertSpaces": false,
+  // "editor.lineNumbers": "relative",
+  "editor.wordSeparators": "/\\()\"':,.;<>~!@#$%^&*|+=[]{}`?-_",
+  "editor.inlineSuggest.enabled": true
+}
+```
+
+## Other changes
+
+```json
+{
+  "window.zoomLevel": -0.2,
+  "files.trimTrailingWhitespace": true,
+  "breadcrumbs.enabled": false
+}
+```
+
+# File specific configs
+
+```json
+{
+  "[c]": {
+    "editor.defaultFormatter": "ms-vscode.cpptools"
+  },
+  "[cpp]": {
+    "editor.defaultFormatter": "ms-vscode.cpptools"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[go]": {
+    "editor.formatOnSave": true
+  },
+  "[python]": {
+    "gitlens.codeLens.symbolScopes": ["!Module"],
+    "editor.defaultFormatter": "ms-python.python",
+    "editor.formatOnSave": false
+  },
+  "[markdown]": {
+    "editor.wordWrap": "on",
+    "editor.quickSuggestions": {
+      "comments": "on",
+      "strings": "on",
+      "other": "on"
+    },
+    // "editor.fontFamily": "'SF Mono'",
+    // "editor.fontFamily": "'Cascadia Code'",
+    // "editor.fontFamily": "'IBM Plex Mono'",
+    // "editor.fontFamily": "'Rec Mono Linear'",
+    // "editor.letterSpacing": 0.2,
+    // "editor.fontFamily": "'JuliaMono'",
+    // "editor.fontFamily": "'Fira Code'",
+    // "editor.fontFamily": "'IBM Plex Sans'",
+    // "editor.fontFamily": "'Jetbrains Mono'",
+    // "editor.letterSpacing": 0.5,
+    // "editor.fontFamily": "'Fira Sans'",
+    // "editor.fontFamily": "'Inconsolata'",
+    "editor.fontFamily": "'Overpass Mono'",
+    "editor.fontSize": 15
+  },
+  "[mdx]": {
+    "editor.wordWrap": "on",
+    "editor.quickSuggestions": {
+      "comments": "on",
+      "strings": "on",
+      "other": "on"
+    },
+    // "editor.fontFamily": "'SF Mono'",
+    // "editor.fontFamily": "'IBM Plex Mono'",
+    // "editor.fontFamily": "'Fira Code'",
+    // "editor.fontFamily": "'JuliaMono'",
+    // "editor.fontFamily": "'Jetbrains Mono'",
+    // "editor.fontFamily": "'Rec Mono Linear'",
+    // "editor.formatOnSave": false
+    // "editor.letterSpacing": 0.2,
+    // "editor.fontFamily": "'Inconsolata'",
+    "editor.fontFamily": "'Overpass Mono'",
+    "editor.fontSize": 15 // Inconsolata
+  },
+  "[json]": {
+    "editor.quickSuggestions": {
+      "strings": true
+    },
+    "editor.suggest.insertMode": "replace",
+    "gitlens.codeLens.scopes": ["document"]
+  },
+  "[prisma]": {
+    "editor.defaultFormatter": "Prisma.prisma"
+  },
+  "[xml]": {
+    "editor.defaultFormatter": "redhat.vscode-xml"
+  },
+  "[svg]": {
+    "editor.defaultFormatter": "jock.svg"
+  },
+  "[elixir]": {
+    "editor.defaultFormatter": "JakeBecker.elixir-ls"
+  }
+}
+```
+
+# Vim mode configs
+
+```json
+{
+  "vim.useSystemClipboard": true,
+  "vim.hlsearch": true,
+  "vim.leader": "<Space>",
+  "vim.easymotion": true,
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": ["J"],
+      "after": ["5", "j"]
+    },
+    {
+      "before": ["K"],
+      "after": ["5", "k"]
+    },
+    {
+      "before": ["<Leader>", "j"],
+      "after": ["J"]
+    },
+    {
+      "before": ["<C-h>"],
+      "after": ["<C-w>", "h"]
+    },
+    {
+      "before": ["<C-j>"],
+      "after": ["<C-w>", "j"]
+    },
+    {
+      "before": ["<C-k>"],
+      "after": ["<C-w>", "k"]
+    },
+    {
+      "before": ["<C-l>"],
+      "after": ["<C-w>", "l"]
+    },
+    {
+      "before": ["<tab>"],
+      "commands": ["workbench.action.nextEditor"]
+    },
+    {
+      "before": ["<S-tab>"],
+      "commands": ["workbench.action.previousEditor"]
+    },
+    {
+      "before": ["<Leader>", "t", "t"],
+      "commands": [":tabnew"]
+    },
+    {
+      "before": ["<Leader>", "t", "o"],
+      "commands": [":tabo"]
+    },
+    {
+      "before": ["<Leader>", "t", "q"],
+      "commands": [":tabclose"]
+    },
+    {
+      "before": ["<leader>", "e", "e"],
+      "commands": ["workbench.action.toggleSidebarVisibility"]
+    },
+    {
+      "before": ["<leader>", "e", "a"],
+      "commands": ["workbench.action.toggleActivityBarVisibility"]
+    },
+    {
+      "before": ["<leader>", "e", "q"],
+      "commands": ["workbench.action.toggleStatusbarVisibility"]
+    },
+    {
+      "before": ["<leader>", "c"],
+      "commands": ["editor.action.commentLine"]
+    },
+    {
+      "before": ["<leader>", "r"],
+      "commands": ["workbench.action.terminal.toggleTerminal"]
+    },
+    {
+      "before": ["<leader>", "s"],
+      "commands": [":w"]
+    }
+  ],
+  "vim.insertModeKeyBindingsNonRecursive": [
+    {
+      "before": ["j", "k"],
+      "after": ["<ESC>"]
+    }
+  ],
+  "vim.visualModeKeyBindings": [
+    {
+      "before": ["J"],
+      "after": ["5", "j"]
+    },
+    {
+      "before": ["<leader>", "c"],
+      "commands": ["editor.action.commentLine"]
+    },
+    {
+      "before": ["K"],
+      "after": ["5", "k"]
+    },
+    {
+      "before": ["<Leader>", "j"],
+      "after": ["J"]
+    }
+  ]
+}
+```
+
+# Working with files and directories
+
+```json
+{
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/Thumbs.db": true,
+    "**/node_modules": true
+  },
+  "files.associations": {
+    "*.df": "dockerfile"
+  },
+  "search.exclude": {
+    "**/.git": true,
+    "**/.github": true,
+    "**/.next": true,
+    "**/.output": true,
+    "**/.pnpm": true,
+    "**/.vscode": true,
+    "**/.yarn": true,
+    "**/dist/**": true,
+    "**/logs": true,
+    "**/node_modules": true,
+    "**/out/**": true,
+    "**/package-lock.json": true,
+    "**/tmp": true,
+    "**/yarn.lock": true,
+    "**/_build": true,
+    "**/.elixir_ls": true,
+    "**/deps": true
+  },
+  "emmet.includeLanguages": {
+    "phoenix-heex": "html"
+  }
+}
+```
+
+# Keybindings
+
+```json
+[
+  {
+    "key": "ctrl+t",
+    "command": "workbench.action.terminal.toggleTerminal"
+  },
+  {
+    "key": "ctrl+cmd+enter",
+    "command": "workbench.action.toggleMaximizedPanel"
+  },
+  {
+    "key": "cmd+d",
+    "command": "workbench.action.terminal.split",
+    "when": "terminalFocus && terminalProcessSupported"
+  },
+  {
+    "key": "ctrl+k",
+    "command": "workbench.action.terminal.focusNextPane",
+    "when": "terminalFocus && terminalProcessSupported"
+  },
+  {
+    "key": "ctrl+j",
+    "command": "workbench.action.terminal.focusPreviousPane",
+    "when": "terminalFocus && terminalProcessSupported"
+  },
+  {
+    "key": "ctrl+n",
+    "command": "workbench.action.terminal.new",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "ctrl+shift+k",
+    "command": "workbench.action.terminal.focusPrevious",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "ctrl+shift+j",
+    "command": "workbench.action.terminal.focusNext",
+    "when": "terminalFocus"
+  }
+]
+```
+
+# Explore more
+
+- links

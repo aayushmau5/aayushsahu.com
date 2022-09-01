@@ -1,0 +1,39 @@
+---
+title: "Creating subscriptions using stripe"
+description: "How to use stripe in the real world"
+date: 2022-08-07T11:25:19.755Z
+tags: ["stripe", "payment", "subscription"]
+draft: true
+showToc: true
+---
+
+# Introduction
+
+Hey! Welcome to this blog. This blog is a bit different, I will give snippets but not the whole code. I assume you already know about stripe.
+
+# What we will do
+
+Using monthly based subscription. There will be two types of user: one is basic plan and another with premium. Basic is free(with some limitations), and premium requires any arbitrary amount(whatever you want to set the price to). For this "tutorial", let's use 1$(OMG!).
+
+# Outline
+
+- Using stripe checkout to create subscriptions
+- Storing invoice data(when, how)
+- Provisioning access to your product
+- Handling monthly recurring payments
+- Listening to stripe's webhook events to store data in db
+- Error handling
+- Frontend
+- Good discord support
+- Some pain points, and query
+- Stripe's dashboard
+- How important it is to have good working payment service
+- Going to production
+- Changing price
+- Showing price based on region/country
+- Open source code
+
+# Links
+
+- Link to stripe docs
+- https://benfoster.io/blog/stripe-failed-payments-how-to/
