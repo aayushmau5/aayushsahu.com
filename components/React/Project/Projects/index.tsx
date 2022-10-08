@@ -6,6 +6,7 @@ import projman from "@/public/projects/projman.png";
 import membersOnly from "@/public/projects/membersOnly.png";
 import cv from "@/public/projects/cv.png";
 import aayushsahu from "@/public/projects/aayushsahu.png";
+import battleship from "@/public/projects/battleship.png";
 import taburei from "@/public/projects/taburei.png";
 
 const projects: Project[] = [
@@ -53,6 +54,13 @@ const projects: Project[] = [
     image: <Image src={aayushsahu} placeholder="blur" alt="Blog Project" />,
     sourceLink: "https://www.github.com/aayushmau5/aayushsahu.com",
     demoLink: "https://www.aayushsahu.com",
+  },
+  {
+    name: "Battleship",
+    description: "Battleship game made using Elixir & Phoenix framework.",
+    image: <Image src={battleship} placeholder="blur" alt="Battleship" />,
+    sourceLink: "https://www.github.com/aayushmau5/battleship",
+    demoLink: "https://aayush-battleship.fly.dev/",
   },
 ];
 
