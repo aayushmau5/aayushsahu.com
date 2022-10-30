@@ -148,6 +148,19 @@ export default function Index() {
           </a>
           .
         </p>
+        <p className={styles.smallParagraph}>
+          I spoke at{" "}
+          <a
+            className={styles.link}
+            href="https://indiafoss.net/delhi/2022"
+            target="_blank"
+            rel="noreferrer"
+          >
+            DelhiFOSS
+          </a>{" "}
+          on October2022 about Elixir and what makes it great. Will share the
+          link soon :)
+        </p>
         <h4>Tools</h4>
         <p className={styles.smallParagraph}>
           I use VSCode, with vim extension as my IDE. Kitty as my terminal. I
