@@ -4,7 +4,7 @@
         <title>Aayush Kumar Sahu - Developer and Explorer</title>
         <link>https://aayushsahu.com</link>
         <description>aayushmau5' personal website</description>
-        <lastBuildDate>Wed, 27 Jul 2022 09:35:37 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 19 Nov 2022 16:13:56 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
@@ -15,6 +15,12 @@
         </image>
         <copyright>CC 2022, Aayush Kumar Sahu</copyright>
         <category>Programming</category>
+        <item>
+            <title><![CDATA[Setting config for libraries inside Livebook]]></title>
+            <link>https://aayushsahu.com/blog/livebook-secret-config</link>
+            <guid>https://aayushsahu.com/blog/livebook-secret-config</guid>
+            <pubDate>Sat, 19 Nov 2022 16:12:58 GMT</pubDate>
+        </item>
         <item>
             <title><![CDATA[Conditionally going back to previous URL in NextJS]]></title>
             <link>https://aayushsahu.com/blog/conditional-back-nextjs</link>
