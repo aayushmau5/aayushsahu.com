@@ -47,6 +47,12 @@ function FileIcon({ type }: { type: string }) {
       return svgIcons.html;
     case "css":
       return svgIcons.css;
+    case "exs":
+      return svgIcons.ex;
+    case "ex":
+      return svgIcons.ex;
+    case "livemd":
+      return svgIcons.ex;
     default:
       return svgIcons.regular;
   }

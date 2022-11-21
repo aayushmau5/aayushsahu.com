@@ -158,8 +158,19 @@ export default function Index() {
           >
             DelhiFOSS
           </a>{" "}
-          on October2022 about Elixir and what makes it great. Will share the
-          link soon :)
+          on October2022 about Elixir and what makes it great.
+        </p>
+        <p className={styles.smallParagraph}>
+          Gave a workshop on{" "}
+          <a
+            className={styles.link}
+            href="https://scratch.mit.edu"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Scratch
+          </a>{" "}
+          at CodeDay Delhi 2022.
         </p>
         <h4>Tools</h4>
         <p className={styles.smallParagraph}>

@@ -8,6 +8,12 @@ interface Step {
 
 const steps: Step[] = [
   {
+    time: "November 2022",
+    title: "Attended and gave workshop at CodeDay Delhi",
+    description:
+      "Gave a workshop on scratch for highschool folks. Had a fun night hacking on some projects and helping people.",
+  },
+  {
     time: "October 2022",
     title: "Gave talk at DelhiFOSS",
     description:
