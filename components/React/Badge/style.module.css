@@ -1,0 +1,22 @@
+.container {
+  display: flex;
+  align-items: center;
+  margin-top: 2rem;
+  gap: 7px;
+  border-radius: 30px;
+  background-color: #4a5ae95b;
+  padding: 10px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #43dce5;
+  width: fit-content;
+}
+
+.dot {
+  flex: 1;
+  display: block;
+  height: 12px;
+  width: 12px;
+  border-radius: 50%;
+  background-color: #43dce5;
+}
