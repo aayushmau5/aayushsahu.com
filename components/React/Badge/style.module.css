@@ -13,10 +13,8 @@
 }
 
 .dot {
-  flex: 1;
   display: block;
-  height: 12px;
-  width: 12px;
   border-radius: 50%;
   background-color: #43dce5;
+  padding: 7px;
 }
