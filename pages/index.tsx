@@ -26,7 +26,7 @@ export default function Index({ firstPost, secondPost }) {
             <div className={styles.circle} style={{ background: "#36c3ef" }} />
             <div className={styles.circle} style={{ background: "#4a5ae9" }} />
           </div>
-          <Badge status="Current status: Writing a new article. Stay tuned!" />
+          <Badge status="Current status: Doing Advent of Code 2022!" />
           <div>
             <h2>
               {" "}
@@ -93,12 +93,6 @@ export default function Index({ firstPost, secondPost }) {
               <a className="styledLink">
                 <BsArrowRightShort />
                 Checkout my projects
-              </a>
-            </Link>
-            <Link href="/random">
-              <a className="styledLink">
-                <BsArrowRightShort />
-                Checkout some random stuff
               </a>
             </Link>
             <Link href="/about">

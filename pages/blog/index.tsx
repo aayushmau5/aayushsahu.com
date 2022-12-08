@@ -57,10 +57,10 @@ export default function Blog({ postsData, tags }: Props) {
         <h1>Blog</h1>
         <p className={styles.noOfBlogs}>
           I write about something cool I have learned recently, or some cool
-          technologies.
+          technologies, or just about life in general.
         </p>
         <p className={styles.noOfBlogs}>
-          So far, I have written {postsData.length} articles.
+          So far, I have written {postsData.length} blogs.
         </p>
         <SearchBar value={searchValue} onChange={setSearchValue} />
         <TagsContainer>

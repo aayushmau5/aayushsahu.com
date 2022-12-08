@@ -54,14 +54,6 @@ export default function CommandBar(props) {
       section: "Go To",
     },
     {
-      id: "random",
-      name: "Random",
-      perform: () => router.push("/random"),
-      icon: <RiFileList2Line />,
-      keywords: "go-random",
-      section: "Go To",
-    },
-    {
       id: "about",
       name: "About Me",
       keywords: "go-about",

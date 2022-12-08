@@ -4,7 +4,7 @@
         <title>Aayush Kumar Sahu - Developer and Explorer</title>
         <link>https://aayushsahu.com</link>
         <description>aayushmau5' personal website</description>
-        <lastBuildDate>Sat, 19 Nov 2022 16:13:56 GMT</lastBuildDate>
+        <lastBuildDate>Thu, 08 Dec 2022 11:24:31 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
@@ -20,6 +20,62 @@
             <link>https://aayushsahu.com/blog/livebook-secret-config</link>
             <guid>https://aayushsahu.com/blog/livebook-secret-config</guid>
             <pubDate>Sat, 19 Nov 2022 16:12:58 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Installing Sonic Pi on Pop-OS]]></title>
+            <link>https://aayushsahu.com/blog/sonicpi-pop-os-installation</link>
+            <guid>https://aayushsahu.com/blog/sonicpi-pop-os-installation</guid>
+            <pubDate>Fri, 07 Oct 2022 13:59:43 GMT</pubDate>
+            <description><![CDATA[Installing required packages and building sonic-pi]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Setting up Postgres with Docker]]></title>
+            <link>https://aayushsahu.com/blog/postgres-docker</link>
+            <guid>https://aayushsahu.com/blog/postgres-docker</guid>
+            <pubDate>Thu, 06 Oct 2022 13:59:43 GMT</pubDate>
+            <description><![CDATA[Making volume, running container, etc.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Mongosh docker]]></title>
+            <link>https://aayushsahu.com/blog/mongosh-docker</link>
+            <guid>https://aayushsahu.com/blog/mongosh-docker</guid>
+            <pubDate>Wed, 05 Oct 2022 13:59:43 GMT</pubDate>
+            <description><![CDATA[Using docker exec to run commands on a mongodb container]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Setting response header for JSON responses in Flask]]></title>
+            <link>https://aayushsahu.com/blog/flask-response-headers</link>
+            <guid>https://aayushsahu.com/blog/flask-response-headers</guid>
+            <pubDate>Tue, 04 Oct 2022 13:59:43 GMT</pubDate>
+            <description><![CDATA[In a flask API]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Listing S3 objects with Elixir]]></title>
+            <link>https://aayushsahu.com/blog/elixir-s3-list</link>
+            <guid>https://aayushsahu.com/blog/elixir-s3-list</guid>
+            <pubDate>Mon, 03 Oct 2022 13:59:43 GMT</pubDate>
+            <description><![CDATA[Using ExAWS library & Elixir to interact with S3]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Elixir file manipulation]]></title>
+            <link>https://aayushsahu.com/blog/elixir-file-handling</link>
+            <guid>https://aayushsahu.com/blog/elixir-file-handling</guid>
+            <pubDate>Sun, 02 Oct 2022 13:59:43 GMT</pubDate>
+            <description><![CDATA[Manipulating arbitrary number of files present in a directory using Elixir]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Things I do before distro-hopping]]></title>
+            <link>https://aayushsahu.com/blog/distro-hop</link>
+            <guid>https://aayushsahu.com/blog/distro-hop</guid>
+            <pubDate>Sat, 01 Oct 2022 13:59:43 GMT</pubDate>
+            <description><![CDATA[Backing up, & Softwares to install]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Things I want to do someday]]></title>
+            <link>https://aayushsahu.com/blog/things-i-want-to-explore</link>
+            <guid>https://aayushsahu.com/blog/things-i-want-to-explore</guid>
+            <pubDate>Fri, 30 Sep 2022 13:59:43 GMT</pubDate>
+            <description><![CDATA[Just a bunch of random stuff]]></description>
         </item>
         <item>
             <title><![CDATA[Conditionally going back to previous URL in NextJS]]></title>
