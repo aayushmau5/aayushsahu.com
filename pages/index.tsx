@@ -26,7 +26,7 @@ export default function Index({ firstPost, secondPost }) {
             <div className={styles.circle} style={{ background: "#36c3ef" }} />
             <div className={styles.circle} style={{ background: "#4a5ae9" }} />
           </div>
-          <Badge status="Current status: Doing Advent of Code 2022!" />
+          <Badge status="Current status: Just chilling and writing code" />
           <div>
             <h2>
               {" "}

@@ -5,6 +5,7 @@ import { PageSEO } from "@/components/SEO";
 import ProfileImage from "@/public/aayush.jpg";
 import Desktop from "@/public/desktop.png";
 import Keyboard from "@/public/keyboard.png";
+import Editor from "@/public/editor.png";
 
 import styles from "@/styles/Home.module.css";
 import Timeline from "@/components/React/Timeline";
@@ -26,7 +27,7 @@ export default function Index() {
             className={styles.logo}
           />
         </div>
-        <p className={styles.imageDescription}>Hello there :)</p>
+        <p className={styles.imageDescription}>Hi 👋</p>
         <p>
           Hey! I&apos;m a{" "}
           <span className={styles.highlight}>fullstack web developer</span>, and
@@ -92,6 +93,7 @@ export default function Index() {
         </ul>
         <h3>Random</h3>
         <p>Just some random stuff.</p>
+
         <h4>Desktop</h4>
         <p className={styles.smallParagraph}>
           This is what my desktop currently looks like. I&apos;m using Pop-OS as
@@ -104,6 +106,20 @@ export default function Index() {
           alt="My desktop"
           className={styles.logo}
         />
+
+        <h4>Editor</h4>
+        <p className={styles.smallParagraph}>
+          My current editor is VSCode. Here&apos;s how it looks right now.
+          Editor font: Calling Code, Terminal Font: Iosevka, and default dark
+          theme.
+        </p>
+        <Image
+          src={Editor}
+          placeholder="blur"
+          alt="My editor"
+          className={styles.logo}
+        />
+
         <h4>Keyboard</h4>
         <p className={styles.smallParagraph}>
           This is my current keyboard. Keychron K2-V2, with red switches. I love
@@ -117,6 +133,7 @@ export default function Index() {
           className={styles.logo}
         />
         <p className={styles.smallParagraph}>Look at this big boi!</p>
+
         <h4>Speaking</h4>
         <p className={styles.smallParagraph}>
           I spoke at{" "}
@@ -172,6 +189,7 @@ export default function Index() {
           </a>{" "}
           at CodeDay Delhi 2022.
         </p>
+
         <h4>Tools</h4>
         <p className={styles.smallParagraph}>
           I use VSCode, with vim extension as my IDE. Kitty as my terminal. I
@@ -184,8 +202,11 @@ export default function Index() {
           >
             Vitesse Dark theme
           </a>{" "}
-          by Anthony Fu. I use Notion as my primary note taking/todo list app.
+          by Anthony Fu. I use Notion as my primary note taking/todo list app. I
+          use Kitty as my default terminal, and Firefox for my day to day
+          internet surfing.
         </p>
+
         <h4>What&apos;s in the name?</h4>
         <p className={styles.smallParagraph}>
           As you might already know, I go by aayushmau5 on the internet. This
@@ -202,6 +223,7 @@ export default function Index() {
           XD). I love his music. This guy introduced me to real electronic
           music. Filled with melody, and emotion. Been a fan since 2016.
         </p>
+
         <h3>Timeline</h3>
         <p>Some highlights of my life.</p>
         <Timeline />
