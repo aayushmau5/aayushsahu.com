@@ -56,6 +56,7 @@ export default function BlogPost({
       <BlogContainer
         frontMatter={frontMatter}
         tableOfContents={tableOfContents}
+        slug={slug}
       >
         <MDXRemote {...source} components={components} />
       </BlogContainer>
