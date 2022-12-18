@@ -2,9 +2,12 @@
   border-top: 1px solid rgb(27, 27, 27);
   color: gray;
   padding: 1rem;
-  padding-top: 2rem;
   margin: 2rem auto;
   font-size: 1rem;
+}
+
+.others {
+  padding-top: 1rem;
   display: flex;
   flex-direction: column-reverse;
 }
@@ -35,6 +38,9 @@
 @media (min-width: 1024px) {
   .container {
     width: 55%;
+  }
+
+  .others {
     justify-content: space-between;
     flex-direction: row;
   }

@@ -1,3 +1,4 @@
+import { Socket } from "@/components/Phoenix/Socket";
 import CommandBar from "@/components/React/CommandBar";
 import Layout from "@/components/React/Layout";
 
@@ -6,11 +7,13 @@ import "@/styles/highlight.css";
 
 function MyApp({ Component, pageProps }) {
   return (
-    <CommandBar>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
-    </CommandBar>
+    <Socket>
+      <CommandBar>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </CommandBar>
+    </Socket>
   );
 }
 

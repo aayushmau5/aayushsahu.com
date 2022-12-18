@@ -18,6 +18,7 @@
     "markdown-toc": "^1.2.0",
     "next": "12.2.2",
     "next-mdx-remote": "^3.0.8",
+    "phoenix": "^1.6.15",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-icons": "^4.4.0",
@@ -31,10 +32,11 @@
   },
   "devDependencies": {
     "@types/node": "^18.0.6",
+    "@types/phoenix": "^1.5.4",
     "@types/react": "^17.0.43",
     "eslint": "8.20.0",
     "eslint-config-next": "12.2.2",
-    "next-remote-watch": "^1.0.0",
+    "next-remote-watch": "^2.0.0",
     "typescript": "^4.7.4"
   }
 }
