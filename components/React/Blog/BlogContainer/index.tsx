@@ -8,7 +8,6 @@ import ToC from "../ToC";
 import SeparatorSvg from "../../SeparatorSvg";
 import Tag from "../TagsContainer/Tag";
 import TagsContainer from "../TagsContainer";
-import GiscusComments from "../GiscusComments";
 import { SocketContext } from "@/components/Phoenix/Socket";
 
 export default function BlogContainer({
@@ -23,7 +22,6 @@ export default function BlogContainer({
       <SeparatorSvg stroke="gray" header />
       <ShowToc tableOfContents={tableOfContents} />
       <article>{children}</article>
-      <GiscusComments />
     </div>
   );
 }
