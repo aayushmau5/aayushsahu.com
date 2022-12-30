@@ -80,6 +80,33 @@
   line-height: 1.53rem;
 }
 
+.likeContainer {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7px;
+}
+
+.likeButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  fill: #fff;
+}
+
+.likeButton:hover {
+  fill: rgb(199, 73, 73);
+}
+
+.likeButton:disabled {
+  fill: rgb(199, 73, 73);
+}
+
+.likeButton svg {
+  fill: inherit;
+}
+
 @media (min-width: 1024px) {
   .container img {
     width: 60%;

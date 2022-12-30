@@ -43,6 +43,8 @@ function FileIcon({ type }: { type: string }) {
       return svgIcons.js;
     case "ts":
       return svgIcons.ts;
+    case "tsx":
+      return svgIcons.ts;
     case "html":
       return svgIcons.html;
     case "css":

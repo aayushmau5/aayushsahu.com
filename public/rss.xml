@@ -4,7 +4,7 @@
         <title>Aayush Kumar Sahu - Developer and Explorer</title>
         <link>https://aayushsahu.com</link>
         <description>aayushmau5' personal website</description>
-        <lastBuildDate>Sun, 18 Dec 2022 00:55:53 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 30 Dec 2022 09:09:47 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
@@ -15,6 +15,13 @@
         </image>
         <copyright>CC 2022, Aayush Kumar Sahu</copyright>
         <category>Programming</category>
+        <item>
+            <title><![CDATA[Connecting my website to Phoenix Server for some real-time data]]></title>
+            <link>https://aayushsahu.com/blog/nextjs-phoenix-channels</link>
+            <guid>https://aayushsahu.com/blog/nextjs-phoenix-channels</guid>
+            <pubDate>Tue, 27 Dec 2022 06:27:42 GMT</pubDate>
+            <description><![CDATA[Using channels and presence for user count]]></description>
+        </item>
         <item>
             <title><![CDATA[Setting config for libraries inside Livebook]]></title>
             <link>https://aayushsahu.com/blog/livebook-secret-config</link>
