@@ -4,7 +4,7 @@
         <title>Aayush Kumar Sahu - Developer and Explorer</title>
         <link>https://aayushsahu.com</link>
         <description>aayushmau5' personal website</description>
-        <lastBuildDate>Fri, 30 Dec 2022 09:09:47 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 30 Dec 2022 17:48:20 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
@@ -16,7 +16,14 @@
         <copyright>CC 2022, Aayush Kumar Sahu</copyright>
         <category>Programming</category>
         <item>
-            <title><![CDATA[Connecting my website to Phoenix Server for some real-time data]]></title>
+            <title><![CDATA[Fly.io: Connecting Redis with Phoenix using Redix]]></title>
+            <link>https://aayushsahu.com/blog/flyio-phoenix-redis-connection</link>
+            <guid>https://aayushsahu.com/blog/flyio-phoenix-redis-connection</guid>
+            <pubDate>Fri, 30 Dec 2022 15:58:57 GMT</pubDate>
+            <description><![CDATA[How to connect fly's managed Redis instance with Phoenix using Redix library]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Connecting my website to Phoenix Server for some real-time metrics]]></title>
             <link>https://aayushsahu.com/blog/nextjs-phoenix-channels</link>
             <guid>https://aayushsahu.com/blog/nextjs-phoenix-channels</guid>
             <pubDate>Tue, 27 Dec 2022 06:27:42 GMT</pubDate>

@@ -1,0 +1,114 @@
+---
+title: "Fly.io: Connecting Redis with Phoenix using Redix"
+description: "How to connect fly's managed Redis instance with Phoenix using Redix library"
+date: 2022-12-30T15:58:57.958Z
+tags: ["elixir", "redis", "flyio"]
+draft: true
+showToc: false
+---
+
+[Fly.io](https://fly.io/) is amazing, especially for Phoenix projects. Currently, I have 3 phoenix projects hosted on fly.io(and they have a very generous free tier plan). You can also use fully-managed Redis instance in fly, it's [pretty easy to setup](https://fly.io/docs/reference/redis/).
+
+Recently, I had to connect a personal phoenix project with redis. Aaaand it wasn't easy! I had to do a lot of debugging, had to go through various github issues to figure everything out.
+
+<CardWithTitle title="Did you know?">
+
+You can connect an IEx shell(or even livebook) to your running app in fly.io 🤯. [Check this out](https://fly.io/docs/elixir/getting-started/iex-into-running-app/).
+
+</CardWithTitle>
+
+At the end, I was able to connect my phoenix app with redis 🎉. I'm putting down how I did it in this blog!
+
+## Things to consider when setting up Redis
+
+When setting up a Redis instance using `flyctl`(Fly's command line tool), make sure that the redis instance is in same organization as the Phoenix app. Note down the private URL of the redis instance(alternatively you can see the private URL using `flyctl redis status <redis-instance-name>`).
+
+The private URL should be something like this: `redis://default:<password>@fly-<redis-instance-name>.upstash.io`
+
+This URL can be broken into different components such as host: `fly-<redis-instance-name>.upstash.io`, the password: `<password>`. By default you can connect to this redis instance through port 6379(unless configured otherwise).
+
+Now that we have a redis instance and its URL, lets see how to connect it to Phoenix.
+
+## Phoenix + Redix + Redis
+
+I used the [redix](https://github.com/whatyouhide/redix) library as redis driver for elixir. To configure Redix, we just need to pass some args to `start_link` function. Here's start_link function for the redis instance.
+
+```elixir
+{:ok, conn} = Redix.start_link(host: "fly-<redis-instance-name>.upstash.io", password: "<password>", host: 6379, socket_opts: [:inet6])
+```
+
+Notice the `socket_opts: [:inet6]` option, it is necessary to provide this. I'm exactly sure why, it has something to do with fly using IPv6 as their IP address.
+
+Once deployed, Redix will be able to connect to the redis instance. This won't work locally since the URL is private, meaning your application will only be able to access the redis instance when running inside flyio server.
+
+That's it. Your phoenix application should have access to redis.
+
+## Aside: Running redix under supervision tree
+
+Most of the time, instead of using `start_link` manually, you would want to start Redix automatically under a supervision tree.
+
+For this, you just need to put redix under you `application` child spec.
+
+```elixir
+defmodule Application do
+# ...other stuff
+
+  def start(_, _) do
+    children = [
+      {Redix, [host: "fly-<redis-instance-name>.upstash.io", password: "<password>", host: 6379, socket_opts: [:inet6]]} # <- Starting redix under supervision tree
+    ]
+
+    # ...other stuff
+  end
+
+# ...other stuff
+end
+```
+
+## Aside: Putting redix config as enviroment variables
+
+It's not good to put redix configuration directly into `start_link`, you would want to put this configuration as an enviroment variable.
+
+For this, first we need to use `Application.fetch_env!/2` to fetch the configuration.
+
+Here's an example running redix under supervision tree:
+
+```elixir
+defmodule Application do
+# ...other stuff
+
+  def start(_, _) do
+    children = [
+      {Redix, Application.fetch_env!(:redix, :config)} # <- Using Application.fetch_env to get redix configs
+    ]
+
+    # ...other stuff
+  end
+
+# ...other stuff
+end
+```
+
+`Application.fetch_env` looks for configuration defined in Config files(such as `config/dev.exs`, `config/prod.exs`, `config/runtime.exs`, etc.).
+
+`Application.fetch_env!(:redix, :config)` will look for a config named `redix` and get the `config` value defined in it. Lets define a config inside `config/runtime.exs`.
+
+```elixir filename=config/runtime.exs
+# ...other stuff
+
+if config_env() == :prod do # <- NOTE: we are putting config inside this if expression
+  # ...other stuff
+  config :redix,
+    config: [
+      name: :redix,
+      host: System.get_env("REDIS_HOST"), # <- Get host from env
+      password: System.get_env("REDIS_PASSWORD"), # <- Get password from env
+      port: 6379,
+      socket_opts: [:inet6]
+    ]
+end
+```
+
+Now you just need to define `REDIS_HOST` and `REDIS_PASSWORD` inside fly.io, and everything should work as expected.
+
+That's all for this blog. See you on the next one! 👋
