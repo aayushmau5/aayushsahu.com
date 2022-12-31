@@ -35,6 +35,7 @@ export default function BlogContainer({
     return () => {
       if (socket && phoenixChannel) {
         phoenixChannel.leave();
+        console.log("left blog channel");
         setPhoenixChannel(null);
       }
     };
