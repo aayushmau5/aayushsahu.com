@@ -40,6 +40,14 @@ export default function Footer() {
             >
               Twitter
             </a>
+            <a
+              href={config.user.mastodonLink}
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Mastodon"
+            >
+              Mastodon
+            </a>
           </div>
           <div className={styles.linksColumn}>
             <a
