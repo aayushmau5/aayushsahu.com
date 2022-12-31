@@ -6,7 +6,7 @@ tags: ["nextjs", "phoenix", "elixir"]
 cover:
   image: "/blogImages/nextjs-phoenix-channels/cover.png"
   alt: "Cover image with NextJS and Phoenix Framework logo"
-draft: true
+draft: false
 showToc: true
 ---
 
@@ -14,15 +14,15 @@ showToc: true
 
 I love [Elixir](https://elixir-lang.org/), and the [Phoenix framework](https://www.phoenixframework.org/), especially [Liveview](https://github.com/phoenixframework/phoenix_live_view). You can do all sorts of neat stuff with Liveview, from server-rendered pages to realtime page updates.
 
-And I wanted to somehow integrate liveview with my website which is in NextJS. However, I wasn't able to integrate Liveview with NextJS, but Phoenix provides another way for integration with other frontends.
+And I wanted to somehow integrate liveview with my website which is in NextJS. However, I wasn't able to integrate Liveview with NextJS, but Phoenix provides another way to integrate itself with other frontends.
 
 **Phoenix Socket** & **Phoenix Channels**. Phoenix socket is a websocket connection from any client to the Phoenix server. And with the help of Phoenix channels you can do some neat stuff, and I'm here to talk about one of those neat stuff.
 
-Connecting my website with phoenix for real-time user count.
+Connecting my website to phoenix for real-time user count.
 
 # Try it out yourself
 
-Open up a new tab with the same link, and you should see the metrics change.
+Open up a new tab with this page link, and you should see the following metrics change.
 
 For a blog, I have a count of people who are reading it right now:
 
@@ -32,9 +32,11 @@ For my website as a whole, I have the count of people who have it open at the mo
 
 ![Website Count](/blogImages/nextjs-phoenix-channels/website.png)
 
+Here's how I did it.
+
 # Creating a Phoenix Server
 
-One can generate a Phoenix application using `mix phx.new <application_name>` but it will generate a lot of code which I didn't need, such as Liveview, some HTML/Heex files, dashboard, etc. But one can configure `phx.new` to not generate those files. That's what I did. I ran `mix phx.new <application_name> --no-ecto --no-mailer --no-gettext --no-html --no-assets --no-dashboard --install`, which generated enough files to run the Phoenix server.
+One can generate a Phoenix application using `mix phx.new <application_name>` but it will generate a lot of code which I didn't need such as Liveview, some HTML/Heex files, dashboard, etc. But one can configure `phx.new` to not generate those files. That's what I did. I ran `mix phx.new <application_name> --no-ecto --no-mailer --no-gettext --no-html --no-assets --no-dashboard --install`, which generated minimal files to run the Phoenix server.
 
 ## Generating Socket
 
@@ -46,13 +48,13 @@ In order to let any client connect to our server, we need to have a socket. I cr
 mix phx.gen.socket User
 ```
 
-This will create some files such as: `/lib/<project_name>_web/channels/user_socket.ex` as the socket handler, and a JS file. The JS file contains code through which one can connect to the socket. I won't be needing that since I'm using React.
+This will create some files such as: `/lib/<project_name>_web/channels/user_socket.ex` as the socket handler, and a JS file. The JS file contains code through which one can connect to the socket. I didn't need the JS file since I'm using react.
 
-This command also hints that we need to add some lines in `endpoint.ex` file, which I did. Now I can connect to the socket through the following URL: `http://localhost:4000/socket`(you need a websocket client).
+This command also hints that we need to add some lines in `endpoint.ex` file, which I did. Now I can connect to the socket through the following URL: `ws://localhost:4000/socket`(you need a websocket client).
 
 # Connecting to the Phoenix Server
 
-Now that I have a Phoenix server up & running, I needed to connect to the server from my NextJS frontend. For that I needed a "phoenix" package which has does most of the job.
+Now that I have a Phoenix server up & running, I needed to connect to the server from my NextJS frontend. For that I needed a "phoenix" package to handle the websocket connection.
 
 ```bash
 # inside nextjs project
@@ -61,10 +63,9 @@ npm install phoenix
 npm install -D @types/phoenix # for types
 ```
 
-Since it's a NextJS project, there's a different method to connect to the server. I chose to connect to the server once my webpage loads. Here's the code:
+Since it's a NextJS project, there's a different method for connecting to the server. I chose to connect to the server once my webpage loads. Here's the code:
 
 ```ts filename=Socket.tsx
-// Socket.tsx
 import { Socket as PhxSocket } from "phoenix";
 import { Dispatch, useEffect, useState, createContext } from "react";
 
@@ -112,7 +113,7 @@ First, we have a context.
 export const SocketContext = createContext<PhxSocket>(null);
 ```
 
-This context will have the socket instance through which we connected to the server. This socket will allow us to join channels, and send messages. I'm passing socket as a context so that other components can have access to this socket.
+This context will hold the socket instance through which we connected to the server. This socket will allow us to join channels, and send messages. I'm passing socket as a context so that other components can have access to this socket.
 
 Next, we have two functions:
 
@@ -158,10 +159,9 @@ export function Socket({ children }) {
 
 This component has a state which holds onto our socket. It takes in a child component and wraps it with the context provider. As soon as the component mounts, `useEffect` will run and a websocket connection to the server will be established.
 
-Now that the `Socket` component is created, I use this component to wrap the whole application so that each component has access to the socket instance. It will allow children components to connect to their own channels and handle messages.
+Now that the `Socket` component is created, I use this component to wrap the whole application so that every component has access to the socket instance. It will allow child components to connect to their own channels and handle messages.
 
-```tsx
-// pages/_app.tsx
+```tsx filename=pages/_app.tsx
 import { Socket } from "components/Phoenix/Socket"; // the Socket component
 
 function MyApp({ Component, pageProps }) {
@@ -176,7 +176,7 @@ function MyApp({ Component, pageProps }) {
 export default MyApp;
 ```
 
-This means whenever a page loads for the first time, it will automatically connect to my phoenix server.
+This means whenever a page loads for the first time, it will automatically connect to the phoenix server.
 
 # Phoenix Channels
 
@@ -196,13 +196,11 @@ Perfect!
 
 ## Creating a channel
 
-Using channels we can subscribe to topics and receive updates. I didn't use `mix phx.gen.channel <channel_name>` to create a channel since it includes some functions I don't need.
+Using channels we can subscribe to certain topics and receive updates on those topics. I didn't use `mix phx.gen.channel <channel_name>` to create a channel since it includes some functions I didn't need.
 
 Instead, I manually created a channel file in `lib/<project_name>_web/channels/user_join_channel.ex`. The content of this file is:
 
 ```elixir filename=user_join_channel.ex
-# user_join_channel.ex
-
 defmodule ProjectWeb.UserJoinChannel do
   use Phoenix.Channel
 
@@ -214,7 +212,7 @@ end
 
 It has a `join/3` function which does nothing for now.
 
-I needed to add the following line inside the User socket file:
+I also needed to add the following line inside the User socket file:
 
 ```elixir filename=user_socket.ex
 channel "user-join", ProjectWeb.UserJoinChannel
@@ -227,7 +225,6 @@ This means that whenever a client tries to subscribe to `"user-join"` channel, t
 Now that I have the channel ready on my server, I'll connect to the channel through NextJS. For this, I made a separate component:
 
 ```tsx filename=UserJoin.tsx
-// UserJoin.tsx
 import { useState, useContext, useEffect } from "react";
 import { Channel } from "phoenix";
 
@@ -258,7 +255,7 @@ export default function UserJoin() {
 
 Let's breakdown this component as well.
 
-First, I'm using the Socket context to get the socket instance.
+First, I'm using the Socket context to get the socket instance created earlier.
 
 ```tsx
 const socket = useContext(SocketContext);
@@ -288,7 +285,7 @@ and with that, the client can join the channel.
 
 # Tracking users count using Phoenix Presence
 
-Now that I have a socket connection as well as joined a channel, I can get the count of users who have joined the same channel topic using Phoenix Presence.
+Now that I have a socket connection as well as a channel, I can get the count of users who have joined the same channel topic using Phoenix Presence.
 
 ## What is Presence?
 
@@ -296,15 +293,13 @@ Asking ChatGPT again XD
 
 > Phoenix Presence is a feature of the Phoenix framework that allows you to track the online status and activity of users in real-time applications. It does this by using Phoenix channels and storing presence information in an ETS (Erlang Term Storage) table on the server.
 
-Presence tells us about the users who joined a channel or left the channel. I can use this to detect how many users are online at a moment.
+Presence tells us about the users who joined a channel or left the channel in real-time. I can use this to detect how many users are online at a moment.
 
 ## Handling presence in the server
 
 Inside my `UserJoinChannel` module, I use Presence module to track a socket in a channel.
 
-```elixir
-# user_join_channel.ex
-
+```elixir filename=user_join_channel.ex
 defmodule ProjectWeb.UserJoinChannel do
   alias ProjectWeb.Presence
   use Phoenix.Channel
@@ -323,14 +318,13 @@ defmodule ProjectWeb.UserJoinChannel do
 end
 ```
 
-I use `push` to send the presence data to connected clients. The code for server is done.
+I use `push` to send the presence data to connected client. The code for server is finished.
 
 ## Showing presence count in the frontend
 
-The code of presence is done in the server, now its a matter of showing the presence count. I made changes in the same place where I join a channel.
+The code for presence is done in the server, now its a matter of showing the presence count on the client. I made changes in the same place where the code of joining a channel is present.
 
 ```tsx filename=UserJoin.tsx
-// UserJoin.tsx
 import { useState, useContext, useEffect } from "react";
 import { Channel, Presence } from "phoenix";
 
@@ -377,15 +371,21 @@ I used state to store the users online count.
 const [usersOnline, setUsersOnline] = useState(1);
 ```
 
-and then, instantiated presence, providing the channel connection.
+and then instantiated presence, providing the channel connection as the class argument.
 
 ```tsx
 let presence = new Presence(phoenixChannel);
+
+presence.onSync(() => {
+  presence.list((_id, { metas: metas }) => {
+    setUsersOnline(metas.length);
+  });
+});
 ```
 
-The presence object has various methods, one of them is `onSync` which gets called whenever the presence data changes(user either leaves or joins).
+The presence object has various methods, one of them is `onSync` which gets called whenever the presence data changes(user either leave or join).
 
-I then use `presence.list` to get the list of users(or socket) that are online. The length of the list is the number of users who are online. I store this count in the state, and show it to the user.
+I then use `presence.list` to get the list of users(or socket connections) that are online. The length of the list is the number of users who are online. I store this count in the state, and show it to the user.
 
 That's it! Now, I have a functioning real-time user counter.
 
@@ -395,12 +395,12 @@ That was pretty easy. Thanks Phoenix!
 
 The final step was to host the backend somewhere(I already use Vercel for my frontend), I chose fly.io since it's pretty easy to setup. I just needed to make sure that both frontend and backend are hosted on the same domain otherwise I'll get the scary CORS error.
 
-So, my backend is hosted at: https://phoenix.aayushsahu.com/ and my frontend connects to `wss://phoenix.aayushsahu.com/socket`.
+So, my backend is hosted at: https://phoenix.aayushsahu.com/ and my frontend connects to `wss://phoenix.aayushsahu.com/socket` for socket connection.
 
 # Future possibilities
 
-Connecting my website to a real-time phoenix server opens up a lot of opportunities such as Like counter, real-time commenting system, etc. Can't wait to explore these ideas!
+Connecting my website to a real-time phoenix server opens up a lot of opportunities such as Like counter, real-time commenting system, etc. Can't wait to explore these ideas in the future!
 
-Thanks for sticking around. Happy new year!
+That's it for this blog. See you on the next one!
 
 _If you have any query/suggestions, feel free to reach out to me on my socials._

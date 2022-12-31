@@ -4,7 +4,7 @@
         <title>Aayush Kumar Sahu - Developer and Explorer</title>
         <link>https://aayushsahu.com</link>
         <description>aayushmau5' personal website</description>
-        <lastBuildDate>Fri, 30 Dec 2022 17:48:20 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 31 Dec 2022 11:06:42 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
@@ -15,6 +15,20 @@
         </image>
         <copyright>CC 2022, Aayush Kumar Sahu</copyright>
         <category>Programming</category>
+        <item>
+            <title><![CDATA[Technologies I want to learn in 2023]]></title>
+            <link>https://aayushsahu.com/blog/new-tech-2023</link>
+            <guid>https://aayushsahu.com/blog/new-tech-2023</guid>
+            <pubDate>Sat, 31 Dec 2022 16:26:05 GMT</pubDate>
+            <description><![CDATA[Lots of cool stuff]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Technologies I learned in 2022]]></title>
+            <link>https://aayushsahu.com/blog/tech-2022</link>
+            <guid>https://aayushsahu.com/blog/tech-2022</guid>
+            <pubDate>Sat, 31 Dec 2022 16:25:56 GMT</pubDate>
+            <description><![CDATA[These are the technologies in learned in 2022 and my thoughts on them]]></description>
+        </item>
         <item>
             <title><![CDATA[Fly.io: Connecting Redis with Phoenix using Redix]]></title>
             <link>https://aayushsahu.com/blog/flyio-phoenix-redis-connection</link>

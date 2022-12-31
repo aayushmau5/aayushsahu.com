@@ -3,13 +3,13 @@ title: "Fly.io: Connecting Redis with Phoenix using Redix"
 description: "How to connect fly's managed Redis instance with Phoenix using Redix library"
 date: 2022-12-30T15:58:57.958Z
 tags: ["elixir", "redis", "flyio"]
-draft: true
+draft: false
 showToc: false
 ---
 
-[Fly.io](https://fly.io/) is amazing, especially for Phoenix projects. Currently, I have 3 phoenix projects hosted on fly.io(and they have a very generous free tier plan). You can also use fully-managed Redis instance in fly, it's [pretty easy to setup](https://fly.io/docs/reference/redis/).
+[Fly.io](https://fly.io/) is amazing, especially for Phoenix projects. Currently, I have 3 phoenix projects hosted on fly.io(since they have a very generous free tier plan). You can also use fully-managed Redis instance in fly, it's [pretty easy to setup](https://fly.io/docs/reference/redis/).
 
-Recently, I had to connect a personal phoenix project with redis. Aaaand it wasn't easy! I had to do a lot of debugging, had to go through various github issues to figure everything out.
+Recently, I had to connect a personal phoenix project to redis. Aaaand it wasn't easy! I had to do a lot of debugging, had to go through various github issues to figure everything out.
 
 <CardWithTitle title="Did you know?">
 
@@ -17,11 +17,11 @@ You can connect an IEx shell(or even livebook) to your running app in fly.io �
 
 </CardWithTitle>
 
-At the end, I was able to connect my phoenix app with redis 🎉. I'm putting down how I did it in this blog!
+At the end, I was able to connect my phoenix app to redis 🎉. I'm putting down how I did it in this blog!
 
 ## Things to consider when setting up Redis
 
-When setting up a Redis instance using `flyctl`(Fly's command line tool), make sure that the redis instance is in same organization as the Phoenix app. Note down the private URL of the redis instance(alternatively you can see the private URL using `flyctl redis status <redis-instance-name>`).
+When setting up a Redis instance using `flyctl`(Fly's command line tool), make sure that the redis instance is in same organization as the Phoenix app. Note down the private URL of the redis instance you get after setup(alternatively you can see the private URL using `flyctl redis status <redis-instance-name>`).
 
 The private URL should be something like this: `redis://default:<password>@fly-<redis-instance-name>.upstash.io`
 
@@ -37,9 +37,9 @@ I used the [redix](https://github.com/whatyouhide/redix) library as redis driver
 {:ok, conn} = Redix.start_link(host: "fly-<redis-instance-name>.upstash.io", password: "<password>", host: 6379, socket_opts: [:inet6])
 ```
 
-Notice the `socket_opts: [:inet6]` option, it is necessary to provide this. I'm exactly sure why, it has something to do with fly using IPv6 as their IP address.
+Notice the `socket_opts: [:inet6]` option, it is necessary to provide this. I'm not exactly sure why, it has something to do with fly using IPv6 for their IP address.
 
-Once deployed, Redix will be able to connect to the redis instance. This won't work locally since the URL is private, meaning your application will only be able to access the redis instance when running inside flyio server.
+Once deployed, Redix will be able to connect to the redis instance. This won't work locally since the URL is private, meaning your application will only be able to access the redis instance when running inside flyio's server.
 
 That's it. Your phoenix application should have access to redis.
 
@@ -67,7 +67,7 @@ end
 
 ## Aside: Putting redix config as enviroment variables
 
-It's not good to put redix configuration directly into `start_link`, you would want to put this configuration as an enviroment variable.
+It's not good to put redix configuration directly into `start_link`, you would want to put this configuration into an enviroment variable.
 
 For this, first we need to use `Application.fetch_env!/2` to fetch the configuration.
 
@@ -110,5 +110,7 @@ end
 ```
 
 Now you just need to define `REDIS_HOST` and `REDIS_PASSWORD` inside fly.io, and everything should work as expected.
+
+These were the things I learned when connecting Phoenix to redis in fly.io.
 
 That's all for this blog. See you on the next one! 👋
