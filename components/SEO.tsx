@@ -121,13 +121,14 @@ export const CloudinaryMetaImageUrl = ({
   version = "v1641893609",
   titleFont = "roboto",
   titleExtraConfig = "_bold",
-  textColor = "FFFFFF",
-  textAreaWidth = 650,
-  textAreaHeight = 450,
+  textColor = "BBBBBB",
+  textAreaWidth = 600,
+  textAreaHeight = 430,
   titleFontSize = 40,
   imageWidth = 1200,
   imageHeight = 630,
   textBottomOffset = -40,
+  textLeftOffset = 290,
 }): string => {
   const imageConfig = [
     `w_${imageWidth}`,
@@ -142,6 +143,7 @@ export const CloudinaryMetaImageUrl = ({
     "c_fit",
     `co_rgb:${textColor}`,
     `y_${textBottomOffset}`,
+    `x_${textLeftOffset}`,
     `l_text:${titleFont}_${titleFontSize}${titleExtraConfig}:${encodeURIComponent(
       title
     )}`,
@@ -159,6 +161,7 @@ export const CloudinaryMetaImageUrl = ({
   ];
 
   // "https://res.cloudinary.com/dbsdoq31k/image/upload/w_1200,h_630,c_fit,co_rgb:FFFFFF,y_-40,l_text:arial_60_bold:The%20visitor%20design%20pattern/v1641893609/blog_banner.png";
+  // https://res.cloudinary.com/dbsdoq31k/image/upload/w_600,h_430,c_fit,co_rgb:BBBBBB,y_-40,x_290,l_text:roboto_50_bold:The%20visitor%20design%20pattern/v1641893609/blog_banner.png
 
   return urlParts.join("/");
 };
