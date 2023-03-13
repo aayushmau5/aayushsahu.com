@@ -8,7 +8,6 @@ import Keyboard from "@/public/keyboard.png";
 import Editor from "@/public/editor.png";
 
 import styles from "@/styles/Home.module.css";
-import Timeline from "@/components/React/Timeline";
 
 export default function Index() {
   return (
@@ -61,9 +60,8 @@ export default function Index() {
           showoff my projects :)
         </p>
         <p>
-          This site has no creepy ads, no paywalls, and <em>no analytics</em>. I
-          like to write blogs to share with other people, and hopefully connect
-          with them.
+          This site has no ads, no paywalls, and <em>no analytics</em>. Just
+          some blogs n stuff.
         </p>
         <h3>What am I doing these days</h3>
         <ul className={styles.ul}>
@@ -122,9 +120,7 @@ export default function Index() {
 
         <h4>Keyboard</h4>
         <p className={styles.smallParagraph}>
-          This is my current keyboard. Keychron K2-V2, with red switches. I love
-          it! I have been eyeing NuPhy Air 60/75 as well, but they don&apos;t
-          currently ship in India :(
+          This is my current keyboard. Keychron K2-V2, with red switches.
         </p>
         <Image
           src={Keyboard}
@@ -133,62 +129,6 @@ export default function Index() {
           className={styles.logo}
         />
         <p className={styles.smallParagraph}>Look at this big boi!</p>
-
-        <h4>Speaking</h4>
-        <p className={styles.smallParagraph}>
-          I spoke at{" "}
-          <a
-            className={styles.link}
-            href="https://www.asyncapi.com/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            AsyncAPI
-          </a>{" "}
-          conference 2021 about my Google Summer of Code project{" "}
-          <a
-            className={styles.link}
-            href="https://github.com/asyncapi/diff/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            AsyncAPI diff
-          </a>
-          . Checkout the talk{" "}
-          <a
-            className={styles.link}
-            href="https://youtu.be/yILtksZriqA"
-            target="_blank"
-            rel="noreferrer"
-          >
-            here
-          </a>
-          .
-        </p>
-        <p className={styles.smallParagraph}>
-          I spoke at{" "}
-          <a
-            className={styles.link}
-            href="https://indiafoss.net/delhi/2022"
-            target="_blank"
-            rel="noreferrer"
-          >
-            DelhiFOSS
-          </a>{" "}
-          on October2022 about Elixir and what makes it great.
-        </p>
-        <p className={styles.smallParagraph}>
-          Gave a workshop on{" "}
-          <a
-            className={styles.link}
-            href="https://scratch.mit.edu"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Scratch
-          </a>{" "}
-          at CodeDay Delhi 2022.
-        </p>
 
         <h4>Tools</h4>
         <p className={styles.smallParagraph}>
@@ -202,32 +142,12 @@ export default function Index() {
           >
             Vitesse Dark theme
           </a>{" "}
-          by Anthony Fu. I use Notion as my primary note taking/todo list app. I
-          use Kitty as my default terminal, and Firefox for my day to day
-          internet surfing.
+          by Anthony Fu. Notion, Kitty(terminal), and Firefox.
         </p>
-
-        <h4>What&apos;s in the name?</h4>
-        <p className={styles.smallParagraph}>
-          As you might already know, I go by aayushmau5 on the internet. This
-          name is inspired by{" "}
-          <a
-            href="https://deadmau5.com/"
-            className={styles.link}
-            target="_blank"
-            rel="noreferrer"
-          >
-            deadmau5
-          </a>
-          , an electronic music producer(I hope he doesn&apos;t sue me for this
-          XD). I love his music. This guy introduced me to real electronic
-          music. Filled with melody, and emotion. Been a fan since 2016.
-        </p>
-
-        <h3>Timeline</h3>
-        <p>Some highlights of my life.</p>
-        <Timeline />
       </div>
+      <p className={styles.smallParagraph}>
+        You can reach out to me through the links below :)
+      </p>
     </>
   );
 }

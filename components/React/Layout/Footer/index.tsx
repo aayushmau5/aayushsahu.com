@@ -22,6 +22,14 @@ export default function Footer() {
             <Link href={"/about"}>
               <a aria-label="About">About</a>
             </Link>
+            <a
+              href="https://phoenix.aayushsahu.com/dashboard"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Github"
+            >
+              Dashboard
+            </a>
           </div>
           <div className={styles.linksColumn}>
             <a
@@ -85,8 +93,7 @@ export default function Footer() {
           </div>
         </div>
         <p className={styles.paragraph}>
-          Made with <span className={HomeStyles.highlight}>love</span> by
-          aayushmau5
+          Made with <span className={HomeStyles.highlight}>NextJS</span>
         </p>
       </div>
     </div>
