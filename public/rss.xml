@@ -4,7 +4,7 @@
         <title>Aayush Kumar Sahu - Developer and Explorer</title>
         <link>https://aayushsahu.com</link>
         <description>aayushmau5' personal website</description>
-        <lastBuildDate>Fri, 24 Feb 2023 15:13:54 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 09 Jun 2023 12:30:51 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
@@ -16,11 +16,18 @@
         <copyright>CC 2022, Aayush Kumar Sahu</copyright>
         <category>Programming</category>
         <item>
-            <title><![CDATA[Checkout notes(TODO: decide other title)]]></title>
+            <title><![CDATA[Dynamic "Redirect To" URL for emails in Auth0]]></title>
+            <link>https://aayushsahu.com/blog/auth0-email-template-redirect</link>
+            <guid>https://aayushsahu.com/blog/auth0-email-template-redirect</guid>
+            <pubDate>Tue, 06 Jun 2023 17:12:15 GMT</pubDate>
+            <description><![CDATA[Configuring Auth0 email template to redirect based on application name]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Notes]]></title>
             <link>https://aayushsahu.com/blog/notes</link>
             <guid>https://aayushsahu.com/blog/notes</guid>
             <pubDate>Fri, 24 Feb 2023 15:03:04 GMT</pubDate>
-            <description><![CDATA[I'm writing down some stuff about things I'm exploring]]></description>
+            <description><![CDATA[I'm writing down about the things I'm exploring]]></description>
         </item>
         <item>
             <title><![CDATA[Technologies I want to learn in 2023]]></title>
