@@ -52,37 +52,8 @@ export const PageSEO = ({ title, description }) => {
 };
 
 export const BlogSEO = ({ title, summary, date, slug }) => {
-  const router = useRouter();
-
   const publishedAt = new Date(date).toISOString();
   const featuredImage = CloudinaryMetaImageUrl({ title });
-
-  const authorDetails = {
-    "@type": "Person",
-    name: siteMetadata.author,
-  };
-
-  const structuredData = {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    mainEntityOfPage: {
-      "@type": "WebPage",
-      "@id": `${siteMetadata.siteUrl}/blog/${slug}`,
-    },
-    headline: title,
-    image: {
-      "@type": "ImageObject",
-      url: featuredImage,
-    },
-    datePublished: publishedAt,
-    dateModified: publishedAt,
-    author: authorDetails,
-    publisher: {
-      "@type": "Organization",
-      name: siteMetadata.author,
-    },
-    description: summary,
-  };
 
   return (
     <>
@@ -97,16 +68,6 @@ export const BlogSEO = ({ title, summary, date, slug }) => {
         {date && (
           <meta property="article:published_time" content={publishedAt} />
         )}
-        <link
-          rel="canonical"
-          href={`${siteMetadata.siteUrl}${router.asPath}`}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(structuredData, null, 2),
-          }}
-        />
       </Head>
     </>
   );
