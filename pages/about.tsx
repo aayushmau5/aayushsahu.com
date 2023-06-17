@@ -60,23 +60,22 @@ export default function Index() {
           showoff my projects :)
         </p>
         <p>
-          This site has no ads, no paywalls, and <em>no analytics</em>. Just
-          some blogs n stuff.
+          This site has no ads, no paywalls, and <em>no analytics</em>.
         </p>
         <h3>What am I doing these days</h3>
         <ul className={styles.ul}>
           <li>
-            Working as a FullStack intern at{" "}
+            Working as Full-Stack developer at{" "}
             <a
               className={styles.link}
               target="_blank"
               rel="noreferrer"
               href="https://beatoven.ai/"
             >
-              Beatoven.ai
+              beatoven.ai
             </a>
           </li>
-          <li>Exploring Elixir & Phoenix framework</li>
+          <li>Exploring Langchain</li>
           <li>
             <a
               href="https://github.com/aayushmau5"
@@ -89,8 +88,7 @@ export default function Index() {
             to ✨Open-Source✨
           </li>
         </ul>
-        <h3>Random</h3>
-        <p>Just some random stuff.</p>
+        <h3>Random Facts</h3>
 
         <h4>Desktop</h4>
         <p className={styles.smallParagraph}>
@@ -108,7 +106,7 @@ export default function Index() {
         <h4>Editor</h4>
         <p className={styles.smallParagraph}>
           My current editor is VSCode. Here&apos;s how it looks right now.
-          Editor font: Calling Code, Terminal Font: Iosevka, and default dark
+          Editor font: Julia Mono, Terminal Font: Zed Mono, and Vitesse Dark
           theme.
         </p>
         <Image
@@ -133,7 +131,8 @@ export default function Index() {
         <h4>Tools</h4>
         <p className={styles.smallParagraph}>
           I use VSCode, with vim extension as my IDE. Kitty as my terminal. I
-          use either `Fira Code` or `Julia Mono` as my font. I love the{" "}
+          use either Fira Code, Julia Mono, Calling Code or Zed Mono as my font.
+          I love the{" "}
           <a
             className={styles.link}
             href="https://github.com/antfu/vscode-theme-vitesse"

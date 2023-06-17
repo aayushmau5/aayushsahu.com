@@ -154,6 +154,19 @@
   margin-bottom: 10px;
 }
 
+.viewAll {
+  font-size: 1rem;
+  color: "white";
+  background: #191919;
+  padding: 10px 12px;
+  border-radius: 5px;
+  border: 1px solid #191919;
+}
+
+.viewAll:hover {
+  border-color: #252525;
+}
+
 @media (min-width: 1024px) {
   .heading {
     flex-direction: row;

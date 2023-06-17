@@ -22,6 +22,13 @@ export default function Footer() {
             <Link href={"/about"}>
               <a aria-label="About">About</a>
             </Link>
+            <Link href="/resume">
+              <a target="_blank" rel="noreferrer" aria-label="Resume">
+                Resume
+              </a>
+            </Link>
+          </div>
+          <div className={styles.linksColumn}>
             <a
               href="https://phoenix.aayushsahu.com/dashboard"
               target="_blank"
@@ -30,8 +37,6 @@ export default function Footer() {
             >
               Dashboard
             </a>
-          </div>
-          <div className={styles.linksColumn}>
             <a
               href={config.user.githubLink}
               target="_blank"
