@@ -28,14 +28,16 @@ export default function Index() {
         </div>
         <p className={styles.imageDescription}>Hi 👋</p>
         <p>
-          Hey! I&apos;m a{" "}
+          Welcome to my smol corner on the internet where I write blogs, and
+          showoff my projects :)
+        </p>
+        <p>
+          I&apos;m a{" "}
           <span className={styles.highlight}>fullstack web developer</span>, and
-          an <span className={styles.highlight}>Open-Source enthusiast</span>.
-          My interest includes exploring various technologies such as
-          Docker(DevOps), Low-level programming, Compilers, etc. Currently,
-          I&apos;m an undergrad student studying at JIIT, Noida. I did Google
-          Summer of Code(GSoC) 2021 at Postman, and I&apos;m currently a
-          maintainer at{" "}
+          an <span className={styles.highlight}>Open Sourcerer</span>. My
+          interests include exploring various technologies such as Web, DevOps,
+          Low-level programming, Compilers, etc. I did Google Summer of
+          Code(GSoC) 2021 at Postman, and I&apos;m currently a maintainer at{" "}
           <a
             className={styles.link}
             href="https://www.asyncapi.com/"
@@ -56,10 +58,6 @@ export default function Index() {
           .
         </p>
         <p>
-          Welcome to my smol corner on the internet where I write blogs, and
-          showoff my projects :)
-        </p>
-        <p>
           This site has no ads, no paywalls, and <em>no analytics</em>.
         </p>
         <h3>What am I doing these days</h3>
@@ -75,7 +73,7 @@ export default function Index() {
               beatoven.ai
             </a>
           </li>
-          <li>Exploring Langchain</li>
+          <li>Exploring Langchain and LLMs</li>
           <li>
             <a
               href="https://github.com/aayushmau5"
