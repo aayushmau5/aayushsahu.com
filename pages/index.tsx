@@ -10,7 +10,6 @@ import blogStyles from "@/styles/Blog.module.css";
 import styles from "@/styles/Home.module.css";
 import { createRSSFile } from "@/utils/generateRSSFeed";
 import { BsArrowRightShort } from "react-icons/bs";
-import MagicWand from "@/components/Wand";
 
 export default function Index({ firstPost, secondPost }) {
   return (
