@@ -55,6 +55,8 @@ function FileIcon({ type }: { type: string }) {
       return svgIcons.ex;
     case "livemd":
       return svgIcons.ex;
+    case "json":
+      return svgIcons.json;
     default:
       return svgIcons.regular;
   }

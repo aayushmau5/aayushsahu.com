@@ -28,6 +28,7 @@
 
 .codeContainer {
   overflow: auto;
+  padding: 10px;
 }
 
 .code {
