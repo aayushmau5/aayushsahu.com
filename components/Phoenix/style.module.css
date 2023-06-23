@@ -1,0 +1,30 @@
+.container {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 1rem;
+  font-weight: bold;
+  width: max-content;
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 10px 20px 10px 10px;
+  border-radius: 20px;
+  transition: all 0.2s ease;
+}
+
+.container:hover {
+  background-color: rgba(0, 0, 0, 0.324);
+}
+
+.highlight {
+  font-weight: bold;
+  background-image: linear-gradient(45deg, #21daa2, #43dce5, #36c3ef, #4a5ae9);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+}
+
+.highlight a {
+  display: block;
+}

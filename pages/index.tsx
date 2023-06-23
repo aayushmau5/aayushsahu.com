@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { BsArrowRightShort } from "react-icons/bs";
 
 import { PageSEO } from "@/components/SEO";
 import Date from "@/components/Date";
@@ -9,7 +10,6 @@ import { sortedPostData } from "@/utils/getPosts";
 import blogStyles from "@/styles/Blog.module.css";
 import styles from "@/styles/Home.module.css";
 import { createRSSFile } from "@/utils/generateRSSFeed";
-import { BsArrowRightShort } from "react-icons/bs";
 
 export default function Index({ firstPost, secondPost }) {
   return (
