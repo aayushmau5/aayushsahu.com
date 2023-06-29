@@ -33,10 +33,6 @@
   background-color: rgba(0, 0, 0, 0.324);
 }
 
-.spotifyContainer a:hover {
-  color: inherit;
-}
-
 .nowPlayingMessage {
   font-size: 0.8rem;
 }

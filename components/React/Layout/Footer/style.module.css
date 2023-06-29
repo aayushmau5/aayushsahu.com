@@ -36,8 +36,8 @@
   gap: 20px;
 }
 
-.container a:focus,
-.container a:hover {
+.socialsContainer a:focus,
+.socialsContainer a:hover {
   color: white;
 }
 
