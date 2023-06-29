@@ -38,12 +38,7 @@
 }
 
 .nowPlayingMessage {
-  color: white;
-  display: none;
-}
-
-.spotifyContainer:hover .nowPlayingMessage {
-  display: block;
+  font-size: 0.8rem;
 }
 
 .highlight {

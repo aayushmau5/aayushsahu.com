@@ -12,6 +12,7 @@ export default function SpotifyNowPlaying({ nowPlayingResponse }) {
     } else {
       return (
         <>
+          <div className={styles.nowPlayingMessage}>Currently playing</div>
           <div style={{ color: "white" }}>{nowPlayingResponse.item.name}</div>
           <div style={{ fontSize: "0.9rem" }}>
             {nowPlayingResponse.item.artists}
@@ -41,9 +42,6 @@ export default function SpotifyNowPlaying({ nowPlayingResponse }) {
           <PlayMessage />
         </a>
       </div>
-      {nowPlayingResponse.state === "playing" ? (
-        <div className={styles.nowPlayingMessage}>Currently playing</div>
-      ) : null}
     </div>
   );
 }
