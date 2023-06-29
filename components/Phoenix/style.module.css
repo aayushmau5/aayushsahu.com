@@ -15,6 +15,37 @@
   background-color: rgba(0, 0, 0, 0.324);
 }
 
+.spotifyContainer {
+  min-height: 75px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1rem;
+  width: max-content;
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 10px 25px 10px 20px;
+  border-radius: 20px;
+  margin-bottom: 10px;
+  transition: all 0.2s ease;
+}
+
+.spotifyContainer:hover {
+  background-color: rgba(0, 0, 0, 0.324);
+}
+
+.spotifyContainer a:hover {
+  color: inherit;
+}
+
+.nowPlayingMessage {
+  color: white;
+  display: none;
+}
+
+.spotifyContainer:hover .nowPlayingMessage {
+  display: block;
+}
+
 .highlight {
   font-weight: bold;
   background-image: linear-gradient(45deg, #21daa2, #43dce5, #36c3ef, #4a5ae9);

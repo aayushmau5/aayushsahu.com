@@ -6,15 +6,21 @@
   font-size: 1rem;
 }
 
-.others {
-  padding-top: 1rem;
+.top {
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
+  margin-bottom: 25px;
+  justify-content: space-between;
 }
 
 .paragraph {
   margin: 0;
-  margin-bottom: 25px;
+  margin-top: 25px;
+}
+
+.others {
+  display: flex;
+  flex-direction: column-reverse;
 }
 
 .socialsContainer {
@@ -33,6 +39,16 @@
 .container a:focus,
 .container a:hover {
   color: white;
+}
+
+@media (min-width: 800px) {
+  .top {
+    flex-direction: row;
+  }
+
+  .paragraph {
+    margin-top: 10px;
+  }
 }
 
 @media (min-width: 1024px) {
