@@ -19,6 +19,9 @@ function generateSiteMap(posts) {
      <url>
        <loc>${siteUrl}/about</loc>
      </url>
+     <url>
+       <loc>${siteUrl}/uses</loc>
+     </url>
      ${posts
        .map((post) => {
          return `

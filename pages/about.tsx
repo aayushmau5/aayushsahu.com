@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 import { PageSEO } from "@/components/SEO";
 
@@ -88,6 +89,14 @@ export default function Index() {
         </ul>
         <h3>Random Facts</h3>
 
+        <p>
+          Checkout the{" "}
+          <Link href="/uses">
+            <a className={styles.link}>list of things I use</a>
+          </Link>
+          .
+        </p>
+
         <h4>Desktop</h4>
         <p className={styles.smallParagraph}>
           This is what my desktop currently looks like. I&apos;m using Pop-OS as
@@ -100,7 +109,6 @@ export default function Index() {
           alt="My desktop"
           className={styles.logo}
         />
-
         <h4>Editor</h4>
         <p className={styles.smallParagraph}>
           My current editor is VSCode. Here&apos;s how it looks right now.
@@ -113,7 +121,6 @@ export default function Index() {
           alt="My editor"
           className={styles.logo}
         />
-
         <h4>Keyboard</h4>
         <p className={styles.smallParagraph}>
           This is my current keyboard. Keychron K2-V2, with red switches.
@@ -125,7 +132,6 @@ export default function Index() {
           className={styles.logo}
         />
         <p className={styles.smallParagraph}>Look at this big boi!</p>
-
         <h4>Tools</h4>
         <p className={styles.smallParagraph}>
           I use VSCode, with vim extension as my IDE. Kitty as my terminal. I
