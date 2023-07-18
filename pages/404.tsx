@@ -1,9 +1,11 @@
 import Link from "next/link";
+import Image from "next/image";
 import { BsArrowLeftShort } from "react-icons/bs";
 
 import { PageSEO } from "@/components/SEO";
 
 import styles from "@/styles/404.module.css";
+import cat from "@/public/cat.jpg";
 
 export default function FourOhFourPage() {
   return (
@@ -13,11 +15,14 @@ export default function FourOhFourPage() {
         description="Page not found"
       />
       <div className={styles.container}>
-        <h1>Oops, looks like you have landed on a wrong page.</h1>
+        <div style={{ width: "60%", height: "auto", margin: "1rem auto" }}>
+          <Image src={cat} alt="Cat image" />
+        </div>
+        <h1>Oh no, you found the cat!</h1>
         <Link href="/">
           <a className="styledLink">
             <BsArrowLeftShort />
-            Go back to home
+            Leave the cat be
           </a>
         </Link>
       </div>
