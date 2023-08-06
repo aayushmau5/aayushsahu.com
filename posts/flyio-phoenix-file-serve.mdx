@@ -1,0 +1,135 @@
+---
+title: "Uploading and serving files from Phoenix and fly volumes"
+description: "Learn how to upload and serve files from phoenix using fly volumes"
+date: 2023-08-06T06:51:25.173Z
+tags: ["flyio", "phoenix", "elixir"]
+draft: false
+showToc: false
+---
+
+# Introduction
+
+I have been working on a personal project where I needed to store and serve files. The files are meant to be stored temporarily so I didn't want to over-engineer and use S3 or any other blob storage.
+
+My project is hosted on [fly.io](https://fly.io), so I started looking for storage solutions that fly.io provides. Luckily, fly.io has [volumes](https://fly.io/docs/reference/volumes/).
+
+A volume is a slice of disk on your fly machine. Volumes are resilient to machine restarts(if you store files directly on your machine, they will be wiped out on machine restart or on new deployment).
+
+Volumes prefectly fits my need. Fly.io also provides **free** 3GB storage(at the time this blog was written) which is more than enough.
+
+# Configuring file upload directory
+
+My project is a Phoenix(with LiveView) application. Phoenix provides [functions](https://hexdocs.pm/phoenix_live_view/uploads.html) to handle uploads. Let's see how to upload and server file using fly volume.
+
+Following [the official guide](https://fly.io/docs/apps/volume-storage/), I add a volume to my fly machine.
+
+I set the mount point to `/data`, so we need to configure our file uploader to save files to this directory.
+
+A basic file upload handler in phoenix looks like this:
+
+```elixir
+storage_directory = "/data" # <- we will configure this for different enviroments later
+
+uploaded_files =
+  consume_uploaded_entries(socket, :files, fn %{path: path}, entry ->
+    # TIP: make sure to sanitize filename before saving them
+    %{client_name: file_name, client_type: file_type} = entry
+
+    dest = Path.join([storage_directory, file_name])
+    File.cp!(path, dest)
+
+    {:ok, ~p"/uploads/#{file_name}"}
+  end)
+
+# save the list of uploaded files in db or somewhere else.
+```
+
+Now on upload, the files will be saved inside `/data` directory(which is the mount point to our volume storage).
+
+# Serving files
+
+Now that the files are being saved to `/data` directory, we need to serve it as well.
+
+I want the file to be accessible through `/uploads` endpoint. For example, for a file stored at `/data/video.mp4`, I should be able to access it through `/uploads/video.mp4` endpoint.
+
+Fortunately, that's pretty easy to configure with `Plug.Static` plug. `Plug.Static` is used for serving static assets(like images, videos or any files).
+
+In the `endpoint.ex` file, add:
+
+```elixir filename=endpoint.ex
+defmodule MyApp.Endpoint do
+  # other stuff
+
+  # Add this line
+  plug Plug.Static,
+    at: "/uploads", # <- from the /uploads endpoint
+    from: "/data", # <- serves file from this directory
+    gzip: Mix.env() == :prod
+
+  #other stuff
+end
+```
+
+This tells Phoenix that any link to `/uploads` endpoint will result in serving files from `/data` directory.
+
+That's it! You can now upload files to `/data` directory and access them at `/uploads` endpoint.
+
+# Environment based config
+
+The current setup has hardcoded values as to where to upload files and where to serve them from. Local environment won't have `/data` directory and you generally want to save files to `priv/` directory of your application(or some other place) during development.
+
+The most straight forward way is to store the upload directory path inside your config file. We can then use `Application.compile_env` and `Application.fetch_env` to read this config.
+
+For local development, I defined this in `dev.exs` file:
+
+```elixir
+# File upload config
+config :my_app,
+  upload_dir: Path.join(Path.expand("."), "priv/uploads")
+```
+
+and for prod, inside `prod.exs`:
+
+```elixir
+# File upload config
+config :my_app,
+  upload_dir: "/data"
+```
+
+Now use this config during upload and inside our `Plug.Static` plug.
+
+During upload:
+
+```elixir
+storage_directory = Application.fetch_env!(:my_app, :upload_dir) # <- The change
+
+uploaded_files =
+  consume_uploaded_entries(socket, :files, fn %{path: path}, entry ->
+    # TIP: make sure to sanitize filename before uploading them
+    %{client_name: file_name, client_type: file_type} = entry
+
+    dest = Path.join([storage_directory, file_name])
+    File.cp!(path, dest)
+
+    {:ok, ~p"/uploads/#{file_name}"}
+  end)
+
+# save the list of uploaded files in db or somewhere else.
+```
+
+I used `fetch_env!` to get the `:upload_dir` value defined in the config.
+
+During serve:
+
+```elixir
+plug Plug.Static,
+  at: "/uploads",
+  from: Application.compile_env(:my_app, :upload_dir), # <- The change
+  gzip: Mix.env() == :prod
+```
+
+I used `compile_env` here because the `plug` is defined at module level. We cannot use `fetch_env` here. `compile_env` is a compile time configuration, so during production deployment, the `from` value will be set to `"/data"`.
+
+Now we can test our application locally and run it on prod without any change.
+
+That covers file uploading and serving using phoenix and fly volumes. With the given approach, we can store and server our files from anywhere in the disk.
