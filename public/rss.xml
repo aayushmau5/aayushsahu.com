@@ -4,7 +4,7 @@
         <title>Aayush Kumar Sahu - Developer and Explorer</title>
         <link>https://aayushsahu.com</link>
         <description>aayushmau5' personal website</description>
-        <lastBuildDate>Thu, 29 Jun 2023 09:08:58 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 06 Aug 2023 10:38:46 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
@@ -15,6 +15,13 @@
         </image>
         <copyright>CC 2022, Aayush Kumar Sahu</copyright>
         <category>Programming</category>
+        <item>
+            <title><![CDATA[Uploading and serving files from Phoenix and fly volumes]]></title>
+            <link>https://aayushsahu.com/blog/flyio-phoenix-file-serve</link>
+            <guid>https://aayushsahu.com/blog/flyio-phoenix-file-serve</guid>
+            <pubDate>Sun, 06 Aug 2023 06:51:25 GMT</pubDate>
+            <description><![CDATA[Learn how to upload and serve files from phoenix using fly volumes]]></description>
+        </item>
         <item>
             <title><![CDATA[VSCode tips and tricks]]></title>
             <link>https://aayushsahu.com/blog/vscode-tips-tricks</link>
