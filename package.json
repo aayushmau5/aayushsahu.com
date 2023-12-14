@@ -1,6 +1,7 @@
 {
   "name": "aayushsahu.com",
   "private": true,
+  "node": "20.x",
   "scripts": {
     "dev:old": "next dev",
     "dev": "next-remote-watch ./**/*.mdx",
