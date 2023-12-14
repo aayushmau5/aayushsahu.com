@@ -1,5 +1,6 @@
-import { useMemo } from "react";
+import { useEffect, useMemo } from "react";
 import { GetStaticProps } from "next";
+import { useRouter } from "next/router";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -28,9 +29,50 @@ interface Props {
   tags: string[];
 }
 
+interface QueryParams {
+  q?: string; // query
+  t?: string; // tag
+}
+
 export default function Blog({ postsData, tags }: Props) {
+  const router = useRouter();
+  const { q, t } = router.query as unknown as QueryParams;
   const [searchValue, setSearchValue] = useState<string>("");
   const [selectedTag, setSelectedTag] = useState<string>("");
+
+  // function changeSearchValue(search: string) {
+  //   setSearchValue(search);
+
+  //   let query: QueryParams = {};
+  //   if (search.length !== 0) query.q = search;
+  //   if (selectedTag.length !== 0) query.t = selectedTag;
+
+  //   router.push(
+  //     {
+  //       pathname: "/blog",
+  //       query: query as ParsedUrlQueryInput,
+  //     },
+  //     undefined,
+  //     { shallow: true }
+  //   );
+  // }
+
+  // function changeSelectedTag(tag: string) {
+  //   setSelectedTag(tag);
+
+  //   let query: QueryParams = {};
+  //   if (searchValue.length !== 0) query.q = searchValue;
+  //   if (tag.length !== 0) query.t = tag;
+
+  //   router.push(
+  //     {
+  //       pathname: "/blog",
+  //       query: query as ParsedUrlQueryInput,
+  //     },
+  //     undefined,
+  //     { shallow: true }
+  //   );
+  // }
 
   const filteredBlogs = useMemo(
     () =>
@@ -46,6 +88,11 @@ export default function Blog({ postsData, tags }: Props) {
         }),
     [postsData, selectedTag, searchValue]
   );
+
+  useEffect(() => {
+    if (q) setSearchValue(q);
+    if (t) setSelectedTag(t);
+  }, [q, t]);
 
   return (
     <>
