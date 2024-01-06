@@ -5,14 +5,16 @@
 }
 
 .LinksContainer {
-  position: fixed;
-  z-index: 10;
-  background-color: #1d1e23;
+  /* position: fixed; */
+  /* z-index: 10; */
+  /* background-color: #1d1e23; */
+  /* background-color: #101114; */
   color: rgb(153, 153, 153);
-  box-shadow: 0 0 5px #030303;
+  /* box-shadow: 0 0 5px #030303; */
   padding: 1rem;
   display: flex;
-  width: inherit;
+  /* width: inherit; */
+  display: flex;
   gap: 20px;
 }
 
@@ -38,12 +40,9 @@
 
 .kbarClick {
   cursor: pointer;
-  border: 1px solid #fff;
-  background-color: #1d1e23;
+  background: transparent;
+  border: none;
   color: #fff;
-  padding: 5px;
-  border-radius: 5px;
-  font-size: 0.8rem;
 }
 
 .commandIcon {
@@ -55,6 +54,33 @@
   font-size: 1.2rem;
   display: flex;
   align-items: center;
+}
+
+.amazing_rays {
+  background-image: url("/rays.png");
+	pointer-events: none;
+	position: absolute;
+	inset: 0;
+	mix-blend-mode: exclusion;
+	background-size: 1100px 383px;
+	background-repeat: no-repeat;
+	background-position: top;
+	opacity: .3;
+  filter: blur(10px);
+	animation: change-brightness 10s ease-out infinite;
+  z-index: -1;
+}
+
+@keyframes change-brightness {
+  0% {
+    filter: brightness(0.7);
+  }
+  50% {
+    filter: brightness(1.0);
+  }
+  100% {
+    filter: brightness(0.7);
+  }
 }
 
 @media (min-width: 1024px) {
