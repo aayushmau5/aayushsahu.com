@@ -3,6 +3,7 @@ import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypePrism from "rehype-prism-plus";
 import rehypeSlug from "rehype-slug";
 import remarkGfm from "remark-gfm";
+import readingTime from "reading-time";
 
 export const Post = defineDocumentType(() => ({
   name: "Post",
@@ -24,7 +25,7 @@ export const Post = defineDocumentType(() => ({
     },
     readingTime: {
       type: "string",
-      resolve: (post) => "2 mins",
+      resolve: (post) => readingTime(post.body.raw).text,
     },
   },
 }));

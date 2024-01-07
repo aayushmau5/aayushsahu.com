@@ -1,6 +1,4 @@
 import matter from "gray-matter";
-import { remark } from "remark";
-import html from "remark-html";
 import readingTime from "reading-time";
 
 export function getFilesId(files: string[]) {

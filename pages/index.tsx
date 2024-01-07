@@ -3,7 +3,6 @@ import { BsArrowRightShort } from "react-icons/bs";
 
 import { PageSEO } from "@/components/SEO";
 import Date from "@/components/Date";
-import Badge from "@/components/React/Badge";
 
 import { sortedPostData } from "@/utils/getPosts";
 
@@ -26,7 +25,6 @@ export default function Index({ firstPost, secondPost }) {
             <div className={styles.circle} style={{ background: "#36c3ef" }} />
             <div className={styles.circle} style={{ background: "#4a5ae9" }} />
           </div>
-          <Badge status="Current status: Just chilling and writing code" />
           <div>
             <h2>
               {" "}
