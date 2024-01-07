@@ -146,6 +146,7 @@ export const getStaticProps: GetStaticProps = async () => {
         url: p.url,
         date: p.date,
         readingTime: p.readingTime,
+        tags: p.tags ? p.tags : null,
       })),
       tags,
     },
