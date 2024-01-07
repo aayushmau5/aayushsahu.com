@@ -1,34 +1,22 @@
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { GetStaticProps } from "next";
 import { useRouter } from "next/router";
 import Link from "next/link";
-import { useState } from "react";
 import { compareDesc, parseISO } from "date-fns";
 
-import { allPosts } from "contentlayer/generated";
+import { Post, allPosts } from "contentlayer/generated";
 
 import SearchBar from "@/components/React/Blog/SearchBar";
 import Date from "@/components/Date";
 import { PageSEO } from "@/components/SEO";
-import { getAllTags, sortedPostData } from "@/utils/getPosts";
+import { getAllTags } from "@/utils/getPosts";
 
 import styles from "@/styles/Blog.module.css";
 import Tag from "@/components/React/Blog/TagsContainer/Tag";
 import TagsContainer from "@/components/React/Blog/TagsContainer";
 
-interface PostData {
-  slug: string;
-  title: string;
-  date: string;
-  description?: string;
-  readingTime: {
-    text: string;
-  };
-  tags: string[];
-}
-
 interface Props {
-  postsData: PostData[];
+  postsData: Post[];
   tags: string[];
 }
 
@@ -77,24 +65,20 @@ export default function Blog({ postsData, tags }: Props) {
   //   );
   // }
 
-  // const filteredBlogs = useMemo(
-  //   () =>
-  //     postsData
-  //       .filter((post) => {
-  //         return post.title.toLowerCase().includes(searchValue.toLowerCase());
-  //       })
-  //       .filter((post) => {
-  //         if (selectedTag) {
-  //           return post.tags?.includes(selectedTag.toLowerCase());
-  //         }
-  //         return post;
-  //       }),
-  //   [postsData, selectedTag, searchValue]
-  // );
-
-  const filteredBlogs = allPosts
-    .filter((p) => !p.draft)
-    .sort((a, b) => compareDesc(parseISO(a.date), parseISO(b.date)));
+  const filteredBlogs = useMemo(
+    () =>
+      postsData
+        .filter((post) => {
+          return post.title.toLowerCase().includes(searchValue.toLowerCase());
+        })
+        .filter((post) => {
+          if (selectedTag) {
+            return post.tags?.includes(selectedTag.toLowerCase());
+          }
+          return post;
+        }),
+    [postsData, selectedTag, searchValue]
+  );
 
   useEffect(() => {
     if (q) setSearchValue(q);
@@ -154,8 +138,12 @@ export default function Blog({ postsData, tags }: Props) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
+  const sortedPostData = allPosts
+    .filter((p) => !p.draft)
+    .sort((a, b) => compareDesc(parseISO(a.date), parseISO(b.date)));
+
   const postsData = sortedPostData;
-  const tags = getAllTags();
+  const tags = getAllTags(sortedPostData);
 
   return {
     props: {

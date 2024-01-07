@@ -3,7 +3,7 @@ import fs from "fs";
 import path from "path";
 
 import config from "config.json";
-import { sortedPostData } from "./getPosts";
+import { allPosts } from "contentlayer/generated";
 
 export function generateRSSFeed() {
   const feed = new Feed({
@@ -22,15 +22,17 @@ export function generateRSSFeed() {
     },
   });
 
-  sortedPostData.forEach((post) =>
-    feed.addItem({
-      title: post.title,
-      id: `${config.siteUrl}/blog/${post.slug}`,
-      link: `${config.siteUrl}/blog/${post.slug}`,
-      date: new Date(post.date),
-      description: post.description,
-    })
-  );
+  allPosts
+    .filter((p) => !p.draft)
+    .forEach((post) =>
+      feed.addItem({
+        title: post.title,
+        id: `${config.siteUrl}${post.url}`,
+        link: `${config.siteUrl}${post.url}`,
+        date: new Date(post.date),
+        description: post.description,
+      })
+    );
 
   feed.addCategory("Programming");
 

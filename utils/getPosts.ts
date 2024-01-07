@@ -1,51 +1,12 @@
-import path from "path";
-import {
-  filterDraftPosts,
-  getFileContentWithoutFrontMatter,
-  getFilesId,
-  getFrontMatter,
-  getTagsFromFrontMatter,
-  setISODate,
-  setReadingTime,
-  sortPostsByDate,
-} from "./mdUtilities";
-import { getFileNamesWithoutExtension, readFileContent } from "./fileUtilities";
 import { Post } from "contentlayer/generated";
 
-const postsDirectoryPath = path.join(process.cwd(), "posts");
-export let sortedPostData = getSortedPostsData();
-
-function getSortedPostsData() {
-  const allPostsFrontMatter = getFileNamesWithoutExtension(
-    postsDirectoryPath
-  ).map((slug) => {
-    const fileContent = readFileContent(`${slug}.mdx`, postsDirectoryPath);
-    const frontMatter = getFrontMatter(fileContent);
-    const content = getFileContentWithoutFrontMatter(fileContent);
-    setISODate(frontMatter);
-    setReadingTime(frontMatter, content);
-    return {
-      slug,
-      ...frontMatter,
-    };
-  });
-
-  const filteredPosts = filterDraftPosts(allPostsFrontMatter);
-  return sortPostsByDate(filteredPosts);
-}
-
-export function getAllTags() {
+export function getAllTags(allPosts: Post[]) {
   const allTags = new Set<string>();
-  sortedPostData.forEach((frontMatter: any) => {
-    const tags = getTagsFromFrontMatter(frontMatter);
-    tags.forEach((tag) => allTags.add(tag));
+  allPosts.forEach((post) => {
+    post.tags?.forEach((tag) => allTags.add(tag));
   });
 
   return Array.from(allTags);
-}
-
-export function getAllPostIds() {
-  return getFilesId(getFileNamesWithoutExtension(postsDirectoryPath));
 }
 
 export function getNextPrevArticles(sortedPosts: Post[], currentPost: Post) {
