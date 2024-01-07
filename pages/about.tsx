@@ -3,7 +3,7 @@ import Link from "next/link";
 
 import { PageSEO } from "@/components/SEO";
 
-import ProfileImage from "@/public/aayush.jpg";
+import ProfileImage from "@/public/aayush.jpeg";
 import Desktop from "@/public/desktop.png";
 import Keyboard from "@/public/keyboard.png";
 import Editor from "@/public/editor.png";
@@ -56,6 +56,15 @@ export default function Index() {
           >
             diff library
           </a>
+          . Currently, I&apos;m working fulltime as Full-Stack developer at{" "}
+          <a
+            className={styles.link}
+            target="_blank"
+            rel="noreferrer"
+            href="https://beatoven.ai/"
+          >
+            beatoven.ai
+          </a>
           .
         </p>
         <p>
@@ -63,29 +72,8 @@ export default function Index() {
         </p>
         <h3>What am I doing these days</h3>
         <ul className={styles.ul}>
-          <li>
-            Working as Full-Stack developer at{" "}
-            <a
-              className={styles.link}
-              target="_blank"
-              rel="noreferrer"
-              href="https://beatoven.ai/"
-            >
-              beatoven.ai
-            </a>
-          </li>
-          <li>Exploring Langchain and LLMs</li>
-          <li>
-            <a
-              href="https://github.com/aayushmau5"
-              className={styles.link}
-              target="_blank"
-              rel="noreferrer"
-            >
-              Contributing
-            </a>{" "}
-            to ✨Open-Source✨
-          </li>
+          <li>Exploring music making</li>
+          <li>Working on side projects ;)</li>
         </ul>
         <h3>Random Facts</h3>
 

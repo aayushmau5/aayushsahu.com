@@ -2,6 +2,7 @@
 import { Channel, Presence } from "phoenix";
 import { useState, useContext, useEffect } from "react";
 
+import { Post } from "contentlayer/generated";
 import Date from "../../../Date";
 import styles from "./style.module.css";
 import ToC from "../ToC";
@@ -12,9 +13,14 @@ import { SocketContext } from "@/components/Phoenix/Socket";
 
 export default function BlogContainer({
   children,
-  frontMatter,
-  tableOfContents,
+  post,
   slug,
+  toc,
+}: {
+  children: any;
+  post: Post;
+  slug: string;
+  toc: string;
 }) {
   const [phoenixChannel, setPhoenixChannel] = useState<Channel>(null);
   const socket = useContext(SocketContext);
@@ -44,62 +50,51 @@ export default function BlogContainer({
   return (
     <div className={styles.container}>
       <ShowFrontMatter
-        frontMatter={frontMatter}
+        post={post}
         slug={slug}
         phoenixChannel={phoenixChannel}
       />
       <SeparatorSvg stroke="gray" header />
-      <ShowToc tableOfContents={tableOfContents} />
+      {post.showToc ? <ToC toc={toc} /> : null}
       <article>{children}</article>
       <LikeButton phoenixChannel={phoenixChannel} slug={slug} />
     </div>
   );
 }
 
-function ShowToc({ tableOfContents }: { tableOfContents: string }) {
-  // tableOfContents might be null
-  if (tableOfContents !== null) {
-    if (tableOfContents.length === 0) return null;
-    return <ToC toc={tableOfContents} />;
-  } else {
-    tableOfContents;
-    return null;
-  }
-}
-
-function ShowFrontMatter({ frontMatter, slug, phoenixChannel }) {
+function ShowFrontMatter({ post, slug, phoenixChannel }) {
   return (
     <div>
-      <h2 className={styles.title}>{frontMatter.title}</h2>
-      <p className={styles.description}>{frontMatter.description}</p>
+      <h2 className={styles.title}>{post.title}</h2>
+      <p className={styles.description}>{post.description}</p>
       <p className={styles.otherInfo}>
         <span>
           Published on{" "}
           <span style={{ color: "white" }}>
-            <Date dateString={frontMatter.date} />
+            <Date dateString={post.date} />
           </span>
         </span>
         {" · "}
-        <span>{frontMatter.readingTime.text}</span>
+        <span>{post.readingTime}</span>
         {" · "}
         <UsersOnline slug={slug} phoenixChannel={phoenixChannel} />
       </p>
-      {frontMatter.tags ? (
+      {post.tags ? (
         <TagsContainer>
-          {frontMatter.tags.map((tag: string) => (
+          {post.tags.map((tag: string) => (
             <Tag key={tag} value={tag} />
           ))}
         </TagsContainer>
       ) : null}
-      {frontMatter.cover && frontMatter.cover.image && (
+      {post.cover && post.cover.image && (
         <div className={styles.coverImage}>
-          <img src={frontMatter.cover.image} alt={frontMatter.cover.alt} />
+          <img src={post.cover.image} alt={post.cover.alt} />
         </div>
       )}
-      {frontMatter.cover && frontMatter.cover.caption && (
+      {post.cover && post.cover.caption && (
         <div
           className={styles.caption}
-          dangerouslySetInnerHTML={{ __html: frontMatter.cover.caption }}
+          dangerouslySetInnerHTML={{ __html: post.cover.caption }}
         />
       )}
     </div>

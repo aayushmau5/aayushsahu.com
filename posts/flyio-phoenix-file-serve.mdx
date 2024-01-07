@@ -56,7 +56,8 @@ Fortunately, that's pretty easy to configure with `Plug.Static` plug. `Plug.Stat
 
 In the `endpoint.ex` file, add:
 
-```elixir filename=endpoint.ex
+<CustomCode filename="endpoint.ex">
+```elixir
 defmodule MyApp.Endpoint do
   # other stuff
 
@@ -69,6 +70,7 @@ defmodule MyApp.Endpoint do
   #other stuff
 end
 ```
+</CustomCode>
 
 This tells Phoenix that any link to `/uploads` endpoint will result in serving files from `/data` directory.
 

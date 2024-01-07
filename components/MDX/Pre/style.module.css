@@ -1,8 +1,5 @@
-.container {
-  position: relative;
-}
-
 .pre {
-  background-color: #2e2e2e;
+  position: relative;
+  background-color: #0a0a0a;
   border-radius: 0.55rem;
 }

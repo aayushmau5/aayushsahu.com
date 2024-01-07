@@ -3,13 +3,11 @@ import { BsArrowRightShort } from "react-icons/bs";
 
 import { PageSEO } from "@/components/SEO";
 import Date from "@/components/Date";
-import Badge from "@/components/React/Badge";
-
-import { sortedPostData } from "@/utils/getPosts";
 
 import blogStyles from "@/styles/Blog.module.css";
 import styles from "@/styles/Home.module.css";
 import { createRSSFile } from "@/utils/generateRSSFeed";
+import { getSortedPosts } from "@/utils/postHelpers";
 
 export default function Index({ firstPost, secondPost }) {
   return (
@@ -26,7 +24,6 @@ export default function Index({ firstPost, secondPost }) {
             <div className={styles.circle} style={{ background: "#36c3ef" }} />
             <div className={styles.circle} style={{ background: "#4a5ae9" }} />
           </div>
-          <Badge status="Current status: Just chilling and writing code" />
           <div>
             <h2>
               {" "}
@@ -82,28 +79,20 @@ export default function Index({ firstPost, secondPost }) {
             </Link>
           </div>
           <div className={blogStyles.blogsContainer}>
-            <Link key={firstPost.slug} href={`/blog/${firstPost.slug}`}>
+            <Link key={firstPost.url} href={firstPost.url}>
               <a className={blogStyles.blogContainer}>
                 <p className={blogStyles.date}>
                   <Date dateString={firstPost.date} />
                 </p>
                 <h3>{firstPost.title}</h3>
-                <p className={blogStyles.readingTime}>
-                  {firstPost.readingTime.text}
-                </p>
-                <p className={blogStyles.additionalInfo}></p>
               </a>
             </Link>
-            <Link key={secondPost.slug} href={`/blog/${secondPost.slug}`}>
+            <Link key={secondPost.url} href={secondPost.url}>
               <a className={blogStyles.blogContainer}>
                 <p className={blogStyles.date}>
                   <Date dateString={secondPost.date} />
                 </p>
                 <h3>{secondPost.title}</h3>
-                <p className={blogStyles.readingTime}>
-                  {secondPost.readingTime.text}
-                </p>
-                <p className={blogStyles.additionalInfo}></p>
               </a>
             </Link>
           </div>
@@ -144,7 +133,7 @@ export default function Index({ firstPost, secondPost }) {
 }
 
 export const getStaticProps = async () => {
-  const postsData = sortedPostData;
+  const postsData = getSortedPosts();
   const firstPost = postsData[0];
   const secondPost = postsData[1];
 
@@ -152,8 +141,16 @@ export const getStaticProps = async () => {
 
   return {
     props: {
-      firstPost,
-      secondPost,
+      firstPost: {
+        title: firstPost.title,
+        date: firstPost.date,
+        url: firstPost.url,
+      },
+      secondPost: {
+        title: secondPost.title,
+        date: secondPost.date,
+        url: secondPost.url,
+      },
     },
   };
 };

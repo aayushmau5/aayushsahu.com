@@ -4,7 +4,7 @@
         <title>Aayush Kumar Sahu - Developer and Explorer</title>
         <link>https://aayushsahu.com</link>
         <description>aayushmau5' personal website</description>
-        <lastBuildDate>Sat, 06 Jan 2024 15:57:55 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 07 Jan 2024 18:03:41 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
@@ -13,125 +13,14 @@
             <url>https://aayushsahu.com/socialBanner.png</url>
             <link>https://aayushsahu.com</link>
         </image>
-        <copyright>CC 2022, Aayush Kumar Sahu</copyright>
+        <copyright>CC 2024, Aayush Kumar Sahu</copyright>
         <category>Programming</category>
-        <item>
-            <title><![CDATA[Uploading and serving files from Phoenix and fly volumes]]></title>
-            <link>https://aayushsahu.com/blog/flyio-phoenix-file-serve</link>
-            <guid>https://aayushsahu.com/blog/flyio-phoenix-file-serve</guid>
-            <pubDate>Sun, 06 Aug 2023 06:51:25 GMT</pubDate>
-            <description><![CDATA[Learn how to upload and serve files from phoenix using fly volumes]]></description>
-        </item>
-        <item>
-            <title><![CDATA[VSCode tips and tricks]]></title>
-            <link>https://aayushsahu.com/blog/vscode-tips-tricks</link>
-            <guid>https://aayushsahu.com/blog/vscode-tips-tricks</guid>
-            <pubDate>Fri, 23 Jun 2023 00:48:27 GMT</pubDate>
-            <description><![CDATA[Some lesser known settings and keybindings that you can use to configure VSCode to your liking]]></description>
-        </item>
         <item>
             <title><![CDATA[Dynamic "Redirect To" URL for emails in Auth0]]></title>
             <link>https://aayushsahu.com/blog/auth0-email-template-redirect</link>
             <guid>https://aayushsahu.com/blog/auth0-email-template-redirect</guid>
             <pubDate>Tue, 06 Jun 2023 17:12:15 GMT</pubDate>
             <description><![CDATA[Configuring Auth0 email template to redirect based on application name]]></description>
-        </item>
-        <item>
-            <title><![CDATA[Notes]]></title>
-            <link>https://aayushsahu.com/blog/notes</link>
-            <guid>https://aayushsahu.com/blog/notes</guid>
-            <pubDate>Fri, 24 Feb 2023 15:03:04 GMT</pubDate>
-            <description><![CDATA[I'm writing down about the things I'm exploring]]></description>
-        </item>
-        <item>
-            <title><![CDATA[Technologies I want to learn in 2023]]></title>
-            <link>https://aayushsahu.com/blog/new-tech-2023</link>
-            <guid>https://aayushsahu.com/blog/new-tech-2023</guid>
-            <pubDate>Sat, 31 Dec 2022 16:26:05 GMT</pubDate>
-            <description><![CDATA[Lots of cool stuff]]></description>
-        </item>
-        <item>
-            <title><![CDATA[Technologies I learned in 2022]]></title>
-            <link>https://aayushsahu.com/blog/tech-2022</link>
-            <guid>https://aayushsahu.com/blog/tech-2022</guid>
-            <pubDate>Sat, 31 Dec 2022 16:25:56 GMT</pubDate>
-            <description><![CDATA[These are the technologies in learned in 2022 and my thoughts on them]]></description>
-        </item>
-        <item>
-            <title><![CDATA[Fly.io: Connecting Redis with Phoenix using Redix]]></title>
-            <link>https://aayushsahu.com/blog/flyio-phoenix-redis-connection</link>
-            <guid>https://aayushsahu.com/blog/flyio-phoenix-redis-connection</guid>
-            <pubDate>Fri, 30 Dec 2022 15:58:57 GMT</pubDate>
-            <description><![CDATA[How to connect fly's managed Redis instance with Phoenix using Redix library]]></description>
-        </item>
-        <item>
-            <title><![CDATA[Connecting my website to Phoenix Server for some real-time metrics]]></title>
-            <link>https://aayushsahu.com/blog/nextjs-phoenix-channels</link>
-            <guid>https://aayushsahu.com/blog/nextjs-phoenix-channels</guid>
-            <pubDate>Tue, 27 Dec 2022 06:27:42 GMT</pubDate>
-            <description><![CDATA[Using channels and presence for user count]]></description>
-        </item>
-        <item>
-            <title><![CDATA[Setting config for libraries inside Livebook]]></title>
-            <link>https://aayushsahu.com/blog/livebook-secret-config</link>
-            <guid>https://aayushsahu.com/blog/livebook-secret-config</guid>
-            <pubDate>Sat, 19 Nov 2022 16:12:58 GMT</pubDate>
-        </item>
-        <item>
-            <title><![CDATA[Installing Sonic Pi on Pop-OS]]></title>
-            <link>https://aayushsahu.com/blog/sonicpi-pop-os-installation</link>
-            <guid>https://aayushsahu.com/blog/sonicpi-pop-os-installation</guid>
-            <pubDate>Fri, 07 Oct 2022 13:59:43 GMT</pubDate>
-            <description><![CDATA[Installing required packages and building sonic-pi]]></description>
-        </item>
-        <item>
-            <title><![CDATA[Setting up Postgres with Docker]]></title>
-            <link>https://aayushsahu.com/blog/postgres-docker</link>
-            <guid>https://aayushsahu.com/blog/postgres-docker</guid>
-            <pubDate>Thu, 06 Oct 2022 13:59:43 GMT</pubDate>
-            <description><![CDATA[Making volume, running container, etc.]]></description>
-        </item>
-        <item>
-            <title><![CDATA[Mongosh docker]]></title>
-            <link>https://aayushsahu.com/blog/mongosh-docker</link>
-            <guid>https://aayushsahu.com/blog/mongosh-docker</guid>
-            <pubDate>Wed, 05 Oct 2022 13:59:43 GMT</pubDate>
-            <description><![CDATA[Using docker exec to run commands on a mongodb container]]></description>
-        </item>
-        <item>
-            <title><![CDATA[Setting response header for JSON responses in Flask]]></title>
-            <link>https://aayushsahu.com/blog/flask-response-headers</link>
-            <guid>https://aayushsahu.com/blog/flask-response-headers</guid>
-            <pubDate>Tue, 04 Oct 2022 13:59:43 GMT</pubDate>
-            <description><![CDATA[In a flask API]]></description>
-        </item>
-        <item>
-            <title><![CDATA[Listing S3 objects with Elixir]]></title>
-            <link>https://aayushsahu.com/blog/elixir-s3-list</link>
-            <guid>https://aayushsahu.com/blog/elixir-s3-list</guid>
-            <pubDate>Mon, 03 Oct 2022 13:59:43 GMT</pubDate>
-            <description><![CDATA[Using ExAWS library & Elixir to interact with S3]]></description>
-        </item>
-        <item>
-            <title><![CDATA[Elixir file manipulation]]></title>
-            <link>https://aayushsahu.com/blog/elixir-file-handling</link>
-            <guid>https://aayushsahu.com/blog/elixir-file-handling</guid>
-            <pubDate>Sun, 02 Oct 2022 13:59:43 GMT</pubDate>
-            <description><![CDATA[Manipulating arbitrary number of files present in a directory using Elixir]]></description>
-        </item>
-        <item>
-            <title><![CDATA[Things I do before distro-hopping]]></title>
-            <link>https://aayushsahu.com/blog/distro-hop</link>
-            <guid>https://aayushsahu.com/blog/distro-hop</guid>
-            <pubDate>Sat, 01 Oct 2022 13:59:43 GMT</pubDate>
-            <description><![CDATA[Backing up, & Softwares to install]]></description>
-        </item>
-        <item>
-            <title><![CDATA[Things I want to do someday]]></title>
-            <link>https://aayushsahu.com/blog/things-i-want-to-explore</link>
-            <guid>https://aayushsahu.com/blog/things-i-want-to-explore</guid>
-            <pubDate>Fri, 30 Sep 2022 13:59:43 GMT</pubDate>
-            <description><![CDATA[Just a bunch of random stuff]]></description>
         </item>
         <item>
             <title><![CDATA[Conditionally going back to previous URL in NextJS]]></title>
@@ -141,85 +30,52 @@
             <description><![CDATA[Checkout how can we modify going back in history behavior with NextJS]]></description>
         </item>
         <item>
-            <title><![CDATA[My custom MDX components]]></title>
-            <link>https://aayushsahu.com/blog/my-custom-mdx-components</link>
-            <guid>https://aayushsahu.com/blog/my-custom-mdx-components</guid>
-            <pubDate>Fri, 18 Feb 2022 11:00:39 GMT</pubDate>
-            <description><![CDATA[Custom MDX components that I use in my blogs]]></description>
+            <title><![CDATA[Things I do before distro-hopping]]></title>
+            <link>https://aayushsahu.com/blog/distro-hop</link>
+            <guid>https://aayushsahu.com/blog/distro-hop</guid>
+            <pubDate>Sat, 01 Oct 2022 13:59:43 GMT</pubDate>
+            <description><![CDATA[Backing up, & Softwares to install]]></description>
         </item>
         <item>
-            <title><![CDATA[Using MDX with NextJS]]></title>
-            <link>https://aayushsahu.com/blog/markdown-next-mdx</link>
-            <guid>https://aayushsahu.com/blog/markdown-next-mdx</guid>
-            <pubDate>Tue, 15 Feb 2022 07:27:46 GMT</pubDate>
-            <description><![CDATA[Using Next-MDX-Remote with NextJS to write MDX blogs]]></description>
+            <title><![CDATA[Elixir file manipulation]]></title>
+            <link>https://aayushsahu.com/blog/elixir-file-handling</link>
+            <guid>https://aayushsahu.com/blog/elixir-file-handling</guid>
+            <pubDate>Sun, 02 Oct 2022 13:59:43 GMT</pubDate>
+            <description><![CDATA[Manipulating arbitrary number of files present in a directory using Elixir]]></description>
         </item>
         <item>
-            <title><![CDATA[NextJS Code Splitting & Dynamic Imports]]></title>
-            <link>https://aayushsahu.com/blog/nextjs-dynamic-import</link>
-            <guid>https://aayushsahu.com/blog/nextjs-dynamic-import</guid>
-            <pubDate>Thu, 02 Dec 2021 16:18:15 GMT</pubDate>
-            <description><![CDATA[Quickly looking at dynamic imports using NextJS]]></description>
+            <title><![CDATA[Listing S3 objects with Elixir]]></title>
+            <link>https://aayushsahu.com/blog/elixir-s3-list</link>
+            <guid>https://aayushsahu.com/blog/elixir-s3-list</guid>
+            <pubDate>Mon, 03 Oct 2022 13:59:43 GMT</pubDate>
+            <description><![CDATA[Using ExAWS library & Elixir to interact with S3]]></description>
         </item>
         <item>
-            <title><![CDATA[What is the Visitor design pattern and how to implement it in TS?]]></title>
-            <link>https://aayushsahu.com/blog/visitor-pattern</link>
-            <guid>https://aayushsahu.com/blog/visitor-pattern</guid>
-            <pubDate>Sat, 04 Sep 2021 00:00:00 GMT</pubDate>
-            <description><![CDATA[Implementing the Visitor design pattern using TypeScript interfaces and classes]]></description>
+            <title><![CDATA[Setting response header for JSON responses in Flask]]></title>
+            <link>https://aayushsahu.com/blog/flask-response-headers</link>
+            <guid>https://aayushsahu.com/blog/flask-response-headers</guid>
+            <pubDate>Tue, 04 Oct 2022 13:59:43 GMT</pubDate>
+            <description><![CDATA[In a flask API]]></description>
         </item>
         <item>
-            <title><![CDATA[GSoC at Postman and AsyncAPI]]></title>
-            <link>https://aayushsahu.com/blog/gsoc-at-postman-and-asyncapi</link>
-            <guid>https://aayushsahu.com/blog/gsoc-at-postman-and-asyncapi</guid>
-            <pubDate>Wed, 01 Sep 2021 13:59:43 GMT</pubDate>
-            <description><![CDATA[Final blog for my GSoC journey]]></description>
+            <title><![CDATA[Uploading and serving files from Phoenix and fly volumes]]></title>
+            <link>https://aayushsahu.com/blog/flyio-phoenix-file-serve</link>
+            <guid>https://aayushsahu.com/blog/flyio-phoenix-file-serve</guid>
+            <pubDate>Sun, 06 Aug 2023 06:51:25 GMT</pubDate>
+            <description><![CDATA[Learn how to upload and serve files from phoenix using fly volumes]]></description>
         </item>
         <item>
-            <title><![CDATA[Publishing JavaScript/TypeScript packages on npm registry]]></title>
-            <link>https://aayushsahu.com/blog/typescript-npm-publish</link>
-            <guid>https://aayushsahu.com/blog/typescript-npm-publish</guid>
-            <pubDate>Wed, 14 Jul 2021 05:28:50 GMT</pubDate>
-        </item>
-        <item>
-            <title><![CDATA[Deep dive into Memoization + React's useMemo hook]]></title>
-            <link>https://aayushsahu.com/blog/memoization-use-memo</link>
-            <guid>https://aayushsahu.com/blog/memoization-use-memo</guid>
-            <pubDate>Tue, 06 Jul 2021 04:05:47 GMT</pubDate>
-            <description><![CDATA[Looking into memoization and `useMemo` to improve some performance of our application.]]></description>
-        </item>
-        <item>
-            <title><![CDATA[GSoC at AsyncAPI: Part 2]]></title>
-            <link>https://aayushsahu.com/blog/gsoc-asyncapi-2</link>
-            <guid>https://aayushsahu.com/blog/gsoc-asyncapi-2</guid>
-            <pubDate>Sat, 03 Jul 2021 15:43:49 GMT</pubDate>
-            <description><![CDATA[My GSoC experience blog]]></description>
-        </item>
-        <item>
-            <title><![CDATA[GSoC at AsyncAPI: Part 1]]></title>
-            <link>https://aayushsahu.com/blog/gsoc-asyncapi-1</link>
-            <guid>https://aayushsahu.com/blog/gsoc-asyncapi-1</guid>
-            <pubDate>Sun, 20 Jun 2021 00:00:00 GMT</pubDate>
-            <description><![CDATA[My GSoC experience blog]]></description>
-        </item>
-        <item>
-            <title><![CDATA[Getting selected in GSoC]]></title>
-            <link>https://aayushsahu.com/blog/gsoc</link>
-            <guid>https://aayushsahu.com/blog/gsoc</guid>
-            <pubDate>Thu, 03 Jun 2021 14:29:26 GMT</pubDate>
+            <title><![CDATA[Fly.io: Connecting Redis with Phoenix using Redix]]></title>
+            <link>https://aayushsahu.com/blog/flyio-phoenix-redis-connection</link>
+            <guid>https://aayushsahu.com/blog/flyio-phoenix-redis-connection</guid>
+            <pubDate>Fri, 30 Dec 2022 15:58:57 GMT</pubDate>
+            <description><![CDATA[How to connect fly's managed Redis instance with Phoenix using Redix library]]></description>
         </item>
         <item>
             <title><![CDATA[Making PR to another repository using Github Actions]]></title>
             <link>https://aayushsahu.com/blog/gh-action-pr</link>
             <guid>https://aayushsahu.com/blog/gh-action-pr</guid>
             <pubDate>Fri, 21 May 2021 09:17:08 GMT</pubDate>
-        </item>
-        <item>
-            <title><![CDATA[Guide to setting up Jest testing environment in TypeScript & GraphQL NodeJS Server]]></title>
-            <link>https://aayushsahu.com/blog/prisma-graphql-jest-test</link>
-            <guid>https://aayushsahu.com/blog/prisma-graphql-jest-test</guid>
-            <pubDate>Sun, 09 May 2021 05:15:15 GMT</pubDate>
-            <description><![CDATA[Integration or Unit tests in TypeScript and GraphQL using Jest in NodeJS]]></description>
         </item>
         <item>
             <title><![CDATA[Guide to setting up Types for Apollo GraphQL with Typescript in the Backend]]></title>
@@ -229,11 +85,31 @@
             <description><![CDATA[The type safe of using Apollo GraphQL with Typescript]]></description>
         </item>
         <item>
-            <title><![CDATA[Why The Odin Project is the best place to start learning web development]]></title>
-            <link>https://aayushsahu.com/blog/the-odin-project</link>
-            <guid>https://aayushsahu.com/blog/the-odin-project</guid>
-            <pubDate>Thu, 29 Apr 2021 08:00:32 GMT</pubDate>
-            <description><![CDATA[Alternatively: My experience through web development with The Odin Project]]></description>
+            <title><![CDATA[GSoC at AsyncAPI: Part 1]]></title>
+            <link>https://aayushsahu.com/blog/gsoc-asyncapi-1</link>
+            <guid>https://aayushsahu.com/blog/gsoc-asyncapi-1</guid>
+            <pubDate>Sun, 20 Jun 2021 00:00:00 GMT</pubDate>
+            <description><![CDATA[My GSoC experience blog]]></description>
+        </item>
+        <item>
+            <title><![CDATA[GSoC at AsyncAPI: Part 2]]></title>
+            <link>https://aayushsahu.com/blog/gsoc-asyncapi-2</link>
+            <guid>https://aayushsahu.com/blog/gsoc-asyncapi-2</guid>
+            <pubDate>Sat, 03 Jul 2021 15:43:49 GMT</pubDate>
+            <description><![CDATA[My GSoC experience blog]]></description>
+        </item>
+        <item>
+            <title><![CDATA[GSoC at Postman and AsyncAPI]]></title>
+            <link>https://aayushsahu.com/blog/gsoc-at-postman-and-asyncapi</link>
+            <guid>https://aayushsahu.com/blog/gsoc-at-postman-and-asyncapi</guid>
+            <pubDate>Wed, 01 Sep 2021 13:59:43 GMT</pubDate>
+            <description><![CDATA[Final blog for my GSoC journey]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Getting selected in GSoC]]></title>
+            <link>https://aayushsahu.com/blog/gsoc</link>
+            <guid>https://aayushsahu.com/blog/gsoc</guid>
+            <pubDate>Thu, 03 Jun 2021 14:29:26 GMT</pubDate>
         </item>
         <item>
             <title><![CDATA[Hello, World!]]></title>
@@ -241,6 +117,130 @@
             <guid>https://aayushsahu.com/blog/hello-world</guid>
             <pubDate>Tue, 27 Apr 2021 10:35:23 GMT</pubDate>
             <description><![CDATA[The beginning of something new and exciting]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Setting config for libraries inside Livebook]]></title>
+            <link>https://aayushsahu.com/blog/livebook-secret-config</link>
+            <guid>https://aayushsahu.com/blog/livebook-secret-config</guid>
+            <pubDate>Sat, 19 Nov 2022 16:12:58 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Using MDX with NextJS]]></title>
+            <link>https://aayushsahu.com/blog/markdown-next-mdx</link>
+            <guid>https://aayushsahu.com/blog/markdown-next-mdx</guid>
+            <pubDate>Tue, 15 Feb 2022 07:27:46 GMT</pubDate>
+            <description><![CDATA[Using Next-MDX-Remote with NextJS to write MDX blogs]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Deep dive into Memoization + React's useMemo hook]]></title>
+            <link>https://aayushsahu.com/blog/memoization-use-memo</link>
+            <guid>https://aayushsahu.com/blog/memoization-use-memo</guid>
+            <pubDate>Tue, 06 Jul 2021 04:05:47 GMT</pubDate>
+            <description><![CDATA[Looking into memoization and `useMemo` to improve some performance of our application.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Mongosh docker]]></title>
+            <link>https://aayushsahu.com/blog/mongosh-docker</link>
+            <guid>https://aayushsahu.com/blog/mongosh-docker</guid>
+            <pubDate>Wed, 05 Oct 2022 13:59:43 GMT</pubDate>
+            <description><![CDATA[Using docker exec to run commands on a mongodb container]]></description>
+        </item>
+        <item>
+            <title><![CDATA[My custom MDX components]]></title>
+            <link>https://aayushsahu.com/blog/my-custom-mdx-components</link>
+            <guid>https://aayushsahu.com/blog/my-custom-mdx-components</guid>
+            <pubDate>Fri, 18 Feb 2022 11:00:39 GMT</pubDate>
+            <description><![CDATA[Custom MDX components that I use in my blogs]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Technologies I want to learn in 2023]]></title>
+            <link>https://aayushsahu.com/blog/new-tech-2023</link>
+            <guid>https://aayushsahu.com/blog/new-tech-2023</guid>
+            <pubDate>Sat, 31 Dec 2022 16:26:05 GMT</pubDate>
+            <description><![CDATA[Lots of cool stuff]]></description>
+        </item>
+        <item>
+            <title><![CDATA[NextJS Code Splitting & Dynamic Imports]]></title>
+            <link>https://aayushsahu.com/blog/nextjs-dynamic-import</link>
+            <guid>https://aayushsahu.com/blog/nextjs-dynamic-import</guid>
+            <pubDate>Thu, 02 Dec 2021 16:18:15 GMT</pubDate>
+            <description><![CDATA[Quickly looking at dynamic imports using NextJS]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Connecting my website to Phoenix Server for some real-time metrics]]></title>
+            <link>https://aayushsahu.com/blog/nextjs-phoenix-channels</link>
+            <guid>https://aayushsahu.com/blog/nextjs-phoenix-channels</guid>
+            <pubDate>Tue, 27 Dec 2022 06:27:42 GMT</pubDate>
+            <description><![CDATA[Using channels and presence for user count]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Notes]]></title>
+            <link>https://aayushsahu.com/blog/notes</link>
+            <guid>https://aayushsahu.com/blog/notes</guid>
+            <pubDate>Fri, 24 Feb 2023 15:03:04 GMT</pubDate>
+            <description><![CDATA[I'm writing down about the things I'm exploring]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Setting up Postgres with Docker]]></title>
+            <link>https://aayushsahu.com/blog/postgres-docker</link>
+            <guid>https://aayushsahu.com/blog/postgres-docker</guid>
+            <pubDate>Thu, 06 Oct 2022 13:59:43 GMT</pubDate>
+            <description><![CDATA[Making volume, running container, etc.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Guide to setting up Jest testing environment in TypeScript & GraphQL NodeJS Server]]></title>
+            <link>https://aayushsahu.com/blog/prisma-graphql-jest-test</link>
+            <guid>https://aayushsahu.com/blog/prisma-graphql-jest-test</guid>
+            <pubDate>Sun, 09 May 2021 05:15:15 GMT</pubDate>
+            <description><![CDATA[Integration or Unit tests in TypeScript and GraphQL using Jest in NodeJS]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Installing Sonic Pi on Pop-OS]]></title>
+            <link>https://aayushsahu.com/blog/sonicpi-pop-os-installation</link>
+            <guid>https://aayushsahu.com/blog/sonicpi-pop-os-installation</guid>
+            <pubDate>Fri, 07 Oct 2022 13:59:43 GMT</pubDate>
+            <description><![CDATA[Installing required packages and building sonic-pi]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Technologies I learned in 2022]]></title>
+            <link>https://aayushsahu.com/blog/tech-2022</link>
+            <guid>https://aayushsahu.com/blog/tech-2022</guid>
+            <pubDate>Sat, 31 Dec 2022 16:25:56 GMT</pubDate>
+            <description><![CDATA[These are the technologies in learned in 2022 and my thoughts on them]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Why The Odin Project is the best place to start learning web development]]></title>
+            <link>https://aayushsahu.com/blog/the-odin-project</link>
+            <guid>https://aayushsahu.com/blog/the-odin-project</guid>
+            <pubDate>Thu, 29 Apr 2021 08:00:32 GMT</pubDate>
+            <description><![CDATA[Alternatively: My experience through web development with The Odin Project]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Things I want to do someday]]></title>
+            <link>https://aayushsahu.com/blog/things-i-want-to-explore</link>
+            <guid>https://aayushsahu.com/blog/things-i-want-to-explore</guid>
+            <pubDate>Fri, 30 Sep 2022 13:59:43 GMT</pubDate>
+            <description><![CDATA[Just a bunch of random stuff]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Publishing JavaScript/TypeScript packages on npm registry]]></title>
+            <link>https://aayushsahu.com/blog/typescript-npm-publish</link>
+            <guid>https://aayushsahu.com/blog/typescript-npm-publish</guid>
+            <pubDate>Wed, 14 Jul 2021 05:28:50 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[What is the Visitor design pattern and how to implement it in TS?]]></title>
+            <link>https://aayushsahu.com/blog/visitor-pattern</link>
+            <guid>https://aayushsahu.com/blog/visitor-pattern</guid>
+            <pubDate>Sat, 04 Sep 2021 00:00:00 GMT</pubDate>
+            <description><![CDATA[Implementing the Visitor design pattern using TypeScript interfaces and classes]]></description>
+        </item>
+        <item>
+            <title><![CDATA[VSCode tips and tricks]]></title>
+            <link>https://aayushsahu.com/blog/vscode-tips-tricks</link>
+            <guid>https://aayushsahu.com/blog/vscode-tips-tricks</guid>
+            <pubDate>Fri, 23 Jun 2023 00:48:27 GMT</pubDate>
+            <description><![CDATA[Some lesser known settings and keybindings that you can use to configure VSCode to your liking]]></description>
         </item>
     </channel>
 </rss>

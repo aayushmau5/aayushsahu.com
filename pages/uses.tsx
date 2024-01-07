@@ -161,9 +161,10 @@ export default function Uses() {
           </ul>
           <h3>Hardware(pretty budget-ish)</h3>
           <ul>
+            <li>Laptop: Apple M2 Air.</li>
             <li>
-              Laptop: Dell Inspiron 3576(+ AMD iGPU). Works pretty well with
-              linux.
+              Laptop(Old but still works): Dell Inspiron 3576(+ AMD iGPU). Works
+              pretty well with linux.
             </li>
             <li>
               Keyboard:{" "}

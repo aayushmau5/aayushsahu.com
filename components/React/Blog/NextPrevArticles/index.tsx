@@ -23,7 +23,7 @@ export default function NextPrevArticles({ recommendedPostList }) {
 
 function ShowArticle({ article, prev = false }) {
   return (
-    <Link href={`/blog/${article.slug}`}>
+    <Link href={article.url}>
       <a className={`${styles.links} ${!prev ? styles.nextPlacement : ""}`}>
         <p className={`${styles.info} ${!prev ? styles.nextArticle : ""}`}>
           {prev ? (

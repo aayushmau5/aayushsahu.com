@@ -57,7 +57,8 @@ npm i @next/mdx
 
 Then modify `next.config.js` as below.
 
-```js filename=next.config.js
+<CustomCode filename="next.config.js">
+```js
 const withMDX = require("@next/mdx")();
 module.exports = withMDX();
 
@@ -71,6 +72,7 @@ module.exports = withMDX({
   pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
 });
 ```
+</CustomCode>
 
 After making these changes, I went ahead and made a `.mdx` file inside the `/pages` directory. And it worked!
 
@@ -153,7 +155,8 @@ We will read all the mdx files from `posts/` directory, and parse their frontmat
 
 Here's the code:
 
-```js filename=utils/getPostData.js
+<CustomCode filename="utils/getPostData.js">
+```js
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
@@ -211,10 +214,12 @@ export async function getPostData(slug) {
   };
 }
 ```
+</CustomCode>
 
 After this, first we will index all the blogs inside `/blogs` route. Put the following code in `pages/blog/index.js` file.
 
-```jsx filename=/pages/blog/index.js
+<CustomCode filename="/pages/blog/index.js">
+```jsx
 import { getSortedPostsData } from "utils/getPostData";
 
 export default function Blogs({ posts }) {
@@ -241,6 +246,7 @@ export const getStaticProps = () => {
   };
 };
 ```
+</CustomCode>
 
 We are using the `getSortedPostsData` utility function to get all the sorted posts, and then rendering it on the page. That's it.
 
@@ -250,7 +256,8 @@ Now that we have an index page, users can click on any of the link, and they wil
 
 Here's the code for that:
 
-```jsx filename=/pages/blog/[slug].js
+<CustomCode filename="/pages/blog/[slug].js">
+```jsx
 import { serialize } from "next-mdx-remote/serialize";
 import { MDXRemote } from "next-mdx-remote";
 
@@ -279,6 +286,7 @@ export const getStaticProps = async ({ params }) => {
   return { props: { source: mdxSource } };
 };
 ```
+</CustomCode>
 
 Let's start with [`getStaticPaths`](https://nextjs.org/docs/basic-features/data-fetching/get-static-paths) first. Using `getStaticPaths` we define a list of paths that we want to be statically generated. We are passing all the blog slugs so that our blogs can be statically generated.
 
@@ -304,7 +312,8 @@ Since remark/rehype plugins only support ESM, we can use it inside our `/pages/b
 
 Here's the code:
 
-```jsx filename=/pages/blog/[slug].js
+<CustomCode filename="/pages/blog/[slug].js">
+```jsx
 import { serialize } from "next-mdx-remote/serialize";
 import { MDXRemote } from "next-mdx-remote";
 
@@ -344,6 +353,7 @@ export const getStaticProps = async ({ params }) => {
   return { props: { source: mdxSource } };
 };
 ```
+</CustomCode>
 
 Everything remains the same except the part where we are parsing and compiling the MDX string. The `serialize` function takes a second parameter, which is a config object. In this config object, we are providing `mdxOptions` which is another object in which we pass remark and rehype plugins separately. One thing to know that is these plugins are used during the compilation of our MDX blog. That's why they are passed as options to the `serialize` function.
 
@@ -353,7 +363,8 @@ And with that, we should have our plugin working.
 
 One of MDX's prominent feature is it allows us to use React components inside our blogs, and it would be a shame if we didn't use this feature. So, let's use a React component inside our blog(for the sake of the length of _this_ blog, the component will be a simple one). Here it is:
 
-```jsx filename=utils/ShowContentInside.js
+<CustomCode filename="utils/ShowContentInside.js">
+```jsx
 export default function ShowContentInside({ heading, children }) {
   return (
     <div>
@@ -363,6 +374,7 @@ export default function ShowContentInside({ heading, children }) {
   );
 }
 ```
+</CustomCode>
 
 This component takes a `heading` prop, and a children to show the contents inside it.
 
@@ -392,7 +404,8 @@ This however won't work. How would our MDX document know where to get the `ShowC
 
 For this, we need to pass our MDX renderer the `ShowContentInside` component(this behavior may differ in other MDX libraries in that you could import components inside your MDX document itself, but `next-mdx-remote` doesn't work like this).
 
-```js filename=/pages/blog/[slug].js
+<CustomCode filename="/pages/blog/[slug].js">
+```js
 // ...omitted
 
 import ShowContentInside from "utils/ShowContentInside";
@@ -413,6 +426,7 @@ export default function BlogPost({ source }) {
 
 // ...omitted
 ```
+</CustomCode>
 
 First we import our component, and then pass it to `MDXRemote` renderer component through `components` prop as an object. Now, during the rendering of our MDX blog, these components will be used inside our blogs.
 

@@ -3,14 +3,14 @@ import fs from "fs";
 import path from "path";
 
 import config from "config.json";
-import { sortedPostData } from "./getPosts";
+import { allPosts } from "contentlayer/generated";
 
 export function generateRSSFeed() {
   const feed = new Feed({
     title: "Aayush Kumar Sahu - Developer and Explorer",
     description: "aayushmau5' personal website",
     id: config.siteUrl,
-    copyright: "CC 2022, Aayush Kumar Sahu",
+    copyright: "CC 2024, Aayush Kumar Sahu",
     link: config.siteUrl,
     favicon: `${config.siteUrl}/favicon.ico`,
     language: "en",
@@ -22,15 +22,17 @@ export function generateRSSFeed() {
     },
   });
 
-  sortedPostData.forEach((post) =>
-    feed.addItem({
-      title: post.title,
-      id: `${config.siteUrl}/blog/${post.slug}`,
-      link: `${config.siteUrl}/blog/${post.slug}`,
-      date: new Date(post.date),
-      description: post.description,
-    })
-  );
+  allPosts
+    .filter((p) => !p.draft)
+    .forEach((post) =>
+      feed.addItem({
+        title: post.title,
+        id: `${config.siteUrl}${post.url}`,
+        link: `${config.siteUrl}${post.url}`,
+        date: new Date(post.date),
+        description: post.description,
+      })
+    );
 
   feed.addCategory("Programming");
 

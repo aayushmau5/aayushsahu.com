@@ -51,7 +51,7 @@ export const PageSEO = ({ title, description }) => {
   );
 };
 
-export const BlogSEO = ({ title, summary, date, slug }) => {
+export const BlogSEO = ({ title, summary, date }) => {
   const publishedAt = new Date(date).toISOString();
   const featuredImage = CloudinaryMetaImageUrl({ title });
 

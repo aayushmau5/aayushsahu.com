@@ -19,7 +19,8 @@ But with NextJS, you can conditionally change where the back button leads to. Le
 
 The code for settings page lives in `pages/settings.js` file. Here's how your current code might look like. We are using NextJS' router for routing purpose.
 
-```jsx filename=settings.js
+<CustomCode filename="settings.js">
+```jsx
 import { useRouter } from "next/router";
 
 export default function SettingsPage() {
@@ -33,6 +34,7 @@ export default function SettingsPage() {
   );
 }
 ```
+</CustomCode>
 
 # Fix
 
@@ -44,7 +46,8 @@ Thus, we pass the `context.req.headers.referer` value to our page component thro
 
 Now, we just have to get the previous URL inside our page component, and conditionally change where the `router` function will take us.
 
-```jsx filename=settings.js
+<CustomCode filename="settings.js">
+```jsx
 import { useRouter } from "next/router";
 
 export async function getServerSideProps(context) {
@@ -74,5 +77,6 @@ export default function SettingsPage(props) {
   );
 }
 ```
+</CustomCode>
 
 That's it!

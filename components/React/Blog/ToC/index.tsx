@@ -1,10 +1,6 @@
 import styles from "./style.module.css";
 
-interface Props {
-  toc: string;
-}
-
-export default function TableOfContents({ toc }: Props) {
+export default function TableOfContents({ toc }) {
   return (
     <details className={styles.details}>
       <summary className={styles.summary}>Table of Contents</summary>

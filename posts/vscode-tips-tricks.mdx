@@ -15,14 +15,7 @@ Here are some VSCode tips and tricks that can take your programming experience t
 All the configurations are made to `settings.json` file. You can access it by `CTRL + SHIFT + P` -> "Open User Settings(JSON)".
 
 <BasicCard>
-  Here's the{" "}
-  <a
-    target="_blank"
-    rel="noreferrer"
-    href="https://github.com/aayushmau5/dotfiles/tree/master/vscode"
-  >
-    link
-  </a>{" "}
+  Here's the [link](https://github.com/aayushmau5/dotfiles/tree/master/vscode)
   to the config file I use.
 </BasicCard>
 
@@ -40,7 +33,8 @@ Most of the stuff is pretty straightforward. You can change the font weight, spa
   the hints ;)
 </Callout>
 
-```json filename=settings.json
+<CustomCode filename="settings.json">
+```json
 {
   "editor.fontLigatures": true,
   "editor.fontFamily": "'JuliaMono'",
@@ -49,22 +43,26 @@ Most of the stuff is pretty straightforward. You can change the font weight, spa
   "editor.lineHeight": 25
 }
 ```
+</CustomCode>
 
 You can even configure terminal specific fonts settings using `terminal` prefix.
 
-```json filename=settings.json
+<CustomCode filename="settings.json">
+```json
 {
   "terminal.integrated.fontSize": 15,
   "terminal.integrated.fontWeightBold": "500",
   "terminal.integrated.fontFamily": "'FuraCode Nerd Font'"
 }
 ```
+</CustomCode>
 
 ## Color configurations
 
 Want a line to indicate 80 columns? You can configure it using `editor.rulers`.
 
-```json filename=settings.json
+<CustomCode filename="settings.json">
+```json
 {
   "editor.rulers": [
     {
@@ -74,10 +72,12 @@ Want a line to indicate 80 columns? You can configure it using `editor.rulers`.
   ]
 }
 ```
+</CustomCode>
 
 You can also customize existing theme. Cool thing about this is you can configure themes you install later as well.
 
-```json filename=settings.json
+<CustomCode filename="settings.json">
+```json
 {
   "workbench.colorCustomizations": {
     "[Default Dark+]": {
@@ -92,10 +92,12 @@ You can also customize existing theme. Cool thing about this is you can configur
   }
 }
 ```
+</CustomCode>
 
 With `editor.tokenColorCustomizations`, you can customize how each token looks like. Here I'm configuring that all comments should be in _italics_. You can configure a lot more with this. I recommend checking VSCode's syntax highlighting [guide](https://code.visualstudio.com/api/language-extensions/syntax-highlight-guide) for other options.
 
-```json filename=settings.json
+<CustomCode filename="settings.json">
+```json
 {
   "editor.tokenColorCustomizations": {
     "textMateRules": [
@@ -109,16 +111,19 @@ With `editor.tokenColorCustomizations`, you can customize how each token looks l
   }
 }
 ```
+</CustomCode>
 
 # File explorer change
 
 You can add more indentation to file tree structure using `workbench.tree.indent`.
 
-```json filename=settings.json
+<CustomCode filename="settings.json">
+```json
 {
   "workbench.tree.indent": 20
 }
 ```
+</CustomCode>
 
 Workbench refers to overall VSCode UI.
 
@@ -126,7 +131,8 @@ Workbench refers to overall VSCode UI.
 
 You can set file specific configurations such as changing font for a specific file like markdown, disabling format on save for python, etc.
 
-```json filename=settings.json
+<CustomCode filename="settings.json">
+```json
 {
   "[python]": {
     "editor.defaultFormatter": "ms-python.python",
@@ -144,12 +150,14 @@ You can set file specific configurations such as changing font for a specific fi
   }
 }
 ```
+</CustomCode>
 
 # Working with files and directories
 
 You can exclude some directories or files from showing up in the file tree, for example `node_modules`, using `files.exclude` key.
 
-```json filename=settings.json
+<CustomCode filename="settings.json">
+```json
 {
   "files.exclude": {
     "**/.git": true,
@@ -162,22 +170,26 @@ You can exclude some directories or files from showing up in the file tree, for 
   }
 }
 ```
+</CustomCode>
 
 You can even associate any file extension to a desired extension using `files.associations` config.
 
 For example, here I'm telling vscode to treat `.df` files as dockerfile.
 
-```json filename=settings.json
+<CustomCode filename="settings.json">
+```json
 {
   "files.associations": {
     "*.df": "dockerfile"
   }
 }
 ```
+</CustomCode>
 
 By default VSCode search functionality searches in all files. You can exclude certain directories or files from being searched using the `search.exclude` config.
 
-```json filename=settings.json
+<CustomCode filename="settings.json">
+```json
 {
   "search.exclude": {
     "**/.git": true,
@@ -195,6 +207,7 @@ By default VSCode search functionality searches in all files. You can exclude ce
   }
 }
 ```
+</CustomCode>
 
 # Keybindings
 
@@ -207,7 +220,8 @@ With right keybindings you can configure VSCode to be fully âœ¨keyboard drivenâœ
 
 The keybindings take `key` which is the shortcut, `command` that will run when that key is pressed, and an optional `when` value to configure when the command should run.
 
-```json filename=keybindings.json
+<CustomCode filename="keybindings.json">
+```json
 [
   {
     "key": "ctrl+t",
@@ -244,6 +258,7 @@ The keybindings take `key` which is the shortcut, `command` that will run when t
   }
 ]
 ```
+</CustomCode>
 
 With this config, I can toggle the terminal using `CTRL + T` key, maximize the terminal to full screen using `CTRL + SHIFT + ENTER`. I can even create new terminal pane using `CTRL + N`, and move to upper or below terminal page using `CTRL + SHIFT + K` and `CTRL + SHIFT + J` but **only** when the terminal pane is in focus. Pretty neat!
 
@@ -253,7 +268,8 @@ If you are using the VSCode VIM extension, you can also configure vim keybinds i
 
 The keybindings take a `before` value which is the keyboard shortcut you want to bind to, and an optional `after` that maps to a VIM keybind. If you want to run a command instead, replace `after` with `commands` and put in the command you want to run.
 
-```json filename=settings.json
+<CustomCode filename="settings.json">
+```json
 {
   "vim.leader": "<Space>", // set the leader key to spacebar
   "vim.normalModeKeyBindingsNonRecursive": [
@@ -335,6 +351,7 @@ The keybindings take a `before` value which is the keyboard shortcut you want to
   ]
 }
 ```
+</CustomCode>
 
 I got to know about these configurations through [this awesome course](https://www.barbarianmeetscoding.com/boost-your-coding-fu-with-vscode-and-vim) by Barbarian Meets Coding. You should definitely check that out if you want to know more ways to configure VSCode with the VIM extension.
 

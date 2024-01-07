@@ -1,31 +1,21 @@
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { GetStaticProps } from "next";
 import { useRouter } from "next/router";
 import Link from "next/link";
-import { useState } from "react";
+
+import { Post } from "contentlayer/generated";
 
 import SearchBar from "@/components/React/Blog/SearchBar";
 import Date from "@/components/Date";
 import { PageSEO } from "@/components/SEO";
-import { getAllTags, sortedPostData } from "@/utils/getPosts";
+import { getAllTags, getSortedPosts } from "@/utils/postHelpers";
 
 import styles from "@/styles/Blog.module.css";
 import Tag from "@/components/React/Blog/TagsContainer/Tag";
 import TagsContainer from "@/components/React/Blog/TagsContainer";
 
-interface PostData {
-  slug: string;
-  title: string;
-  date: string;
-  description?: string;
-  readingTime: {
-    text: string;
-  };
-  tags: string[];
-}
-
 interface Props {
-  postsData: PostData[];
+  postsData: Post[];
   tags: string[];
 }
 
@@ -129,14 +119,13 @@ export default function Blog({ postsData, tags }: Props) {
         {filteredBlogs.length === 0 ? <h3>No blogs found</h3> : null}
         <div className={styles.blogsContainer}>
           {filteredBlogs.map((post) => (
-            <Link key={post.slug} href={`/blog/${post.slug}`}>
+            <Link key={post.url} href={post.url}>
               <a className={styles.blogContainer}>
                 <p className={styles.date}>
                   <Date dateString={post.date} />
                 </p>
                 <h3>{post.title}</h3>
-                <p className={styles.readingTime}>{post.readingTime.text}</p>
-                <p className={styles.additionalInfo}></p>
+                <p className={styles.readingTime}>{post.readingTime}</p>
               </a>
             </Link>
           ))}
@@ -147,12 +136,17 @@ export default function Blog({ postsData, tags }: Props) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const postsData = sortedPostData;
-  const tags = getAllTags();
+  const sortedPostData = getSortedPosts();
+  const tags = getAllTags(sortedPostData);
 
   return {
     props: {
-      postsData,
+      postsData: sortedPostData.map((p) => ({
+        title: p.title,
+        url: p.url,
+        date: p.date,
+        readingTime: p.readingTime,
+      })),
       tags,
     },
   };

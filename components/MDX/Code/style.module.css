@@ -1,0 +1,74 @@
+.container {
+  position: relative;
+  background-color: #0a0a0a;
+  border-radius: 10px;
+}
+
+.filenameContainer {
+  position: relative;
+  height: 44px;
+  background-color: #181818;
+  border-radius: 10px 10px 0 0;
+}
+
+.filename {
+  margin-top: 5px;
+  position: absolute;
+  top: 0;
+  left: 90px;
+  padding: 7px 10px;
+  height: 45px;
+  border-radius: 5px 5px 0 0;
+  font-size: 0.96rem;
+  color: white;
+  background-color: #0a0a0a;
+  font-family: "IBM Plex Sans", sans-serif;
+  display: flex;
+  gap: 7px;
+  align-items: center;
+}
+
+.buttons {
+  display: inline-block;
+  height: 100%;
+}
+
+.dot {
+  height: 12px;
+  width: 12px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-left: 1rem;
+  margin-top: 16px;
+  margin-bottom: 1rem;
+}
+
+.red {
+  background-color: #fd5f57;
+}
+
+.yellow {
+  background-color: #f8bd39;
+  margin-left: 7px;
+}
+
+.green {
+  background-color: #26c93f;
+  margin-left: 7px;
+}
+
+.iconSvg {
+  display: inline-block;
+  height: 21px;
+  width: 21px;
+}
+
+@media (max-width: 400px) {
+  .dot {
+    display: none;
+  }
+
+  .filename {
+    left: 10px;
+  }
+}

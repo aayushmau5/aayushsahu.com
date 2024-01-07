@@ -27,6 +27,11 @@
   text-align: center;
 }
 
+.caption a {
+  color: white;
+  text-decoration: underline;
+}
+
 .container {
   color: rgba(255, 255, 255, 0.74);
   word-wrap: break-word;

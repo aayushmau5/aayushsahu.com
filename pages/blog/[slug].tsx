@@ -1,8 +1,15 @@
 import { GetStaticProps, GetStaticPaths } from "next";
-import { MDXRemote } from "next-mdx-remote";
 
-import { getAllPostIds, getPostData } from "@/utils/getPosts";
-import { generateMdx, getToC } from "@/utils/mdxUtilities";
+import { type Post } from "contentlayer/generated";
+import { useMDXComponent } from "next-contentlayer/hooks";
+import type { MDXComponents } from "mdx/types";
+
+import {
+  generateToC,
+  getNextPrevArticles,
+  getPublishedPosts,
+  getSortedPosts,
+} from "@/utils/postHelpers";
 import BlogContainer from "@/components/React/Blog/BlogContainer";
 import { BlogSEO } from "@/components/SEO";
 import Pre from "@/components/MDX/Pre";
@@ -15,76 +22,67 @@ import Callout from "@/components/MDX/Callout";
 import BasicCard from "@/components/MDX/Card/BasicCard";
 import CardWithTitle from "@/components/MDX/Card/CardWithTitle";
 import CodeBlock from "@/components/MDX/Codeblock";
+import CustomCode from "@/components/MDX/Code";
 import SeparatorSvg from "@/components/React/SeparatorSvg";
 import NextPrevArticles from "@/components/React/Blog/NextPrevArticles";
 
-const components = {
+const components: MDXComponents = {
   pre: (props) => <Pre {...props} />,
   blockquote: (props) => <Blockquote {...props} />,
   a: (props) => <StyledAnchor {...props} />,
   hr: (props) => <SeparatorSvg {...props} stroke="#569cd6" />,
   ol: (props) => <CustomOl {...props} />,
   ul: (props) => <CustomUl {...props} />,
-  code: (props) => (
-    <CodeBlock
-      filename={props.filename}
-      highlight={props.highlight}
-      {...props}
-    />
-  ),
+  code: (props) => <CodeBlock {...props} />,
   HiddenExpand,
   Callout,
   BasicCard,
   CardWithTitle,
+  CustomCode,
 };
 
 export default function BlogPost({
-  frontMatter,
-  source,
-  slug,
-  tableOfContents,
+  post,
   recommendedPostList,
+  toc,
+}: {
+  post: Post;
+  recommendedPostList: { title: string; url: string };
+  toc: string;
 }) {
+  const MDXContent = useMDXComponent(post.body.code);
+
   return (
     <>
-      <BlogSEO
-        title={frontMatter.title}
-        summary={frontMatter.description}
-        date={frontMatter.date}
-        slug={slug}
-      />
-      <BlogContainer
-        frontMatter={frontMatter}
-        tableOfContents={tableOfContents}
-        slug={slug}
-      >
-        <MDXRemote {...source} components={components} />
+      <BlogSEO title={post.title} summary={post.description} date={post.date} />
+
+      <BlogContainer post={post} slug={post._raw.flattenedPath} toc={toc}>
+        <MDXContent components={components} />
       </BlogContainer>
+
       <NextPrevArticles recommendedPostList={recommendedPostList} />
     </>
   );
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const paths = getAllPostIds();
-  return {
-    paths,
-    fallback: false,
-  };
+  const paths = getPublishedPosts().map((post) => ({
+    params: { slug: post._raw.flattenedPath },
+  }));
+
+  return { paths, fallback: false };
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const { content, frontMatter, slug, recommendedPostList } = await getPostData(
-    params.slug as string
+  const sortedPosts = getSortedPosts();
+
+  const post = sortedPosts.find(
+    (post) => post._raw.flattenedPath === params.slug
   );
 
-  return {
-    props: {
-      source: await generateMdx(frontMatter, content),
-      frontMatter,
-      slug,
-      tableOfContents: await getToC(frontMatter, content),
-      recommendedPostList,
-    },
-  };
+  const toc = post.showToc ? await generateToC(post.body.raw) : null;
+
+  const prevNextArticles = getNextPrevArticles(sortedPosts, post);
+
+  return { props: { post, recommendedPostList: prevNextArticles, toc } };
 };
