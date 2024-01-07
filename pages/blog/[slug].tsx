@@ -3,9 +3,9 @@ import { GetStaticProps, GetStaticPaths } from "next";
 import { allPosts, type Post } from "contentlayer/generated";
 import { useMDXComponent } from "next-contentlayer/hooks";
 import type { MDXComponents } from "mdx/types";
+import { compareDesc, parseISO } from "date-fns";
 
-import { getAllPostIds, getPostData } from "@/utils/getPosts";
-import { generateMdx, getToC } from "@/utils/mdxUtilities";
+import { getNextPrevArticles } from "@/utils/getPosts";
 import BlogContainer from "@/components/React/Blog/BlogContainer";
 import { BlogSEO } from "@/components/SEO";
 import Pre from "@/components/MDX/Pre";
@@ -37,7 +37,13 @@ const components: MDXComponents = {
   CardWithTitle,
 };
 
-export default function BlogPost({ post }: { post: Post }) {
+export default function BlogPost({
+  post,
+  recommendedPostList,
+}: {
+  post: Post;
+  recommendedPostList: { title: string; url: string };
+}) {
   const MDXContent = useMDXComponent(post.body.code);
 
   return (
@@ -52,14 +58,7 @@ export default function BlogPost({ post }: { post: Post }) {
         <MDXContent components={components} />
       </BlogContainer>
 
-      {/* <BlogContainer
-        frontMatter={frontMatter}
-        tableOfContents={tableOfContents}
-        slug={slug}
-      >
-        <MDXRemote {...source} components={components} />
-      </BlogContainer>
-      <NextPrevArticles recommendedPostList={recommendedPostList} /> */}
+      <NextPrevArticles recommendedPostList={recommendedPostList} />
     </>
   );
 }
@@ -73,21 +72,15 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  // const { content, frontMatter, slug, recommendedPostList } = await getPostData(
-  //   params.slug as string
-  // );
+  const sortedPosts = allPosts
+    .filter((p) => !p.draft)
+    .sort((a, b) => compareDesc(parseISO(a.date), parseISO(b.date)));
 
-  // return {
-  //   props: {
-  //     source: await generateMdx(frontMatter, content),
-  //     frontMatter,
-  //     slug,
-  //     tableOfContents: await getToC(frontMatter, content),
-  //     recommendedPostList,
-  //   },
-  // };
+  const post = sortedPosts.find(
+    (post) => post._raw.flattenedPath === params.slug
+  );
 
-  const post = allPosts.find((post) => post._raw.flattenedPath === params.slug);
+  const prevNextArticles = getNextPrevArticles(sortedPosts, post);
 
-  return { props: { post } };
+  return { props: { post, recommendedPostList: prevNextArticles } };
 };

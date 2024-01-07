@@ -11,10 +11,10 @@ import {
   sortPostsByDate,
 } from "./mdUtilities";
 import { getFileNamesWithoutExtension, readFileContent } from "./fileUtilities";
+import { Post } from "contentlayer/generated";
 
 const postsDirectoryPath = path.join(process.cwd(), "posts");
 export let sortedPostData = getSortedPostsData();
-let recommendedPostList = generateNextPrevArticlesList(sortedPostData);
 
 function getSortedPostsData() {
   const allPostsFrontMatter = getFileNamesWithoutExtension(
@@ -49,42 +49,24 @@ export function getAllPostIds() {
   return getFilesId(getFileNamesWithoutExtension(postsDirectoryPath));
 }
 
-export async function getPostData(fileNameWithoutExtension: string) {
-  const fileContent = readFileContent(
-    `${fileNameWithoutExtension}.mdx`,
-    postsDirectoryPath
-  );
-
-  const frontMatter = getFrontMatter(fileContent);
-  const content = getFileContentWithoutFrontMatter(fileContent);
-  setISODate(frontMatter);
-  setReadingTime(frontMatter, content);
-  await generateAndInsertCover(frontMatter);
-
-  return {
-    slug: fileNameWithoutExtension,
-    frontMatter,
-    content,
-    recommendedPostList: recommendedPostList[fileNameWithoutExtension] || {},
+export function getNextPrevArticles(sortedPosts: Post[], currentPost: Post) {
+  const sortedPostList = {
+    next: null,
+    prev: null,
   };
-}
-
-function generateNextPrevArticlesList(sortedPosts: any[]) {
-  const sortedPostList = {};
-  sortedPosts.forEach((post, index) => {
-    sortedPostList[post.slug] = {};
-    if (sortedPosts[index - 1]) {
-      sortedPostList[post.slug].next = {
-        title: sortedPosts[index - 1].title,
-        slug: sortedPosts[index - 1].slug,
-      };
-    }
-    if (sortedPosts[index + 1]) {
-      sortedPostList[post.slug].prev = {
-        title: sortedPosts[index + 1].title,
-        slug: sortedPosts[index + 1].slug,
-      };
-    }
-  });
+  const slug = currentPost._raw.flattenedPath;
+  const index = sortedPosts.findIndex((p) => p._raw.flattenedPath === slug);
+  if (sortedPosts[index - 1]) {
+    sortedPostList.next = {
+      title: sortedPosts[index - 1].title,
+      url: sortedPosts[index - 1].url,
+    };
+  }
+  if (sortedPosts[index + 1]) {
+    sortedPostList.prev = {
+      title: sortedPosts[index + 1].title,
+      url: sortedPosts[index + 1].url,
+    };
+  }
   return sortedPostList;
 }
