@@ -60,9 +60,11 @@ export default function BlogPost({
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const paths = allPosts.map((post) => ({
-    params: { slug: post._raw.flattenedPath },
-  }));
+  const paths = allPosts
+    .filter((p) => !p.draft)
+    .map((post) => ({
+      params: { slug: post._raw.flattenedPath },
+    }));
 
   return { paths, fallback: false };
 };
