@@ -4,11 +4,11 @@ import { BsArrowRightShort } from "react-icons/bs";
 import { PageSEO } from "@/components/SEO";
 import Date from "@/components/Date";
 
-import { sortedPostData } from "@/utils/getPosts";
-
 import blogStyles from "@/styles/Blog.module.css";
 import styles from "@/styles/Home.module.css";
 import { createRSSFile } from "@/utils/generateRSSFeed";
+import { allPosts } from "contentlayer/generated";
+import { compareDesc, parseISO } from "date-fns";
 
 export default function Index({ firstPost, secondPost }) {
   return (
@@ -80,7 +80,7 @@ export default function Index({ firstPost, secondPost }) {
             </Link>
           </div>
           <div className={blogStyles.blogsContainer}>
-            <Link key={firstPost.slug} href={`/blog/${firstPost.slug}`}>
+            <Link key={firstPost.url} href={firstPost.url}>
               <a className={blogStyles.blogContainer}>
                 <p className={blogStyles.date}>
                   <Date dateString={firstPost.date} />
@@ -89,10 +89,9 @@ export default function Index({ firstPost, secondPost }) {
                 <p className={blogStyles.readingTime}>
                   {firstPost.readingTime.text}
                 </p>
-                <p className={blogStyles.additionalInfo}></p>
               </a>
             </Link>
-            <Link key={secondPost.slug} href={`/blog/${secondPost.slug}`}>
+            <Link key={secondPost.url} href={secondPost.url}>
               <a className={blogStyles.blogContainer}>
                 <p className={blogStyles.date}>
                   <Date dateString={secondPost.date} />
@@ -101,7 +100,6 @@ export default function Index({ firstPost, secondPost }) {
                 <p className={blogStyles.readingTime}>
                   {secondPost.readingTime.text}
                 </p>
-                <p className={blogStyles.additionalInfo}></p>
               </a>
             </Link>
           </div>
@@ -142,7 +140,9 @@ export default function Index({ firstPost, secondPost }) {
 }
 
 export const getStaticProps = async () => {
-  const postsData = sortedPostData;
+  const postsData = allPosts
+    .filter((p) => !p.draft)
+    .sort((a, b) => compareDesc(parseISO(a.date), parseISO(b.date)));
   const firstPost = postsData[0];
   const secondPost = postsData[1];
 
