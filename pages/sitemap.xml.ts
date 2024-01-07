@@ -1,8 +1,7 @@
+import { Post, allPosts } from "contentlayer/generated";
 import { GetServerSideProps } from "next";
 
-import { sortedPostData } from "@/utils/getPosts";
-
-function generateSiteMap(posts) {
+function generateSiteMap(posts: Post[]) {
   const siteUrl = "https://aayushsahu.com";
 
   return `<?xml version="1.0" encoding="UTF-8"?>
@@ -26,7 +25,7 @@ function generateSiteMap(posts) {
        .map((post) => {
          return `
        <url>
-           <loc>${`${siteUrl}/blog/${post.slug}`}</loc>
+           <loc>${`${siteUrl}${post.url}`}</loc>
        </url>
      `;
        })
@@ -36,7 +35,8 @@ function generateSiteMap(posts) {
 }
 
 export const getServerSideProps: GetServerSideProps = async ({ res }) => {
-  const sitemap = generateSiteMap(sortedPostData);
+  const filteredPosts = allPosts.filter((p) => !p.draft);
+  const sitemap = generateSiteMap(filteredPosts);
 
   res.setHeader("Content-Type", "text/xml");
   res.write(sitemap);
