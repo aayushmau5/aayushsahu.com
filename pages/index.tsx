@@ -85,9 +85,6 @@ export default function Index({ firstPost, secondPost }) {
                   <Date dateString={firstPost.date} />
                 </p>
                 <h3>{firstPost.title}</h3>
-                <p className={blogStyles.readingTime}>
-                  {firstPost.readingTime.text}
-                </p>
               </a>
             </Link>
             <Link key={secondPost.url} href={secondPost.url}>
@@ -96,9 +93,6 @@ export default function Index({ firstPost, secondPost }) {
                   <Date dateString={secondPost.date} />
                 </p>
                 <h3>{secondPost.title}</h3>
-                <p className={blogStyles.readingTime}>
-                  {secondPost.readingTime.text}
-                </p>
               </a>
             </Link>
           </div>
@@ -147,8 +141,16 @@ export const getStaticProps = async () => {
 
   return {
     props: {
-      firstPost,
-      secondPost,
+      firstPost: {
+        title: firstPost.title,
+        date: firstPost.date,
+        url: firstPost.url,
+      },
+      secondPost: {
+        title: secondPost.title,
+        date: secondPost.date,
+        url: secondPost.url,
+      },
     },
   };
 };

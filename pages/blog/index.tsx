@@ -126,7 +126,6 @@ export default function Blog({ postsData, tags }: Props) {
                 </p>
                 <h3>{post.title}</h3>
                 <p className={styles.readingTime}>{post.readingTime}</p>
-                <p className={styles.additionalInfo}></p>
               </a>
             </Link>
           ))}
@@ -142,7 +141,12 @@ export const getStaticProps: GetStaticProps = async () => {
 
   return {
     props: {
-      postsData: sortedPostData,
+      postsData: sortedPostData.map((p) => ({
+        title: p.title,
+        url: p.url,
+        date: p.date,
+        readingTime: p.readingTime,
+      })),
       tags,
     },
   };
