@@ -93,7 +93,8 @@ end
 
 `Application.fetch_env!(:redix, :config)` will look for a config named `redix` and get the `config` value defined in it. Lets define a config inside `config/runtime.exs`.
 
-```elixir filename=config/runtime.exs
+<CustomCode filename="config/runtime.exs">
+```elixir
 # ...other stuff
 
 if config_env() == :prod do # <- NOTE: we are putting config inside this if expression
@@ -108,6 +109,7 @@ if config_env() == :prod do # <- NOTE: we are putting config inside this if expr
     ]
 end
 ```
+</CustomCode>
 
 Now you just need to define `REDIS_HOST` and `REDIS_PASSWORD` inside fly.io, and everything should work as expected.
 

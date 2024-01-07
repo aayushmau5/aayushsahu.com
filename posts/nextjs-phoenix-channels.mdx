@@ -65,7 +65,8 @@ npm install -D @types/phoenix # for types
 
 Since it's a NextJS project, there's a different method for connecting to the server. I chose to connect to the server once my webpage loads. Here's the code:
 
-```ts filename=Socket.tsx
+<CustomCode filename="Socket.tsx">
+```ts
 import { Socket as PhxSocket } from "phoenix";
 import { Dispatch, useEffect, useState, createContext } from "react";
 
@@ -104,6 +105,7 @@ export function Socket({ children }) {
   );
 }
 ```
+</CustomCode>
 
 Let's breakdown the code.
 
@@ -161,7 +163,8 @@ This component has a state which holds onto our socket. It takes in a child comp
 
 Now that the `Socket` component is created, I use this component to wrap the whole application so that every component has access to the socket instance. It will allow child components to connect to their own channels and handle messages.
 
-```tsx filename=pages/_app.tsx
+<CustomCode filename="pages/_app.tsx">
+```tsx
 import { Socket } from "components/Phoenix/Socket"; // the Socket component
 
 function MyApp({ Component, pageProps }) {
@@ -175,6 +178,7 @@ function MyApp({ Component, pageProps }) {
 
 export default MyApp;
 ```
+</CustomCode>
 
 This means whenever a page loads for the first time, it will automatically connect to the phoenix server.
 
@@ -200,7 +204,8 @@ Using channels we can subscribe to certain topics and receive updates on those t
 
 Instead, I manually created a channel file in `lib/<project_name>_web/channels/user_join_channel.ex`. The content of this file is:
 
-```elixir filename=user_join_channel.ex
+<CustomCode filename="user_join_channel.ex">
+```elixir
 defmodule ProjectWeb.UserJoinChannel do
   use Phoenix.Channel
 
@@ -209,14 +214,17 @@ defmodule ProjectWeb.UserJoinChannel do
   end
 end
 ```
+</CustomCode>
 
 It has a `join/3` function which does nothing for now.
 
 I also needed to add the following line inside the User socket file:
 
-```elixir filename=user_socket.ex
+<CustomCode filename="user_socket.ex">
+```elixir
 channel "user-join", ProjectWeb.UserJoinChannel
 ```
+</CustomCode>
 
 This means that whenever a client tries to subscribe to `"user-join"` channel, the `ProjectWeb.UserJoinChannel.join/3` function will handle the connection.
 
@@ -224,7 +232,8 @@ This means that whenever a client tries to subscribe to `"user-join"` channel, t
 
 Now that I have the channel ready on my server, I'll connect to the channel through NextJS. For this, I made a separate component:
 
-```tsx filename=UserJoin.tsx
+<CustomCode filename="UserJoin.tsx">
+```tsx
 import { useState, useContext, useEffect } from "react";
 import { Channel } from "phoenix";
 
@@ -252,6 +261,7 @@ export default function UserJoin() {
   return <div>Channel</div>;
 }
 ```
+</CustomCode>
 
 Let's breakdown this component as well.
 
@@ -299,7 +309,8 @@ Presence tells us about the users who joined a channel or left the channel in re
 
 Inside my `UserJoinChannel` module, I use Presence module to track a socket in a channel.
 
-```elixir filename=user_join_channel.ex
+<CustomCode filename="user_join_channel.ex">
+```elixir
 defmodule ProjectWeb.UserJoinChannel do
   alias ProjectWeb.Presence
   use Phoenix.Channel
@@ -317,6 +328,7 @@ defmodule ProjectWeb.UserJoinChannel do
   end
 end
 ```
+</CustomCode>
 
 I use `push` to send the presence data to connected client. The code for server is finished.
 
@@ -324,7 +336,8 @@ I use `push` to send the presence data to connected client. The code for server 
 
 The code for presence is done in the server, now its a matter of showing the presence count on the client. I made changes in the same place where the code of joining a channel is present.
 
-```tsx filename=UserJoin.tsx
+<CustomCode filename="UserJoin.tsx">
+```tsx
 import { useState, useContext, useEffect } from "react";
 import { Channel, Presence } from "phoenix";
 
@@ -362,6 +375,7 @@ export default function UsersOnline() {
   return <div>Users online: {usersOnline}</div>;
 }
 ```
+</CustomCode>
 
 Lets break this down.
 

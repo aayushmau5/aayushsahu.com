@@ -4,7 +4,6 @@ import rehypePrism from "rehype-prism-plus";
 import rehypeSlug from "rehype-slug";
 import remarkGfm from "remark-gfm";
 import readingTime from "reading-time";
-import { slug } from "github-slugger";
 
 export const Post = defineDocumentType(() => ({
   name: "Post",
@@ -27,26 +26,6 @@ export const Post = defineDocumentType(() => ({
     readingTime: {
       type: "string",
       resolve: (post) => readingTime(post.body.raw).text,
-    },
-    headings: {
-      // thanks to https://yusuf.fyi/posts/contentlayer-table-of-contents
-      type: "json",
-      resolve: (post) => {
-        const headingsRegex = /\n(?<type>#{1,6})\s+(?<content>.+)/g;
-        const headings = Array.from(post.body.raw.matchAll(headingsRegex)).map(
-          ({ groups }) => {
-            const type = groups?.type;
-            const content = groups?.content;
-            return {
-              level: type.length,
-              text: content,
-              slug: content ? slug(content) : undefined,
-            };
-          }
-        );
-
-        return headings;
-      },
     },
   },
 }));

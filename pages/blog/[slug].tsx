@@ -5,6 +5,7 @@ import { useMDXComponent } from "next-contentlayer/hooks";
 import type { MDXComponents } from "mdx/types";
 
 import {
+  generateToC,
   getNextPrevArticles,
   getPublishedPosts,
   getSortedPosts,
@@ -21,6 +22,7 @@ import Callout from "@/components/MDX/Callout";
 import BasicCard from "@/components/MDX/Card/BasicCard";
 import CardWithTitle from "@/components/MDX/Card/CardWithTitle";
 import CodeBlock from "@/components/MDX/Codeblock";
+import CustomCode from "@/components/MDX/Code";
 import SeparatorSvg from "@/components/React/SeparatorSvg";
 import NextPrevArticles from "@/components/React/Blog/NextPrevArticles";
 
@@ -31,21 +33,22 @@ const components: MDXComponents = {
   hr: (props) => <SeparatorSvg {...props} stroke="#569cd6" />,
   ol: (props) => <CustomOl {...props} />,
   ul: (props) => <CustomUl {...props} />,
-  code: (props) => {
-    return <CodeBlock {...props} />;
-  },
+  code: (props) => <CodeBlock {...props} />,
   HiddenExpand,
   Callout,
   BasicCard,
   CardWithTitle,
+  CustomCode,
 };
 
 export default function BlogPost({
   post,
   recommendedPostList,
+  toc,
 }: {
   post: Post;
   recommendedPostList: { title: string; url: string };
+  toc: string;
 }) {
   const MDXContent = useMDXComponent(post.body.code);
 
@@ -53,7 +56,7 @@ export default function BlogPost({
     <>
       <BlogSEO title={post.title} summary={post.description} date={post.date} />
 
-      <BlogContainer post={post} slug={post._raw.flattenedPath}>
+      <BlogContainer post={post} slug={post._raw.flattenedPath} toc={toc}>
         <MDXContent components={components} />
       </BlogContainer>
 
@@ -77,7 +80,9 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     (post) => post._raw.flattenedPath === params.slug
   );
 
+  const toc = post.showToc ? await generateToC(post.body.raw) : null;
+
   const prevNextArticles = getNextPrevArticles(sortedPosts, post);
 
-  return { props: { post, recommendedPostList: prevNextArticles } };
+  return { props: { post, recommendedPostList: prevNextArticles, toc } };
 };

@@ -15,10 +15,12 @@ export default function BlogContainer({
   children,
   post,
   slug,
+  toc,
 }: {
   children: any;
   post: Post;
   slug: string;
+  toc: string;
 }) {
   const [phoenixChannel, setPhoenixChannel] = useState<Channel>(null);
   const socket = useContext(SocketContext);
@@ -53,7 +55,7 @@ export default function BlogContainer({
         phoenixChannel={phoenixChannel}
       />
       <SeparatorSvg stroke="gray" header />
-      {post.showToc ? <ToC headings={post.headings} /> : null}
+      {post.showToc ? <ToC toc={toc} /> : null}
       <article>{children}</article>
       <LikeButton phoenixChannel={phoenixChannel} slug={slug} />
     </div>
