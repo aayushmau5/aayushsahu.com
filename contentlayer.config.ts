@@ -29,8 +29,9 @@ export const Post = defineDocumentType(() => ({
       resolve: (post) => readingTime(post.body.raw).text,
     },
     headings: {
+      // thanks to https://yusuf.fyi/posts/contentlayer-table-of-contents
       type: "json",
-      resolve: async (post) => {
+      resolve: (post) => {
         const headingsRegex = /\n(?<type>#{1,6})\s+(?<content>.+)/g;
         const headings = Array.from(post.body.raw.matchAll(headingsRegex)).map(
           ({ groups }) => {

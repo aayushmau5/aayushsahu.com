@@ -2,14 +2,13 @@ import { useEffect, useMemo, useState } from "react";
 import { GetStaticProps } from "next";
 import { useRouter } from "next/router";
 import Link from "next/link";
-import { compareDesc, parseISO } from "date-fns";
 
-import { Post, allPosts } from "contentlayer/generated";
+import { Post } from "contentlayer/generated";
 
 import SearchBar from "@/components/React/Blog/SearchBar";
 import Date from "@/components/Date";
 import { PageSEO } from "@/components/SEO";
-import { getAllTags } from "@/utils/postHelpers";
+import { getAllTags, getSortedPosts } from "@/utils/postHelpers";
 
 import styles from "@/styles/Blog.module.css";
 import Tag from "@/components/React/Blog/TagsContainer/Tag";
@@ -138,16 +137,12 @@ export default function Blog({ postsData, tags }: Props) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const sortedPostData = allPosts
-    .filter((p) => !p.draft)
-    .sort((a, b) => compareDesc(parseISO(a.date), parseISO(b.date)));
-
-  const postsData = sortedPostData;
+  const sortedPostData = getSortedPosts();
   const tags = getAllTags(sortedPostData);
 
   return {
     props: {
-      postsData,
+      postsData: sortedPostData,
       tags,
     },
   };

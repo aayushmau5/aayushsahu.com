@@ -1,4 +1,15 @@
-import { Post } from "contentlayer/generated";
+import { Post, allPosts } from "contentlayer/generated";
+import { compareDesc, parseISO } from "date-fns";
+
+export function getPublishedPosts() {
+  return allPosts.filter((p) => !p.draft);
+}
+
+export function getSortedPosts() {
+  return getPublishedPosts().sort((a, b) =>
+    compareDesc(parseISO(a.date), parseISO(b.date))
+  );
+}
 
 export function getAllTags(allPosts: Post[]) {
   const allTags = new Set<string>();

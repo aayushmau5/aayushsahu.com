@@ -1,11 +1,14 @@
 import { GetStaticProps, GetStaticPaths } from "next";
 
-import { allPosts, type Post } from "contentlayer/generated";
+import { type Post } from "contentlayer/generated";
 import { useMDXComponent } from "next-contentlayer/hooks";
 import type { MDXComponents } from "mdx/types";
-import { compareDesc, parseISO } from "date-fns";
 
-import { getNextPrevArticles } from "@/utils/postHelpers";
+import {
+  getNextPrevArticles,
+  getPublishedPosts,
+  getSortedPosts,
+} from "@/utils/postHelpers";
 import BlogContainer from "@/components/React/Blog/BlogContainer";
 import { BlogSEO } from "@/components/SEO";
 import Pre from "@/components/MDX/Pre";
@@ -60,19 +63,15 @@ export default function BlogPost({
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const paths = allPosts
-    .filter((p) => !p.draft)
-    .map((post) => ({
-      params: { slug: post._raw.flattenedPath },
-    }));
+  const paths = getPublishedPosts().map((post) => ({
+    params: { slug: post._raw.flattenedPath },
+  }));
 
   return { paths, fallback: false };
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const sortedPosts = allPosts
-    .filter((p) => !p.draft)
-    .sort((a, b) => compareDesc(parseISO(a.date), parseISO(b.date)));
+  const sortedPosts = getSortedPosts();
 
   const post = sortedPosts.find(
     (post) => post._raw.flattenedPath === params.slug

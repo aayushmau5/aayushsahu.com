@@ -7,8 +7,7 @@ import Date from "@/components/Date";
 import blogStyles from "@/styles/Blog.module.css";
 import styles from "@/styles/Home.module.css";
 import { createRSSFile } from "@/utils/generateRSSFeed";
-import { allPosts } from "contentlayer/generated";
-import { compareDesc, parseISO } from "date-fns";
+import { getSortedPosts } from "@/utils/postHelpers";
 
 export default function Index({ firstPost, secondPost }) {
   return (
@@ -140,9 +139,7 @@ export default function Index({ firstPost, secondPost }) {
 }
 
 export const getStaticProps = async () => {
-  const postsData = allPosts
-    .filter((p) => !p.draft)
-    .sort((a, b) => compareDesc(parseISO(a.date), parseISO(b.date)));
+  const postsData = getSortedPosts();
   const firstPost = postsData[0];
   const secondPost = postsData[1];
 

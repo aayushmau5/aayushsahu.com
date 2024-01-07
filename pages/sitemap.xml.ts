@@ -1,4 +1,5 @@
-import { Post, allPosts } from "contentlayer/generated";
+import { getPublishedPosts } from "@/utils/postHelpers";
+import { Post } from "contentlayer/generated";
 import { GetServerSideProps } from "next";
 
 function generateSiteMap(posts: Post[]) {
@@ -35,8 +36,8 @@ function generateSiteMap(posts: Post[]) {
 }
 
 export const getServerSideProps: GetServerSideProps = async ({ res }) => {
-  const filteredPosts = allPosts.filter((p) => !p.draft);
-  const sitemap = generateSiteMap(filteredPosts);
+  const publishedPosts = getPublishedPosts();
+  const sitemap = generateSiteMap(publishedPosts);
 
   res.setHeader("Content-Type", "text/xml");
   res.write(sitemap);
