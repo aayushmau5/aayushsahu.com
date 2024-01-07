@@ -10,7 +10,7 @@ export function generateRSSFeed() {
     title: "Aayush Kumar Sahu - Developer and Explorer",
     description: "aayushmau5' personal website",
     id: config.siteUrl,
-    copyright: "CC 2022, Aayush Kumar Sahu",
+    copyright: "CC 2024, Aayush Kumar Sahu",
     link: config.siteUrl,
     favicon: `${config.siteUrl}/favicon.ico`,
     language: "en",

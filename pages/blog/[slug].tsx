@@ -5,7 +5,7 @@ import { useMDXComponent } from "next-contentlayer/hooks";
 import type { MDXComponents } from "mdx/types";
 import { compareDesc, parseISO } from "date-fns";
 
-import { getNextPrevArticles } from "@/utils/getPosts";
+import { getNextPrevArticles } from "@/utils/postHelpers";
 import BlogContainer from "@/components/React/Blog/BlogContainer";
 import { BlogSEO } from "@/components/SEO";
 import Pre from "@/components/MDX/Pre";

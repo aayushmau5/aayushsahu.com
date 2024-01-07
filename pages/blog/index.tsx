@@ -9,7 +9,7 @@ import { Post, allPosts } from "contentlayer/generated";
 import SearchBar from "@/components/React/Blog/SearchBar";
 import Date from "@/components/Date";
 import { PageSEO } from "@/components/SEO";
-import { getAllTags } from "@/utils/getPosts";
+import { getAllTags } from "@/utils/postHelpers";
 
 import styles from "@/styles/Blog.module.css";
 import Tag from "@/components/React/Blog/TagsContainer/Tag";
