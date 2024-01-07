@@ -31,7 +31,8 @@
       ],
       "@/public/*": [
         "public/*"
-      ]
+      ],
+      "contentlayer/generated": ["./.contentlayer/generated"]
     }
   },
   "include": [

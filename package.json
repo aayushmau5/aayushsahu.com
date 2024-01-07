@@ -3,20 +3,21 @@
   "private": true,
   "node": "20.x",
   "scripts": {
-    "dev:old": "next dev",
-    "dev": "next-remote-watch ./**/*.mdx",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "newPost": "node utils/createPost.js"
   },
   "dependencies": {
+    "contentlayer": "^0.3.4",
     "date-fns": "^2.28.0",
     "feed": "^4.2.2",
     "gray-matter": "^4.0.3",
     "kbar": "0.1.0-beta.36",
     "markdown-toc": "^1.2.0",
     "next": "12.2.2",
+    "next-contentlayer": "^0.3.4",
     "next-mdx-remote": "^3.0.8",
     "phoenix": "^1.6.15",
     "react": "17.0.2",

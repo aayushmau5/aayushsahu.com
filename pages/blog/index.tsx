@@ -3,6 +3,9 @@ import { GetStaticProps } from "next";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { useState } from "react";
+import { compareDesc, parseISO } from "date-fns";
+
+import { allPosts } from "contentlayer/generated";
 
 import SearchBar from "@/components/React/Blog/SearchBar";
 import Date from "@/components/Date";
@@ -74,20 +77,24 @@ export default function Blog({ postsData, tags }: Props) {
   //   );
   // }
 
-  const filteredBlogs = useMemo(
-    () =>
-      postsData
-        .filter((post) => {
-          return post.title.toLowerCase().includes(searchValue.toLowerCase());
-        })
-        .filter((post) => {
-          if (selectedTag) {
-            return post.tags?.includes(selectedTag.toLowerCase());
-          }
-          return post;
-        }),
-    [postsData, selectedTag, searchValue]
-  );
+  // const filteredBlogs = useMemo(
+  //   () =>
+  //     postsData
+  //       .filter((post) => {
+  //         return post.title.toLowerCase().includes(searchValue.toLowerCase());
+  //       })
+  //       .filter((post) => {
+  //         if (selectedTag) {
+  //           return post.tags?.includes(selectedTag.toLowerCase());
+  //         }
+  //         return post;
+  //       }),
+  //   [postsData, selectedTag, searchValue]
+  // );
+
+  const filteredBlogs = allPosts
+    .filter((p) => !p.draft)
+    .sort((a, b) => compareDesc(parseISO(a.date), parseISO(b.date)));
 
   useEffect(() => {
     if (q) setSearchValue(q);
@@ -129,13 +136,13 @@ export default function Blog({ postsData, tags }: Props) {
         {filteredBlogs.length === 0 ? <h3>No blogs found</h3> : null}
         <div className={styles.blogsContainer}>
           {filteredBlogs.map((post) => (
-            <Link key={post.slug} href={`/blog/${post.slug}`}>
+            <Link key={post.url} href={post.url}>
               <a className={styles.blogContainer}>
                 <p className={styles.date}>
                   <Date dateString={post.date} />
                 </p>
                 <h3>{post.title}</h3>
-                <p className={styles.readingTime}>{post.readingTime.text}</p>
+                <p className={styles.readingTime}>{post.readingTime}</p>
                 <p className={styles.additionalInfo}></p>
               </a>
             </Link>

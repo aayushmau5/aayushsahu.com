@@ -1,5 +1,8 @@
 import { GetStaticProps, GetStaticPaths } from "next";
-import { MDXRemote } from "next-mdx-remote";
+
+import { allPosts, type Post } from "contentlayer/generated";
+import { useMDXComponent } from "next-contentlayer/hooks";
+import type { MDXComponents } from "mdx/types";
 
 import { getAllPostIds, getPostData } from "@/utils/getPosts";
 import { generateMdx, getToC } from "@/utils/mdxUtilities";
@@ -18,73 +21,73 @@ import CodeBlock from "@/components/MDX/Codeblock";
 import SeparatorSvg from "@/components/React/SeparatorSvg";
 import NextPrevArticles from "@/components/React/Blog/NextPrevArticles";
 
-const components = {
+const components: MDXComponents = {
   pre: (props) => <Pre {...props} />,
   blockquote: (props) => <Blockquote {...props} />,
   a: (props) => <StyledAnchor {...props} />,
   hr: (props) => <SeparatorSvg {...props} stroke="#569cd6" />,
   ol: (props) => <CustomOl {...props} />,
   ul: (props) => <CustomUl {...props} />,
-  code: (props) => (
-    <CodeBlock
-      filename={props.filename}
-      highlight={props.highlight}
-      {...props}
-    />
-  ),
+  code: (props) => {
+    return <CodeBlock {...props} />;
+  },
   HiddenExpand,
   Callout,
   BasicCard,
   CardWithTitle,
 };
 
-export default function BlogPost({
-  frontMatter,
-  source,
-  slug,
-  tableOfContents,
-  recommendedPostList,
-}) {
+export default function BlogPost({ post }: { post: Post }) {
+  const MDXContent = useMDXComponent(post.body.code);
+
   return (
     <>
-      <BlogSEO
-        title={frontMatter.title}
-        summary={frontMatter.description}
-        date={frontMatter.date}
-        slug={slug}
-      />
+      <BlogSEO title={post.title} summary={post.description} date={post.date} />
+
       <BlogContainer
+        post={post}
+        slug={post._raw.flattenedPath}
+        tableOfContents={null}
+      >
+        <MDXContent components={components} />
+      </BlogContainer>
+
+      {/* <BlogContainer
         frontMatter={frontMatter}
         tableOfContents={tableOfContents}
         slug={slug}
       >
         <MDXRemote {...source} components={components} />
       </BlogContainer>
-      <NextPrevArticles recommendedPostList={recommendedPostList} />
+      <NextPrevArticles recommendedPostList={recommendedPostList} /> */}
     </>
   );
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const paths = getAllPostIds();
-  return {
-    paths,
-    fallback: false,
-  };
+  const paths = allPosts.map((post) => ({
+    params: { slug: post._raw.flattenedPath },
+  }));
+
+  return { paths, fallback: false };
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const { content, frontMatter, slug, recommendedPostList } = await getPostData(
-    params.slug as string
-  );
+  // const { content, frontMatter, slug, recommendedPostList } = await getPostData(
+  //   params.slug as string
+  // );
 
-  return {
-    props: {
-      source: await generateMdx(frontMatter, content),
-      frontMatter,
-      slug,
-      tableOfContents: await getToC(frontMatter, content),
-      recommendedPostList,
-    },
-  };
+  // return {
+  //   props: {
+  //     source: await generateMdx(frontMatter, content),
+  //     frontMatter,
+  //     slug,
+  //     tableOfContents: await getToC(frontMatter, content),
+  //     recommendedPostList,
+  //   },
+  // };
+
+  const post = allPosts.find((post) => post._raw.flattenedPath === params.slug);
+
+  return { props: { post } };
 };
