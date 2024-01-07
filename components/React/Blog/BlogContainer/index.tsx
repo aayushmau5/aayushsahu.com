@@ -2,6 +2,7 @@
 import { Channel, Presence } from "phoenix";
 import { useState, useContext, useEffect } from "react";
 
+import { Post } from "contentlayer/generated";
 import Date from "../../../Date";
 import styles from "./style.module.css";
 import ToC from "../ToC";
@@ -13,8 +14,11 @@ import { SocketContext } from "@/components/Phoenix/Socket";
 export default function BlogContainer({
   children,
   post,
-  tableOfContents,
   slug,
+}: {
+  children: any;
+  post: Post;
+  slug: string;
 }) {
   const [phoenixChannel, setPhoenixChannel] = useState<Channel>(null);
   const socket = useContext(SocketContext);
@@ -49,22 +53,11 @@ export default function BlogContainer({
         phoenixChannel={phoenixChannel}
       />
       <SeparatorSvg stroke="gray" header />
-      {/* <ShowToc tableOfContents={tableOfContents} /> */}
+      {post.showToc ? <ToC headings={post.headings} /> : null}
       <article>{children}</article>
       <LikeButton phoenixChannel={phoenixChannel} slug={slug} />
     </div>
   );
-}
-
-function ShowToc({ tableOfContents }: { tableOfContents: string }) {
-  // tableOfContents might be null
-  if (tableOfContents !== null) {
-    if (tableOfContents.length === 0) return null;
-    return <ToC toc={tableOfContents} />;
-  } else {
-    tableOfContents;
-    return null;
-  }
 }
 
 function ShowFrontMatter({ post, slug, phoenixChannel }) {

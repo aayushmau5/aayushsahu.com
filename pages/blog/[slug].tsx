@@ -50,11 +50,7 @@ export default function BlogPost({
     <>
       <BlogSEO title={post.title} summary={post.description} date={post.date} />
 
-      <BlogContainer
-        post={post}
-        slug={post._raw.flattenedPath}
-        tableOfContents={null}
-      >
+      <BlogContainer post={post} slug={post._raw.flattenedPath}>
         <MDXContent components={components} />
       </BlogContainer>
 

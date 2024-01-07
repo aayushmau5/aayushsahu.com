@@ -1,7 +1,7 @@
 .details {
   background-color: #22272a;
   border-radius: 0.55rem;
-  padding-bottom: 0.04rem;
+  padding-bottom: 0.07rem;
 }
 
 .details:focus-within {
@@ -18,12 +18,40 @@
   cursor: pointer;
 }
 
+.container {
+  padding-bottom: 1rem;
+}
+
 .list {
   margin-top: 0;
   line-height: 1.8rem;
 }
 
-.list li a:hover {
+.list a:hover {
   color: white;
   text-decoration: underline;
+}
+
+.list a[data-level="1"] {
+  padding-left: 20px;
+}
+
+.list a[data-level="2"] {
+  padding-left: 35px;
+}
+
+.list a[data-level="3"] {
+  padding-left: 45px;
+}
+
+.list a[data-level="4"] {
+  padding-left: 55px;
+}
+
+.list a[data-level="5"] {
+  padding-left: 65px;
+}
+
+.list a[data-level="6"] {
+  padding-left: 75px;
 }

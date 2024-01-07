@@ -1,7 +1,6 @@
 import path from "path";
 import {
   filterDraftPosts,
-  generateAndInsertCover,
   getFileContentWithoutFrontMatter,
   getFilesId,
   getFrontMatter,

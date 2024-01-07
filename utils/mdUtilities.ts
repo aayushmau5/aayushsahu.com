@@ -17,15 +17,15 @@ export function getFileContentWithoutFrontMatter(fileContent: string) {
   return content;
 }
 
-export async function generateAndInsertCover(frontMatter: any) {
-  if (frontMatter.cover?.caption) {
-    const caption = await remark()
-      .use(html, { sanitize: false })
-      .process(frontMatter.cover.caption);
+// export async function generateAndInsertCover(frontMatter: any) {
+//   if (frontMatter.cover?.caption) {
+//     const caption = await remark()
+//       .use(html, { sanitize: false })
+//       .process(frontMatter.cover.caption);
 
-    frontMatter.cover.caption = caption.toString();
-  }
-}
+//     frontMatter.cover.caption = caption.toString();
+//   }
+// }
 
 export function setISODate(frontMatter: any) {
   frontMatter.date = new Date(frontMatter.date).toISOString();
