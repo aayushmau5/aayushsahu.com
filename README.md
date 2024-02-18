@@ -1,23 +1,12 @@
-![Banner](https://user-images.githubusercontent.com/54525741/149302774-07732e60-26d4-46bf-9529-825563af5d45.png)
-
 # AAYUSHSAHU.COM
 
 My portfolio website powered by:
 
 - NextJS with TypeScript
 - CSS(no libraries, preprocessor, etc.)
-- MDX(for blogs)
-
-## Features
-
-- Dynamic OpenGraph image generation for blogs using Cloudinary
-- Commenting system powered by [Giscus](https://giscus.app/)
-- Blogs
-- Command bar powered by [Kbar](https://kbar.vercel.app/)
+- MDX(for blogs) powered by ContentLayer
 
 Hosted on **Vercel** 💪
-
-Feature requests are welcome :)
 
 ## Project Overview
 
