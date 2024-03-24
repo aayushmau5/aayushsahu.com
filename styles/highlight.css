@@ -38,6 +38,7 @@ code[class*="language-"] *::selection {
 
 pre[class*="language-"] {
   margin: 0.5em 0;
+  padding: 10px 0;
 }
 
 :not(pre) > code[class*="language-"] {

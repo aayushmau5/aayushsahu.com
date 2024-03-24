@@ -19,15 +19,6 @@ export default function Index() {
       />
       <div className={styles.container}>
         <h1>About</h1>
-        <div className={styles.logoContainer}>
-          <Image
-            src={ProfileImage}
-            placeholder="blur"
-            alt="Me"
-            className={styles.logo}
-          />
-        </div>
-        <p className={styles.imageDescription}>Hi 👋</p>
         <p>
           Welcome to my smol corner on the internet where I write blogs, and
           showoff my projects :)
