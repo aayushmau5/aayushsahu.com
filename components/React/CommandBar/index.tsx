@@ -17,10 +17,12 @@ import {
   AiOutlineGithub,
   AiOutlineTwitter,
   AiOutlineLinkedin,
+  AiOutlineLaptop,
 } from "react-icons/ai";
 import { BsPen } from "react-icons/bs";
 import { RiOpenSourceLine, RiFileList2Line } from "react-icons/ri";
 import { SiAboutdotme } from "react-icons/si";
+import { GiBookshelf } from "react-icons/gi";
 
 import styles from "./style.module.css";
 
@@ -51,6 +53,22 @@ export default function CommandBar(props) {
       perform: () => router.push("/blog"),
       icon: <BsPen />,
       keywords: "go-blog",
+      section: "Go To",
+    },
+    {
+      id: "uses",
+      name: "Uses",
+      perform: () => router.push("/uses"),
+      icon: <AiOutlineLaptop />,
+      keywords: "go-uses",
+      section: "Go To",
+    },
+    {
+      id: "books",
+      name: "Books",
+      perform: () => router.push("/books"),
+      icon: <GiBookshelf />,
+      keywords: "go-books",
       section: "Go To",
     },
     {

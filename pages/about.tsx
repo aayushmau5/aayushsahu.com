@@ -10,7 +10,7 @@ import Editor from "@/public/editor.png";
 
 import styles from "@/styles/Home.module.css";
 
-export default function Index() {
+export default function About() {
   return (
     <>
       <PageSEO

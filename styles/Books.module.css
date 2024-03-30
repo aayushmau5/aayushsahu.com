@@ -1,0 +1,33 @@
+.container {
+    animation: load 0.5s;
+}
+
+@keyframes load {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.para {
+    color: #919191;
+}
+
+.genre {
+    margin: 0;
+}
+
+.remarks {
+    color: #919191;
+    margin: 0;
+}
+
+.book_remarks {
+    color: #919191;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+}
