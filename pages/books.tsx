@@ -1,7 +1,6 @@
 import { PageSEO } from "@/components/SEO";
 import styles from "@/styles/Books.module.css";
 
-// TODO: update cmd+k thing with new links(/uses, etc.)
 export default function Books() {
   return (
     <>
@@ -48,6 +47,12 @@ export default function Books() {
             <p className={styles.book_remarks}>
               Most of the relevant stuff about networking. Highly recommend this
               book for web devs!
+            </p>
+          </li>
+          <li>
+            Concurrent Data Processing in Elixir by Svilen Gospodinov
+            <p className={styles.book_remarks}>
+              Task, GenServer, GenStage, Flow & Broadway go brrrrrrr!
             </p>
           </li>
         </ul>
