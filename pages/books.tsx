@@ -106,13 +106,24 @@ export default function Books() {
               it now.
             </p>
           </li>
+          <li>
+            The Stranger by Albert Camus
+            <p className={styles.book_remarks}>
+              Absurdism: &quot;a philosophy based on the belief that the
+              universe is irrational and meaningless and that the search for
+              order brings the individual into conflict with the universe&quot;
+            </p>
+          </li>
+          <li>
+            The Book Thief by Markus Zusak
+            <p className={styles.book_remarks}>Heartbreaking.</p>
+          </li>
         </ul>
 
         <h3 className={styles.genre}>To read</h3>
         <p className={styles.remarks}>Books I want to read.</p>
         <ul>
           <li>Designing Data-Intensive Applications</li>
-          <li>Patterns.dev</li>
           <li>Structure and Interpretation of Computer Programs</li>
           <li>Soul of new machine</li>
           <li>Black book of gaming engine</li>
