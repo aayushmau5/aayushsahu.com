@@ -118,6 +118,19 @@ export default function Books() {
             The Book Thief by Markus Zusak
             <p className={styles.book_remarks}>Heartbreaking.</p>
           </li>
+          <li>
+            Almond by Won-pyung Sohn
+            <p className={styles.book_remarks}>
+              Alexithymia: the inability to identify and express one&apos;s
+              feelings.
+            </p>
+          </li>
+          <li>
+            Sphere by Michael Crichton
+            <p className={styles.book_remarks}>
+              Insane sci-fi and thriller. much recommend.
+            </p>
+          </li>
         </ul>
 
         <h3 className={styles.genre}>To read</h3>
