@@ -25,6 +25,7 @@ import CodeBlock from "@/components/MDX/Codeblock";
 import CustomCode from "@/components/MDX/Code";
 import SeparatorSvg from "@/components/React/SeparatorSvg";
 import NextPrevArticles from "@/components/React/Blog/NextPrevArticles";
+import Chat from "@/components/MDX/Chat";
 
 const components: MDXComponents = {
   pre: (props) => <Pre {...props} />,
@@ -39,6 +40,7 @@ const components: MDXComponents = {
   BasicCard,
   CardWithTitle,
   CustomCode,
+  Chat,
 };
 
 export default function BlogPost({
