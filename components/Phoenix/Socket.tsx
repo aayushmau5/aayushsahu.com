@@ -5,8 +5,8 @@ export const SocketContext = createContext<PhxSocket>(null);
 
 function setupSocket(socket: PhxSocket, setSocket: Dispatch<PhxSocket>) {
   if (!socket) {
-    const URL = "wss://phoenix.aayushsahu.com/socket";
-    // const URL = "ws://localhost:4000/socket";
+    // const URL = "wss://phoenix.aayushsahu.com/socket";
+    const URL = "ws://localhost:4000/socket";
     const phxSocket = new PhxSocket(URL);
     phxSocket.connect();
     setSocket(phxSocket);
