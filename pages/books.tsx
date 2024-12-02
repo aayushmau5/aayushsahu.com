@@ -136,7 +136,7 @@ export default function Books() {
             <ul>
               <li>The Three-Body Problem</li>
               <li>The Dark Forest</li>
-              <li>Death's end</li>
+              <li>Death&apos;s end</li>
             </ul>
             <p className={styles.book_remarks}>
               Holy shit! The fastest I finished 3 books back to back.
