@@ -131,6 +131,17 @@ export default function Books() {
               Insane sci-fi and thriller. much recommend.
             </p>
           </li>
+          <li>
+            The Three Body Problem trilogy by Liu Cixin
+            <ul>
+              <li>The Three-Body Problem</li>
+              <li>The Dark Forest</li>
+              <li>Death's end</li>
+            </ul>
+            <p className={styles.book_remarks}>
+              Holy shit! The fastest I finished 3 books back to back.
+            </p>
+          </li>
         </ul>
 
         <h3 className={styles.genre}>To read</h3>
@@ -145,7 +156,6 @@ export default function Books() {
           <li>The Hitchhiker&apos;s Guide to the Galaxy</li>
           <li>Pale blue dot by Carl Sagan</li>
           <li>Astronomy for people in a hurry</li>
-          <li>Three body problem</li>
         </ul>
       </div>
     </>
