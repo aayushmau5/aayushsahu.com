@@ -4,7 +4,7 @@
         <title>Aayush Kumar Sahu - Developer and Explorer</title>
         <link>https://aayushsahu.com</link>
         <description>aayushmau5' personal website</description>
-        <lastBuildDate>Sun, 07 Jan 2024 18:03:41 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 01 Jan 2025 17:07:25 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
@@ -193,6 +193,13 @@
             <guid>https://aayushsahu.com/blog/prisma-graphql-jest-test</guid>
             <pubDate>Sun, 09 May 2021 05:15:15 GMT</pubDate>
             <description><![CDATA[Integration or Unit tests in TypeScript and GraphQL using Jest in NodeJS]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Retrospective 2024]]></title>
+            <link>https://aayushsahu.com/blog/retrospective-2024</link>
+            <guid>https://aayushsahu.com/blog/retrospective-2024</guid>
+            <pubDate>Tue, 31 Dec 2024 12:09:48 GMT</pubDate>
+            <description><![CDATA[Year in a review]]></description>
         </item>
         <item>
             <title><![CDATA[Installing Sonic Pi on Pop-OS]]></title>
