@@ -142,17 +142,20 @@ export default function Books() {
               Holy shit! The fastest I finished 3 books back to back.
             </p>
           </li>
+          <li>
+            The Bell Jar by Slyvia Plath
+            <p className={styles.book_remarks}>
+              Can write a whole essay on this.
+            </p>
+          </li>
         </ul>
 
-        <h3 className={styles.genre}>To read</h3>
-        <p className={styles.remarks}>Books I want to read.</p>
+        <h3 className={styles.genre}>Next reading list:</h3>
         <ul>
           <li>Designing Data-Intensive Applications</li>
           <li>Structure and Interpretation of Computer Programs</li>
           <li>Soul of new machine</li>
           <li>Black book of gaming engine</li>
-          <li>Brave New World by Aldous Huxley</li>
-          <li>The Trail by franz kafka</li>
           <li>The Hitchhiker&apos;s Guide to the Galaxy</li>
           <li>Pale blue dot by Carl Sagan</li>
           <li>Astronomy for people in a hurry</li>
