@@ -1,5 +1,7 @@
 import { PageSEO } from "@/components/SEO";
 import styles from "@/styles/Books.module.css";
+import Image from "next/image";
+import bookCover from "@/public/book.png";
 
 export default function Books() {
   return (
@@ -7,6 +9,11 @@ export default function Books() {
       <PageSEO title="Books | Aayush Sahu" description="Books I have read" />
       <div className={styles.container}>
         <h1>Books</h1>
+
+        <div style={{ width: "60%", height: "auto", margin: "1rem auto" }}>
+          <Image src={bookCover} alt="Cat image" />
+        </div>
+
         <p className={styles.para}>
           List of books I have read. This doesn&apos;t contain every book i have
           read because i don&apos;t remember them.

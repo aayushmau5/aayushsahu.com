@@ -1,11 +1,17 @@
 import { PageSEO } from "@/components/SEO";
 import Link from "next/link";
+import glitch from "@/public/glitch.png";
+import Image from "next/image";
 
 export default function Links() {
   return (
     <div>
       <PageSEO title="Links | Aayush Sahu" description="My online presence" />
       <h1>Links</h1>
+
+      <div style={{ width: "60%", height: "auto", margin: "1rem auto" }}>
+        <Image src={glitch} alt="Cat image" />
+      </div>
       <p>My online presence and stuff</p>
       <ul
         style={{
