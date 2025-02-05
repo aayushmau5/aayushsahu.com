@@ -11,7 +11,7 @@ export default function Books() {
         <h1>Books</h1>
 
         <div style={{ width: "60%", height: "auto", margin: "1rem auto" }}>
-          <Image src={bookCover} alt="Cat image" />
+          <Image src={bookCover} alt="The Three Body Problem book cover" />
         </div>
 
         <p className={styles.para}>

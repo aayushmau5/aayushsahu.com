@@ -1,3 +1,115 @@
+:root {
+  /* Global */
+  --background: #101114;
+  --text-color: #fff;
+  --link-hover: #fff;
+  --link-color: #53bcf0;
+  --li-marker: #5686f5;
+
+  /* Home  */
+  --home-highlight-color: #5858585b;
+  --home-next-steps-background: #0a0a0a;
+  --code-background: #4d4d4d4d;
+  --view-all-background: #191919;
+  --view-all-background-hover: #252525;
+
+  /* Projects */
+  --projects-paragraph: #919191;
+  --project-box-background: #0a0a0a;
+
+  /* Books */
+  --books-paragraph: #919191;
+
+  /* Blog */
+  --blog-reading-time: gray;
+  --blog-no-of-blogs: #919191;
+  --blog-container-hover: #191919;
+  --blog-container-focus: rgb(236, 236, 236);
+
+  /* ToC */
+  --details-background: #22272a;
+  --details-focus: #22272a;
+  --summary-color: white;
+  --summary-list-color: white;
+
+  /* Tags */
+  --tags-background: #191919;
+  --tags-color: #eee;
+  --tag-selected: #191919;
+  --tag-selected-background: #eee;
+
+  /* Search bar */
+  --input-container-background: rgb(34, 34, 34);
+  --container-svg-color: gray;
+  --input-color: white;
+
+  /* Next Previous Articles */
+  --other-color: gray;
+  --next-prev-info-color: gray;
+  --next-prev-container-hover: #191919;
+
+  /* Blog container */
+  --blog-container-title: white;
+  --blog-other-info-color: gray;
+  --blog-caption: gray;
+  --blog-caption-link: white;
+  --blog-content-color: rgba(255, 255, 255, 0.74);
+  --like-button: #fff;
+  --like-button-hover: rgb(199, 73, 73);
+  --blog-information: white;
+  --blog-headers: white;
+  --blog-headers-link: rgb(83, 188, 240);
+
+  /* MDX Components */
+  --blockquote-background: #0a0a0a;
+  --blockquote-color: white;
+  --callout-icon-green: #56f58b;
+  --callout-background-green: #1d3329;
+  --callout-icon-red: #fa4e4e;
+  --callout-background-red: #472027;
+  --callout-color: black;
+  --card-background: #131417;
+  --card-border: #252932;
+  --code-filename-color: white;
+  --code-filename-container: #181818;
+  --codeblock-background: #2e2e2e;
+  --hidden-expand-background: #2e2e2e63;
+  --hidden-expand-color: white;
+  --ol-ul-marker: rgb(86, 134, 245);
+  --anchor-color: rgb(83, 188, 240);
+
+  /* Main theme */
+  --theme-one: #21daa2;
+  --theme-two: #43dce5;
+  --theme-three: #36c3ef;
+  --theme-four: #4a5ae9;
+
+  /* Nav */
+  --nav-links-color: #999999;
+  --nav-link-active: white;
+  --nav-link-container-color: white;
+  --kbar-click: #fff;
+  --kbar-command: #fff;
+
+  /* Footer */
+  --footer-border-top: rgb(27, 27, 27);
+  --footer-color: gray;
+  --footer-color-hover: white;
+  --users-online-circle: #43dce5;
+  --spotify-container-background: rgba(0, 0, 0, 0.2);
+  --spotify-container-hover: rgba(0, 0, 0, 0.324);
+  --spotify-title: white;
+
+  /* Command bar */
+  --command-bar-shadow: rgba(0, 0, 0, 0.8);
+  --command-bar-animator-background: #1a1c1e;
+  --command-bar-color: #fff;
+  --command-bar-search-background: #101114;
+  --command-bar-result-background: #191a1c;
+
+  /* Background Ray */
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -8,8 +120,8 @@ body {
   font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, Segoe UI,
     Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
     sans-serif;
-  background-color: #101114;
-  color: white;
+  background-color: var(--background);
+  color: var(--text-color);
   font-size: 1.15rem;
   line-height: 1.5;
   overflow-x: hidden;
@@ -27,7 +139,7 @@ a {
 
 code {
   font-family: "Jetbrains Mono", monospace;
-  background-color: rgba(77, 77, 77, 0.3);
+  background-color: var(--code-background);
 }
 
 .styledLink {
@@ -43,7 +155,7 @@ code {
   bottom: -4px;
   left: 0;
   height: 2px;
-  background-color: white;
+  background-color: var(--link-hover);
   width: 0;
   transition: width linear 0.2s;
 }

@@ -70,7 +70,7 @@ function ShowFrontMatter({ post, slug, phoenixChannel }) {
       <p className={styles.otherInfo}>
         <span>
           Published on{" "}
-          <span style={{ color: "white" }}>
+          <span className={styles.spanInfo}>
             <Date dateString={post.date} />
           </span>
         </span>
@@ -179,11 +179,11 @@ function UsersOnline({ slug, phoenixChannel }) {
 
   return (
     <>
-      <span style={{ color: "white" }}>
+      <span className={styles.spanInfo}>
         {totalReads} {totalReads === 1 ? "view" : "views"}
       </span>
       {" · "}
-      <span style={{ color: "white" }}> {usersOnline} reading right now</span>
+      <span className={styles.spanInfo}> {usersOnline} reading right now</span>
     </>
   );
 }

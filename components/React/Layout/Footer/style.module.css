@@ -1,6 +1,6 @@
 .container {
-  border-top: 1px solid rgb(27, 27, 27);
-  color: gray;
+  border-top: 1px solid var(--footer-border-top);
+  color: var(--footer-color);
   padding: 1rem;
   margin: 2rem auto;
   font-size: 1rem;
@@ -38,7 +38,7 @@
 
 .socialsContainer a:focus,
 .socialsContainer a:hover {
-  color: white;
+  color: var(--footer-color-hover);
 }
 
 @media (min-width: 800px) {

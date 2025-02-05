@@ -1,13 +1,13 @@
 .container {
   position: relative;
-  background-color: #0a0a0a;
+  background-color: var(--blockquote-background);
   border-radius: 10px;
 }
 
 .filenameContainer {
   position: relative;
   height: 44px;
-  background-color: #181818;
+  background-color: var(--code-filename-container);
   border-radius: 10px 10px 0 0;
 }
 
@@ -20,8 +20,8 @@
   height: 45px;
   border-radius: 5px 5px 0 0;
   font-size: 0.96rem;
-  color: white;
-  background-color: #0a0a0a;
+  color: var(--code-filename-color);
+  background-color: var(--blockquote-background);
   font-family: "IBM Plex Sans", sans-serif;
   display: flex;
   gap: 7px;

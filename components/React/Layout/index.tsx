@@ -15,7 +15,7 @@ export default function Layout({ children }) {
 
   return (
     <>
-      <Rays />
+      {/* <Rays /> */}
       <Nav />
       <main className={styles.container}>{children}</main>
       <Footer />

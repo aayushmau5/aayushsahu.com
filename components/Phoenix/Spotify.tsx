@@ -13,7 +13,9 @@ export default function SpotifyNowPlaying({ nowPlayingResponse }) {
       return (
         <>
           <div className={styles.nowPlayingMessage}>Currently playing</div>
-          <div style={{ color: "white" }}>{nowPlayingResponse.item.name}</div>
+          <div className={styles.spotifyTitle}>
+            {nowPlayingResponse.item.name}
+          </div>
           <div style={{ fontSize: "0.9rem" }}>
             {nowPlayingResponse.item.artists}
           </div>

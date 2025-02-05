@@ -8,7 +8,7 @@
 }
 
 .paragraph {
-  color: #919191;
+  color: var(--projects-paragraph);
 }
 
 @keyframes load {

@@ -13,7 +13,7 @@
 }
 
 .noOfBlogs {
-  color: #919191;
+  color: var(--blog-no-of-blogs);
   margin-top: 0;
 }
 
@@ -34,7 +34,7 @@
 }
 
 .blogContainer:hover {
-  background-color: #191919;
+  background-color: var(--blog-container-hover);
 }
 
 .blogContainer:active {
@@ -42,7 +42,7 @@
 }
 
 .blogContainer:focus {
-  outline: 2px solid rgb(236, 236, 236);
+  outline: 2px solid var(--blog-container-focus);
 }
 
 .blogContainer h3 {
@@ -54,7 +54,7 @@
 }
 
 .readingTime {
-  color: gray;
+  color: var(--blog-reading-time);
   font-size: 0.9rem;
   font-weight: bold;
 }

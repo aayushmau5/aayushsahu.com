@@ -4,7 +4,14 @@ export default function UsersOnline({ usersOnline, websiteViews }) {
   return (
     <div className={styles.container}>
       <svg width="32" height="32" viewBox="0 0 40 40">
-        <circle cx="20" cy="20" fill="" r="10" stroke="#43dce5" strokeWidth="2">
+        <circle
+          cx="20"
+          cy="20"
+          fill=""
+          r="10"
+          strokeWidth="2"
+          className={styles.point}
+        >
           <animate
             attributeName="r"
             from="8"
@@ -22,7 +29,7 @@ export default function UsersOnline({ usersOnline, websiteViews }) {
             repeatCount="indefinite"
           />
         </circle>
-        <circle cx="20" cy="20" fill="#43dce5" r="10" />
+        <circle cx="20" cy="20" r="10" className={styles.circle} />
       </svg>
       <div className={styles.highlight}>
         <a

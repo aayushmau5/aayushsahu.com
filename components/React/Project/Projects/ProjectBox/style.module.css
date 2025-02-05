@@ -1,13 +1,19 @@
 .projectBoxContainer {
   margin-top: 2rem;
-  background-image: linear-gradient(45deg, #21daa2, #43dce5, #36c3ef, #4a5ae9);
+  background-image: linear-gradient(
+    45deg,
+    var(--theme-one),
+    var(--theme-two),
+    var(--theme-four),
+    var(--theme-four)
+  );
   padding: 3px;
   border-radius: 0.75rem;
   word-wrap: break-word;
 }
 
 .projectBox {
-  background-color: rgb(10, 10, 10);
+  background-color: var(--project-box-background);
   border-radius: 0.75rem;
   padding: 1rem;
   display: flex;

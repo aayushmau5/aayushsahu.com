@@ -53,7 +53,7 @@
 }
 
 .container span[class="icon icon-link"]:hover {
-  color: rgb(83, 188, 240);
+  color: var(--blog-headers-link);
 }
 
 .container span[class="icon icon-link"]::before {
@@ -109,6 +109,10 @@
 
 .likeButton svg {
   fill: inherit;
+}
+
+.spanInfo {
+  color: white;
 }
 
 @media (min-width: 1024px) {

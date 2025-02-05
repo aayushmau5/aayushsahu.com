@@ -1,16 +1,16 @@
 .details {
   margin-bottom: 1rem;
   border-radius: 0.55rem;
-  background-color: #2e2e2e63;
+  background-color: var(--hidden-expand-background);
 }
 
 .details:focus-within {
-  outline: 3px solid #2e2e2e63;
+  outline: 3px solid var(--hidden-expand-background);
   outline-offset: 5px;
 }
 
 .summary {
-  color: white;
+  color: var(--hidden-expand-color);
   font-size: 1.1rem;
   cursor: pointer;
   padding: 1rem;

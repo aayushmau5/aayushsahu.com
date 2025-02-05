@@ -3,15 +3,15 @@ export default function Blockquote(props) {
     <div
       style={{
         backgroundImage:
-          "linear-gradient(45deg, #21daa2, #43dce5, #36c3ef, #4a5ae9)",
+          "linear-gradient(45deg, var(--theme-one), var(--theme-two), var(--theme-three), var(--theme-four))",
         padding: "3px",
         borderRadius: "5px",
       }}
     >
       <div
         style={{
-          background: "#0a0a0a",
-          color: "white",
+          background: "var(--blockquote-background)",
+          color: "var(--blockquote-color)",
           padding: "1rem 0",
           borderRadius: "inherit",
         }}

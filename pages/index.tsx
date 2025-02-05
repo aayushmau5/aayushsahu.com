@@ -19,10 +19,22 @@ export default function Index({ firstPost, secondPost }) {
       <div className={styles.container}>
         <div className={styles.heading}>
           <div className={styles.circleContainer}>
-            <div className={styles.circle} style={{ background: "#21daa2" }} />
-            <div className={styles.circle} style={{ background: "#43dce5" }} />
-            <div className={styles.circle} style={{ background: "#36c3ef" }} />
-            <div className={styles.circle} style={{ background: "#4a5ae9" }} />
+            <div
+              className={styles.circle}
+              style={{ background: "var(--theme-one)" }}
+            />
+            <div
+              className={styles.circle}
+              style={{ background: "var(--theme-two)" }}
+            />
+            <div
+              className={styles.circle}
+              style={{ background: "var(--theme-three)" }}
+            />
+            <div
+              className={styles.circle}
+              style={{ background: "var(--theme-four)" }}
+            />
           </div>
           <div>
             <h2>

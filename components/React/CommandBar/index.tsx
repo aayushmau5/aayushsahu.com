@@ -163,7 +163,9 @@ function RenderResults() {
           <div
             className={styles.results}
             style={{
-              background: active ? "#191a1c" : "#101114",
+              background: active
+                ? "var(--command-bar-result-background)"
+                : "var(--command-bar-search-background)",
             }}
           >
             <div className={styles.items}>

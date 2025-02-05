@@ -1,6 +1,6 @@
 .pre {
   position: relative;
-  background-color: #0a0a0a;
+  background-color: var(--blockquote-background);
   border-radius: 0.55rem;
   padding: 10px 0;
 }

@@ -1,11 +1,11 @@
 .details {
-  background-color: #22272a;
+  background-color: var(--details-background);
   border-radius: 0.55rem;
   padding-bottom: 0.04rem;
 }
 
 .details:focus-within {
-  outline: 3px solid #22272a;
+  outline: 3px solid var(--details-focus);
   outline-offset: 5px;
 }
 
@@ -14,7 +14,7 @@
   border-radius: 0.55rem;
   font-size: 1.1rem;
   font-weight: bold;
-  color: white;
+  color: var(--summary-color);
   cursor: pointer;
 }
 
@@ -23,7 +23,11 @@
   line-height: 1.8rem;
 }
 
+.list li::marker {
+  color: var(--summary-list-color);
+}
+
 .list li a:hover {
-  color: white;
+  color: var(--summary-list-color);
   text-decoration: underline;
 }

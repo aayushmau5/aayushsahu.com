@@ -9,7 +9,7 @@
   /* z-index: 10; */
   /* background-color: #1d1e23; */
   /* background-color: #101114; */
-  color: rgb(153, 153, 153);
+  color: var(--nav-links-color);
   /* box-shadow: 0 0 5px #030303; */
   padding: 1rem;
   display: flex;
@@ -24,13 +24,16 @@
   transition: color linear 0.2s;
 }
 
-.container a:hover,
-.container a:focus {
-  color: white;
+.container a:hover {
+  color: var(--nav-link-container-color);
 }
 
 .active {
-  color: white;
+  color: var(--nav-link-active);
+}
+
+.container a:focus {
+  color: var(--nav-link-active);
 }
 
 .kbar {
@@ -42,12 +45,12 @@
   cursor: pointer;
   background: transparent;
   border: none;
-  color: #fff;
+  color: var(--kbar-click);
 }
 
 .commandIcon {
   margin-left: auto;
-  color: white;
+  color: var(--kbar-command);
   background: none;
   border: none;
   cursor: pointer;

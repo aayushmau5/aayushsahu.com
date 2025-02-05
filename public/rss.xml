@@ -4,7 +4,7 @@
         <title>Aayush Kumar Sahu - Developer and Explorer</title>
         <link>https://aayushsahu.com</link>
         <description>aayushmau5' personal website</description>
-        <lastBuildDate>Wed, 01 Jan 2025 17:07:25 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 05 Feb 2025 13:54:59 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
@@ -119,6 +119,13 @@
             <description><![CDATA[The beginning of something new and exciting]]></description>
         </item>
         <item>
+            <title><![CDATA[January Log]]></title>
+            <link>https://aayushsahu.com/blog/jan-2025-log</link>
+            <guid>https://aayushsahu.com/blog/jan-2025-log</guid>
+            <pubDate>Sat, 01 Feb 2025 16:17:42 GMT</pubDate>
+            <description><![CDATA[Things I did in January 2025]]></description>
+        </item>
+        <item>
             <title><![CDATA[Setting config for libraries inside Livebook]]></title>
             <link>https://aayushsahu.com/blog/livebook-secret-config</link>
             <guid>https://aayushsahu.com/blog/livebook-secret-config</guid>
@@ -198,8 +205,8 @@
             <title><![CDATA[Retrospective 2024]]></title>
             <link>https://aayushsahu.com/blog/retrospective-2024</link>
             <guid>https://aayushsahu.com/blog/retrospective-2024</guid>
-            <pubDate>Tue, 31 Dec 2024 12:09:48 GMT</pubDate>
-            <description><![CDATA[Year in a review]]></description>
+            <pubDate>Wed, 01 Jan 2025 12:09:48 GMT</pubDate>
+            <description><![CDATA[2024 review?]]></description>
         </item>
         <item>
             <title><![CDATA[Installing Sonic Pi on Pop-OS]]></title>

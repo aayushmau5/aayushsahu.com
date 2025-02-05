@@ -3,7 +3,6 @@ import Link from "next/link";
 
 import { PageSEO } from "@/components/SEO";
 
-import ProfileImage from "@/public/aayush.jpeg";
 import Desktop from "@/public/desktop.png";
 import Keyboard from "@/public/keyboard.png";
 import Editor from "@/public/editor.png";

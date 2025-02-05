@@ -18,27 +18,15 @@
   border-radius: 2px;
 }
 
-.logoContainer {
-  border: 5px solid rgb(34, 34, 34);
-  overflow: hidden;
-  max-width: 300px;
-  max-height: 300px;
-  width: auto;
-  height: auto;
-  margin: 0 auto;
-}
-
-.imageDescription {
-  margin: 0;
-  margin-top: 5px;
-  text-align: center;
-  font-size: 1rem;
-  color: #919191;
-}
-
 .highlight {
   font-weight: bold;
-  background-image: linear-gradient(45deg, #21daa2, #43dce5, #36c3ef, #4a5ae9);
+  background-image: linear-gradient(
+    45deg,
+    var(--theme-one),
+    var(--theme-two),
+    var(--theme-three),
+    var(--theme-four)
+  );
   background-clip: text;
   -webkit-background-clip: text;
   -moz-background-clip: text;
@@ -61,7 +49,7 @@
 }
 
 .highlight::selection {
-  background-color: rgba(88, 88, 88, 0.356);
+  background-color: var(--home-highlight-color);
 }
 
 .heading {
@@ -120,11 +108,17 @@
   margin-top: 20px;
   padding: 3px;
   border-radius: 0.75rem;
-  background-image: linear-gradient(45deg, #21daa2, #43dce5, #36c3ef, #4a5ae9);
+  background-image: linear-gradient(
+    45deg,
+    var(--theme-one),
+    var(--theme-two),
+    var(--theme-three),
+    var(--theme-four)
+  );
 }
 
 .nextSteps {
-  background-color: rgb(10, 10, 10);
+  background-color: var(--home-next-steps-background);
   border-radius: 0.75rem;
   padding: 1rem;
 }
@@ -138,7 +132,7 @@
 }
 
 .link {
-  color: #53bcf0;
+  color: var(--link-color);
 }
 
 .link:hover {
@@ -146,7 +140,7 @@
 }
 
 .ul li::marker {
-  color: rgb(86, 134, 245);
+  color: var(--li-marker);
 }
 
 .smallParagraph {
@@ -157,14 +151,14 @@
 .viewAll {
   font-size: 1rem;
   color: "white";
-  background: #191919;
+  background: var(--view-all-background);
   padding: 10px 12px;
   border-radius: 5px;
-  border: 1px solid #191919;
+  border: 1px solid var(--view-all-background);
 }
 
 .viewAll:hover {
-  border-color: #252525;
+  border-color: var(--view-all-background-hover);
 }
 
 @media (min-width: 1024px) {

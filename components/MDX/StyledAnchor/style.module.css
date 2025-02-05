@@ -1,6 +1,6 @@
 .anchor {
   position: relative;
-  color: rgb(83, 188, 240);
+  color: var(--anchor-color);
 }
 
 .anchor:hover {

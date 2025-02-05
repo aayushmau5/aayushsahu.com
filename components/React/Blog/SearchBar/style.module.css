@@ -4,7 +4,7 @@
 }
 
 .inputContainer {
-  background-color: rgb(34, 34, 34);
+  background-color: var(--input-container-background);
   border-radius: 0.7rem;
   padding: 0.3rem;
   display: flex;
@@ -14,11 +14,17 @@
 .container svg {
   height: 35px;
   width: 35px;
-  color: gray;
+  color: var(--container-svg-color);
 }
 
 .container:focus-within {
-  background-image: linear-gradient(45deg, #21daa2, #43dce5, #36c3ef, #4a5ae9);
+  background-image: linear-gradient(
+    45deg,
+    var(--theme-one),
+    var(--theme-two),
+    var(--theme-three),
+    var(--theme-four)
+  );
 }
 
 .input {
@@ -27,7 +33,7 @@
   font-size: 1.2rem;
   background-color: transparent;
   border: 0;
-  color: white;
+  color: var(--input-color);
   font-family: inherit;
 }
 

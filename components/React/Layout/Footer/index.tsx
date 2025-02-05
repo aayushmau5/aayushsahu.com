@@ -10,6 +10,7 @@ import HomeStyles from "@/styles/Home.module.css";
 import { SocketContext } from "@/components/Phoenix/Socket";
 import UsersOnline from "@/components/Phoenix/UsersOnline";
 import SpotifyNowPlaying from "@/components/Phoenix/Spotify";
+import Theme from "@/components/Theme";
 
 export default function Footer() {
   const [usersOnline, setUsersOnline] = useState(1);
@@ -46,6 +47,7 @@ export default function Footer() {
 
   return (
     <div className={styles.container}>
+      <Theme />
       <div className={styles.top}>
         <div>
           <SpotifyNowPlaying nowPlayingResponse={nowPlaying} />

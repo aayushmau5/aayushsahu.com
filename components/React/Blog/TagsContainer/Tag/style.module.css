@@ -1,11 +1,11 @@
 .container {
-  background-color: #191919;
+  background-color: var(--tags-background);
   font-size: 12px;
   cursor: pointer;
   border-radius: 0.25rem;
   padding: 0.3rem;
   font-weight: 600;
-  color: #eee;
+  color: var(--tags-color);
   line-height: normal;
 }
 
@@ -14,6 +14,6 @@
 }
 
 .selected {
-  color: #191919;
-  background-color: #eee;
+  color: var(--tag-selected);
+  background-color: var(--tag-selected-background);
 }
