@@ -155,6 +155,12 @@ export default function Books() {
               Can write a whole essay on this.
             </p>
           </li>
+          <li>
+            The Andromeda Strain by Michael Crichton
+            <p className={styles.book_remarks}>
+              Sci-fi. I want a microscope now!
+            </p>
+          </li>
         </ul>
 
         <h3 className={styles.genre}>Next reading list:</h3>
