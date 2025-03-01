@@ -54,7 +54,7 @@ export default function BlogContainer({
         slug={slug}
         phoenixChannel={phoenixChannel}
       />
-      <SeparatorSvg stroke="gray" header />
+      <SeparatorSvg header />
       {post.showToc ? <ToC toc={toc} /> : null}
       <article>{children}</article>
       <LikeButton phoenixChannel={phoenixChannel} slug={slug} />

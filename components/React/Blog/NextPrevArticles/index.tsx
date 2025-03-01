@@ -7,7 +7,7 @@ import styles from "./style.module.css";
 export default function NextPrevArticles({ recommendedPostList }) {
   return (
     <>
-      <SeparatorSvg stroke={"gray"} />
+      <SeparatorSvg />
       <p className={styles.other}>Other articles</p>
       <div className={styles.container}>
         {recommendedPostList.prev ? (
