@@ -1,6 +1,6 @@
 import styles from "./style.module.css";
 
-export default function SeparatorSvg({ stroke, header = false }) {
+export default function SeparatorSvg({ header = false }) {
   return (
     <div className={styles.container}>
       <svg
