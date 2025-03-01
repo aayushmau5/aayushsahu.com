@@ -4,7 +4,7 @@
         <title>Aayush Kumar Sahu - Developer and Explorer</title>
         <link>https://aayushsahu.com</link>
         <description>aayushmau5' personal website</description>
-        <lastBuildDate>Wed, 05 Feb 2025 13:54:59 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 01 Mar 2025 07:16:12 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
@@ -144,6 +144,13 @@
             <guid>https://aayushsahu.com/blog/memoization-use-memo</guid>
             <pubDate>Tue, 06 Jul 2021 04:05:47 GMT</pubDate>
             <description><![CDATA[Looking into memoization and `useMemo` to improve some performance of our application.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[MeowUI]]></title>
+            <link>https://aayushsahu.com/blog/meowui</link>
+            <guid>https://aayushsahu.com/blog/meowui</guid>
+            <pubDate>Tue, 25 Feb 2025 03:44:43 GMT</pubDate>
+            <description><![CDATA[MeowUI is a TUI written in Rust]]></description>
         </item>
         <item>
             <title><![CDATA[Mongosh docker]]></title>
