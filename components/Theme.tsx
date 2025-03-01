@@ -3,8 +3,6 @@
 export default function Theme() {
   const selectedTheme = (theme: string) => {
     switch (theme) {
-      case "default-light":
-        return changeTheme(defaultLightTheme);
       case "default-dark":
         return changeTheme(defaultTheme);
       case "vitesse-dark":
