@@ -30,7 +30,7 @@ const components: MDXComponents = {
   pre: (props) => <Pre {...props} />,
   blockquote: (props) => <Blockquote {...props} />,
   a: (props) => <StyledAnchor {...props} />,
-  hr: (props) => <SeparatorSvg {...props} stroke="#569cd6" />,
+  hr: (props) => <SeparatorSvg {...props} />,
   ol: (props) => <CustomOl {...props} />,
   ul: (props) => <CustomUl {...props} />,
   code: (props) => <CodeBlock {...props} />,

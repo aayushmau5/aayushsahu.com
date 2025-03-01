@@ -49,6 +49,7 @@
   --next-prev-container-hover: #191919;
 
   /* Blog container */
+  --blog-span-info: white;
   --blog-container-title: white;
   --blog-other-info-color: gray;
   --blog-caption: gray;
@@ -59,6 +60,9 @@
   --blog-information: white;
   --blog-headers: white;
   --blog-headers-link: rgb(83, 188, 240);
+  --header-separator-color: gray;
+  --other-separator-color: #569cd6;
+  --blog-text-color: rgba(255, 255, 255, 0.74);
 
   /* MDX Components */
   --blockquote-background: #0a0a0a;

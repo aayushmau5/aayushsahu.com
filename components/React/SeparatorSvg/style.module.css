@@ -3,10 +3,15 @@
   text-align: center;
 }
 
-.svg path {
+.headerSvg path {
+  stroke: var(--header-separator-color);
   stroke-dasharray: 1000;
   stroke-dashoffset: 1000;
   animation: animate 2s linear forwards;
+}
+
+.otherSvg {
+  stroke: var(--other-separator-color);
 }
 
 @keyframes animate {

@@ -26,5 +26,5 @@
   background-color: var(--icon-background-color);
   color: var(--callout-color);
   padding: 8px;
-  border: 8px solid #101114;
+  border: 8px solid var(--background);
 }

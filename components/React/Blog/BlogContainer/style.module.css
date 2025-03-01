@@ -1,7 +1,7 @@
 .title {
   margin-bottom: 0;
   font-size: 1.8rem;
-  color: white;
+  color: var(--blog-headers);
   line-height: 2rem;
 }
 
@@ -11,7 +11,7 @@
 }
 
 .description {
-  color: white;
+  color: var(--blog-description);
   margin-bottom: 0;
 }
 
@@ -33,7 +33,7 @@
 }
 
 .container {
-  color: rgba(255, 255, 255, 0.74);
+  color: var(--blog-text-color);
   word-wrap: break-word;
   animation: load 0.5s;
 }
@@ -69,7 +69,7 @@
 .container h4,
 .container h5,
 .container h6 {
-  color: white;
+  color: var(--blog-headers);
 }
 
 .container img {
@@ -112,7 +112,7 @@
 }
 
 .spanInfo {
-  color: white;
+  color: var(--blog-span-info);
 }
 
 @media (min-width: 1024px) {
