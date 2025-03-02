@@ -2,15 +2,13 @@ import { useState, useEffect, useContext } from "react";
 import { Channel, Presence } from "phoenix";
 import Link from "next/link";
 
-import config from "config.json";
-
 import styles from "./style.module.css";
 import HomeStyles from "@/styles/Home.module.css";
 
 import { SocketContext } from "@/components/Phoenix/Socket";
 import UsersOnline from "@/components/Phoenix/UsersOnline";
 import SpotifyNowPlaying from "@/components/Phoenix/Spotify";
-import Theme from "@/components/Theme";
+import Theme from "@/components/React/Theme";
 
 export default function Footer() {
   const [usersOnline, setUsersOnline] = useState(1);
