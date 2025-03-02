@@ -37,11 +37,11 @@ function NavLinks({ router }) {
       <NavLink currentRoute={router.route} route="/">
         Home
       </NavLink>
-      <NavLink currentRoute={router.route} route="/projects">
-        Projects
-      </NavLink>
       <NavLink currentRoute={router.route} route="/blog">
         Blog
+      </NavLink>
+      <NavLink currentRoute={router.route} route="/projects">
+        Projects
       </NavLink>
       <NavLink currentRoute={router.route} route="/about">
         About
