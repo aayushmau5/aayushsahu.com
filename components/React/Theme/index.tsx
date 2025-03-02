@@ -32,7 +32,7 @@ export default function Theme() {
   useEffect(() => {
     // randomly select one of themes by default
     selectTheme(themes[Math.floor(Math.random() * themes.length)]);
-  });
+  }, []);
 
   return (
     <div>
