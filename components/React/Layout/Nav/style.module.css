@@ -1,113 +1,113 @@
 .container {
-  width: 100%;
-  margin: 0 auto;
-  height: 60px;
+    width: 100%;
+    margin: 0 auto;
+    height: 60px;
 }
 
 .LinksContainer {
-  /* position: fixed; */
-  /* z-index: 10; */
-  /* background-color: #1d1e23; */
-  /* background-color: #101114; */
-  color: var(--nav-links-color);
-  /* box-shadow: 0 0 5px #030303; */
-  padding: 1rem;
-  display: flex;
-  /* width: inherit; */
-  display: flex;
-  gap: 20px;
+    /* position: fixed; */
+    /* z-index: 10; */
+    /* background-color: #1d1e23; */
+    /* background-color: #101114; */
+    color: var(--nav-links-color);
+    /* box-shadow: 0 0 5px #030303; */
+    padding: 1rem;
+    display: flex;
+    /* width: inherit; */
+    display: flex;
+    gap: 20px;
 }
 
 .container a {
-  width: max-content;
-  position: relative;
-  transition: color linear 0.2s;
+    width: max-content;
+    position: relative;
+    transition: color linear 0.2s;
 }
 
 .container a:hover {
-  color: var(--nav-link-container-color);
+    color: var(--nav-link-container-color);
 }
 
 .active {
-  color: var(--nav-link-active);
+    color: var(--nav-link-active);
 }
 
 .container a:focus {
-  color: var(--nav-link-active);
+    color: var(--nav-link-active);
 }
 
 .kbar {
-  margin-left: auto;
-  display: none;
+    margin-left: auto;
+    display: none;
 }
 
 .kbarClick {
-  cursor: pointer;
-  background: transparent;
-  border: none;
-  color: var(--kbar-click);
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    color: var(--kbar-click);
 }
 
 .commandIcon {
-  margin-left: auto;
-  color: var(--kbar-command);
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 1.2rem;
-  display: flex;
-  align-items: center;
+    margin-left: auto;
+    color: var(--kbar-command);
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
 }
 
 .amazing_rays {
-  background-image: url("/rays.png");
-  pointer-events: none;
-  position: absolute;
-  inset: 0;
-  mix-blend-mode: exclusion;
-  background-size: 1100px 383px;
-  background-repeat: no-repeat;
-  background-position: top;
-  opacity: 0.3;
-  filter: blur(10px);
-  animation: change-brightness 10s ease-out infinite;
-  z-index: -1;
+    background-image: url("/rays.png");
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    mix-blend-mode: exclusion;
+    background-size: 1100px 383px;
+    background-repeat: no-repeat;
+    background-position: top;
+    opacity: 0.3;
+    filter: blur(10px);
+    animation: change-brightness 10s ease-out infinite;
+    z-index: -1;
 }
 
 @keyframes change-brightness {
-  0% {
-    filter: brightness(0.5);
-  }
-  50% {
-    filter: brightness(1);
-  }
-  100% {
-    filter: brightness(0.5);
-  }
+    0% {
+        filter: brightness(0.5);
+    }
+    50% {
+        filter: brightness(1);
+    }
+    100% {
+        filter: brightness(0.5);
+    }
 }
 
 @media (min-width: 1024px) {
-  .container {
-    width: 55%;
-  }
+    .container {
+        width: 55%;
+    }
 
-  .LinksContainer {
-    border-radius: 0 0 10px 10px;
-  }
+    .LinksContainer {
+        border-radius: 0 0 10px 10px;
+    }
 }
 
 @media (min-width: 500px) {
-  .kbar {
-    display: inline;
-  }
+    .kbar {
+        display: inline;
+    }
 
-  .commandIcon {
-    display: none;
-  }
+    .commandIcon {
+        display: none;
+    }
 }
 
 @media (max-width: 400px) {
-  .LinksContainer {
-    overflow: scroll;
-  }
+    .LinksContainer {
+        overflow: scroll;
+    }
 }

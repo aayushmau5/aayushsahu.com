@@ -1,11 +1,13 @@
-import { PageSEO } from "@/components/SEO";
 import Link from "next/link";
-import glitch from "@/public/glitch.png";
 import Image from "next/image";
+
+import { PageSEO } from "@/components/SEO";
+import glitch from "@/public/glitch.png";
+import styles from "@/styles/Home.module.css";
 
 export default function Links() {
   return (
-    <div>
+    <div className={styles.container}>
       <PageSEO title="Links | Aayush Sahu" description="My online presence" />
       <h1>Links</h1>
 

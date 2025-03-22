@@ -1,33 +1,33 @@
 .container {
-  animation: load 0.5s;
+    animation: load 0.5s ease-in;
 }
 
 @keyframes load {
-  from {
-    opacity: 0;
-  }
+    from {
+        opacity: 0;
+    }
 
-  to {
-    opacity: 1;
-  }
+    to {
+        opacity: 1;
+    }
 }
 
 .para {
-  color: var(--books-paragraph);
+    color: var(--books-paragraph);
 }
 
 .genre {
-  margin: 0;
+    margin: 0;
 }
 
 .remarks {
-  color: var(--books-paragraph);
-  margin: 0;
+    color: var(--books-paragraph);
+    margin: 0;
 }
 
 .book_remarks {
-  color: var(--books-paragraph);
-  margin-top: 0;
-  margin-bottom: 0.5rem;
-  font-size: 1rem;
+    color: var(--books-paragraph);
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
 }
