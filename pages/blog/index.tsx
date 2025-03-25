@@ -76,7 +76,7 @@ export default function Blog({ postsData, tags }: Props) {
           }
           return post;
         }),
-    [postsData, selectedTag, searchValue]
+    [postsData, selectedTag, searchValue],
   );
 
   useEffect(() => {

@@ -1,11 +1,14 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 import { Theme as ThemeType } from "./type";
 import defaultDarkTheme from "./defaultDark";
 import gruvboxDarkTheme from "./gruvboxDark";
 import vitesseDarkTheme from "./vitesseDark";
+import everforestDarkTheme from "./everforestDark";
+import { ThemeContext } from "./themeContext";
 
 export default function Theme() {
+  const themeContext = useContext(ThemeContext);
   const [selectedTheme, setSelectedTheme] = useState("default-dark");
   const themes = ["default-dark", "vitesse-dark", "gruvbox-dark"];
 
@@ -18,6 +21,8 @@ export default function Theme() {
         return changeTheme(vitesseDarkTheme);
       case "gruvbox-dark":
         return changeTheme(gruvboxDarkTheme);
+      case "everforest-dark":
+        return changeTheme(everforestDarkTheme);
       default:
         return changeTheme(defaultDarkTheme);
     }
@@ -33,6 +38,10 @@ export default function Theme() {
     // randomly select one of themes by default
     selectTheme(themes[Math.floor(Math.random() * themes.length)]);
   }, []);
+
+  useEffect(() => {
+    themeContext.setTheme(selectedTheme);
+  }, [themeContext, selectedTheme]);
 
   return (
     <div>
@@ -62,6 +71,7 @@ export default function Theme() {
         <option value="default-dark">Default Dark</option>
         <option value="vitesse-dark">Vitesse Dark</option>
         <option value="gruvbox-dark">GruvBox Dark</option>
+        <option value="everforest-dark">Everforest Dark</option>
       </select>
     </div>
   );
