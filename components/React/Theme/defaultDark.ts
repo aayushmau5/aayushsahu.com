@@ -83,6 +83,8 @@ const defaultDarkTheme: Theme = {
   "--command-bar-color": "#fff",
   "--command-bar-search-background": "#101114",
   "--command-bar-result-background": "#191a1c",
+  "--global-font": "IBM Plex Sans",
+  "--code-font": "Jetbrains Mono",
 };
 
 export default defaultDarkTheme;

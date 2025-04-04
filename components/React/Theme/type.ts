@@ -81,6 +81,8 @@ const themeKeys = [
   "--command-bar-color",
   "--command-bar-search-background",
   "--command-bar-result-background",
+  "--global-font",
+  "--code-font",
 ] as const;
 
 export type Theme = Record<(typeof themeKeys)[number], string>;

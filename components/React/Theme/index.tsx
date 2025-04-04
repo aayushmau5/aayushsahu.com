@@ -10,10 +10,10 @@ import { ThemeContext } from "./themeContext";
 export default function Theme() {
   const themeContext = useContext(ThemeContext);
   const [selectedTheme, setSelectedTheme] = useState("default-dark");
-  const themes = ["default-dark", "vitesse-dark", "gruvbox-dark"];
 
   const selectTheme = (theme: string) => {
     setSelectedTheme(theme);
+    window.localStorage.setItem("website-theme", theme);
     switch (theme) {
       case "default-dark":
         return changeTheme(defaultDarkTheme);
@@ -35,8 +35,8 @@ export default function Theme() {
   }
 
   useEffect(() => {
-    // randomly select one of themes by default
-    selectTheme(themes[Math.floor(Math.random() * themes.length)]);
+    const selectedTheme = window.localStorage.getItem("website-theme");
+    selectTheme(selectedTheme);
   }, []);
 
   useEffect(() => {

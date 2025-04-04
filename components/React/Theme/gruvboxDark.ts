@@ -83,6 +83,8 @@ const gruvboxDarkTheme: Theme = {
   "--command-bar-color": "#fff",
   "--command-bar-search-background": "#121212",
   "--command-bar-result-background": "#7a9f61",
+  "--global-font": "Miriam Libre",
+  "--code-font": "Inconsolata",
 };
 
 export default gruvboxDarkTheme;

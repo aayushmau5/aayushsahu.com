@@ -22,7 +22,7 @@
   font-size: 0.96rem;
   color: var(--code-filename-color);
   background-color: var(--blockquote-background);
-  font-family: "IBM Plex Sans", sans-serif;
+  font-family: inherit;
   display: flex;
   gap: 7px;
   align-items: center;
