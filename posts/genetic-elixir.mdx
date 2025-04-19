@@ -1,0 +1,246 @@
+---
+title: "Some concepts from doing genetic algorithms in elixir"
+description: "Genetic algorithms + Elixir"
+date: 2025-04-19T04:43:00.801Z
+tags: ["elixir"]
+cover:
+  image: "/blogImages/"
+  alt: ""
+draft: false
+showToc: false
+---
+
+<BasicCard>
+
+This post is not a properly written blog post. It's a brain dump of things I learned while doing genetic algorithms in Elixir. Pretty sure you'll have a hard time reading it because it's not well structured and it reads like a stream of consciousness. But I hope you find it useful nonetheless.
+
+</BasicCard>
+
+So I read the “genetic algorithms in elixir” book, and since I'm not doing any project on it yet, I want to “preserve” my learnings in this article so that I can come back to it to refresh my memory when need be.
+
+Okay, let's start.
+
+Genetic algorithms is a subset of evolutionary algorithms. there's also genetic programming. not particular sure how do they differ.
+Genetic algorithms are probabilistic algorithms. the goal is not to find the perfect solution but to find a good enough one.
+
+Genetic algorithms are loosely based on biology + evolution/natural selection. The terminology will feel familiar such as `selection`, `evolution`, `crossover`, `mutation`, etc.
+
+Uses/Goals: Genetic Algorithms shines when you are dealing with hard computational problem where brute-force method doesn’t work. example: travelling salesman problem. instead of trying to brute force all the possible paths in order to find the path that takes the least amount of time, you go ahead with good enough solution. there might be another solution that will be better than what you came up with, but that doesn’t matter. finding that will be computationally hard/impossible.
+
+Along with that, genetic algorithms have been used in AI/ML fields, particuarly dealing with Neural Networks(finding optimal hyperparameters to be assigned to neurons), robotics, path-finding algos, “constrained optimization problems”(where given a constrain and a metric to match, come up with solutions that respects the constrain while matching the required metric as best as it can).
+there’s much more but these are that I know of yet.
+
+Now is the time to given an high overview of genetic algorithms.
+
+So you have a problem. let’s go through with an example(I’m taking this from the book):
+
+**Problem**: Scheduling problem. given multiple courses(around 8) along with credits assigned to each course, your interest in that course, find the schedule that maximizes interest while keeping the credit sum == 8.0
+
+This is a “constrained optimization problem” but luckily through this we’ll see the main framework for genetic algorithms.
+
+First, we’ll start with *population*. a population is a set of possible solutions for your problem.
+
+```
+population = [solution1, solution2, solution3, . . .]
+```
+
+Our goal is the find the best solution out of the population
+
+but… these solutions will not be the best solution yet. we’ll talk more about in when we start with selection, crossover, etc.
+
+So the population can be initialized with random numbers. before we initalize a population, we need to discuss about encoding your solutions.
+
+So a population or a set of possible solutions can be encoded in many forms. it can either be a list of binary numbers(0 or 1), a list of real-numbers(1, 2, 3, …), a tree structure, etc.
+
+It depends on the problem and the developer to choose the correct encoding scheme.
+for simplicity sake and not getting too bogged into a problem, we’ll go with list of binary elements.
+
+```elixir
+# we are initializing a population with 100 members
+population = for _ <- 1..100 do
+	for _ <- 1..8 do
+		:rand.uniform(0..1)
+	end
+end
+
+# [ [1, 0, 0, 1, 0, 0, 1, 1], [0, 0, 0, 1, 1, 0, 1, 1], […], … ]
+```
+
+In genetic algorith terms, each population consists of chromosomes. A chromosome contains genes(which is the solution).
+
+```
+population = [chromosome, …]
+chromosome = %Chromosome{genes: [1, 0, 0, 1, 0, 0, 1, 1]}
+```
+
+```elixir
+def initialize() do
+	# initializes a population
+	for _ <- 1..100 do
+		# 8 for 8 courses
+		genes = for _ <- 1..8, do: :rand.uniform(0..1)
+		%Chromosome{genes: genes}
+	end
+end
+```
+
+Now that we have a population, we need to start evaluting our population to find the best solution
+
+but in order to find the best solution, we need to know what does the best solution looks like?
+
+In order to finish up our algorithm, we need to have a sense of where we should stop our algorithm.
+sometimes it can be a vague metric(for example: least time taking path) or it can be something solid(the sum of items must be equal to 8).
+
+So in our problem, our algorithm should end when we maximize interest while keeping the credit score `<= 8.0`
+
+but how do we translate this to code?
+
+Two things: fitness (code: `fitness_function`) and termination criteria(code: `terminate?`).
+
+Fitness evalutes how “fit” a solution is to the desired solution. for example: when the sum of credits is 8 and interest is 10(assuming this is the most it can be), then this solution is most fit. we evalute each chromosome to find whether it is fit or not by implementing a fitness function. evaluting fitness is totally dependent on you.
+
+Termination criteria is basically a check whether we should keep our algorithm going or end it. it can be anything: such as if no. of chromosomes in a population reaches 1000, the evolution goes for 1000 generation, we found out the sum of genes in a chromosome is equal to desired value, etc.
+
+for our problem, we can implement fitness function and termination criteria as follows:
+
+```elixir
+def fitness_function(%Chromosome{} = chromosome) do
+	genes = chromosome.genes
+
+	# finding the credit
+	total_credit = Enum.zip(genes, credits_for_each_subject) |> Enum.map(fn {class, credit} -> class * credit end) |> Enum.sum()
+
+	if total_credit > 18.0 do
+		# penalty. sometimes we penalize a wrong solution so that it doesn’t crop up again and again
+		-999
+	else
+		# we calculate fitness by multiplying each subject with credit + interest. your fitness calculation is totally dependent on you. i’m going with this
+		Enum.zip([subjects, credits, interests]) |> Enum.map(fn {subject, credit, interest) -> subject * (credit * 0.3 + interest * 0.3) end) |> Enum.sum()
+end
+
+def terminate?(population, generation) do
+	# terminate when generation reaches 1000. we’ll talk about generation in a bit
+	generation === 1000
+end
+```
+
+
+Now that we have the basic framework for the problem, it’s time we get deep into genetic algorithm.
+
+as we saw, we start with a population
+
+With each population, we first find fitness for every chromosome in the population, sort it so that the best fit chromosomes are at the top(if needs be) and evaluate whether the fittest chromosome is fulfilling the termination criteria or not.
+
+Now for the fun part, if termination criteria is not met, we evolve our population. try to come up with a set of new chromosomes(children) from original population(parents) and evaluate them again to find their fitness and whether to terminate it or not, finding the best solution.
+
+During each evoluation, we first `select` parents(two chromosomes), create a child from those parents using `crossover`, `mutate` the population to introduce “genetic diversity”, optionally have a `reinsertion` step, then combine these children into a new population and re-run the whole algorithm with the population.
+
+We’ll elaborate on each of these steps next, but first, the code:
+
+```elixir
+def evolve(population, generation \\ 0) do
+	population = evaluate(population)
+	best = hd(population) # take the most fit chromosome
+	if terminate?(best, generation) do
+		best # our best solution
+	else
+		population
+		|> select()
+		|> crossover()
+		|> mutation()
+		|> evolve(generation + 1)
+
+		# there’s another step we can use called: reinsertion(). we are not going to use it now but will be explained below
+	end
+end
+
+def evaluate(population) do
+	# we first find fitness for each chromosome using the fitness function
+	Enum.map(population, fn chromosome ->
+		fitness = fitness_function(chromosome)
+		%Chromosome{chromosome | fitness: fitness}
+	end)
+	# and the sort(desc) the population based on their fitness
+	|> Enum.sort_by(& &1.fitness, &>=/2)
+end
+
+def select(population) do
+	# different selection algorithms. ex: elite(taking the first n number of population with most fitness), random, etc.
+	# selection selects a subset of population
+	# chunks them into a set of two parents for crossover step
+	selected = selection_fn(population)
+
+	# sometimes we might need leftover population in case of reinsertion
+	# leftover = Mapset.new(population) |> Mapset.difference(Mapset.new(selected))
+
+	# {parent1, parent2}
+	selected_parents = Enum.chunck_every(selected, 2) |> Enum.map(&List.to_tuple/1)
+
+	selected_parents
+end
+
+def crossover(chunked_population) do
+	# randomly creates genes from parent genes to create children genes using different crossover algorithms. ex. order one crossover, single-point crossover, uniform crossover, whole arithmetic recombination, etc.
+
+	Enum.reduce(chunked, [], fn {p1, p2}, acc ->
+      {c1, c2} = Enum.map(chunked_population, fn {p1, p2} ->
+			# this is single point crossover
+		 	cx_point = :rand.uniform(p1.size)
+
+    		{{h1, t1}, {h2, t2}} = {
+    	  		Enum.split(p1.genes, cx_point),
+    	  		Enum.split(p2.genes, cx_point)
+    		}
+
+    		{
+     			%Chromosome{p1 | genes: h1 ++ t2},
+     	 		%Chromosome{p2 | genes: h2 ++ t1}
+    		}
+		end)
+
+      [c1, c2 | acc]
+    end)
+end
+
+def mutation(population) do
+	# Mutates the genes to maintain genetic diversity or introduce randomness to the genes in order to find solutions. different algorithms such as flip, scramble, etc.
+
+	 population
+    |> Enum.take_random(n)
+    |> Enum.map(fn chromosome ->
+		# scrambling genes
+		genes = Enum.shuffle(chromosome.genes)
+    	%Chromosome{genes: genes}
+	 end)
+end
+```
+
+let’s go through the code.
+
+As we know, we start with some population, we have our fitness function and termination criteria ready.
+
+We start running our genetic algorithm with `evolve` function,
+
+first, we evaluate the population based on the fitness of each chromosome. we apply the fitness function on each of the chromosome to see which of the chromosomes are best fitting the criteria. and then we sort the result based on the fitness thus most fit(or better than the other) chromosomes are at the top.
+
+Then we get the first “best” chromosome from the population, evaluate it against the termination criteria, i.e., whether we found the solution or not. if solution is found, we return the best chromosome otherwise run **evolve**.
+
+Evolution is the process of making better solution from existing ones. the current set of population isn’t working for us, so we create new population from existing ones, just like biology.
+
+Evolution contains the following steps:
+
+1. **selection:** we select a set of chromosomes from the population using some selection algorithm. the selected set is then used as parents to create a new set of children population.
+
+2. **crossover:** just like in biology a child get the traits of their parents, we create children with the best traits from their parents. there are multiple crossover algorithms to get the best trait from parents and make a fitter population.
+
+3. **mutation:** one problem with genetic algorithms are that they are subject to “premature convergence” meaning our algorithm will at one point have the same set of population(with equal genes) after a particular generation(1 generation = 1 evolution step). this is due to lack of genetic diversity. the solutions/genes are not diverse/different enough to get different solutions. thus, we mutate the genes of some chromosomes in order to avoid premature convergence and keeping our algorithm from halting(or running forever in a loop). there are multiple mutation algorithms as well.
+
+4. **reinsertion:** apart from that, one additional thing we can do it reinsertion some “leftover” population from selection step back into the current population. thus having more diverse solution.
+
+This is pretty much it for genetic algorithms. we try to find the best solution for something. keep in mind that since each new run is very randomized in terms of population, sometimes you’ll have better solution in different different runs.
+
+The code from the book, along with the solution to scheduling problem can be found at: https://github.com/aayushmau5/genetic-algo-elixir
+
+That concludes our high level overview of genetic algorithms.
+
+See you in the next one!
