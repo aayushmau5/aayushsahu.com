@@ -19,20 +19,16 @@ export default class MyDocument extends Document {
             href="https://fonts.googleapis.com/css2?family=Miriam+Libre:wght@400..700&display=swap"
             rel="stylesheet"
           />
-          {/* <link
-            href="https://fonts.googleapis.com/css2?family=Doto:wght@100..900&display=swap"
+          <link
+            href="https://fonts.googleapis.com/css2?family=Overpass+Mono:wght@300..700&display=swap"
             rel="stylesheet"
-          /> */}
+          />
           <link
             href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap"
             rel="stylesheet"
           />
           <link
             href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap"
-            rel="stylesheet"
-          />
-          <link
-            href="https://fonts.googleapis.com/css2?family=Lekton:ital,wght@0,400;0,700;1,400&display=swap"
             rel="stylesheet"
           />
           <link

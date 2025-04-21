@@ -83,8 +83,8 @@ const everforestDarkTheme: Theme = {
   "--command-bar-color": "#fff",
   "--command-bar-search-background": "#121212",
   "--command-bar-result-background": "#83c092",
-  "--global-font": "Lekton",
-  "--code-font": "Lekton",
+  "--global-font": "Overpass Mono",
+  "--code-font": "Overpass Mono",
 };
 
 export default everforestDarkTheme;
