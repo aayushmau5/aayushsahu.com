@@ -5,6 +5,8 @@ import defaultDarkTheme from "./defaultDark";
 import gruvboxDarkTheme from "./gruvboxDark";
 import vitesseDarkTheme from "./vitesseDark";
 import everforestDarkTheme from "./everforestDark";
+import natureTheme from "./natureDark";
+import vintageTheme from "./vintage";
 import { ThemeContext } from "./themeContext";
 
 export default function Theme() {
@@ -23,6 +25,10 @@ export default function Theme() {
         return changeTheme(gruvboxDarkTheme);
       case "everforest-dark":
         return changeTheme(everforestDarkTheme);
+      case "vintage":
+        return changeTheme(vintageTheme);
+      case "nature":
+        return changeTheme(natureTheme);
       default:
         return changeTheme(defaultDarkTheme);
     }
@@ -72,6 +78,8 @@ export default function Theme() {
         <option value="vitesse-dark">Vitesse Dark</option>
         <option value="gruvbox-dark">GruvBox Dark</option>
         <option value="everforest-dark">Everforest Dark</option>
+        <option value="vintage">Vintage</option>
+        <option value="nature">Nature</option>
       </select>
     </div>
   );

@@ -83,8 +83,8 @@ const vitesseDarkTheme: Theme = {
   "--command-bar-color": "#fff",
   "--command-bar-search-background": "#121212",
   "--command-bar-result-background": "#7a9f61",
-  "--global-font": "Space Grotesk",
-  "--code-font": "Jetbrains Mono",
+  "--global-font": "Work Sans",
+  "--code-font": "Fira Code",
 };
 
 export default vitesseDarkTheme;
