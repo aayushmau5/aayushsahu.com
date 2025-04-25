@@ -15,12 +15,8 @@ export default function Books() {
         </div>
 
         <p className={styles.para}>
-          List of books I have read. This doesn&apos;t contain every book i have
-          read because i don&apos;t remember them.
-        </p>
-        <p className={styles.para}>
-          I&apos;m not an avid book reader but i like to read books whenever i
-          feel like reading something.
+          List of books I have read. I&apos;m not an avid book reader but I like
+          to read books from time to time.
         </p>
 
         <h3 className={styles.genre}>Tech</h3>
@@ -60,6 +56,13 @@ export default function Books() {
             Concurrent Data Processing in Elixir by Svilen Gospodinov
             <p className={styles.book_remarks}>
               Task, GenServer, GenStage, Flow & Broadway go brrrrrrr!
+            </p>
+          </li>
+          <li>Genetic Algorithms in Elixir by Sean Moriarity</li>
+          <li>
+            Metaprogramming Elixir by Chris McCord
+            <p className={styles.book_remarks}>
+              Really love how extensible elixir is
             </p>
           </li>
         </ul>
