@@ -7,6 +7,8 @@ import vitesseDarkTheme from "./vitesseDark";
 import everforestDarkTheme from "./everforestDark";
 import natureTheme from "./natureDark";
 import vintageTheme from "./vintage";
+import rosepineDarkTheme from "./rosepineDark";
+import rosepineLightTheme from "./rosepineLight";
 import { ThemeContext } from "./themeContext";
 
 export default function Theme() {
@@ -29,6 +31,10 @@ export default function Theme() {
         return changeTheme(vintageTheme);
       case "nature":
         return changeTheme(natureTheme);
+      case "rosepine-dark":
+        return changeTheme(rosepineDarkTheme);
+      case "rosepine-light":
+        return changeTheme(rosepineLightTheme);
       default:
         return changeTheme(defaultDarkTheme);
     }
@@ -80,6 +86,8 @@ export default function Theme() {
         <option value="everforest-dark">Everforest Dark</option>
         <option value="vintage">Vintage</option>
         <option value="nature">Nature</option>
+        <option value="rosepine-dark">Rose Pine Dark</option>
+        <option value="rosepine-light">Rose Pine Light</option>
       </select>
     </div>
   );
