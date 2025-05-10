@@ -43,10 +43,14 @@ export default function Index({ firstPost, secondPost }) {
             </h2>
             <p>
               I&apos;m <span className={styles.highlight}>Aayush Sahu</span>, a
-              fullstack web developer. Working at{" "}
+              Software Enginner. Working at{" "}
               <span className={styles.highlight}>
-                <a href="https://beatoven.ai/" rel="noreferrer" target="_blank">
-                  beatoven.ai
+                <a
+                  href="https://tractable.ai/"
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  tractable
                 </a>
               </span>
               .

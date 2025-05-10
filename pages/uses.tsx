@@ -1,6 +1,8 @@
+import Image from "next/image";
 import { PageSEO } from "@/components/SEO";
 import styles from "@/styles/Uses.module.css";
 import homeStyles from "@/styles/Home.module.css";
+import desk from "@/public/desk.jpeg";
 
 export default function Uses() {
   return (
@@ -22,6 +24,11 @@ export default function Uses() {
             usesthis.com
           </a>
         </p>
+
+        <div style={{ width: "100%", height: "auto", margin: "1rem auto" }}>
+          <Image src={desk} alt="My Desk" />
+        </div>
+
         <div className={styles.inner}>
           <h3>Editor</h3>
           <ul>

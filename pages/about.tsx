@@ -3,6 +3,7 @@ import Link from "next/link";
 
 import { PageSEO } from "@/components/SEO";
 
+import Megu from "@/public/megu.jpeg";
 import Desktop from "@/public/desktop.png";
 import Keyboard from "@/public/keyboard.png";
 import Editor from "@/public/editor.png";
@@ -46,14 +47,14 @@ export default function About() {
           >
             diff library
           </a>
-          . Currently, I&apos;m working fulltime as Full-Stack developer at{" "}
+          . Currently, I&apos;m working as a Software Engineer at{" "}
           <a
             className={styles.link}
             target="_blank"
             rel="noreferrer"
-            href="https://beatoven.ai/"
+            href="https://tractable.ai/"
           >
-            beatoven.ai
+            tractable
           </a>
           .
         </p>
@@ -62,8 +63,11 @@ export default function About() {
         </p>
         <h3>What am I doing these days</h3>
         <ul className={styles.ul}>
-          <li>Exploring music making</li>
-          <li>Working on side projects ;)</li>
+          <li>Playing with my cat</li>
+          <li>Working</li>
+          <li>Learning about different technologies</li>
+          <li>Reading books</li>
+          <li>Doing side projects ;)</li>
         </ul>
         <h3>Random Facts</h3>
 
@@ -74,6 +78,18 @@ export default function About() {
           </Link>
           .
         </p>
+
+        <h4>Meet Megu</h4>
+        <p className={styles.smallParagraph}>
+          I have a cat. Her name is Megatron(don&apos;t ask why). We call her
+          Megu.
+        </p>
+        <Image
+          src={Megu}
+          placeholder="blur"
+          alt="My cat megatron"
+          className={styles.logo}
+        />
 
         <h4>Desktop</h4>
         <p className={styles.smallParagraph}>
