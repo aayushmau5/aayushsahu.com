@@ -4,7 +4,7 @@
         <title>Aayush Kumar Sahu - Developer and Explorer</title>
         <link>https://aayushsahu.com</link>
         <description>aayushmau5' personal website</description>
-        <lastBuildDate>Sun, 27 Apr 2025 11:52:45 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 10 May 2025 17:54:24 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
@@ -15,6 +15,13 @@
         </image>
         <copyright>CC 2024, Aayush Kumar Sahu</copyright>
         <category>Programming</category>
+        <item>
+            <title><![CDATA[April Log]]></title>
+            <link>https://aayushsahu.com/blog/april-2025-log</link>
+            <guid>https://aayushsahu.com/blog/april-2025-log</guid>
+            <pubDate>Sat, 10 May 2025 07:16:40 GMT</pubDate>
+            <description><![CDATA[Things I did in April 2025]]></description>
+        </item>
         <item>
             <title><![CDATA[Dynamic "Redirect To" URL for emails in Auth0]]></title>
             <link>https://aayushsahu.com/blog/auth0-email-template-redirect</link>
