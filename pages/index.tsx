@@ -43,7 +43,7 @@ export default function Index({ firstPost, secondPost }) {
             </h2>
             <p>
               I&apos;m <span className={styles.highlight}>Aayush Sahu</span>, a
-              Software Enginner. Working at{" "}
+              Software Engineer. Working at{" "}
               <span className={styles.highlight}>
                 <a
                   href="https://tractable.ai/"
