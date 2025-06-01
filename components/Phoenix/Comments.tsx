@@ -2,7 +2,12 @@ import { Channel } from "phoenix";
 import { useContext, useEffect, useState } from "react";
 import { SocketContext } from "./Socket";
 import styles from "./style.module.css";
-import { formatDistanceToNow, parseISO } from "date-fns";
+import { formatDistanceToNow } from "date-fns";
+
+function formatCommentDate(dateString: string): string {
+  const date = new Date(dateString + "Z");
+  return formatDistanceToNow(date, { addSuffix: true });
+}
 
 type Comment = {
   id: number;
@@ -187,9 +192,7 @@ function CommentItem({
       <div className={styles.commentHeader}>
         <span className={styles.commentAuthor}>{comment.author}</span>
         <span className={styles.commentDate}>
-          {formatDistanceToNow(parseISO(comment.inserted_at), {
-            addSuffix: true,
-          })}
+          {formatCommentDate(comment.inserted_at)}
         </span>
       </div>
 
@@ -214,9 +217,7 @@ function CommentItem({
               <div className={styles.commentHeader}>
                 <span className={styles.commentAuthor}>{reply.author}</span>
                 <span className={styles.commentDate}>
-                  {formatDistanceToNow(parseISO(reply.inserted_at), {
-                    addSuffix: true,
-                  })}
+                  {formatCommentDate(reply.inserted_at)}
                 </span>
               </div>
               <div className={styles.commentContent}>{reply.content}</div>
