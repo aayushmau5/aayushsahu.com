@@ -84,20 +84,104 @@ function CommentInput({
   const [author, setAuthor] = useState("");
   const [comment, setComment] = useState("");
   const [isExpanded, setIsExpanded] = useState(parentId === null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [successMessage, setSuccessMessage] = useState<string | null>(null);
+
+  function showErrorMessage(message: string, type: string = "error") {
+    setErrorMessage(message);
+    setSuccessMessage(null);
+    // Auto-hide after 5 seconds
+    setTimeout(() => {
+      setErrorMessage(null);
+    }, 5000);
+  }
+
+  function showSuccessMessage(message: string) {
+    setSuccessMessage(message);
+    setErrorMessage(null);
+    // Auto-hide after 3 seconds
+    setTimeout(() => {
+      setSuccessMessage(null);
+    }, 3000);
+  }
+
+  function clearCommentForm() {
+    setComment("");
+    setAuthor("");
+  }
+
+  function handleCommentError(response: any) {
+    if (response.errors) {
+      const errors = response.errors;
+
+      if (errors.content) {
+        const contentErrors = Array.isArray(errors.content)
+          ? errors.content
+          : [errors.content];
+
+        contentErrors.forEach((error: string) => {
+          if (error.includes("inappropriate language")) {
+            showErrorMessage(
+              "🚫 Your comment contains inappropriate language. Please revise and try again.",
+            );
+          } else if (error.includes("can't be blank")) {
+            showErrorMessage("Please enter a comment before submitting.");
+          } else {
+            showErrorMessage(`Content error: ${error}`);
+          }
+        });
+      }
+
+      if (errors.blog_slug) {
+        showErrorMessage("Invalid blog reference. Please refresh the page.");
+      }
+
+      // Handle other field errors
+      Object.keys(errors).forEach((field) => {
+        if (field !== "content") {
+          const fieldErrors = Array.isArray(errors[field])
+            ? errors[field]
+            : [errors[field]];
+          showErrorMessage(`${field}: ${fieldErrors.join(", ")}`);
+        }
+      });
+    } else {
+      showErrorMessage("Failed to post comment. Please try again.");
+    }
+  }
 
   function sendComment() {
-    if (!comment.trim()) return;
+    if (!comment.trim() || isSubmitting) return;
 
-    channel?.push("new_reply", {
-      author: author.trim() || "Anonymous",
-      content: comment.trim(),
-      parent_id: parentId,
-    });
+    setIsSubmitting(true);
+    setErrorMessage(null);
+    setSuccessMessage(null);
 
-    setComment("");
-    if (parentId !== null) {
-      setIsExpanded(false);
-    }
+    const eventName = parentId === null ? "new_comment" : "new_reply";
+
+    channel
+      ?.push(eventName, {
+        author: author.trim() || "Anonymous",
+        content: comment.trim(),
+        parent_id: parentId,
+      })
+      .receive("ok", (response) => {
+        clearCommentForm();
+        showSuccessMessage("Comment posted successfully!");
+        if (parentId !== null) {
+          setIsExpanded(false);
+        }
+        setIsSubmitting(false);
+      })
+      .receive("error", (response) => {
+        handleCommentError(response);
+        setIsSubmitting(false);
+      })
+      .receive("timeout", () => {
+        showErrorMessage("Request timed out. Please try again.");
+        setIsSubmitting(false);
+      });
   }
 
   function handleKeyPress(e: React.KeyboardEvent) {
@@ -119,12 +203,21 @@ function CommentInput({
 
   return (
     <div className={styles.commentInputContainer}>
+      {/* Error/Success Messages */}
+      {errorMessage && (
+        <div className={styles.errorMessage}>{errorMessage}</div>
+      )}
+      {successMessage && (
+        <div className={styles.successMessage}>{successMessage}</div>
+      )}
+
       <div className={styles.inputGroup}>
         <input
           type="text"
           placeholder="Your name (optional)"
           value={author}
           onChange={(e) => setAuthor(e.target.value)}
+          disabled={isSubmitting}
           className={`${styles.commentInput} ${styles.commentInputAuthor}`}
         />
       </div>
@@ -136,6 +229,7 @@ function CommentInput({
           value={comment}
           onChange={(e) => setComment(e.target.value)}
           onKeyPress={handleKeyPress}
+          disabled={isSubmitting}
           className={`${styles.commentInput} ${styles.commentInputText}`}
           rows={3}
         />
@@ -145,6 +239,7 @@ function CommentInput({
           <button
             onClick={() => setIsExpanded(false)}
             className={styles.cancelButton}
+            disabled={isSubmitting}
           >
             Cancel
           </button>
@@ -152,9 +247,17 @@ function CommentInput({
         <button
           onClick={sendComment}
           className={styles.sendButton}
-          disabled={!comment.trim()}
+          disabled={!comment.trim() || isSubmitting}
         >
-          {parentId === null ? "Send" : "Reply"}
+          {isSubmitting ? (
+            <span className={styles.loadingSpinner}>
+              {parentId === null ? "Sending..." : "Replying..."}
+            </span>
+          ) : parentId === null ? (
+            "Send"
+          ) : (
+            "Reply"
+          )}
         </button>
       </div>
     </div>
