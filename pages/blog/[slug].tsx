@@ -25,7 +25,6 @@ import CodeBlock from "@/components/MDX/Codeblock";
 import CustomCode from "@/components/MDX/Code";
 import SeparatorSvg from "@/components/React/SeparatorSvg";
 import NextPrevArticles from "@/components/React/Blog/NextPrevArticles";
-import Chat from "@/components/MDX/Chat";
 
 const components: MDXComponents = {
   pre: (props) => <Pre {...props} />,
@@ -40,7 +39,6 @@ const components: MDXComponents = {
   BasicCard,
   CardWithTitle,
   CustomCode,
-  Chat,
 };
 
 export default function BlogPost({
@@ -79,7 +77,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const sortedPosts = getSortedPosts();
 
   const post = sortedPosts.find(
-    (post) => post._raw.flattenedPath === params.slug
+    (post) => post._raw.flattenedPath === params.slug,
   );
 
   const toc = post.showToc ? await generateToC(post.body.raw) : null;
