@@ -1,70 +1,418 @@
 .container {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  font-size: 1rem;
-  font-weight: bold;
-  width: max-content;
-  background-color: var(--spotify-container-background);
-  padding: 10px 20px 10px 10px;
-  border-radius: 20px;
-  transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    width: max-content;
+    background-color: var(--spotify-container-background);
+    padding: 10px 20px 10px 10px;
+    border-radius: 20px;
+    transition: all 0.2s ease;
 }
 
 .circle {
-  fill: var(--users-online-circle);
+    fill: var(--users-online-circle);
 }
 
 .point {
-  stroke: var(--users-online-circle);
+    stroke: var(--users-online-circle);
 }
 
 .container:hover {
-  background-color: var(--spotify-container-hover);
+    background-color: var(--spotify-container-hover);
 }
 
 .spotifyContainer {
-  min-height: 75px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 1rem;
-  width: max-content;
-  background-color: var(--spotify-container-background);
-  padding: 10px 25px 10px 20px;
-  border-radius: 20px;
-  margin-bottom: 10px;
-  transition: all 0.2s ease;
+    min-height: 75px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1rem;
+    width: max-content;
+    background-color: var(--spotify-container-background);
+    padding: 10px 25px 10px 20px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+    transition: all 0.2s ease;
 }
 
 .spotifyContainer:hover {
-  background-color: var(--spotify-container-hover);
+    background-color: var(--spotify-container-hover);
 }
 
 .nowPlayingMessage {
-  font-size: 0.8rem;
+    font-size: 0.8rem;
 }
 
 .spotifyTitle {
-  color: var(--spotify-title);
+    color: var(--spotify-title);
 }
 
 .highlight {
-  font-weight: bold;
-  background-image: linear-gradient(
-    45deg,
-    var(--theme-one),
-    var(--theme-two),
-    var(--theme-three),
-    var(--theme-four)
-  );
-  background-clip: text;
-  -webkit-background-clip: text;
-  -moz-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  -moz-text-fill-color: transparent;
+    font-weight: bold;
+    background-image: linear-gradient(
+        45deg,
+        var(--theme-one),
+        var(--theme-two),
+        var(--theme-three),
+        var(--theme-four)
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-text-fill-color: transparent;
 }
 
 .highlight a {
-  display: block;
+    display: block;
+}
+
+.commentsContainer {
+    margin-bottom: 20px;
+}
+
+.commentInputContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    background-color: var(--spotify-container-background);
+    padding: 20px;
+    border-radius: 15px;
+    transition: all 0.2s ease;
+    margin: 20px 0;
+}
+
+.commentInputContainer:hover {
+    background-color: var(--spotify-container-hover);
+}
+
+.inputGroup {
+    display: flex;
+    flex-direction: column;
+}
+
+.commentInput {
+    width: 100%;
+    padding: 12px 15px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.1);
+    color: inherit;
+    font-size: 0.9rem;
+    font-family: inherit;
+    box-sizing: border-box;
+}
+
+.commentInput:focus {
+    outline: none;
+    border-color: var(--theme-one);
+    box-shadow: 0 0 0 2px rgba(var(--theme-one), 0.2);
+}
+
+.commentInputText {
+    resize: vertical;
+    min-height: 80px;
+    line-height: 1.5;
+}
+
+.commentInputAuthor {
+    width: 100%;
+    max-width: 200px;
+}
+
+.buttonGroup {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.sendButton {
+    padding: 12px 24px;
+    border-radius: 10px;
+    border: none;
+    background: linear-gradient(45deg, var(--theme-one), var(--theme-two));
+    color: var(--background);
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+    min-width: 80px;
+}
+
+.sendButton:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.sendButton:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.sendButton:disabled:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+.cancelButton {
+    padding: 12px 20px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: transparent;
+    color: inherit;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    font-size: 0.9rem;
+    white-space: nowrap;
+}
+
+.cancelButton:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.commentWindow {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.commentItem {
+    font-size: 1rem;
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(255, 255, 255, 0.02);
+    padding: 10px 18px;
+    border-radius: 12px;
+    border-left: 3px solid var(--theme-one);
+}
+
+.commentHeader {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+}
+
+.commentAuthor {
+    opacity: 0.9;
+    font-weight: bold;
+    font-size: 0.9rem;
+    margin: 0;
+    color: var(--theme-two);
+}
+
+.commentContent {
+    margin: 0;
+    color: inherit;
+    white-space: pre-wrap;
+}
+
+.commentDate {
+    margin: 0;
+    font-size: 0.7rem;
+    opacity: 0.6;
+    margin-left: auto;
+}
+
+.commentActions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 10px;
+}
+
+.toggleRepliesButton {
+    background: none;
+    border: none;
+    color: var(--theme-one);
+    cursor: pointer;
+    font-size: 0.85rem;
+    padding: 5px 0;
+    opacity: 0.8;
+    transition: opacity 0.2s ease;
+    font-weight: 500;
+}
+
+.toggleRepliesButton:hover {
+    opacity: 1;
+}
+
+.replyButton {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 0.8rem;
+    cursor: pointer;
+    font-weight: 500;
+    padding: 0;
+    margin: 0;
+}
+
+.replyButton:hover {
+    opacity: 0.8;
+}
+
+.repliesContainer {
+    padding-left: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border-left: 2px solid rgba(255, 255, 255, 0.15);
+}
+
+.replyItem {
+    background-color: rgba(255, 255, 255, 0.03);
+    padding: 15px;
+    border-radius: 10px;
+    border-left: 2px solid var(--theme-three);
+}
+
+.noRepliesContainer {
+}
+
+.repliesTitle {
+    font-size: 1.5rem;
+    margin: 0 0 25px 0;
+    font-weight: bold;
+}
+
+/* Message Styles */
+.errorMessage {
+    padding: 12px 16px;
+    border-radius: 8px;
+    background-color: rgba(220, 53, 69, 0.1);
+    border: 1px solid rgba(220, 53, 69, 0.3);
+    color: #ff6b6b;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+    animation: slideIn 0.3s ease-in-out;
+}
+
+.successMessage {
+    padding: 12px 16px;
+    border-radius: 8px;
+    background-color: rgba(40, 167, 69, 0.1);
+    border: 1px solid rgba(40, 167, 69, 0.3);
+    color: #51cf66;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+    animation: slideIn 0.3s ease-in-out;
+}
+
+.loadingSpinner {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.loadingSpinner::after {
+    content: "";
+    width: 12px;
+    height: 12px;
+    border: 2px solid transparent;
+    border-top: 2px solid currentColor;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.commentInput:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.cancelButton:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+    .commentInputContainer {
+        padding: 15px;
+        gap: 12px;
+    }
+
+    .commentItem {
+        padding: 8px 15px;
+    }
+
+    .commentHeader {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+
+    .commentDate {
+        margin-left: 0;
+        font-size: 0.65rem;
+    }
+
+    .buttonGroup {
+        justify-content: stretch;
+    }
+
+    .sendButton,
+    .cancelButton {
+        flex: 1;
+        text-align: center;
+    }
+
+    .commentInputText {
+        min-height: 60px;
+    }
+
+    .replyItem {
+        padding: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .commentInputContainer {
+        padding: 12px;
+    }
+
+    .commentItem {
+        padding: 5px 12px;
+    }
+
+    .buttonGroup {
+        flex-direction: column;
+    }
+
+    .sendButton,
+    .cancelButton {
+        width: 100%;
+    }
+
+    .commentInputText {
+        min-height: 50px;
+    }
 }

@@ -10,6 +10,7 @@ import SeparatorSvg from "../../SeparatorSvg";
 import Tag from "../TagsContainer/Tag";
 import TagsContainer from "../TagsContainer";
 import { SocketContext } from "@/components/Phoenix/Socket";
+import Comments from "@/components/Phoenix/Comments";
 
 export default function BlogContainer({
   children,
@@ -24,10 +25,11 @@ export default function BlogContainer({
 }) {
   const [phoenixChannel, setPhoenixChannel] = useState<Channel>(null);
   const socket = useContext(SocketContext);
+  const roomId = `blog:${slug}`;
 
   useEffect(() => {
     if (socket && !phoenixChannel) {
-      const channel = socket.channel(`blog:${slug}`);
+      const channel = socket.channel(roomId);
 
       channel
         .join()
@@ -45,7 +47,7 @@ export default function BlogContainer({
         setPhoenixChannel(null);
       }
     };
-  }, [socket, slug, phoenixChannel]);
+  }, [socket, roomId, phoenixChannel]);
 
   return (
     <div className={styles.container}>
@@ -57,7 +59,8 @@ export default function BlogContainer({
       <SeparatorSvg header />
       {post.showToc ? <ToC toc={toc} /> : null}
       <article>{children}</article>
-      <LikeButton phoenixChannel={phoenixChannel} slug={slug} />
+      <LikeButton phoenixChannel={phoenixChannel} roomId={roomId} />
+      <Comments slug={slug} />
     </div>
   );
 }
@@ -102,17 +105,17 @@ function ShowFrontMatter({ post, slug, phoenixChannel }) {
 }
 
 function LikeButton({
-  slug,
+  roomId,
   phoenixChannel,
 }: {
-  slug: string;
+  roomId: string;
   phoenixChannel: Channel;
 }) {
   const [likes, setLikes] = useState(0);
   const [hasLiked, setHasLiked] = useState(false);
 
   const likeBlog = () => {
-    phoenixChannel.push("like", { topic: `blog:${slug}` });
+    phoenixChannel.push("like", { topic: roomId });
     setHasLiked(true);
   };
 

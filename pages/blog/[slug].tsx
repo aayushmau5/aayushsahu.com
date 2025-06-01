@@ -77,7 +77,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const sortedPosts = getSortedPosts();
 
   const post = sortedPosts.find(
-    (post) => post._raw.flattenedPath === params.slug
+    (post) => post._raw.flattenedPath === params.slug,
   );
 
   const toc = post.showToc ? await generateToC(post.body.raw) : null;
