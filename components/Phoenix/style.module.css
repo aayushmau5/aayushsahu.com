@@ -261,7 +261,7 @@
 }
 
 .repliesContainer {
-    padding-left: 20px;
+    padding-left: 10px;
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -293,10 +293,6 @@
 
     .commentItem {
         padding: 8px 15px;
-    }
-
-    .repliesContainer {
-        padding-left: 15px;
     }
 
     .commentHeader {
@@ -336,10 +332,6 @@
 
     .commentItem {
         padding: 5px 12px;
-    }
-
-    .repliesContainer {
-        padding-left: 10px;
     }
 
     .buttonGroup {
