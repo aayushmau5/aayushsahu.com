@@ -35,7 +35,6 @@ export default function Comments({ slug }: Props) {
         .receive("error", (resp) => console.log("unable to join", resp));
 
       channel.on("comments_loaded", (response) => {
-        console.log(response.comments);
         setComments(response.comments);
       });
 
@@ -64,8 +63,8 @@ export default function Comments({ slug }: Props) {
       <h2 className={styles.repliesTitle}>
         <span className={styles.highlight}>Comments</span>
       </h2>
-      <CommentWindow comments={topLevelComments} channel={phoenixChannel} />
       <CommentInput channel={phoenixChannel} parentId={null} />
+      <CommentWindow comments={topLevelComments} channel={phoenixChannel} />
     </div>
   );
 }
@@ -82,10 +81,10 @@ function CommentInput({
   const [isExpanded, setIsExpanded] = useState(parentId === null);
 
   function sendComment() {
-    if (!author.trim() || !comment.trim()) return;
+    if (!comment.trim()) return;
 
     channel?.push("new_reply", {
-      author: author.trim(),
+      author: author.trim() || "Anonymous",
       content: comment.trim(),
       parent_id: parentId,
     });
@@ -115,24 +114,27 @@ function CommentInput({
 
   return (
     <div className={styles.commentInputContainer}>
-      <input
-        type="text"
-        placeholder="Your name"
-        value={author}
-        onChange={(e) => setAuthor(e.target.value)}
-        onKeyPress={handleKeyPress}
-        className={`${styles.commentInput} ${styles.commentInputAuthor}`}
-      />
-      <input
-        type="text"
-        placeholder={
-          parentId === null ? "Write a comment..." : "Write a reply..."
-        }
-        value={comment}
-        onChange={(e) => setComment(e.target.value)}
-        onKeyPress={handleKeyPress}
-        className={`${styles.commentInput} ${styles.commentInputText}`}
-      />
+      <div className={styles.inputGroup}>
+        <input
+          type="text"
+          placeholder="Your name (optional)"
+          value={author}
+          onChange={(e) => setAuthor(e.target.value)}
+          className={`${styles.commentInput} ${styles.commentInputAuthor}`}
+        />
+      </div>
+      <div className={styles.inputGroup}>
+        <textarea
+          placeholder={
+            parentId === null ? "Write a comment..." : "Write a reply..."
+          }
+          value={comment}
+          onChange={(e) => setComment(e.target.value)}
+          onKeyPress={handleKeyPress}
+          className={`${styles.commentInput} ${styles.commentInputText}`}
+          rows={3}
+        />
+      </div>
       <div className={styles.buttonGroup}>
         {parentId !== null && (
           <button
@@ -145,7 +147,7 @@ function CommentInput({
         <button
           onClick={sendComment}
           className={styles.sendButton}
-          disabled={!author.trim() || !comment.trim()}
+          disabled={!comment.trim()}
         >
           {parentId === null ? "Send" : "Reply"}
         </button>
