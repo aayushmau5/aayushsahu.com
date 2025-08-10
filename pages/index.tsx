@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { BsArrowRightShort } from "react-icons/bs";
 
 import { PageSEO } from "@/components/SEO";
@@ -8,14 +9,66 @@ import blogStyles from "@/styles/Blog.module.css";
 import styles from "@/styles/Home.module.css";
 import { createRSSFile } from "@/utils/generateRSSFeed";
 import { getSortedPosts } from "@/utils/postHelpers";
+import sunset from "@/public/index.webp";
 
-export default function Index({ firstPost, secondPost }) {
+export default function Index({ posts }) {
   return (
     <>
       <PageSEO
         title="Aayush Kumar Sahu - Developer and Explorer"
         description="aayushmau5' personal website"
       />
+
+      <div
+        style={{
+          position: "relative",
+          display: "inline-block",
+          overflow: "hidden",
+          borderRadius: "10px",
+        }}
+      >
+        <Image
+          src={sunset}
+          alt="Sunset by the mountains"
+          style={{
+            borderRadius: "10px",
+            filter: "brightness(0.75) contrast(1.2) saturate(0.85)",
+            width: "100%",
+            height: "auto",
+          }}
+        />
+        <div
+          style={{
+            content: '""',
+            position: "absolute",
+            inset: 0,
+            background:
+              "linear-gradient(rgba(80, 60, 100, 0.4), rgba(50, 80, 90, 0.4))",
+            mixBlendMode: "overlay",
+            pointerEvents: "none",
+          }}
+        ></div>
+        <div
+          style={{
+            content: '""',
+            position: "absolute",
+            inset: 0,
+            background:
+              "linear-gradient(to bottom, rgba(20, 15, 30, 0) 70%, rgba(20, 15, 30, 1) 100%)",
+            pointerEvents: "none",
+          }}
+        ></div>
+      </div>
+      <p
+        style={{
+          fontSize: "1rem",
+          fontStyle: "italic",
+          borderLeft: "5px solid var(--theme-three)",
+          padding: "5px 10px",
+        }}
+      >
+        This too shall pass.
+      </p>
       <div className={styles.container}>
         <div className={styles.heading}>
           <div className={styles.circleContainer}>
@@ -37,13 +90,15 @@ export default function Index({ firstPost, secondPost }) {
             />
           </div>
           <div>
-            <h2>
+            <p>
               {" "}
               Hi there <span className={styles.waving}>👋 </span>
-            </h2>
+            </p>
             <p>
-              I&apos;m <span className={styles.highlight}>Aayush Sahu</span>, a
-              Software Engineer. Working at{" "}
+              I&apos;m <span className={styles.highlight}>Aayush Sahu</span>.
+            </p>
+            <p>
+              Currently working as a Software Engineer at{" "}
               <span className={styles.highlight}>
                 <a
                   href="https://tractable.ai/"
@@ -95,22 +150,19 @@ export default function Index({ firstPost, secondPost }) {
             </Link>
           </div>
           <div className={blogStyles.blogsContainer}>
-            <Link key={firstPost.url} href={firstPost.url}>
-              <a className={blogStyles.blogContainer}>
-                <p className={blogStyles.date}>
-                  <Date dateString={firstPost.date} />
-                </p>
-                <h3>{firstPost.title}</h3>
-              </a>
-            </Link>
-            <Link key={secondPost.url} href={secondPost.url}>
-              <a className={blogStyles.blogContainer}>
-                <p className={blogStyles.date}>
-                  <Date dateString={secondPost.date} />
-                </p>
-                <h3>{secondPost.title}</h3>
-              </a>
-            </Link>
+            {posts.map((post) => (
+              <Link key={post.url} href={post.url}>
+                <a className={blogStyles.blogContainer}>
+                  <h3>{post.title}</h3>
+                  <p className={blogStyles.date} style={{ margin: "5px 0" }}>
+                    {post.description}
+                  </p>
+                  <p className={blogStyles.date}>
+                    <Date dateString={post.date} />
+                  </p>
+                </a>
+              </Link>
+            ))}
           </div>
         </div>
 
@@ -150,23 +202,18 @@ export default function Index({ firstPost, secondPost }) {
 
 export const getStaticProps = async () => {
   const postsData = getSortedPosts();
-  const firstPost = postsData[0];
-  const secondPost = postsData[1];
+  const posts = postsData.map((post) => ({
+    title: post.title,
+    date: post.date,
+    url: post.url,
+    description: post.description,
+  }));
 
   createRSSFile();
 
   return {
     props: {
-      firstPost: {
-        title: firstPost.title,
-        date: firstPost.date,
-        url: firstPost.url,
-      },
-      secondPost: {
-        title: secondPost.title,
-        date: secondPost.date,
-        url: secondPost.url,
-      },
+      posts: posts.slice(0, 4),
     },
   };
 };

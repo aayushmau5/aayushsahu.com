@@ -13,7 +13,7 @@ import { ThemeContext } from "./themeContext";
 
 export default function Theme() {
   const themeContext = useContext(ThemeContext);
-  const [selectedTheme, setSelectedTheme] = useState("default-dark");
+  const [selectedTheme, setSelectedTheme] = useState("rosepine-dark");
 
   const selectTheme = (theme: string) => {
     setSelectedTheme(theme);
