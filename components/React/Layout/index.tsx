@@ -3,7 +3,6 @@ import { useEffect } from "react";
 import styles from "./style.module.css";
 import Footer from "./Footer";
 import Nav from "./Nav";
-import Rays from "./Nav/Rays";
 import Background from "./background";
 
 export default function Layout({ children }) {
@@ -16,7 +15,6 @@ export default function Layout({ children }) {
 
   return (
     <>
-      {/* <Rays /> */}
       <Nav />
       <Background>
         <main className={styles.container}>{children}</main>

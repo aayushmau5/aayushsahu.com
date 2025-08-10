@@ -13,7 +13,7 @@ import { ThemeContext } from "./themeContext";
 
 export default function Theme() {
   const themeContext = useContext(ThemeContext);
-  const [selectedTheme, setSelectedTheme] = useState("rosepine-dark");
+  const [selectedTheme, setSelectedTheme] = useState("default-dark");
 
   const selectTheme = (theme: string) => {
     setSelectedTheme(theme);
@@ -27,8 +27,8 @@ export default function Theme() {
         return changeTheme(gruvboxDarkTheme);
       case "everforest-dark":
         return changeTheme(everforestDarkTheme);
-      case "vintage":
-        return changeTheme(vintageTheme);
+      // case "vintage":
+      //   return changeTheme(vintageTheme);
       case "nature":
         return changeTheme(natureTheme);
       case "rosepine-dark":
@@ -84,7 +84,7 @@ export default function Theme() {
         <option value="vitesse-dark">Vitesse Dark</option>
         <option value="gruvbox-dark">GruvBox Dark</option>
         <option value="everforest-dark">Everforest Dark</option>
-        <option value="vintage">Vintage</option>
+        {/*<option value="vintage">Vintage</option>*/}
         <option value="nature">Nature</option>
         <option value="rosepine-dark">Rose Pine Dark</option>
         <option value="rosepine-light">Rose Pine Light</option>

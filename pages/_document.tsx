@@ -43,10 +43,10 @@ export default class MyDocument extends Document {
             href="https://fonts.googleapis.com/css2?family=Commissioner:wght@100..900&display=swap"
             rel="stylesheet"
           />
-          <link
+          {/*<link
             href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,100..900;1,100..900&display=swap"
             rel="stylesheet"
-          />
+          />*/}
           <link
             rel="apple-touch-icon"
             sizes="180x180"

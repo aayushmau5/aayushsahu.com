@@ -9,7 +9,6 @@ import blogStyles from "@/styles/Blog.module.css";
 import styles from "@/styles/Home.module.css";
 import { createRSSFile } from "@/utils/generateRSSFeed";
 import { getSortedPosts } from "@/utils/postHelpers";
-import sunset from "@/public/index.webp";
 
 export default function Index({ posts }) {
   return (
@@ -19,46 +18,6 @@ export default function Index({ posts }) {
         description="aayushmau5' personal website"
       />
 
-      <div
-        style={{
-          position: "relative",
-          display: "inline-block",
-          overflow: "hidden",
-          borderRadius: "10px",
-        }}
-      >
-        <Image
-          src={sunset}
-          alt="Sunset by the mountains"
-          style={{
-            borderRadius: "10px",
-            filter: "brightness(0.75) contrast(1.2) saturate(0.85)",
-            width: "100%",
-            height: "auto",
-          }}
-        />
-        <div
-          style={{
-            content: '""',
-            position: "absolute",
-            inset: 0,
-            background:
-              "linear-gradient(rgba(80, 60, 100, 0.4), rgba(50, 80, 90, 0.4))",
-            mixBlendMode: "overlay",
-            pointerEvents: "none",
-          }}
-        ></div>
-        <div
-          style={{
-            content: '""',
-            position: "absolute",
-            inset: 0,
-            background:
-              "linear-gradient(to bottom, rgba(20, 15, 30, 0) 70%, rgba(20, 15, 30, 1) 100%)",
-            pointerEvents: "none",
-          }}
-        ></div>
-      </div>
       <p
         style={{
           fontSize: "1rem",
@@ -96,8 +55,6 @@ export default function Index({ posts }) {
             </p>
             <p>
               I&apos;m <span className={styles.highlight}>Aayush Sahu</span>.
-            </p>
-            <p>
               Currently working as a Software Engineer at{" "}
               <span className={styles.highlight}>
                 <a
@@ -111,14 +68,21 @@ export default function Index({ posts }) {
               .
             </p>
             <p>
-              I&apos;m an Open Sourcerer <span title="Magic Wand">🪄</span>, and
-              have contributed to many open source projects. Apart from this, I
-              like to explore various technologies, and write about my
-              learnings.
+              Previously, I worked at{" "}
+              <span className={styles.highlight}>
+                <a href="https://beatoven.ai/" rel="noreferrer" target="_blank">
+                  beatoven.ai
+                </a>
+              </span>{" "}
+              as a full-stack developer. Taking the startup from ground one to
+              the sky.
             </p>
             <p>
-              I love to talk about{" "}
+              Apart from that, I&apos;m an Open Sourcerer{" "}
+              <span title="Magic Wand">🪄</span>. I like to explore various
+              technologies, and write about my learnings. I love to talk about{" "}
               <span className={styles.highlight}>open source</span>,{" "}
+              <span className={styles.highlight}>elixir</span>,{" "}
               <span className={styles.highlight}>programming languages</span>,{" "}
               <span className={styles.highlight}>linux</span>,{" "}
               <span className={styles.highlight}>vim/vscode</span>,{" "}

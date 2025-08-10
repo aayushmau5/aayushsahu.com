@@ -7,7 +7,7 @@ export default function NavLink({ children, route, currentRoute }) {
     <Link href={route}>
       <a
         className={`styledLink ${
-          currentRoute === route ? styles.active : null
+          currentRoute === route ? styles.active : styles.shadow
         }`}
       >
         {children}
