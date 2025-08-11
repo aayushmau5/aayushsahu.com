@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 import { PageSEO } from "@/components/SEO";
-import glitch from "@/public/glitch.png";
+import glitch from "@/public/glitch.webp";
 import styles from "@/styles/Home.module.css";
 
 export default function Links() {

@@ -2,7 +2,7 @@ import Image from "next/image";
 import { PageSEO } from "@/components/SEO";
 import styles from "@/styles/Uses.module.css";
 import homeStyles from "@/styles/Home.module.css";
-import desk from "@/public/desk.jpeg";
+import desk from "@/public/desk.webp";
 
 export default function Uses() {
   return (
