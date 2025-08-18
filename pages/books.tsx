@@ -164,6 +164,10 @@ export default function Books() {
               Sci-fi. I want a microscope now!
             </p>
           </li>
+          <li>
+            The Vegetarian by Han Kang
+            <p className={styles.book_remarks}>I... heartbreaking.</p>
+          </li>
         </ul>
 
         <h3 className={styles.genre}>Next reading list:</h3>
