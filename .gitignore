@@ -35,3 +35,5 @@ yarn-error.log*
 
 # Content layer
 .contentlayer
+
+bs/
