@@ -76,7 +76,7 @@ export default function Blog({ postsData, tags }: Props) {
           }
           return post;
         }),
-    [postsData, selectedTag, searchValue],
+    [postsData, selectedTag, searchValue]
   );
 
   useEffect(() => {
@@ -91,7 +91,7 @@ export default function Blog({ postsData, tags }: Props) {
         description="Checkout my blogs."
       />
       <div className={styles.container}>
-        <h1>Blog</h1>
+        <h1 className={styles.blogTitle}>Blog</h1>
         <p className={styles.noOfBlogs}>
           I write about something cool I have learned recently, or some cool
           technologies, or just about life in general.

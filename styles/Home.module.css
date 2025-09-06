@@ -1,172 +1,180 @@
 .container {
-    animation: load 0.5s;
+  animation: load 0.5s;
 }
 
 @keyframes load {
-    from {
-        opacity: 0;
-    }
+  from {
+    opacity: 0;
+  }
 
-    to {
-        opacity: 1;
-    }
+  to {
+    opacity: 1;
+  }
 }
 
 .container code {
-    font-size: 0.9rem;
-    padding: 2px 5px;
-    border-radius: 2px;
+  font-size: 0.9rem;
+  padding: 2px 5px;
+  border-radius: 2px;
 }
 
 .highlight {
-    font-weight: bold;
-    background-image: linear-gradient(
-        45deg,
-        var(--theme-one),
-        var(--theme-two),
-        var(--theme-three),
-        var(--theme-four)
-    );
-    background-clip: text;
-    -webkit-background-clip: text;
-    -moz-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    -moz-text-fill-color: transparent;
-    background-size: 400% 400%;
-    animation: gradient 15s ease infinite;
+  font-weight: bold;
+  background-image: linear-gradient(
+    45deg,
+    var(--theme-one),
+    var(--theme-two),
+    var(--theme-three),
+    var(--theme-four)
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
 }
 
 @keyframes gradient {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 .highlight::selection {
-    background-color: var(--home-highlight-color);
+  background-color: var(--home-highlight-color);
 }
 
 .heading {
-    margin-top: 32px;
+  margin-top: 32px;
 }
 
 .circleContainer {
-    display: flex;
-    gap: 1rem;
+  display: flex;
+  gap: 1rem;
 }
 
 .circle {
-    border-radius: 50%;
-    height: 30px;
-    min-height: 30px;
-    min-width: 30px;
-    width: 30px;
+  border-radius: 50%;
+  height: 30px;
+  min-height: 30px;
+  min-width: 30px;
+  width: 30px;
 }
 
 .waving {
-    display: inline-block;
-    animation-name: wave;
-    animation-duration: 3.5s;
-    transform-origin: 70% 70%;
-    animation-iteration-count: infinite;
+  display: inline-block;
+  animation-name: wave;
+  animation-duration: 3.5s;
+  transform-origin: 70% 70%;
+  animation-iteration-count: infinite;
 }
 
 @keyframes wave {
-    0% {
-        transform: rotate(0deg);
-    }
-    10% {
-        transform: rotate(14deg);
-    }
-    20% {
-        transform: rotate(-8deg);
-    }
-    30% {
-        transform: rotate(14deg);
-    }
-    40% {
-        transform: rotate(-4deg);
-    }
-    50% {
-        transform: rotate(10deg);
-    }
-    60% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(0deg);
-    }
+  0% {
+    transform: rotate(0deg);
+  }
+  10% {
+    transform: rotate(14deg);
+  }
+  20% {
+    transform: rotate(-8deg);
+  }
+  30% {
+    transform: rotate(14deg);
+  }
+  40% {
+    transform: rotate(-4deg);
+  }
+  50% {
+    transform: rotate(10deg);
+  }
+  60% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
 }
 
 .nextStepsContainer {
-    margin-top: 20px;
-    padding: 3px;
-    border-radius: 0.75rem;
-    background-image: linear-gradient(
-        45deg,
-        var(--theme-one),
-        var(--theme-two),
-        var(--theme-three),
-        var(--theme-four)
-    );
-    opacity: 0;
-    animation: load 1s forwards;
-    animation-delay: 0.5s;
-    filter: drop-shadow(0px 10px 5px rgba(0, 0, 0, 0.5));
+  margin-top: 20px;
+  padding: 3px;
+  border-radius: 0.75rem;
+  background-image: linear-gradient(
+    45deg,
+    var(--theme-one),
+    var(--theme-two),
+    var(--theme-three),
+    var(--theme-four)
+  );
+  opacity: 0;
+  animation: load 1s forwards;
+  animation-delay: 0.5s;
+  filter: drop-shadow(0px 10px 5px rgba(0, 0, 0, 0.5));
 }
 
 .nextSteps {
-    background-color: var(--home-next-steps-background);
-    border-radius: 0.75rem;
-    padding: 1rem;
+  background-color: var(--home-next-steps-background);
+  border-radius: 0.75rem;
+  padding: 1rem;
 }
 
 .nextSteps p {
-    margin-top: 0;
+  margin-top: 0;
 }
 
 .nextSteps a {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 .link {
-    color: var(--link-color);
+  color: var(--link-color);
 }
 
 .link:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 .ul li::marker {
-    color: var(--li-marker);
+  color: var(--li-marker);
 }
 
 .smallParagraph {
-    font-size: 1rem;
-    margin-bottom: 10px;
+  font-size: 1rem;
+  margin-bottom: 10px;
 }
 
 .viewAll {
-    font-size: 1rem;
-    color: inherit;
-    background: var(--view-all-background);
-    padding: 10px 12px;
-    border-radius: 5px;
-    border: 1px solid var(--view-all-background);
+  font-size: 1rem;
+  color: inherit;
+  background: var(--view-all-background);
+  padding: 10px 12px;
+  border-radius: 5px;
+  border: 1px solid var(--view-all-background);
 }
 
 .viewAll:hover {
-    border-color: var(--view-all-background-hover);
+  border-color: var(--view-all-background-hover);
 }
 
 @media (min-width: 1024px) {
-    .heading {
-        flex-direction: row;
-    }
+  .heading {
+    flex-direction: row;
+  }
+}
+
+.aboutTitle {
+  font-family: "Handwriting";
+}
+
+.linksTitle {
+  font-family: "Handwriting";
 }

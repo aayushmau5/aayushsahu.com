@@ -20,10 +20,11 @@ export default function Index({ posts }) {
 
       <p
         style={{
-          fontSize: "1rem",
+          fontSize: "1.2rem",
           fontStyle: "italic",
+          fontFamily: "Handwriting",
           borderLeft: "5px solid var(--theme-three)",
-          padding: "5px 10px",
+          padding: "0 10px",
         }}
       >
         This too shall pass.
@@ -105,9 +106,10 @@ export default function Index({ posts }) {
               style={{
                 fontSize: "1.5rem",
                 fontWeight: "bold",
+                fontFamily: "Handwriting",
               }}
             >
-              Latest Posts
+              Recent Posts
             </div>
             <Link href={"/blog"}>
               <a className={styles.viewAll}>View all</a>

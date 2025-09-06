@@ -37,14 +37,14 @@ export default function UsersOnline({ usersOnline, websiteViews }) {
           target="_blank"
           rel="noreferrer"
         >
-          Folks currently tuned in: {usersOnline}
+          Current viewers: {usersOnline}
         </a>
         <a
           href="https://phoenix.aayushsahu.com/dashboard"
           target="_blank"
           rel="noreferrer"
         >
-          Total page views: {websiteViews}
+          Total views: {websiteViews}
         </a>
       </div>
     </div>

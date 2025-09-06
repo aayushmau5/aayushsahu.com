@@ -12,7 +12,7 @@ export default function Uses() {
         description="List of things I use in my day to day life"
       />
       <div className={homeStyles.container}>
-        <h1>Uses</h1>
+        <h1 className={styles.usesTitle}>Uses</h1>
         <p>
           Inspired by{" "}
           <a

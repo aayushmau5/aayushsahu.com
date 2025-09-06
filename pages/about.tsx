@@ -18,7 +18,7 @@ export default function About() {
         description="Get to know more about Aayush"
       />
       <div className={styles.container}>
-        <h1>About</h1>
+        <h1 className={styles.aboutTitle}>About</h1>
         <p>
           Welcome to my smol corner on the internet where I write blogs, and
           showoff my projects :)

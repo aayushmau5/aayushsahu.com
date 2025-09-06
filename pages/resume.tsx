@@ -17,7 +17,7 @@ export default function Resume({ resumeFileNameLink }) {
         title="Resume | Aayush Kumar Sahu"
         description="Checkout my resume"
       />
-      <h1>Resume</h1>
+      <h1 style={{ fontFamily: "Handwriting" }}>Resume</h1>
       <p>Redirecting...</p>
     </>
   );

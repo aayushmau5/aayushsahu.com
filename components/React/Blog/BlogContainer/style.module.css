@@ -3,6 +3,7 @@
   font-size: 1.8rem;
   color: var(--blog-headers);
   line-height: 2rem;
+  font-family: "Handwriting";
 }
 
 .coverImage img {
@@ -70,6 +71,7 @@
 .container h5,
 .container h6 {
   color: var(--blog-headers);
+  font-family: "Handwriting";
 }
 
 .container img {

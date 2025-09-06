@@ -12,7 +12,7 @@ export default function ProjectsPage() {
         description="Checkout the projects made by me."
       />
       <div className={styles.container}>
-        <h1>Projects</h1>
+        <h1 className={styles.projectsTitle}>Projects</h1>
         <p className={styles.paragraph}>Checkout the work I have done 🙂</p>
         <Projects />
         <h2>Skills</h2>

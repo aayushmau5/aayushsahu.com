@@ -9,7 +9,7 @@ export default function Links() {
   return (
     <div className={styles.container}>
       <PageSEO title="Links | Aayush Sahu" description="My online presence" />
-      <h1>Links</h1>
+      <h1 className={styles.linksTitle}>Links</h1>
 
       <div style={{ width: "60%", height: "auto", margin: "1rem auto" }}>
         <Image src={glitch} alt="Cat image" />

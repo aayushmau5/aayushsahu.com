@@ -8,7 +8,7 @@ export default function Books() {
     <>
       <PageSEO title="Books | Aayush Sahu" description="Books I have read" />
       <div className={styles.container}>
-        <h1>Books</h1>
+        <h1 className={styles.booksTitle}>Books</h1>
 
         <div style={{ width: "60%", height: "auto", margin: "1rem auto" }}>
           <Image src={bookCover} alt="The Three Body Problem book cover" />

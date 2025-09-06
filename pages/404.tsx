@@ -18,7 +18,7 @@ export default function FourOhFourPage() {
         <div style={{ width: "60%", height: "auto", margin: "1rem auto" }}>
           <Image src={cat} alt="Cat image" />
         </div>
-        <h1>Oh no, you found the cat!</h1>
+        <h1 className={styles.fourOhFourTitle}>Oh no, you found the cat!</h1>
         <Link href="/">
           <a className="styledLink">
             <BsArrowLeftShort />
