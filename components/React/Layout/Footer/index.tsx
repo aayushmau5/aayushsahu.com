@@ -69,6 +69,9 @@ export default function Footer() {
             </Link>
           </div>
           <div className={styles.linksColumn}>
+            <Link href={"/contact"}>
+              <a aria-label="Contact">Contact</a>
+            </Link>
             <Link href={"/links"}>
               <a aria-label="Links">Links</a>
             </Link>

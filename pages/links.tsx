@@ -23,6 +23,11 @@ export default function Links() {
         }}
       >
         <li>
+          <Link href="/contact">
+            <a className="styledLink">Contact</a>
+          </Link>
+        </li>
+        <li>
           <Link href="/books">
             <a className="styledLink">Bookshelf</a>
           </Link>
