@@ -9,6 +9,9 @@ import SearchBar from "@/components/React/Blog/SearchBar";
 import Date from "@/components/Date";
 import { PageSEO } from "@/components/SEO";
 import { getAllTags, getSortedPosts } from "@/utils/postHelpers";
+import CategoryToggle, {
+  BlogCategory,
+} from "@/components/React/Blog/CategoryToggle";
 
 import styles from "@/styles/Blog.module.css";
 import Tag from "@/components/React/Blog/TagsContainer/Tag";
@@ -22,13 +25,21 @@ interface Props {
 interface QueryParams {
   q?: string; // query
   t?: string; // tag
+  c?: string; // category
 }
 
 export default function Blog({ postsData, tags }: Props) {
   const router = useRouter();
-  const { q, t } = router.query as unknown as QueryParams;
+  const { q, t, c } = router.query as unknown as QueryParams;
   const [searchValue, setSearchValue] = useState<string>("");
   const [selectedTag, setSelectedTag] = useState<string>("");
+  const [selectedCategory, setSelectedCategory] =
+    useState<BlogCategory>("tech");
+
+  // Filter out 'life' tag from the tags list for display
+  const displayTags = useMemo(() => {
+    return tags.filter((tag) => tag !== "life");
+  }, [tags]);
 
   // function changeSearchValue(search: string) {
   //   setSearchValue(search);
@@ -75,14 +86,31 @@ export default function Blog({ postsData, tags }: Props) {
             return post.tags?.includes(selectedTag.toLowerCase());
           }
           return post;
+        })
+        .filter((post) => {
+          if (selectedCategory === "life") {
+            return post.tags?.includes("life");
+          } else if (selectedCategory === "tech") {
+            // Tech blogs are those that don't have the "life" tag
+            return !post.tags?.includes("life");
+          }
+          return true;
         }),
-    [postsData, selectedTag, searchValue]
+    [postsData, selectedTag, searchValue, selectedCategory]
   );
 
   useEffect(() => {
     if (q) setSearchValue(q);
     if (t) setSelectedTag(t);
-  }, [q, t]);
+    if (c && (c === "tech" || c === "life")) {
+      setSelectedCategory(c as BlogCategory);
+    }
+
+    // Clear selected tag when switching to life category
+    if (selectedCategory === "life" && selectedTag) {
+      setSelectedTag("");
+    }
+  }, [q, t, c, selectedCategory, selectedTag]);
 
   return (
     <>
@@ -100,22 +128,28 @@ export default function Blog({ postsData, tags }: Props) {
           So far, I have written {postsData.length} blogs.
         </p>
         <SearchBar value={searchValue} onChange={setSearchValue} />
-        <TagsContainer>
-          <Tag
-            isSelected={selectedTag === ""}
-            value={"All"}
-            onClick={() => setSelectedTag("")}
-          />
-          {tags.map((tag, index) => (
+        <CategoryToggle
+          activeCategory={selectedCategory}
+          onCategoryChange={setSelectedCategory}
+        />
+        {selectedCategory === "tech" && (
+          <TagsContainer>
             <Tag
-              isSelected={selectedTag === tag}
-              key={index}
-              value={tag}
-              onClick={(tag: string) => setSelectedTag(tag)}
+              isSelected={selectedTag === ""}
+              value={"All"}
+              onClick={() => setSelectedTag("")}
             />
-          ))}
-        </TagsContainer>
-        {searchValue === "" ? <h3>Recent blogs</h3> : <h3>Search result</h3>}
+            {displayTags.map((tag, index) => (
+              <Tag
+                isSelected={selectedTag === tag}
+                key={index}
+                value={tag}
+                onClick={(tag: string) => setSelectedTag(tag)}
+              />
+            ))}
+          </TagsContainer>
+        )}
+        {searchValue !== "" && <h3>Search result</h3>}
         {filteredBlogs.length === 0 ? <h3>No blogs found</h3> : null}
         <div className={styles.blogsContainer}>
           {filteredBlogs.map((post) => (
