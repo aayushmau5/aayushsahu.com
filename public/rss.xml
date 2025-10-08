@@ -4,7 +4,7 @@
         <title>Aayush Kumar Sahu - Developer and Explorer</title>
         <link>https://aayushsahu.com</link>
         <description>aayushmau5' personal website</description>
-        <lastBuildDate>Sun, 14 Sep 2025 16:50:20 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 08 Oct 2025 16:56:16 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
@@ -277,6 +277,13 @@
             <guid>https://aayushsahu.com/blog/retrospective-2024</guid>
             <pubDate>Wed, 01 Jan 2025 12:09:48 GMT</pubDate>
             <description><![CDATA[2024 review?]]></description>
+        </item>
+        <item>
+            <title><![CDATA[September Log]]></title>
+            <link>https://aayushsahu.com/blog/september-2025-log</link>
+            <guid>https://aayushsahu.com/blog/september-2025-log</guid>
+            <pubDate>Wed, 08 Oct 2025 16:36:15 GMT</pubDate>
+            <description><![CDATA[Things I did in September 2025]]></description>
         </item>
         <item>
             <title><![CDATA[Installing Sonic Pi on Pop-OS]]></title>
