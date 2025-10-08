@@ -1,6 +1,6 @@
 import styles from "./style.module.css";
 
-export type BlogCategory = "tech" | "life";
+export type BlogCategory = "tech" | "life-opinions-misc";
 
 interface CategoryToggleProps {
   activeCategory: BlogCategory;
@@ -13,7 +13,7 @@ export default function CategoryToggle({
 }: CategoryToggleProps) {
   const categories: { value: BlogCategory; label: string }[] = [
     { value: "tech", label: "Tech" },
-    { value: "life", label: "Life" },
+    { value: "life-opinions-misc", label: "Life/Opinions/Misc" },
   ];
 
   return (

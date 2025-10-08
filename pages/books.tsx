@@ -166,14 +166,35 @@ export default function Books() {
           </li>
           <li>
             The Vegetarian by Han Kang
-            <p className={styles.book_remarks}>I... heartbreaking.</p>
+            <p className={styles.book_remarks}>Quite sad.</p>
           </li>
+          <li>
+            A Thousand Splendid Suns by Khaled Hosseini
+            <p className={styles.book_remarks}>
+              I am not the man I was before I picked up this book.
+            </p>
+          </li>
+          <li>
+            The Metamorphosis by Franz Kafka
+            <p className={styles.book_remarks}>
+              Sometimes I do feel like the bug.
+            </p>
+          </li>
+        </ul>
+
+        <h3 className={styles.genre}>Shorts</h3>
+        <p className={styles.remarks}>Some of my favorite short stories.</p>
+        <ul>
+          <li>I have no mouth and I must scream by Harlan Ellison</li>
+          <li>The last question by Isaac Asimov</li>
+          <li>The last answer by Isaac Asimov</li>
         </ul>
 
         <h3 className={styles.genre}>Next reading list:</h3>
         <ul>
-          <li>Designing Data-Intensive Applications</li>
+          <li>Tau Zero</li>
           <li>Structure and Interpretation of Computer Programs</li>
+          <li>Designing Data-Intensive Applications</li>
           <li>Soul of new machine</li>
           <li>Black book of gaming engine</li>
           <li>The Hitchhiker&apos;s Guide to the Galaxy</li>

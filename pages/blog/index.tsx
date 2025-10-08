@@ -88,11 +88,19 @@ export default function Blog({ postsData, tags }: Props) {
           return post;
         })
         .filter((post) => {
-          if (selectedCategory === "life") {
-            return post.tags?.includes("life");
+          if (selectedCategory === "life-opinions-misc") {
+            return (
+              post.tags?.includes("life") ||
+              post.tags?.includes("misc") ||
+              post.tags?.includes("opinions")
+            );
           } else if (selectedCategory === "tech") {
             // Tech blogs are those that don't have the "life" tag
-            return !post.tags?.includes("life");
+            return (
+              !post.tags?.includes("life") &&
+              !post.tags?.includes("misc") &&
+              !post.tags?.includes("opinions")
+            );
           }
           return true;
         }),
@@ -107,7 +115,7 @@ export default function Blog({ postsData, tags }: Props) {
     }
 
     // Clear selected tag when switching to life category
-    if (selectedCategory === "life" && selectedTag) {
+    if (selectedCategory === "life-opinions-misc" && selectedTag) {
       setSelectedTag("");
     }
   }, [q, t, c, selectedCategory, selectedTag]);
