@@ -4,7 +4,7 @@
         <title>Aayush Kumar Sahu - Developer and Explorer</title>
         <link>https://aayushsahu.com</link>
         <description>aayushmau5' personal website</description>
-        <lastBuildDate>Wed, 08 Oct 2025 16:56:16 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 24 Nov 2025 18:50:47 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
@@ -332,6 +332,13 @@
             <guid>https://aayushsahu.com/blog/vscode-tips-tricks</guid>
             <pubDate>Fri, 23 Jun 2023 00:48:27 GMT</pubDate>
             <description><![CDATA[Some lesser known settings and keybindings that you can use to configure VSCode to your liking]]></description>
+        </item>
+        <item>
+            <title><![CDATA[October Log]]></title>
+            <link>https://aayushsahu.com/blog/october-2025-log</link>
+            <guid>https://aayushsahu.com/blog/october-2025-log</guid>
+            <pubDate>Mon, 24 Nov 2025 18:04:46 GMT</pubDate>
+            <description><![CDATA[Things I did in October 2025]]></description>
         </item>
     </channel>
 </rss>

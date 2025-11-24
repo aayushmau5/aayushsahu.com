@@ -29,11 +29,11 @@ export default function Footer() {
       });
 
       phoenixChannel.on("view-count", (response) =>
-        setWebsiteViews(response.count)
+        setWebsiteViews(response.count),
       );
 
       phoenixChannel.on("spotify:now_playing_update", (response) =>
-        setNowPlaying(response)
+        setNowPlaying(response),
       );
 
       phoenixChannel
@@ -45,15 +45,10 @@ export default function Footer() {
 
   return (
     <div className={styles.container}>
-      <Theme />
       <div className={styles.top}>
-        <div>
-          <SpotifyNowPlaying nowPlayingResponse={nowPlaying} />
-          <UsersOnline usersOnline={usersOnline} websiteViews={websiteViews} />
-        </div>
-        <p className={styles.paragraph}>
-          Made with <span className={HomeStyles.highlight}>NextJS</span>
-        </p>
+        <Theme />
+        <SpotifyNowPlaying nowPlayingResponse={nowPlaying} />
+        <UsersOnline usersOnline={usersOnline} websiteViews={websiteViews} />
       </div>
       <div className={styles.others}>
         <div className={styles.socialsContainer}>
