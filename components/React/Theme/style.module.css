@@ -1,0 +1,153 @@
+.themeGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.themeSwatch {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+  position: relative;
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+
+.themeSwatch:hover {
+  transform: translateY(-2px);
+}
+
+.themeSwatch:focus-visible {
+  outline: 2px solid var(--link-color);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+.colorPreview {
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.colorPreview::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.themeSwatch:hover .colorPreview::before {
+  opacity: 1;
+}
+
+/* Accent stripe at the bottom of the preview */
+.accentStripe {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  display: flex;
+}
+
+.accentStripe span {
+  flex: 1;
+}
+
+.themeName {
+  margin-top: 6px;
+  font-size: 0.7rem;
+  color: var(--footer-color);
+  text-align: center;
+  transition: color 0.2s ease;
+  max-width: 56px;
+  line-height: 1.2;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.themeSwatch:hover .themeName {
+  color: var(--text-color);
+}
+
+/* Selected state */
+.themeSwatch.selected .colorPreview {
+  box-shadow: 0 0 0 2px var(--background), 0 0 0 4px var(--link-color),
+    0 4px 12px rgba(0, 0, 0, 0.4);
+  transform: scale(1.05);
+}
+
+.themeSwatch.selected .themeName {
+  color: var(--text-color);
+  font-weight: 600;
+}
+
+/* Checkmark for selected theme */
+.checkmark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.themeSwatch.selected .checkmark {
+  opacity: 1;
+}
+
+.checkmark svg {
+  width: 12px;
+  height: 12px;
+  stroke: white;
+  stroke-width: 3;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .themeGrid {
+    gap: 10px;
+  }
+
+  .colorPreview {
+    width: 42px;
+    height: 42px;
+    border-radius: 8px;
+  }
+
+  .themeName {
+    font-size: 0.65rem;
+    max-width: 48px;
+  }
+
+  .accentStripe {
+    height: 5px;
+  }
+}
+
+@media (min-width: 800px) {
+  .colorPreview {
+    width: 52px;
+    height: 52px;
+  }
+
+  .themeName {
+    font-size: 0.72rem;
+    max-width: 60px;
+  }
+}
