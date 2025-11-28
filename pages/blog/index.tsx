@@ -1,7 +1,8 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, useCallback } from "react";
 import { GetStaticProps } from "next";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import { ParsedUrlQueryInput } from "querystring";
 
 import { Post } from "contentlayer/generated";
 
@@ -36,44 +37,49 @@ export default function Blog({ postsData, tags }: Props) {
   const [selectedCategory, setSelectedCategory] =
     useState<BlogCategory>("tech");
 
+  const updateUrl = useCallback(
+    (category: BlogCategory, tag: string) => {
+      const query: QueryParams = {};
+      if (category !== "tech") query.c = category;
+      if (tag) query.t = tag;
+
+      router.replace(
+        {
+          pathname: "/blog",
+          query: query as ParsedUrlQueryInput,
+        },
+        undefined,
+        { shallow: true }
+      );
+    },
+    [router]
+  );
+
+  const handleCategoryChange = useCallback(
+    (category: BlogCategory) => {
+      setSelectedCategory(category);
+      // Clear selected tag when switching to life category
+      const newTag = category === "life-opinions-misc" ? "" : selectedTag;
+      if (category === "life-opinions-misc") {
+        setSelectedTag("");
+      }
+      updateUrl(category, newTag);
+    },
+    [selectedTag, updateUrl]
+  );
+
+  const handleTagChange = useCallback(
+    (tag: string) => {
+      setSelectedTag(tag);
+      updateUrl(selectedCategory, tag);
+    },
+    [selectedCategory, updateUrl]
+  );
+
   // Filter out 'life' tag from the tags list for display
   const displayTags = useMemo(() => {
     return tags.filter((tag) => tag !== "life");
   }, [tags]);
-
-  // function changeSearchValue(search: string) {
-  //   setSearchValue(search);
-
-  //   let query: QueryParams = {};
-  //   if (search.length !== 0) query.q = search;
-  //   if (selectedTag.length !== 0) query.t = selectedTag;
-
-  //   router.push(
-  //     {
-  //       pathname: "/blog",
-  //       query: query as ParsedUrlQueryInput,
-  //     },
-  //     undefined,
-  //     { shallow: true }
-  //   );
-  // }
-
-  // function changeSelectedTag(tag: string) {
-  //   setSelectedTag(tag);
-
-  //   let query: QueryParams = {};
-  //   if (searchValue.length !== 0) query.q = searchValue;
-  //   if (tag.length !== 0) query.t = tag;
-
-  //   router.push(
-  //     {
-  //       pathname: "/blog",
-  //       query: query as ParsedUrlQueryInput,
-  //     },
-  //     undefined,
-  //     { shallow: true }
-  //   );
-  // }
 
   const filteredBlogs = useMemo(
     () =>
@@ -110,15 +116,14 @@ export default function Blog({ postsData, tags }: Props) {
   useEffect(() => {
     if (q) setSearchValue(q);
     if (t) setSelectedTag(t);
-    if (c && (c === "tech" || c === "life")) {
+    if (c && (c === "tech" || c === "life-opinions-misc")) {
       setSelectedCategory(c as BlogCategory);
+      // Clear selected tag when switching to life category
+      if (c === "life-opinions-misc") {
+        setSelectedTag("");
+      }
     }
-
-    // Clear selected tag when switching to life category
-    if (selectedCategory === "life-opinions-misc" && selectedTag) {
-      setSelectedTag("");
-    }
-  }, [q, t, c, selectedCategory, selectedTag]);
+  }, [q, t, c]);
 
   return (
     <>
@@ -138,21 +143,21 @@ export default function Blog({ postsData, tags }: Props) {
         <SearchBar value={searchValue} onChange={setSearchValue} />
         <CategoryToggle
           activeCategory={selectedCategory}
-          onCategoryChange={setSelectedCategory}
+          onCategoryChange={handleCategoryChange}
         />
         {selectedCategory === "tech" && (
           <TagsContainer>
             <Tag
               isSelected={selectedTag === ""}
               value={"All"}
-              onClick={() => setSelectedTag("")}
+              onClick={() => handleTagChange("")}
             />
             {displayTags.map((tag, index) => (
               <Tag
                 isSelected={selectedTag === tag}
                 key={index}
                 value={tag}
-                onClick={(tag: string) => setSelectedTag(tag)}
+                onClick={(tag: string) => handleTagChange(tag)}
               />
             ))}
           </TagsContainer>
